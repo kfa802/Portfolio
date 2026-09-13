@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kristine — Medialogy Portfolio</title>
+<meta name="description" content="Portfolio of Kristine, Medialogy student at Aalborg University — game design, web development, and interactive media.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<header class="hero">
+  <nav class="nav">
+    <span class="nav-name">Kristine</span>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <h1>Kristine<br><span class="hero-role">makes games, sites, and the systems in between.</span></h1>
+    <p class="hero-sub">
+      Medialogy student at Aalborg University, in her final semester — working across
+      game design, web development, and interactive media.
+    </p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary">View my work</a>
+      <a href="assets/CV.pdf" class="btn btn-ghost">Download CV</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section" id="about">
+    <div class="section-inner about-inner">
+      <h2>About</h2>
+      <p>
+        I'm a Medialogy student at Aalborg University, which means my work sits somewhere
+        between game design, software engineering, and research methods. I've built serious
+        games evaluated with real playtesters, debugged Unity systems under deadline pressure,
+        and shipped a full-stack web app from login screen to database. I care about whether
+        the thing I build actually works for the person using it — not just whether it compiles.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="section-inner">
+      <h2>Selected work</h2>
+
+      <article class="project">
+        <div class="project-head">
+          <h3>A Learning Game About Women's Suffrage in Denmark</h3>
+          <span class="project-meta">Bachelor thesis · Group project</span>
+        </div>
+        <p>
+          Designed and built a serious game teaching Danish history through play, working
+          directly with museum and teaching collaborators to ground the content. The project
+          combined Game-Based Learning theory with real evaluation — accessibility passes
+          against WCAG/POUR, playtesting, and statistical analysis (A/B testing, Mann-Whitney U,
+          SUS) to check whether the game actually taught anything.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Unity</span>
+          <span class="tag">C#</span>
+          <span class="tag">Serious Games</span>
+          <span class="tag">Accessibility research</span>
+        </div>
+        <div class="project-links">
+          <a href="#">Repository</a>
+          <a href="#">Write-up</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h3>Plan Bee</h3>
+          <span class="project-meta">Team project — Bee Studios</span>
+        </div>
+        <p>
+          A 2D beehive colony management game, built with a small team for a game design exam.
+          I worked on core simulation logic, including debugging per-zone egg placement in the
+          nurse-bee system after it broke under a collaborator's edits — the kind of bug that
+          teaches you to actually read the state machine before touching it.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Unity</span>
+          <span class="tag">C#</span>
+          <span class="tag">Game Design</span>
+          <span class="tag">Playtesting</span>
+        </div>
+        <div class="project-links">
+          <a href="#">Repository</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h3>TriviaQuiz</h3>
+          <span class="project-meta">Solo project — Web Programming exam</span>
+        </div>
+        <p>
+          A full-stack quiz app built end to end: a React front end, a Node/Express back end,
+          JWT-based authentication with bcrypt password hashing, and live questions pulled from
+          the Open Trivia Database API.
+        </p>
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">JWT</span>
+        </div>
+        <div class="project-links">
+          <a href="#">Repository</a>
+          <a href="#">Live demo</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-inner">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Game development</h3>
+          <ul>
+            <li>Unity</li>
+            <li>C#</li>
+            <li>Game design theory (Fullerton, Sicart)</li>
+            <li>Playtesting &amp; evaluation</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Web development</h3>
+          <ul>
+            <li>React</li>
+            <li>Node.js &amp; Express</li>
+            <li>JWT authentication</li>
+            <li>REST APIs</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Tools &amp; methods</h3>
+          <ul>
+            <li>LaTeX / Overleaf</li>
+            <li>Git &amp; GitHub</li>
+            <li>WCAG / POUR accessibility</li>
+            <li>Statistical evaluation (A/B testing, SUS)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-inner contact-inner">
+      <h2>Get in touch</h2>
+      <p>
+        I'm looking for opportunities in game development, web development, or interactive
+        media. Feel free to reach out.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:your.email@example.com" class="btn btn-primary">Email me</a>
+        <a href="https://github.com/yourusername" class="btn btn-ghost">GitHub</a>
+        <a href="https://linkedin.com/in/yourusername" class="btn btn-ghost">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Built by Kristine.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
