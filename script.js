@@ -1,13 +1,11 @@
-/* =========================================================
+/* =========================================
    SEASONAL BACKGROUND
-========================================================= */
+========================================= */
 
 const seasons = {
 
     autumn: {
-        backgroundClass: "autumn",
-
-        leafColors: [
+        colors: [
             "#D9823B",
             "#E6A04B",
             "#C96B3B",
@@ -17,9 +15,7 @@ const seasons = {
     },
 
     winter: {
-        backgroundClass: "winter",
-
-        leafColors: [
+        colors: [
             "#DCEAF2",
             "#C7DCE9",
             "#B7D0E2",
@@ -29,9 +25,7 @@ const seasons = {
     },
 
     spring: {
-        backgroundClass: "spring",
-
-        leafColors: [
+        colors: [
             "#7EAD69",
             "#91BC73",
             "#A7C97B",
@@ -41,9 +35,7 @@ const seasons = {
     },
 
     summer: {
-        backgroundClass: "summer",
-
-        leafColors: [
+        colors: [
             "#6F9F5D",
             "#80AE62",
             "#92BA68",
@@ -67,31 +59,20 @@ const SEASON_DURATION = 30000;
 const TRANSITION_DURATION = 7000;
 
 
-/* =========================================================
-   HELPERS
-========================================================= */
+/* =========================================
+   COLOR HELPERS
+========================================= */
 
 function hexToRgb(hex) {
 
-    const value =
-        hex.replace("#", "");
+    hex = hex.replace("#", "");
 
     return {
-        r: parseInt(
-            value.substring(0, 2),
-            16
-        ),
-
-        g: parseInt(
-            value.substring(2, 4),
-            16
-        ),
-
-        b: parseInt(
-            value.substring(4, 6),
-            16
-        )
+        r: parseInt(hex.substring(0, 2), 16),
+        g: parseInt(hex.substring(2, 4), 16),
+        b: parseInt(hex.substring(4, 6), 16)
     };
+
 }
 
 
@@ -99,89 +80,73 @@ function rgbToHex(r, g, b) {
 
     return (
         "#" +
-
         [r, g, b]
-            .map((value) =>
+            .map(value =>
                 Math.round(value)
                     .toString(16)
                     .padStart(2, "0")
             )
             .join("")
     );
+
 }
 
 
 function lerp(a, b, amount) {
 
-    return (
-        a +
-        (b - a) * amount
-    );
+    return a + (b - a) * amount;
+
 }
 
 
-function interpolateColor(
-    colorA,
-    colorB,
-    amount
-) {
+function interpolateColor(colorA, colorB, amount) {
 
-    const a =
-        hexToRgb(colorA);
-
-    const b =
-        hexToRgb(colorB);
+    const a = hexToRgb(colorA);
+    const b = hexToRgb(colorB);
 
     return rgbToHex(
         lerp(a.r, b.r, amount),
         lerp(a.g, b.g, amount),
         lerp(a.b, b.b, amount)
     );
+
 }
 
 
-/* =========================================================
+/* =========================================
    LEAF SYSTEM
-========================================================= */
+========================================= */
 
 class LeafSystem {
 
-    constructor(
-        canvas,
-        seasonName
-    ) {
+    constructor(canvas, seasonName) {
 
-        this.canvas =
-            canvas;
+        this.canvas = canvas;
+        this.ctx = canvas.getContext("2d");
 
-        this.ctx =
-            canvas.getContext("2d");
-
-        this.seasonName =
-            seasonName;
+        this.seasonName = seasonName;
 
         this.leaves = [];
 
-        this.resize();
+        this.width = 0;
+        this.height = 0;
 
-        this.createLeaves();
+        this.resize();
 
         window.addEventListener(
             "resize",
-            () => {
-                this.resize();
-            }
+            () => this.resize()
         );
+
+        this.createLeaves();
+
     }
 
 
     resize() {
 
         const dpr =
-            Math.min(
-                window.devicePixelRatio || 1,
-                2
-            );
+            window.devicePixelRatio || 1;
 
         this.width =
             window.innerWidth;
@@ -209,48 +174,38 @@ class LeafSystem {
             0,
             0
         );
+
     }
 
 
     createLeaves() {
 
-        const amount =
-            Math.max(
-                28,
-                Math.min(
-                    48,
-                    Math.floor(
-                        this.width / 30
-                    )
-                )
+        const count =
+            Math.floor(
+                28 +
+                Math.random() * 20
             );
 
         this.leaves = [];
 
-        for (
-            let i = 0;
-            i < amount;
-            i++
-        ) {
+        for (let i = 0; i < count; i++) {
 
             this.leaves.push(
-                this.createLeaf(true)
+                this.createLeaf(
+                    true
+                )
             );
+
         }
+
     }
 
 
-    createLeaf(
-        randomY = false
-    ) {
-
-        const colors =
-            seasons[
-                this.seasonName
-            ].leafColors;
+    createLeaf(startAboveScreen = false) {
 
         const size =
-            Math.random() * 7 + 5;
+            5 +
+            Math.random() * 9;
 
         return {
 
@@ -259,204 +214,111 @@ class LeafSystem {
                 this.width,
 
             y:
-                randomY
-                    ? Math.random() *
-                      this.height
-                    : -30,
+                startAboveScreen
+                    ? Math.random() * this.height
+                    : -20,
 
             size,
 
             speed:
-                Math.random() *
                 0.25 +
-                0.18,
+                Math.random() * 0.65,
 
             drift:
-                Math.random() *
-                0.45 +
-                0.15,
+                (Math.random() - 0.5) *
+                0.35,
 
-            driftOffset:
+            sway:
                 Math.random() *
-                Math.PI *
-                2,
+                Math.PI * 2,
+
+            swaySpeed:
+                0.008 +
+                Math.random() * 0.018,
 
             rotation:
                 Math.random() *
-                Math.PI *
-                2,
+                Math.PI * 2,
 
             rotationSpeed:
-                (
-                    Math.random() -
-                    0.5
-                ) * 0.015,
-
-            width:
-                size *
-                (
-                    Math.random() *
-                    0.7 +
-                    0.8
-                ),
-
-            height:
-                size *
-                (
-                    Math.random() *
-                    0.35 +
-                    0.45
-                ),
+                (Math.random() - 0.5) *
+                0.015,
 
             opacity:
-                Math.random() *
-                0.35 +
-                0.35,
+                0.25 +
+                Math.random() * 0.4,
 
-            color:
-                colors[
-                    Math.floor(
-                        Math.random() *
-                        colors.length
-                    )
-                ],
+            colorIndex:
+                Math.floor(
+                    Math.random() *
+                    seasons[this.seasonName].colors.length
+                )
 
-            targetColor:
-                colors[
-                    Math.floor(
-                        Math.random() *
-                        colors.length
-                    )
-                ],
-
-            startColor: null
         };
+
     }
 
 
-    update(time) {
+    update() {
 
-        this.leaves.forEach(
-            (leaf) => {
+        for (let i = 0; i < this.leaves.length; i++) {
 
-                leaf.y +=
-                    leaf.speed;
+            const leaf =
+                this.leaves[i];
 
-                leaf.x +=
-                    Math.sin(
-                        time * 0.0005 +
-                        leaf.driftOffset
-                    ) *
-                    leaf.drift;
+            leaf.y +=
+                leaf.speed;
 
-                leaf.rotation +=
-                    leaf.rotationSpeed;
+            leaf.sway +=
+                leaf.swaySpeed;
 
+            leaf.x +=
+                leaf.drift +
+                Math.sin(leaf.sway) * 0.25;
 
-                if (
-                    leaf.y >
-                    this.height + 40
-                ) {
-
-                    leaf.y = -40;
-
-                    leaf.x =
-                        Math.random() *
-                        this.width;
-                }
+            leaf.rotation +=
+                leaf.rotationSpeed;
 
 
-                if (
-                    leaf.x < -40
-                ) {
+            if (
+                leaf.y >
+                this.height + 30
+            ) {
 
-                    leaf.x =
-                        this.width + 40;
-                }
+                this.leaves[i] =
+                    this.createLeaf(
+                        false
+                    );
 
-
-                if (
-                    leaf.x >
-                    this.width + 40
-                ) {
-
-                    leaf.x = -40;
-                }
+                this.leaves[i].y =
+                    -20 -
+                    Math.random() * 100;
 
             }
-        );
-    }
 
 
-    drawLeaf(leaf) {
+            if (
+                leaf.x <
+                -30
+            ) {
 
-        const ctx =
-            this.ctx;
+                leaf.x =
+                    this.width + 30;
 
-        ctx.save();
-
-        ctx.translate(
-            leaf.x,
-            leaf.y
-        );
-
-        ctx.rotate(
-            leaf.rotation
-        );
-
-        ctx.globalAlpha =
-            leaf.opacity;
-
-        ctx.fillStyle =
-            leaf.color;
+            }
 
 
-        ctx.beginPath();
+            if (
+                leaf.x >
+                this.width + 30
+            ) {
 
+                leaf.x = -30;
 
-        ctx.moveTo(
-            0,
-            -leaf.height
-        );
+            }
 
+        }
 
-        ctx.quadraticCurveTo(
-            leaf.width,
-            -leaf.height * 0.4,
-            leaf.width * 0.7,
-            0
-        );
-
-
-        ctx.quadraticCurveTo(
-            leaf.width * 0.25,
-            leaf.height * 0.75,
-            0,
-            leaf.height
-        );
-
-
-        ctx.quadraticCurveTo(
-            -leaf.width * 0.25,
-            leaf.height * 0.75,
-            -leaf.width * 0.7,
-            0
-        );
-
-
-        ctx.quadraticCurveTo(
-            -leaf.width,
-            -leaf.height * 0.4,
-            0,
-            -leaf.height
-        );
-
-
-        ctx.closePath();
-
-        ctx.fill();
-
-        ctx.restore();
     }
 
 
@@ -469,41 +331,88 @@ class LeafSystem {
             this.height
         );
 
-        this.leaves.forEach(
-            (leaf) => {
-                this.drawLeaf(leaf);
-            }
-        );
+        const colors =
+            seasons[this.seasonName].colors;
+
+
+        for (const leaf of this.leaves) {
+
+            const color =
+                colors[
+                    leaf.colorIndex %
+                    colors.length
+                ];
+
+            this.ctx.save();
+
+            this.ctx.translate(
+                leaf.x,
+                leaf.y
+            );
+
+            this.ctx.rotate(
+                leaf.rotation
+            );
+
+            this.ctx.globalAlpha =
+                leaf.opacity;
+
+            this.ctx.fillStyle =
+                color;
+
+
+            this.ctx.beginPath();
+
+            this.ctx.moveTo(
+                0,
+                -leaf.size
+            );
+
+            this.ctx.bezierCurveTo(
+                leaf.size * 0.9,
+                -leaf.size * 0.5,
+                leaf.size * 0.9,
+                leaf.size * 0.5,
+                0,
+                leaf.size
+            );
+
+            this.ctx.bezierCurveTo(
+                -leaf.size * 0.9,
+                leaf.size * 0.5,
+                -leaf.size * 0.9,
+                -leaf.size * 0.5,
+                0,
+                -leaf.size
+            );
+
+            this.ctx.fill();
+
+            this.ctx.restore();
+
+        }
+
     }
 
 
-    animate(time) {
+    animate() {
 
-        this.update(time);
+        this.update();
 
         this.draw();
 
         requestAnimationFrame(
-            (nextTime) =>
-                this.animate(nextTime)
+            () => this.animate()
         );
-    }
 
-
-    start() {
-
-        requestAnimationFrame(
-            (time) =>
-                this.animate(time)
-        );
     }
 
 }
 
 
-/* =========================================================
-   SEASON MANAGER
-========================================================= */
+/* =========================================
+   BACKGROUND INITIALIZATION
+========================================= */
 
 const gradientA =
     document.getElementById(
@@ -515,6 +424,7 @@ const gradientB =
         "bg-gradient-b"
     );
 
+
 const particlesA =
     document.getElementById(
         "bg-particles-a"
@@ -524,9 +434,6 @@ const particlesB =
     document.getElementById(
         "bg-particles-b"
     );
-
-
-let currentSeasonIndex = 0;
 
 
 let activeGradient =
@@ -543,346 +450,162 @@ let inactiveParticles =
     particlesB;
 
 
-let activeLeafSystem =
+let currentSeasonIndex =
+    0;
+
+
+let activeSeason =
+    seasonOrder[
+        currentSeasonIndex
+    ];
+
+
+/* =========================================
+   APPLY INITIAL SEASON
+========================================= */
+
+activeGradient.classList.add(
+    activeSeason
+);
+
+activeParticles.style.opacity =
+    "0.72";
+
+
+const activeLeafSystem =
     new LeafSystem(
-        particlesA,
-        seasonOrder[
-            currentSeasonIndex
-        ]
+        activeParticles,
+        activeSeason
     );
+
+activeLeafSystem.animate();
 
 
 let inactiveLeafSystem =
-    new LeafSystem(
-        particlesB,
-        seasonOrder[
-            (
-                currentSeasonIndex +
-                1
-            ) %
-            seasonOrder.length
-        ]
-    );
+    null;
 
 
-activeLeafSystem.start();
-inactiveLeafSystem.start();
+/* =========================================
+   CHANGE SEASON
+========================================= */
+
+function changeSeason() {
+
+    currentSeasonIndex =
+        (
+            currentSeasonIndex + 1
+        ) %
+        seasonOrder.length;
 
 
-/* =========================================================
-   SEASON CLASS
-========================================================= */
-
-function setSeasonClass(
-    element,
-    season
-) {
-
-    element.classList.remove(
-        "autumn",
-        "winter",
-        "spring",
-        "summer"
-    );
-
-    element.classList.add(
-        season
-    );
-}
-
-
-/* =========================================================
-   SEASON TRANSITION
-========================================================= */
-
-function transitionToSeason(
-    nextSeason
-) {
-
-    const nextIndex =
-        seasonOrder.indexOf(
-            nextSeason
-        );
-
-    if (
-        nextIndex === -1
-    ) {
-        return;
-    }
-
-
-    const nextSeasonData =
-        seasons[nextSeason];
-
-
-    const currentSeason =
+    const nextSeason =
         seasonOrder[
             currentSeasonIndex
         ];
 
 
-    if (
-        nextSeason ===
-        currentSeason
-    ) {
-        return;
-    }
+    /* Prepare inactive background */
 
+    inactiveGradient.className =
+        "bg-gradient";
 
-    /* -----------------------------------------
-       Prepare hidden layers
-    ----------------------------------------- */
-
-    setSeasonClass(
-        inactiveGradient,
+    inactiveGradient.classList.add(
         nextSeason
     );
 
-    setSeasonClass(
-        inactiveParticles,
-        nextSeason
-    );
-
-
-    /* -----------------------------------------
-       Prepare leaves
-    ----------------------------------------- */
-
-    inactiveLeafSystem.seasonName =
-        nextSeason;
-
-
-    inactiveLeafSystem.leaves.forEach(
-        (leaf) => {
-
-            const colors =
-                nextSeasonData.leafColors;
-
-            leaf.startColor =
-                leaf.color;
-
-            leaf.targetColor =
-                colors[
-                    Math.floor(
-                        Math.random() *
-                        colors.length
-                    )
-                ];
-        }
-    );
-
-
-    /* -----------------------------------------
-       Fade new background in
-    ----------------------------------------- */
-
-    inactiveGradient.style.opacity =
-        "1";
 
     inactiveParticles.style.opacity =
-        "0.72";
+        "0";
 
 
-    /* -----------------------------------------
-       Animate leaf colors
-    ----------------------------------------- */
+    /* Create leaves for next season */
 
-    const startTime =
-        performance.now();
-
-
-    function animateColorTransition(
-        now
-    ) {
-
-        const elapsed =
-            now -
-            startTime;
-
-
-        const progress =
-            Math.min(
-                elapsed /
-                TRANSITION_DURATION,
-                1
-            );
-
-
-        const eased =
-            progress *
-            progress *
-            (
-                3 -
-                2 * progress
-            );
-
-
-        inactiveLeafSystem.leaves.forEach(
-            (leaf) => {
-
-                leaf.color =
-                    interpolateColor(
-                        leaf.startColor,
-                        leaf.targetColor,
-                        eased
-                    );
-            }
+    inactiveLeafSystem =
+        new LeafSystem(
+            inactiveParticles,
+            nextSeason
         );
 
-
-        if (
-            progress < 1
-        ) {
-
-            requestAnimationFrame(
-                animateColorTransition
-            );
-
-        } else {
-
-            inactiveLeafSystem.leaves.forEach(
-                (leaf) => {
-
-                    leaf.color =
-                        leaf.targetColor;
-
-                    leaf.startColor =
-                        null;
-                }
-            );
-        }
-    }
+    inactiveLeafSystem.animate();
 
 
-    requestAnimationFrame(
-        animateColorTransition
-    );
+    /* Crossfade */
+
+    requestAnimationFrame(() => {
+
+        inactiveGradient.style.opacity =
+            "1";
+
+        activeGradient.style.opacity =
+            "0";
+
+        inactiveParticles.style.opacity =
+            "0.72";
+
+        activeParticles.style.opacity =
+            "0";
 
 
-    /* -----------------------------------------
-       Swap layers
-    ----------------------------------------- */
-
-    setTimeout(
-        () => {
-
-            const oldGradient =
-                activeGradient;
-
-            activeGradient =
-                inactiveGradient;
-
-            inactiveGradient =
-                oldGradient;
+    });
 
 
-            const oldParticles =
-                activeParticles;
+    /* Swap layers after transition */
 
-            activeParticles =
-                inactiveParticles;
+    setTimeout(() => {
 
-            inactiveParticles =
-                oldParticles;
+        activeGradient.className =
+            "bg-gradient";
 
-
-            const oldLeafSystem =
-                activeLeafSystem;
-
-            activeLeafSystem =
-                inactiveLeafSystem;
-
-            inactiveLeafSystem =
-                oldLeafSystem;
+        activeGradient.style.opacity =
+            "0";
 
 
-            currentSeasonIndex =
-                nextIndex;
+        activeParticles.style.opacity =
+            "0";
 
 
-            inactiveGradient.style.opacity =
-                "0";
+        const oldGradient =
+            activeGradient;
 
-            inactiveParticles.style.opacity =
-                "0";
+        activeGradient =
+            inactiveGradient;
 
-        },
-        TRANSITION_DURATION
-    );
+        inactiveGradient =
+            oldGradient;
+
+
+        const oldParticles =
+            activeParticles;
+
+        activeParticles =
+            inactiveParticles;
+
+        inactiveParticles =
+            oldParticles;
+
+
+        activeSeason =
+            nextSeason;
+
+
+    }, TRANSITION_DURATION);
+
 }
 
 
-/* =========================================================
-   NEXT SEASON
-========================================================= */
-
-function nextSeason() {
-
-    const nextIndex =
-        (
-            currentSeasonIndex +
-            1
-        ) %
-        seasonOrder.length;
-
-    transitionToSeason(
-        seasonOrder[nextIndex]
-    );
-}
-
-
-/* =========================================================
-   INITIAL SEASON
-========================================================= */
-
-setSeasonClass(
-    gradientA,
-    "autumn"
-);
-
-setSeasonClass(
-    gradientB,
-    "winter"
-);
-
-setSeasonClass(
-    particlesA,
-    "autumn"
-);
-
-setSeasonClass(
-    particlesB,
-    "winter"
-);
-
-
-gradientA.style.opacity =
-    "1";
-
-gradientB.style.opacity =
-    "0";
-
-
-particlesA.style.opacity =
-    "0.72";
-
-particlesB.style.opacity =
-    "0";
-
-
-/* =========================================================
-   CHANGE SEASON EVERY 30 SECONDS
-========================================================= */
+/* =========================================
+   SEASON TIMER
+========================================= */
 
 setInterval(
-    nextSeason,
+    changeSeason,
     SEASON_DURATION
 );
 
 
-/* =========================================================
+/* =========================================
    SCROLL REVEAL
-========================================================= */
+========================================= */
 
 const revealElements =
     document.querySelectorAll(
@@ -893,39 +616,46 @@ const revealElements =
 const prefersReducedMotion =
     window.matchMedia(
         "(prefers-reduced-motion: reduce)"
-    );
+    ).matches;
 
 
 if (
-    !prefersReducedMotion.matches &&
-    "IntersectionObserver" in window
+    prefersReducedMotion
 ) {
+
+    revealElements.forEach(
+        element => {
+
+            element.classList.add(
+                "visible"
+            );
+
+        }
+    );
+
+} else {
 
     const revealObserver =
         new IntersectionObserver(
-            (
-                entries,
-                observer
-            ) => {
+            (entries, observer) => {
 
                 entries.forEach(
-                    (entry) => {
+                    entry => {
 
                         if (
-                            !entry.isIntersecting
+                            entry.isIntersecting
                         ) {
-                            return;
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
                         }
 
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-
-                        observer.unobserve(
-                            entry.target
-                        );
                     }
                 );
 
@@ -940,30 +670,21 @@ if (
 
 
     revealElements.forEach(
-        (element) => {
+        element => {
 
             revealObserver.observe(
                 element
             );
+
         }
     );
 
-} else {
-
-    revealElements.forEach(
-        (element) => {
-
-            element.classList.add(
-                "visible"
-            );
-        }
-    );
 }
 
 
-/* =========================================================
+/* =========================================
    SCROLL PROGRESS
-========================================================= */
+========================================= */
 
 const scrollProgress =
     document.getElementById(
@@ -976,7 +697,6 @@ function updateScrollProgress() {
     const scrollTop =
         window.scrollY;
 
-
     const documentHeight =
         document.documentElement
             .scrollHeight -
@@ -986,17 +706,26 @@ function updateScrollProgress() {
     if (
         documentHeight <= 0
     ) {
+
+        scrollProgress.style.width =
+            "0%";
+
         return;
+
     }
 
 
     const progress =
-        scrollTop /
-        documentHeight;
+        (
+            scrollTop /
+            documentHeight
+        ) *
+        100;
 
 
-    scrollProgress.style.transform =
-        `scaleX(${progress})`;
+    scrollProgress.style.width =
+        `${progress}%`;
+
 }
 
 
@@ -1012,59 +741,56 @@ window.addEventListener(
 updateScrollProgress();
 
 
-/* =========================================================
-   SMOOTH NAVIGATION
-========================================================= */
+/* =========================================
+   SMOOTH ANCHOR NAVIGATION
+========================================= */
 
 document
     .querySelectorAll(
         'a[href^="#"]'
     )
-    .forEach(
-        (link) => {
+    .forEach(anchor => {
 
-            link.addEventListener(
-                "click",
-                (event) => {
+        anchor.addEventListener(
+            "click",
+            event => {
 
-                    const targetId =
-                        link.getAttribute(
-                            "href"
-                        );
-
-
-                    if (
-                        !targetId ||
-                        targetId === "#"
-                    ) {
-                        return;
-                    }
+                const targetId =
+                    anchor.getAttribute(
+                        "href"
+                    );
 
 
-                    const target =
-                        document.querySelector(
-                            targetId
-                        );
-
-
-                    if (!target) {
-                        return;
-                    }
-
-
-                    event.preventDefault();
-
-
-                    target.scrollIntoView({
-                        behavior:
-                            prefersReducedMotion.matches
-                                ? "auto"
-                                : "smooth",
-
-                        block:
-                            "start"
-                    });
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+                    return;
                 }
-            );
-        }
-    );
+
+
+                const target =
+                    document.querySelector(
+                        targetId
+                    );
+
+
+                if (!target) {
+                    return;
+                }
+
+
+                event.preventDefault();
+
+
+                target.scrollIntoView({
+                    behavior:
+                        prefersReducedMotion
+                            ? "auto"
+                            : "smooth"
+                });
+
+            }
+        );
+
+    });

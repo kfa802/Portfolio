@@ -6,7 +6,7 @@
 
     <title>Kristine Fogh Andersen — Medialogy</title>
 
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -20,9 +20,9 @@
 
 <body>
 
-    <!-- =================================================
+    <!-- =========================================
          SEASONAL BACKGROUND
-    ================================================== -->
+    ========================================= -->
 
     <div id="bg-gradient-a" class="bg-gradient"></div>
     <div id="bg-gradient-b" class="bg-gradient"></div>
@@ -32,12 +32,13 @@
 
     <div class="bg-vignette"></div>
 
+    <!-- Scroll progress -->
     <div class="scroll-progress" id="scroll-progress"></div>
 
 
-    <!-- =================================================
+    <!-- =========================================
          HEADER
-    ================================================== -->
+    ========================================= -->
 
     <header class="site-header">
         <nav class="nav container">
@@ -57,12 +58,16 @@
     </header>
 
 
+    <!-- =========================================
+         MAIN
+    ========================================= -->
+
     <main id="top">
 
 
-        <!-- =================================================
+        <!-- =========================================
              HERO
-        ================================================== -->
+        ========================================= -->
 
         <section class="hero" id="home">
 
@@ -70,7 +75,6 @@
                 <span>PORTFOLIO</span>
                 <span>MEDIALOGY / 2026</span>
             </div>
-
 
             <div class="hero-content">
 
@@ -91,7 +95,6 @@
 
             </div>
 
-
             <a href="#about" class="hero-scroll">
                 <span class="scroll-arrow">↓</span>
                 <span>SCROLL TO EXPLORE</span>
@@ -100,9 +103,9 @@
         </section>
 
 
-        <!-- =================================================
+        <!-- =========================================
              ABOUT
-        ================================================== -->
+        ========================================= -->
 
         <section id="about" class="section container">
 
@@ -110,7 +113,6 @@
                 <span class="section-number">01</span>
                 <h2>About</h2>
             </div>
-
 
             <div class="about-grid">
 
@@ -134,14 +136,11 @@
 
                 </div>
 
-
                 <div class="about-image reveal">
-
                     <img
                         src="assets/about-photo.jpg"
                         alt="Creative workspace"
                     >
-
                 </div>
 
             </div>
@@ -149,9 +148,9 @@
         </section>
 
 
-        <!-- =================================================
+        <!-- =========================================
              SELECTED WORK
-        ================================================== -->
+        ========================================= -->
 
         <section id="work" class="section container">
 
@@ -164,21 +163,46 @@
             <div class="projects">
 
 
-                <!-- PROJECT 1 -->
+                <!-- PLAN BEE -->
 
-                <article class="project-card reveal">
+                <a
+                    href="projects/plan-bee.html"
+                    class="project-card reveal"
+                >
 
-                    <div class="project-number">
-                        01
+                    <div class="project-image">
+
+                        <img
+                            src="assets/projects/plan-bee.jpg"
+                            alt="Plan Bee game"
+                        >
+
+                        <span class="project-image-arrow">
+                            ↗
+                        </span>
+
                     </div>
 
-                    <div class="project-content">
 
-                        <p class="project-type">
-                            Game development · Unity
-                        </p>
+                    <div class="project-card-content">
 
-                        <h3>Plan Bee</h3>
+                        <div class="project-meta">
+
+                            <span class="project-number">
+                                01
+                            </span>
+
+                            <span class="project-type">
+                                Game development · Unity
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+                            Plan Bee
+                        </h3>
+
 
                         <p>
                             A 2D top-down strategy game about managing a bee
@@ -186,91 +210,135 @@
                             environmental threats.
                         </p>
 
+
                         <div class="project-tags">
+
                             <span>Unity</span>
                             <span>C#</span>
                             <span>Game Design</span>
                             <span>Systems</span>
-                        </div>
-
-                        <div class="project-links">
-
-                            <a href="#" class="text-link">
-                                Repository ↗
-                            </a>
-
-                            <a href="#" class="text-link">
-                                Write-up ↗
-                            </a>
 
                         </div>
 
+
+                        <span class="project-read-more">
+                            View project
+                            <span>↗</span>
+                        </span>
+
                     </div>
 
-                </article>
+                </a>
 
 
-                <!-- PROJECT 2 -->
+                <!-- WOMEN'S SUFFRAGE -->
 
-                <article class="project-card reveal">
+                <a
+                    href="projects/womens-suffrage.html"
+                    class="project-card reveal"
+                >
 
-                    <div class="project-number">
-                        02
+                    <div class="project-image">
+
+                        <img
+                            src="assets/projects/womens-suffrage.jpg"
+                            alt="Women's Suffrage serious game"
+                        >
+
+                        <span class="project-image-arrow">
+                            ↗
+                        </span>
+
                     </div>
 
-                    <div class="project-content">
 
-                        <p class="project-type">
-                            Serious game · Unity
-                        </p>
+                    <div class="project-card-content">
 
-                        <h3>Women's Suffrage</h3>
+                        <div class="project-meta">
+
+                            <span class="project-number">
+                                02
+                            </span>
+
+                            <span class="project-type">
+                                Serious game · Unity
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+                            Women's Suffrage
+                        </h3>
+
 
                         <p>
-                            An interactive historical experience exploring the
-                            Danish women's suffrage movement between 1896 and
-                            1918.
+                            An interactive historical experience exploring
+                            the Danish women's suffrage movement between
+                            1896 and 1918.
                         </p>
 
+
                         <div class="project-tags">
+
                             <span>Unity</span>
                             <span>C#</span>
                             <span>Serious Games</span>
                             <span>History</span>
-                        </div>
-
-                        <div class="project-links">
-
-                            <a href="#" class="text-link">
-                                Repository ↗
-                            </a>
-
-                            <a href="#" class="text-link">
-                                Write-up ↗
-                            </a>
 
                         </div>
 
+
+                        <span class="project-read-more">
+                            View project
+                            <span>↗</span>
+                        </span>
+
                     </div>
 
-                </article>
+                </a>
 
 
-                <!-- PROJECT 3 -->
+                <!-- HEARING LOSS -->
 
-                <article class="project-card reveal">
+                <a
+                    href="projects/hearing-loss.html"
+                    class="project-card reveal"
+                >
 
-                    <div class="project-number">
-                        03
+                    <div class="project-image">
+
+                        <img
+                            src="assets/projects/hearing-loss.jpg"
+                            alt="Hearing Loss VR experience"
+                        >
+
+                        <span class="project-image-arrow">
+                            ↗
+                        </span>
+
                     </div>
 
-                    <div class="project-content">
 
-                        <p class="project-type">
-                            VR · Immersive interaction
-                        </p>
+                    <div class="project-card-content">
 
-                        <h3>Hearing Loss Experience</h3>
+                        <div class="project-meta">
+
+                            <span class="project-number">
+                                03
+                            </span>
+
+                            <span class="project-type">
+                                VR · Immersive interaction
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+                            Hearing Loss Experience
+                        </h3>
+
 
                         <p>
                             A VR experience designed to explore how everyday
@@ -278,37 +346,34 @@
                             difficulties.
                         </p>
 
+
                         <div class="project-tags">
+
                             <span>Unity</span>
                             <span>VR</span>
                             <span>OpenXR</span>
                             <span>XRI</span>
-                        </div>
-
-                        <div class="project-links">
-
-                            <a href="#" class="text-link">
-                                Repository ↗
-                            </a>
-
-                            <a href="#" class="text-link">
-                                Write-up ↗
-                            </a>
 
                         </div>
+
+
+                        <span class="project-read-more">
+                            View project
+                            <span>↗</span>
+                        </span>
 
                     </div>
 
-                </article>
+                </a>
 
             </div>
 
         </section>
 
 
-        <!-- =================================================
+        <!-- =========================================
              SKILLS
-        ================================================== -->
+        ========================================= -->
 
         <section id="skills" class="section container">
 
@@ -320,9 +385,12 @@
 
             <div class="skills-grid">
 
+
                 <div class="skill-group reveal">
 
-                    <h3>Development</h3>
+                    <h3>
+                        Development
+                    </h3>
 
                     <div class="skill-list">
                         <span>Unity</span>
@@ -337,7 +405,9 @@
 
                 <div class="skill-group reveal">
 
-                    <h3>Creative</h3>
+                    <h3>
+                        Creative
+                    </h3>
 
                     <div class="skill-list">
                         <span>Game Design</span>
@@ -352,7 +422,9 @@
 
                 <div class="skill-group reveal">
 
-                    <h3>Tools</h3>
+                    <h3>
+                        Tools
+                    </h3>
 
                     <div class="skill-list">
                         <span>GitHub</span>
@@ -368,9 +440,9 @@
         </section>
 
 
-        <!-- =================================================
+        <!-- =========================================
              CONTACT
-        ================================================== -->
+        ========================================= -->
 
         <section
             id="contact"
@@ -378,8 +450,15 @@
         >
 
             <div class="section-heading reveal">
-                <span class="section-number">04</span>
-                <h2>Contact</h2>
+
+                <span class="section-number">
+                    04
+                </span>
+
+                <h2>
+                    Contact
+                </h2>
+
             </div>
 
 
@@ -388,6 +467,7 @@
                 <p class="large-text">
                     Have a project, idea, or just want to say hi?
                 </p>
+
 
                 <a
                     href="mailto:your-email@example.com"
@@ -399,11 +479,17 @@
 
                 <div class="social-links">
 
-                    <a href="#" class="text-link">
+                    <a
+                        href="#"
+                        class="text-link"
+                    >
                         GitHub ↗
                     </a>
 
-                    <a href="#" class="text-link">
+                    <a
+                        href="#"
+                        class="text-link"
+                    >
                         LinkedIn ↗
                     </a>
 
@@ -423,9 +509,9 @@
     </main>
 
 
-    <!-- =================================================
+    <!-- =========================================
          FOOTER
-    ================================================== -->
+    ========================================= -->
 
     <footer class="site-footer">
 
