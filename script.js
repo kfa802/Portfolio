@@ -122,9 +122,12 @@ class LeafSystem {
     constructor(canvas, seasonName) {
 
         this.canvas = canvas;
-        this.ctx = canvas.getContext("2d");
 
-        this.seasonName = seasonName;
+        this.ctx =
+            canvas.getContext("2d");
+
+        this.seasonName =
+            seasonName;
 
         this.leaves = [];
 
@@ -188,12 +191,14 @@ class LeafSystem {
 
         this.leaves = [];
 
-        for (let i = 0; i < count; i++) {
+        for (
+            let i = 0;
+            i < count;
+            i++
+        ) {
 
             this.leaves.push(
-                this.createLeaf(
-                    true
-                )
+                this.createLeaf(true)
             );
 
         }
@@ -215,7 +220,8 @@ class LeafSystem {
 
             y:
                 startAboveScreen
-                    ? Math.random() * this.height
+                    ? Math.random() *
+                      this.height
                     : -20,
 
             size,
@@ -230,15 +236,18 @@ class LeafSystem {
 
             sway:
                 Math.random() *
-                Math.PI * 2,
+                Math.PI *
+                2,
 
             swaySpeed:
                 0.008 +
-                Math.random() * 0.018,
+                Math.random() *
+                0.018,
 
             rotation:
                 Math.random() *
-                Math.PI * 2,
+                Math.PI *
+                2,
 
             rotationSpeed:
                 (Math.random() - 0.5) *
@@ -251,7 +260,9 @@ class LeafSystem {
             colorIndex:
                 Math.floor(
                     Math.random() *
-                    seasons[this.seasonName].colors.length
+                    seasons[
+                        this.seasonName
+                    ].colors.length
                 )
 
         };
@@ -261,7 +272,11 @@ class LeafSystem {
 
     update() {
 
-        for (let i = 0; i < this.leaves.length; i++) {
+        for (
+            let i = 0;
+            i < this.leaves.length;
+            i++
+        ) {
 
             const leaf =
                 this.leaves[i];
@@ -274,7 +289,9 @@ class LeafSystem {
 
             leaf.x +=
                 leaf.drift +
-                Math.sin(leaf.sway) * 0.25;
+                Math.sin(
+                    leaf.sway
+                ) * 0.25;
 
             leaf.rotation +=
                 leaf.rotationSpeed;
@@ -286,9 +303,7 @@ class LeafSystem {
             ) {
 
                 this.leaves[i] =
-                    this.createLeaf(
-                        false
-                    );
+                    this.createLeaf(false);
 
                 this.leaves[i].y =
                     -20 -
@@ -298,8 +313,7 @@ class LeafSystem {
 
 
             if (
-                leaf.x <
-                -30
+                leaf.x < -30
             ) {
 
                 leaf.x =
@@ -332,10 +346,14 @@ class LeafSystem {
         );
 
         const colors =
-            seasons[this.seasonName].colors;
+            seasons[
+                this.seasonName
+            ].colors;
 
 
-        for (const leaf of this.leaves) {
+        for (
+            const leaf of this.leaves
+        ) {
 
             const color =
                 colors[
@@ -371,8 +389,10 @@ class LeafSystem {
             this.ctx.bezierCurveTo(
                 leaf.size * 0.9,
                 -leaf.size * 0.5,
+
                 leaf.size * 0.9,
                 leaf.size * 0.5,
+
                 0,
                 leaf.size
             );
@@ -380,8 +400,10 @@ class LeafSystem {
             this.ctx.bezierCurveTo(
                 -leaf.size * 0.9,
                 leaf.size * 0.5,
+
                 -leaf.size * 0.9,
                 -leaf.size * 0.5,
+
                 0,
                 -leaf.size
             );
@@ -504,7 +526,9 @@ function changeSeason() {
         ];
 
 
-    /* Prepare inactive background */
+    /*
+       Prepare inactive background.
+    */
 
     inactiveGradient.className =
         "bg-gradient";
@@ -518,7 +542,9 @@ function changeSeason() {
         "0";
 
 
-    /* Create leaves for next season */
+    /*
+       Create leaves for next season.
+    */
 
     inactiveLeafSystem =
         new LeafSystem(
@@ -529,7 +555,9 @@ function changeSeason() {
     inactiveLeafSystem.animate();
 
 
-    /* Crossfade */
+    /*
+       Crossfade.
+    */
 
     requestAnimationFrame(() => {
 
@@ -545,11 +573,12 @@ function changeSeason() {
         activeParticles.style.opacity =
             "0";
 
-
     });
 
 
-    /* Swap layers after transition */
+    /*
+       Swap layers after transition.
+    */
 
     setTimeout(() => {
 
@@ -558,7 +587,6 @@ function changeSeason() {
 
         activeGradient.style.opacity =
             "0";
-
 
         activeParticles.style.opacity =
             "0";
@@ -587,7 +615,6 @@ function changeSeason() {
         activeSeason =
             nextSeason;
 
-
     }, TRANSITION_DURATION);
 
 }
@@ -604,6 +631,220 @@ setInterval(
 
 
 /* =========================================
+   REDUCED MOTION
+========================================= */
+
+const prefersReducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+/* =========================================
+   HERO NAME ANIMATION
+========================================= */
+
+const heroName =
+    document.querySelector(
+        ".hero-name"
+    );
+
+
+/*
+   Set staggered delays on every letter.
+
+   The first line starts quickly.
+   The second line starts slightly later,
+   making the name feel like it is being
+   written/revealed naturally.
+*/
+
+function prepareHeroLetters() {
+
+    if (!heroName) {
+        return;
+    }
+
+    const firstLine =
+        heroName.querySelector(
+            ".name-line:not(.name-line-second)"
+        );
+
+    const secondLine =
+        heroName.querySelector(
+            ".name-line-second"
+        );
+
+
+    if (firstLine) {
+
+        const letters =
+            firstLine.querySelectorAll(
+                ".letter:not(.space)"
+            );
+
+        letters.forEach(
+            (letter, index) => {
+
+                letter.style.setProperty(
+                    "--letter-delay",
+                    `${0.12 + index * 0.055}s`
+                );
+
+            }
+        );
+
+    }
+
+
+    if (secondLine) {
+
+        const letters =
+            secondLine.querySelectorAll(
+                ".letter"
+            );
+
+        letters.forEach(
+            (letter, index) => {
+
+                letter.style.setProperty(
+                    "--letter-delay",
+                    `${0.72 + index * 0.065}s`
+                );
+
+            }
+        );
+
+    }
+
+}
+
+
+/*
+   Replay the name animation.
+
+   requestAnimationFrame gives the browser
+   one frame to register the reset before
+   starting the animation again.
+*/
+
+function replayHeroName() {
+
+    if (!heroName || prefersReducedMotion) {
+        return;
+    }
+
+    heroName.classList.add(
+        "replaying"
+    );
+
+
+    requestAnimationFrame(() => {
+
+        requestAnimationFrame(() => {
+
+            heroName.classList.remove(
+                "replaying"
+            );
+
+        });
+
+    });
+
+}
+
+
+prepareHeroLetters();
+
+
+/*
+   Play the animation on initial page load.
+*/
+
+if (
+    heroName &&
+    !prefersReducedMotion
+) {
+
+    replayHeroName();
+
+}
+
+
+/* =========================================
+   HERO RE-ENTRY OBSERVER
+========================================= */
+
+/*
+   The hero animation plays again when the
+   hero leaves the screen and later comes
+   back into view.
+
+   This means:
+   - Load page → animation
+   - Scroll down → hero leaves
+   - Scroll back up → animation again
+*/
+
+if (
+    heroName &&
+    !prefersReducedMotion
+) {
+
+    let heroWasVisible =
+        true;
+
+
+    const heroObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            if (
+                                !heroWasVisible
+                            ) {
+
+                                replayHeroName();
+
+                            }
+
+                            heroWasVisible =
+                                true;
+
+                        } else {
+
+                            heroWasVisible =
+                                false;
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold:
+                    0.25
+            }
+        );
+
+
+    heroObserver.observe(
+        document.querySelector(
+            ".hero"
+        )
+    );
+
+}
+
+
+/* =========================================
    SCROLL REVEAL
 ========================================= */
 
@@ -613,11 +854,10 @@ const revealElements =
     );
 
 
-const prefersReducedMotion =
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
+/*
+   Reduced motion:
+   Everything is simply visible.
+*/
 
 if (
     prefersReducedMotion
@@ -635,9 +875,21 @@ if (
 
 } else {
 
+
+    /*
+       Normal scrolling.
+
+       IMPORTANT:
+       We intentionally DO NOT call
+       observer.unobserve().
+
+       This allows the animation to happen
+       again when the user scrolls back up.
+    */
+
     const revealObserver =
         new IntersectionObserver(
-            (entries, observer) => {
+            (entries) => {
 
                 entries.forEach(
                     entry => {
@@ -650,8 +902,18 @@ if (
                                 "visible"
                             );
 
-                            observer.unobserve(
-                                entry.target
+                        } else {
+
+                            /*
+                               Remove the class when the
+                               element leaves the viewport.
+
+                               When it comes back,
+                               the CSS transition plays again.
+                            */
+
+                            entry.target.classList.remove(
+                                "visible"
                             );
 
                         }
@@ -661,10 +923,18 @@ if (
 
             },
             {
-                threshold: 0.12,
+
+                /*
+                   A slightly larger threshold
+                   makes the reveal feel intentional.
+                */
+
+                threshold:
+                    0.12,
 
                 rootMargin:
                     "0px 0px -50px 0px"
+
             }
         );
 
@@ -696,6 +966,7 @@ function updateScrollProgress() {
 
     const scrollTop =
         window.scrollY;
+
 
     const documentHeight =
         document.documentElement
@@ -765,7 +1036,9 @@ document
                     !targetId ||
                     targetId === "#"
                 ) {
+
                     return;
+
                 }
 
 
@@ -776,7 +1049,9 @@ document
 
 
                 if (!target) {
+
                     return;
+
                 }
 
 
@@ -784,10 +1059,12 @@ document
 
 
                 target.scrollIntoView({
+
                     behavior:
                         prefersReducedMotion
                             ? "auto"
                             : "smooth"
+
                 });
 
             }
