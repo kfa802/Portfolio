@@ -1,186 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kristine — Medialogy Portfolio</title>
-<meta name="description" content="Portfolio of Kristine, Medialogy student at Aalborg University — game design, web development, and interactive media.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kristine Fogh Andersen — Medialogy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<canvas id="bg-canvas"></canvas>
-<div class="scroll-progress" id="scroll-progress"></div>
+    <!-- =========================
+         SEASONAL BACKGROUND
+    ========================== -->
 
-<header class="hero">
-  <nav class="nav">
-    <span class="nav-name">Kristine</span>
-    <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+    <div id="bg-gradient-a" class="bg-gradient"></div>
+    <div id="bg-gradient-b" class="bg-gradient"></div>
 
-  <div class="hero-content">
-    <img src="assets/profile.jpg" alt="Portrait of Kristine" class="hero-photo">
-    <h1>Kristine Fogh Andersen<br><span class="hero-role">makes games, sites, and the systems in between.</span></h1>
-    <p class="hero-sub">
-      Medialogy student at Aalborg University, in her final semester — working across
-      game design, web development, and interactive media.
-    </p>
-    <div class="hero-actions">
-      <a href="#work" class="btn btn-primary">View my work</a>
-      <a href="assets/CV.pdf" class="btn btn-ghost">Download CV</a>
-    </div>
-  </div>
-</header>
+    <canvas id="bg-particles-a" class="bg-particles"></canvas>
+    <canvas id="bg-particles-b" class="bg-particles"></canvas>
 
-<main>
-  <section class="section" id="about">
-  <div class="section-inner about-inner">
-    <h2>About</h2>
-    <img src="assets/about-photo.jpg" alt="Kristine" class="about-photo">
-    <p>
-      I'm a Medialogy student at Aalborg University...
-    </p>
-  </div>
-</section>
+    <div class="bg-vignette"></div>
 
-  <section class="section" id="work">
-    <div class="section-inner">
-      <h2>Selected work</h2>
+    <div class="scroll-progress" id="scroll-progress"></div>
 
-      <article class="project">
-        <div class="project-head">
-          <h3>A Learning Game About Women's Suffrage in Denmark</h3>
-          <span class="project-meta">Bachelor thesis · Group project</span>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="site-header">
+        <nav class="nav container">
+
+            <a href="#top" class="logo">
+                KFA<span>.</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <main id="top">
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero container">
+
+            <div class="hero-image reveal">
+                <img src="assets/profile.jpg" alt="Kristine Fogh Andersen">
+            </div>
+
+            <div class="hero-content reveal">
+
+                <p class="eyebrow">Medialogy student · Aalborg University</p>
+
+                <h1>
+                    Kristine Fogh Andersen
+                </h1>
+
+                <p class="hero-role">
+                    makes games, sites, and the systems in between.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#work" class="button button-primary">
+                        See my work
+                    </a>
+
+                    <a href="#contact" class="button button-secondary">
+                        Get in touch
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section id="about" class="section container">
+
+            <div class="section-heading reveal">
+                <span class="section-number">01</span>
+                <h2>About</h2>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-text reveal">
+
+                    <p class="large-text">
+                        I'm a Medialogy student interested in the space between
+                        technology, design and interactive experiences.
+                    </p>
+
+                    <p>
+                        I enjoy creating things that people can interact with,
+                        from games and websites to experimental interfaces and
+                        immersive experiences.
+                    </p>
+
+                    <p>
+                        My work usually combines programming with visual design,
+                        interaction and a healthy amount of experimentation.
+                    </p>
+
+                </div>
+
+                <div class="about-image reveal">
+                    <img
+                        src="assets/about-photo.jpg"
+                        alt="Creative workspace"
+                    >
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SELECTED WORK
+        ========================== -->
+
+        <section id="work" class="section container">
+
+            <div class="section-heading reveal">
+                <span class="section-number">02</span>
+                <h2>Selected work</h2>
+            </div>
+
+            <div class="projects">
+
+                <!-- PROJECT 1 -->
+
+                <article class="project-card reveal">
+
+                    <div class="project-number">
+                        01
+                    </div>
+
+                    <div class="project-content">
+
+                        <p class="project-type">
+                            Game development · Unity
+                        </p>
+
+                        <h3>Plan Bee</h3>
+
+                        <p>
+                            A 2D top-down strategy game about managing a bee
+                            colony through changing seasons, resources and
+                            environmental threats.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Unity</span>
+                            <span>C#</span>
+                            <span>Game Design</span>
+                            <span>Systems</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="text-link">
+                                Repository ↗
+                            </a>
+
+                            <a href="#" class="text-link">
+                                Write-up ↗
+                            </a>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PROJECT 2 -->
+
+                <article class="project-card reveal">
+
+                    <div class="project-number">
+                        02
+                    </div>
+
+                    <div class="project-content">
+
+                        <p class="project-type">
+                            Serious game · Unity
+                        </p>
+
+                        <h3>Women's Suffrage</h3>
+
+                        <p>
+                            An interactive historical experience exploring the
+                            Danish women's suffrage movement between 1896 and
+                            1918.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Unity</span>
+                            <span>C#</span>
+                            <span>Serious Games</span>
+                            <span>History</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="text-link">
+                                Repository ↗
+                            </a>
+
+                            <a href="#" class="text-link">
+                                Write-up ↗
+                            </a>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PROJECT 3 -->
+
+                <article class="project-card reveal">
+
+                    <div class="project-number">
+                        03
+                    </div>
+
+                    <div class="project-content">
+
+                        <p class="project-type">
+                            VR · Immersive interaction
+                        </p>
+
+                        <h3>Hearing Loss Experience</h3>
+
+                        <p>
+                            A VR experience designed to explore how everyday
+                            environments can feel when experiencing hearing
+                            difficulties.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Unity</span>
+                            <span>VR</span>
+                            <span>OpenXR</span>
+                            <span>XRI</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="text-link">
+                                Repository ↗
+                            </a>
+
+                            <a href="#" class="text-link">
+                                Write-up ↗
+                            </a>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SKILLS
+        ========================== -->
+
+        <section id="skills" class="section container">
+
+            <div class="section-heading reveal">
+                <span class="section-number">03</span>
+                <h2>Skills</h2>
+            </div>
+
+            <div class="skills-grid">
+
+                <div class="skill-group reveal">
+                    <h3>Development</h3>
+
+                    <div class="skill-list">
+                        <span>Unity</span>
+                        <span>C#</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="skill-group reveal">
+                    <h3>Creative</h3>
+
+                    <div class="skill-list">
+                        <span>Game Design</span>
+                        <span>Interaction Design</span>
+                        <span>UI / UX</span>
+                        <span>Prototyping</span>
+                        <span>Visual Design</span>
+                    </div>
+                </div>
+
+                <div class="skill-group reveal">
+                    <h3>Tools</h3>
+
+                    <div class="skill-list">
+                        <span>GitHub</span>
+                        <span>Figma</span>
+                        <span>Blender</span>
+                        <span>Adobe</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section id="contact" class="section contact-section container">
+
+            <div class="section-heading reveal">
+                <span class="section-number">04</span>
+                <h2>Contact</h2>
+            </div>
+
+            <div class="contact-content reveal">
+
+                <p class="large-text">
+                    Have a project, idea, or just want to say hi?
+                </p>
+
+                <a
+                    href="mailto:your-email@example.com"
+                    class="contact-email"
+                >
+                    your-email@example.com
+                </a>
+
+                <div class="social-links">
+
+                    <a href="#" class="text-link">
+                        GitHub ↗
+                    </a>
+
+                    <a href="#" class="text-link">
+                        LinkedIn ↗
+                    </a>
+
+                    <a href="assets/CV.pdf" class="text-link">
+                        CV ↗
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-inner">
+
+            <p>
+                © 2026 Kristine Fogh Andersen
+            </p>
+
+            <p>
+                Built with curiosity.
+            </p>
+
         </div>
-        <p>
-          Designed and built a serious game teaching Danish history through play, working
-          directly with museum and teaching collaborators to ground the content. The project
-          combined Game-Based Learning theory with real evaluation — accessibility passes
-          against WCAG/POUR, playtesting, and statistical analysis (A/B testing, Mann-Whitney U,
-          SUS) to check whether the game actually taught anything.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Unity</span>
-          <span class="tag">C#</span>
-          <span class="tag">Serious Games</span>
-          <span class="tag">Accessibility research</span>
-        </div>
-        <div class="project-links">
-          <a href="#">Repository</a>
-          <a href="#">Write-up</a>
-        </div>
-      </article>
 
-      <article class="project">
-        <div class="project-head">
-          <h3>Plan Bee</h3>
-          <span class="project-meta">Team project — Bee Studios</span>
-        </div>
-        <p>
-          A 2D beehive colony management game, built with a small team for a game design exam.
-          I worked on core simulation logic, including debugging per-zone egg placement in the
-          nurse-bee system after it broke under a collaborator's edits — the kind of bug that
-          teaches you to actually read the state machine before touching it.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Unity</span>
-          <span class="tag">C#</span>
-          <span class="tag">Game Design</span>
-          <span class="tag">Playtesting</span>
-        </div>
-        <div class="project-links">
-          <a href="#">Repository</a>
-        </div>
-      </article>
+    </footer>
 
-      <article class="project">
-        <div class="project-head">
-          <h3>TriviaQuiz</h3>
-          <span class="project-meta">Solo project — Web Programming exam</span>
-        </div>
-        <p>
-          A full-stack quiz app built end to end: a React front end, a Node/Express back end,
-          JWT-based authentication with bcrypt password hashing, and live questions pulled from
-          the Open Trivia Database API.
-        </p>
-        <div class="project-tags">
-          <span class="tag">React</span>
-          <span class="tag">Node.js</span>
-          <span class="tag">Express</span>
-          <span class="tag">JWT</span>
-        </div>
-        <div class="project-links">
-          <a href="#">Repository</a>
-          <a href="#">Live demo</a>
-        </div>
-      </article>
 
-    </div>
-  </section>
+    <script src="script.js"></script>
 
-  <section class="section" id="skills">
-    <div class="section-inner">
-      <h2>Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h3>Game development</h3>
-          <ul>
-            <li>Unity</li>
-            <li>C#</li>
-            <li>Game design theory (Fullerton, Sicart)</li>
-            <li>Playtesting &amp; evaluation</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Web development</h3>
-          <ul>
-            <li>React</li>
-            <li>Node.js &amp; Express</li>
-            <li>JWT authentication</li>
-            <li>REST APIs</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Tools &amp; methods</h3>
-          <ul>
-            <li>LaTeX / Overleaf</li>
-            <li>Git &amp; GitHub</li>
-            <li>WCAG / POUR accessibility</li>
-            <li>Statistical evaluation (A/B testing, SUS)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="section-inner contact-inner">
-      <h2>Get in touch</h2>
-      <p>
-        I'm looking for opportunities in game development, web development, or interactive
-        media. Feel free to reach out.
-      </p>
-      <div class="contact-links">
-        <a href="mailto:your.email@example.com" class="btn btn-primary">Email me</a>
-        <a href="https://github.com/yourusername" class="btn btn-ghost">GitHub</a>
-        <a href="https://linkedin.com/in/yourusername" class="btn btn-ghost">LinkedIn</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <p>Built by Kristine.</p>
-</footer>
-
-<script src="script.js"></script>
 </body>
 </html>
