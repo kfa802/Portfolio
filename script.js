@@ -1,119 +1,10 @@
-/* =========================================
-   REVEAL ANIMATIONS
-========================================= */
-
-const revealElements = document.querySelectorAll(".reveal");
-
-const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
-
-        entries.forEach((entry) => {
-
-            if (!entry.isIntersecting) {
-                return;
-            }
-
-            entry.target.classList.add("visible");
-
-            observer.unobserve(entry.target);
-        });
-
-    },
-    {
-        threshold: 0.12
-    }
-);
-
-revealElements.forEach((element) => {
-    revealObserver.observe(element);
-});
-
-
-/* =========================================
-   SCROLL PROGRESS
-========================================= */
-
-const scrollProgress =
-    document.getElementById("scroll-progress");
-
-function updateScrollProgress() {
-
-    const scrollTop = window.scrollY;
-
-    const documentHeight =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
-
-    if (documentHeight <= 0) {
-        scrollProgress.style.width = "0%";
-        return;
-    }
-
-    const progress =
-        (scrollTop / documentHeight) * 100;
-
-    scrollProgress.style.width =
-        `${Math.min(progress, 100)}%`;
-}
-
-window.addEventListener(
-    "scroll",
-    updateScrollProgress,
-    { passive: true }
-);
-
-updateScrollProgress();
-
-
-/* =========================================
+/* =========================================================
    SEASONAL BACKGROUND
-========================================= */
-
-const gradientA =
-    document.getElementById("bg-gradient-a");
-
-const gradientB =
-    document.getElementById("bg-gradient-b");
-
-const canvasA =
-    document.getElementById("bg-particles-a");
-
-const canvasB =
-    document.getElementById("bg-particles-b");
-
-const ctxA =
-    canvasA.getContext("2d");
-
-const ctxB =
-    canvasB.getContext("2d");
-
-
-/*
-    Longer season duration makes the background
-    feel atmospheric instead of like an animation.
-*/
-
-const SEASON_DURATION = 30000;
-
-
-/*
-    This is deliberately long.
-
-    The old background and leaves disappear slowly,
-    while the new ones appear gradually.
-*/
-
-const TRANSITION_DURATION = 7000;
-
-
-/* =========================================
-   SEASON DEFINITIONS
-========================================= */
+========================================================= */
 
 const seasons = {
 
     autumn: {
-
         backgroundClass: "autumn",
 
         leafColors: [
@@ -123,11 +14,9 @@ const seasons = {
             "#B9573E",
             "#D18A43"
         ]
-
     },
 
     winter: {
-
         backgroundClass: "winter",
 
         leafColors: [
@@ -137,11 +26,9 @@ const seasons = {
             "#E8F0F5",
             "#AFC8DA"
         ]
-
     },
 
     spring: {
-
         backgroundClass: "spring",
 
         leafColors: [
@@ -151,11 +38,9 @@ const seasons = {
             "#6D9F68",
             "#B1CE82"
         ]
-
     },
 
     summer: {
-
         backgroundClass: "summer",
 
         leafColors: [
@@ -165,17 +50,10 @@ const seasons = {
             "#5D9359",
             "#A1C875"
         ]
-
     }
 
 };
 
-
-/*
-    Order of the seasons.
-
-    Change this if you want a different order.
-*/
 
 const seasonOrder = [
     "autumn",
@@ -185,47 +63,137 @@ const seasonOrder = [
 ];
 
 
-/* =========================================
-   PARTICLE SYSTEM
-========================================= */
+const SEASON_DURATION = 30000;
+const TRANSITION_DURATION = 7000;
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function hexToRgb(hex) {
+
+    const value =
+        hex.replace("#", "");
+
+    return {
+        r: parseInt(
+            value.substring(0, 2),
+            16
+        ),
+
+        g: parseInt(
+            value.substring(2, 4),
+            16
+        ),
+
+        b: parseInt(
+            value.substring(4, 6),
+            16
+        )
+    };
+}
+
+
+function rgbToHex(r, g, b) {
+
+    return (
+        "#" +
+
+        [r, g, b]
+            .map((value) =>
+                Math.round(value)
+                    .toString(16)
+                    .padStart(2, "0")
+            )
+            .join("")
+    );
+}
+
+
+function lerp(a, b, amount) {
+
+    return (
+        a +
+        (b - a) * amount
+    );
+}
+
+
+function interpolateColor(
+    colorA,
+    colorB,
+    amount
+) {
+
+    const a =
+        hexToRgb(colorA);
+
+    const b =
+        hexToRgb(colorB);
+
+    return rgbToHex(
+        lerp(a.r, b.r, amount),
+        lerp(a.g, b.g, amount),
+        lerp(a.b, b.b, amount)
+    );
+}
+
+
+/* =========================================================
+   LEAF SYSTEM
+========================================================= */
 
 class LeafSystem {
 
-    constructor(canvas, context) {
+    constructor(
+        canvas,
+        seasonName
+    ) {
 
-        this.canvas = canvas;
-        this.ctx = context;
+        this.canvas =
+            canvas;
 
-        this.width = window.innerWidth;
-        this.height = window.innerHeight;
+        this.ctx =
+            canvas.getContext("2d");
+
+        this.seasonName =
+            seasonName;
 
         this.leaves = [];
-
-        this.season = "autumn";
 
         this.resize();
 
         this.createLeaves();
+
+        window.addEventListener(
+            "resize",
+            () => {
+                this.resize();
+            }
+        );
     }
 
 
-    /* -------------------------------------
-       RESIZE
-    -------------------------------------- */
-
     resize() {
 
-        this.width = window.innerWidth;
-        this.height = window.innerHeight;
+        const dpr =
+            Math.min(
+                window.devicePixelRatio || 1,
+                2
+            );
 
-        const pixelRatio =
-            Math.min(window.devicePixelRatio || 1, 2);
+        this.width =
+            window.innerWidth;
+
+        this.height =
+            window.innerHeight;
 
         this.canvas.width =
-            this.width * pixelRatio;
+            this.width * dpr;
 
         this.canvas.height =
-            this.height * pixelRatio;
+            this.height * dpr;
 
         this.canvas.style.width =
             `${this.width}px`;
@@ -234,45 +202,36 @@ class LeafSystem {
             `${this.height}px`;
 
         this.ctx.setTransform(
-            pixelRatio,
+            dpr,
             0,
             0,
-            pixelRatio,
+            dpr,
             0,
             0
         );
     }
 
 
-    /* -------------------------------------
-       CREATE LEAVES
-    -------------------------------------- */
-
     createLeaves() {
 
-        this.leaves = [];
-
-        /*
-            Keep the number fairly low.
-
-            The leaves should be noticeable,
-            but they should never compete with
-            the portfolio content.
-        */
-
-        const count =
-            Math.min(
-                48,
-                Math.max(
-                    28,
+        const amount =
+            Math.max(
+                28,
+                Math.min(
+                    48,
                     Math.floor(
-                        (this.width * this.height) /
-                        28000
+                        this.width / 30
                     )
                 )
             );
 
-        for (let i = 0; i < count; i++) {
+        this.leaves = [];
+
+        for (
+            let i = 0;
+            i < amount;
+            i++
+        ) {
 
             this.leaves.push(
                 this.createLeaf(true)
@@ -281,203 +240,158 @@ class LeafSystem {
     }
 
 
-    /* -------------------------------------
-       CREATE SINGLE LEAF
-    -------------------------------------- */
+    createLeaf(
+        randomY = false
+    ) {
 
-    createLeaf(initial = false) {
+        const colors =
+            seasons[
+                this.seasonName
+            ].leafColors;
 
-        const seasonData =
-            seasons[this.season];
+        const size =
+            Math.random() * 7 + 5;
 
         return {
 
-            x: Math.random() * this.width,
+            x:
+                Math.random() *
+                this.width,
 
-            y: initial
-                ? Math.random() * this.height
-                : -30 - Math.random() * 100,
+            y:
+                randomY
+                    ? Math.random() *
+                      this.height
+                    : -30,
 
-            size:
-                5 + Math.random() * 7,
+            size,
 
             speed:
-                0.25 + Math.random() * 0.5,
+                Math.random() *
+                0.25 +
+                0.18,
 
             drift:
-                -0.3 + Math.random() * 0.6,
+                Math.random() *
+                0.45 +
+                0.15,
+
+            driftOffset:
+                Math.random() *
+                Math.PI *
+                2,
 
             rotation:
-                Math.random() * Math.PI * 2,
+                Math.random() *
+                Math.PI *
+                2,
 
             rotationSpeed:
-                -0.018 + Math.random() * 0.036,
-
-            swing:
-                Math.random() * Math.PI * 2,
-
-            swingSpeed:
-                0.008 + Math.random() * 0.018,
-
-            opacity:
-                0.35 + Math.random() * 0.4,
+                (
+                    Math.random() -
+                    0.5
+                ) * 0.015,
 
             width:
-                0.65 + Math.random() * 0.35,
+                size *
+                (
+                    Math.random() *
+                    0.7 +
+                    0.8
+                ),
+
+            height:
+                size *
+                (
+                    Math.random() *
+                    0.35 +
+                    0.45
+                ),
+
+            opacity:
+                Math.random() *
+                0.35 +
+                0.35,
 
             color:
-                seasonData.leafColors[
-                    Math.floor(
-                        Math.random() *
-                        seasonData.leafColors.length
-                    )
-                ]
-        };
-    }
-
-
-    /* -------------------------------------
-       CHANGE SEASON
-    -------------------------------------- */
-
-    setSeason(season) {
-
-        this.season = season;
-
-        const colors =
-            seasons[season].leafColors;
-
-        /*
-            Instead of replacing the leaves,
-            slowly give existing leaves a new
-            color.
-
-            This prevents the particle field
-            from suddenly popping into a
-            completely different color.
-        */
-
-        this.leaves.forEach((leaf) => {
-
-            leaf.targetColor =
                 colors[
                     Math.floor(
                         Math.random() *
                         colors.length
                     )
-                ];
-        });
+                ],
+
+            targetColor:
+                colors[
+                    Math.floor(
+                        Math.random() *
+                        colors.length
+                    )
+                ],
+
+            startColor: null
+        };
     }
 
 
-    /* -------------------------------------
-       UPDATE
-    -------------------------------------- */
+    update(time) {
 
-    update() {
+        this.leaves.forEach(
+            (leaf) => {
 
-        this.leaves.forEach((leaf) => {
+                leaf.y +=
+                    leaf.speed;
 
-            leaf.y += leaf.speed;
+                leaf.x +=
+                    Math.sin(
+                        time * 0.0005 +
+                        leaf.driftOffset
+                    ) *
+                    leaf.drift;
 
-            leaf.swing += leaf.swingSpeed;
-
-            leaf.x +=
-                leaf.drift +
-                Math.sin(leaf.swing) * 0.25;
-
-            leaf.rotation +=
-                leaf.rotationSpeed;
+                leaf.rotation +=
+                    leaf.rotationSpeed;
 
 
-            /*
-                Slowly move toward the seasonal
-                color rather than changing instantly.
-            */
+                if (
+                    leaf.y >
+                    this.height + 40
+                ) {
 
-            if (leaf.targetColor) {
+                    leaf.y = -40;
 
-                leaf.color =
-                    this.mixColor(
-                        leaf.color,
-                        leaf.targetColor,
-                        0.012
-                    );
+                    leaf.x =
+                        Math.random() *
+                        this.width;
+                }
+
+
+                if (
+                    leaf.x < -40
+                ) {
+
+                    leaf.x =
+                        this.width + 40;
+                }
+
+
+                if (
+                    leaf.x >
+                    this.width + 40
+                ) {
+
+                    leaf.x = -40;
+                }
+
             }
-
-
-            /*
-                If a leaf leaves the screen,
-                respawn it at the top.
-            */
-
-            if (leaf.y > this.height + 30) {
-
-                leaf.y =
-                    -20 - Math.random() * 50;
-
-                leaf.x =
-                    Math.random() * this.width;
-
-                leaf.targetColor = null;
-
-                const colors =
-                    seasons[this.season].leafColors;
-
-                leaf.color =
-                    colors[
-                        Math.floor(
-                            Math.random() *
-                            colors.length
-                        )
-                    ];
-            }
-
-
-            /*
-                Wrap horizontally.
-            */
-
-            if (leaf.x < -30) {
-                leaf.x = this.width + 30;
-            }
-
-            if (leaf.x > this.width + 30) {
-                leaf.x = -30;
-            }
-
-        });
-    }
-
-
-    /* -------------------------------------
-       DRAW
-    -------------------------------------- */
-
-    draw() {
-
-        this.ctx.clearRect(
-            0,
-            0,
-            this.width,
-            this.height
         );
-
-        this.leaves.forEach((leaf) => {
-
-            this.drawLeaf(leaf);
-
-        });
     }
 
-
-    /* -------------------------------------
-       DRAW LEAF
-    -------------------------------------- */
 
     drawLeaf(leaf) {
 
-        const ctx = this.ctx;
+        const ctx =
+            this.ctx;
 
         ctx.save();
 
@@ -496,362 +410,469 @@ class LeafSystem {
         ctx.fillStyle =
             leaf.color;
 
-        /*
-            Slightly organic leaf shape.
-
-            It is intentionally simple and soft
-            rather than looking like an emoji/icon.
-        */
 
         ctx.beginPath();
 
+
         ctx.moveTo(
             0,
-            -leaf.size
+            -leaf.height
         );
 
-        ctx.bezierCurveTo(
-            leaf.size * leaf.width,
-            -leaf.size * 0.55,
-            leaf.size * leaf.width,
-            leaf.size * 0.55,
-            0,
-            leaf.size
+
+        ctx.quadraticCurveTo(
+            leaf.width,
+            -leaf.height * 0.4,
+            leaf.width * 0.7,
+            0
         );
 
-        ctx.bezierCurveTo(
-            -leaf.size * leaf.width,
-            leaf.size * 0.55,
-            -leaf.size * leaf.width,
-            -leaf.size * 0.55,
+
+        ctx.quadraticCurveTo(
+            leaf.width * 0.25,
+            leaf.height * 0.75,
             0,
-            -leaf.size
+            leaf.height
         );
+
+
+        ctx.quadraticCurveTo(
+            -leaf.width * 0.25,
+            leaf.height * 0.75,
+            -leaf.width * 0.7,
+            0
+        );
+
+
+        ctx.quadraticCurveTo(
+            -leaf.width,
+            -leaf.height * 0.4,
+            0,
+            -leaf.height
+        );
+
 
         ctx.closePath();
 
         ctx.fill();
 
-        /*
-            Tiny central vein.
-        */
-
-        ctx.globalAlpha =
-            leaf.opacity * 0.35;
-
-        ctx.strokeStyle =
-            leaf.color;
-
-        ctx.lineWidth = 0.7;
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            0,
-            -leaf.size * 0.65
-        );
-
-        ctx.lineTo(
-            0,
-            leaf.size * 0.65
-        );
-
-        ctx.stroke();
-
         ctx.restore();
     }
 
 
-    /* -------------------------------------
-       COLOR MIXING
-    -------------------------------------- */
+    draw() {
 
-    mixColor(color1, color2, amount) {
+        this.ctx.clearRect(
+            0,
+            0,
+            this.width,
+            this.height
+        );
 
-        const c1 =
-            this.hexToRgb(color1);
-
-        const c2 =
-            this.hexToRgb(color2);
-
-        if (!c1 || !c2) {
-            return color2;
-        }
-
-        const r =
-            Math.round(
-                c1.r +
-                (c2.r - c1.r) * amount
-            );
-
-        const g =
-            Math.round(
-                c1.g +
-                (c2.g - c1.g) * amount
-            );
-
-        const b =
-            Math.round(
-                c1.b +
-                (c2.b - c1.b) * amount
-            );
-
-        return (
-            "#" +
-            [r, g, b]
-                .map((value) =>
-                    value
-                        .toString(16)
-                        .padStart(2, "0")
-                )
-                .join("")
+        this.leaves.forEach(
+            (leaf) => {
+                this.drawLeaf(leaf);
+            }
         );
     }
 
 
-    /* -------------------------------------
-       HEX → RGB
-    -------------------------------------- */
+    animate(time) {
 
-    hexToRgb(hex) {
-
-        const clean =
-            hex.replace("#", "");
-
-        if (clean.length !== 6) {
-            return null;
-        }
-
-        return {
-
-            r: parseInt(
-                clean.substring(0, 2),
-                16
-            ),
-
-            g: parseInt(
-                clean.substring(2, 4),
-                16
-            ),
-
-            b: parseInt(
-                clean.substring(4, 6),
-                16
-            )
-        };
-    }
-
-
-    /* -------------------------------------
-       RENDER LOOP
-    -------------------------------------- */
-
-    render() {
-
-        this.update();
+        this.update(time);
 
         this.draw();
 
         requestAnimationFrame(
-            () => this.render()
+            (nextTime) =>
+                this.animate(nextTime)
+        );
+    }
+
+
+    start() {
+
+        requestAnimationFrame(
+            (time) =>
+                this.animate(time)
         );
     }
 
 }
 
 
-/* =========================================
-   INITIALISE PARTICLE SYSTEMS
-========================================= */
+/* =========================================================
+   SEASON MANAGER
+========================================================= */
 
-const systemA =
-    new LeafSystem(
-        canvasA,
-        ctxA
+const gradientA =
+    document.getElementById(
+        "bg-gradient-a"
     );
 
-const systemB =
-    new LeafSystem(
-        canvasB,
-        ctxB
+const gradientB =
+    document.getElementById(
+        "bg-gradient-b"
     );
 
+const particlesA =
+    document.getElementById(
+        "bg-particles-a"
+    );
 
-/* =========================================
-   INITIAL SEASON
-========================================= */
+const particlesB =
+    document.getElementById(
+        "bg-particles-b"
+    );
 
-let activeLayer = "a";
 
 let currentSeasonIndex = 0;
 
-let currentSeason =
-    seasonOrder[currentSeasonIndex];
 
-let isTransitioning = false;
+let activeGradient =
+    gradientA;
 
-
-/*
-    Apply the first season.
-*/
-
-gradientA.className =
-    `bg-gradient ${seasons[currentSeason].backgroundClass}`;
-
-gradientB.className =
-    "bg-gradient";
-
-systemA.setSeason(
-    currentSeason
-);
-
-systemB.setSeason(
-    currentSeason
-);
+let inactiveGradient =
+    gradientB;
 
 
-/* =========================================
+let activeParticles =
+    particlesA;
+
+let inactiveParticles =
+    particlesB;
+
+
+let activeLeafSystem =
+    new LeafSystem(
+        particlesA,
+        seasonOrder[
+            currentSeasonIndex
+        ]
+    );
+
+
+let inactiveLeafSystem =
+    new LeafSystem(
+        particlesB,
+        seasonOrder[
+            (
+                currentSeasonIndex +
+                1
+            ) %
+            seasonOrder.length
+        ]
+    );
+
+
+activeLeafSystem.start();
+inactiveLeafSystem.start();
+
+
+/* =========================================================
+   SEASON CLASS
+========================================================= */
+
+function setSeasonClass(
+    element,
+    season
+) {
+
+    element.classList.remove(
+        "autumn",
+        "winter",
+        "spring",
+        "summer"
+    );
+
+    element.classList.add(
+        season
+    );
+}
+
+
+/* =========================================================
    SEASON TRANSITION
-========================================= */
+========================================================= */
 
-function transitionToSeason(nextSeason) {
+function transitionToSeason(
+    nextSeason
+) {
 
-    if (isTransitioning) {
+    const nextIndex =
+        seasonOrder.indexOf(
+            nextSeason
+        );
+
+    if (
+        nextIndex === -1
+    ) {
         return;
     }
 
-    isTransitioning = true;
+
+    const nextSeasonData =
+        seasons[nextSeason];
 
 
-    /*
-        Determine which layer is currently visible.
-    */
-
-    const outgoingGradient =
-        activeLayer === "a"
-            ? gradientA
-            : gradientB;
-
-    const incomingGradient =
-        activeLayer === "a"
-            ? gradientB
-            : gradientA;
-
-    const outgoingCanvas =
-        activeLayer === "a"
-            ? canvasA
-            : canvasB;
-
-    const incomingCanvas =
-        activeLayer === "a"
-            ? canvasB
-            : canvasA;
-
-    const incomingSystem =
-        activeLayer === "a"
-            ? systemB
-            : systemA;
+    const currentSeason =
+        seasonOrder[
+            currentSeasonIndex
+        ];
 
 
-    /*
-        Prepare the incoming background
-        before making it visible.
-    */
+    if (
+        nextSeason ===
+        currentSeason
+    ) {
+        return;
+    }
 
-    incomingGradient.className =
-        `bg-gradient ${seasons[nextSeason].backgroundClass}`;
 
+    /* -----------------------------------------
+       Prepare hidden layers
+    ----------------------------------------- */
 
-    /*
-        Prepare a completely new leaf field.
-
-        It uses the new season's colors,
-        but stays hidden initially.
-    */
-
-    incomingSystem.setSeason(
+    setSeasonClass(
+        inactiveGradient,
         nextSeason
     );
 
-    incomingSystem.createLeaves();
+    setSeasonClass(
+        inactiveParticles,
+        nextSeason
+    );
 
 
-    /*
-        Start the crossfade.
+    /* -----------------------------------------
+       Prepare leaves
+    ----------------------------------------- */
 
-        The browser handles the actual smooth
-        opacity interpolation through CSS.
-    */
-
-    requestAnimationFrame(() => {
-
-        incomingGradient.style.opacity = "1";
-
-        incomingCanvas.style.opacity = "0.72";
-
-        outgoingGradient.style.opacity = "0";
-
-        outgoingCanvas.style.opacity = "0";
-
-    });
+    inactiveLeafSystem.seasonName =
+        nextSeason;
 
 
-    /*
-        Once the transition has finished,
-        reset the old layer so it can be used
-        for the next transition.
-    */
+    inactiveLeafSystem.leaves.forEach(
+        (leaf) => {
 
-    setTimeout(() => {
+            const colors =
+                nextSeasonData.leafColors;
 
-        outgoingGradient.className =
-            "bg-gradient";
+            leaf.startColor =
+                leaf.color;
 
-        outgoingGradient.style.opacity = "0";
+            leaf.targetColor =
+                colors[
+                    Math.floor(
+                        Math.random() *
+                        colors.length
+                    )
+                ];
+        }
+    );
 
-        outgoingCanvas.style.opacity = "0";
+
+    /* -----------------------------------------
+       Fade new background in
+    ----------------------------------------- */
+
+    inactiveGradient.style.opacity =
+        "1";
+
+    inactiveParticles.style.opacity =
+        "0.72";
 
 
-        /*
-            The newly visible layer is now
-            considered active.
-        */
+    /* -----------------------------------------
+       Animate leaf colors
+    ----------------------------------------- */
 
-        activeLayer =
-            activeLayer === "a"
-                ? "b"
-                : "a";
+    const startTime =
+        performance.now();
 
-        currentSeason =
-            nextSeason;
 
-        isTransitioning = false;
+    function animateColorTransition(
+        now
+    ) {
 
-    }, TRANSITION_DURATION + 300);
+        const elapsed =
+            now -
+            startTime;
 
+
+        const progress =
+            Math.min(
+                elapsed /
+                TRANSITION_DURATION,
+                1
+            );
+
+
+        const eased =
+            progress *
+            progress *
+            (
+                3 -
+                2 * progress
+            );
+
+
+        inactiveLeafSystem.leaves.forEach(
+            (leaf) => {
+
+                leaf.color =
+                    interpolateColor(
+                        leaf.startColor,
+                        leaf.targetColor,
+                        eased
+                    );
+            }
+        );
+
+
+        if (
+            progress < 1
+        ) {
+
+            requestAnimationFrame(
+                animateColorTransition
+            );
+
+        } else {
+
+            inactiveLeafSystem.leaves.forEach(
+                (leaf) => {
+
+                    leaf.color =
+                        leaf.targetColor;
+
+                    leaf.startColor =
+                        null;
+                }
+            );
+        }
+    }
+
+
+    requestAnimationFrame(
+        animateColorTransition
+    );
+
+
+    /* -----------------------------------------
+       Swap layers
+    ----------------------------------------- */
+
+    setTimeout(
+        () => {
+
+            const oldGradient =
+                activeGradient;
+
+            activeGradient =
+                inactiveGradient;
+
+            inactiveGradient =
+                oldGradient;
+
+
+            const oldParticles =
+                activeParticles;
+
+            activeParticles =
+                inactiveParticles;
+
+            inactiveParticles =
+                oldParticles;
+
+
+            const oldLeafSystem =
+                activeLeafSystem;
+
+            activeLeafSystem =
+                inactiveLeafSystem;
+
+            inactiveLeafSystem =
+                oldLeafSystem;
+
+
+            currentSeasonIndex =
+                nextIndex;
+
+
+            inactiveGradient.style.opacity =
+                "0";
+
+            inactiveParticles.style.opacity =
+                "0";
+
+        },
+        TRANSITION_DURATION
+    );
 }
 
 
-/* =========================================
-   START NEXT SEASON
-========================================= */
+/* =========================================================
+   NEXT SEASON
+========================================================= */
 
 function nextSeason() {
 
-    currentSeasonIndex =
-        (currentSeasonIndex + 1) %
+    const nextIndex =
+        (
+            currentSeasonIndex +
+            1
+        ) %
         seasonOrder.length;
 
-    const next =
-        seasonOrder[currentSeasonIndex];
-
-    transitionToSeason(next);
+    transitionToSeason(
+        seasonOrder[nextIndex]
+    );
 }
 
 
-/* =========================================
-   AUTOMATIC SEASON CYCLE
-========================================= */
+/* =========================================================
+   INITIAL SEASON
+========================================================= */
+
+setSeasonClass(
+    gradientA,
+    "autumn"
+);
+
+setSeasonClass(
+    gradientB,
+    "winter"
+);
+
+setSeasonClass(
+    particlesA,
+    "autumn"
+);
+
+setSeasonClass(
+    particlesB,
+    "winter"
+);
+
+
+gradientA.style.opacity =
+    "1";
+
+gradientB.style.opacity =
+    "0";
+
+
+particlesA.style.opacity =
+    "0.72";
+
+particlesB.style.opacity =
+    "0";
+
+
+/* =========================================================
+   CHANGE SEASON EVERY 30 SECONDS
+========================================================= */
 
 setInterval(
     nextSeason,
@@ -859,41 +880,15 @@ setInterval(
 );
 
 
-/* =========================================
-   RESIZE
-========================================= */
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
-let resizeTimeout;
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
 
-window.addEventListener(
-    "resize",
-    () => {
-
-        clearTimeout(resizeTimeout);
-
-        resizeTimeout =
-            setTimeout(() => {
-
-                systemA.resize();
-                systemB.resize();
-
-            }, 150);
-
-    }
-);
-
-
-/* =========================================
-   START ANIMATION
-========================================= */
-
-systemA.render();
-systemB.render();
-
-
-/* =========================================
-   REDUCED MOTION
-========================================= */
 
 const prefersReducedMotion =
     window.matchMedia(
@@ -901,18 +896,175 @@ const prefersReducedMotion =
     );
 
 
-if (prefersReducedMotion.matches) {
+if (
+    !prefersReducedMotion.matches &&
+    "IntersectionObserver" in window
+) {
 
-    /*
-        Stop the automatic seasonal changes
-        for users who prefer reduced motion.
-    */
+    const revealObserver =
+        new IntersectionObserver(
+            (
+                entries,
+                observer
+            ) => {
 
-    /*
-        Make sure the current season remains
-        visible without animated transitions.
-    */
+                entries.forEach(
+                    (entry) => {
 
-    clearInterval();
+                        if (
+                            !entry.isIntersecting
+                        ) {
+                            return;
+                        }
 
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+
+                        observer.unobserve(
+                            entry.target
+                        );
+                    }
+                );
+
+            },
+            {
+                threshold: 0.12,
+
+                rootMargin:
+                    "0px 0px -50px 0px"
+            }
+        );
+
+
+    revealElements.forEach(
+        (element) => {
+
+            revealObserver.observe(
+                element
+            );
+        }
+    );
+
+} else {
+
+    revealElements.forEach(
+        (element) => {
+
+            element.classList.add(
+                "visible"
+            );
+        }
+    );
 }
+
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+const scrollProgress =
+    document.getElementById(
+        "scroll-progress"
+    );
+
+
+function updateScrollProgress() {
+
+    const scrollTop =
+        window.scrollY;
+
+
+    const documentHeight =
+        document.documentElement
+            .scrollHeight -
+        window.innerHeight;
+
+
+    if (
+        documentHeight <= 0
+    ) {
+        return;
+    }
+
+
+    const progress =
+        scrollTop /
+        documentHeight;
+
+
+    scrollProgress.style.transform =
+        `scaleX(${progress})`;
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateScrollProgress,
+    {
+        passive: true
+    }
+);
+
+
+updateScrollProgress();
+
+
+/* =========================================================
+   SMOOTH NAVIGATION
+========================================================= */
+
+document
+    .querySelectorAll(
+        'a[href^="#"]'
+    )
+    .forEach(
+        (link) => {
+
+            link.addEventListener(
+                "click",
+                (event) => {
+
+                    const targetId =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+                        return;
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (!target) {
+                        return;
+                    }
+
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView({
+                        behavior:
+                            prefersReducedMotion.matches
+                                ? "auto"
+                                : "smooth",
+
+                        block:
+                            "start"
+                    });
+                }
+            );
+        }
+    );
