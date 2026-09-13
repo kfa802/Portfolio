@@ -1661,3 +1661,71 @@ a {
             none;
     }
 }
+
+/* =========================================
+   CLICK LEAVES
+========================================= */
+
+.click-leaf {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 14px;
+    height: 9px;
+    border-radius: 100% 0 100% 0;
+    pointer-events: none;
+    z-index: 50;
+
+    opacity: 0;
+    transform:
+        translate(-50%, -50%)
+        rotate(var(--start-rotation))
+        scale(0.2);
+
+    animation:
+        clickLeafFloat var(--leaf-duration) ease-out forwards;
+}
+
+.click-leaf::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.18);
+    transform: rotate(25deg);
+    transform-origin: center;
+}
+
+@keyframes clickLeafFloat {
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            rotate(var(--start-rotation))
+            scale(0.2);
+    }
+
+    15% {
+        opacity: 0.9;
+        transform:
+            translate(
+                calc(-50% + var(--start-x)),
+                calc(-50% + var(--start-y))
+            )
+            rotate(calc(var(--start-rotation) + 25deg))
+            scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(
+                calc(-50% + var(--end-x)),
+                calc(-50% + var(--end-y))
+            )
+            rotate(var(--end-rotation))
+            scale(0.65);
+    }
+}

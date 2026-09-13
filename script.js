@@ -624,6 +624,170 @@ if (!prefersReducedMotion) {
 
 }
 
+/* =========================================
+   CLICK LEAF EFFECT
+========================================= */
+
+
+document.addEventListener("click", event => {
+
+    /*
+        Ignore clicks on anything interactive.
+    */
+
+    if (
+        event.target.closest(
+            "a, button, input, textarea, select, label"
+        )
+    ) {
+        return;
+    }
+
+
+    /*
+        Don't create leaves when reduced motion
+        is enabled.
+    */
+
+    if (prefersReducedMotion) {
+        return;
+    }
+
+
+    /*
+        Create a small burst of leaves.
+    */
+
+    const leafCount = 5 + Math.floor(Math.random() * 4);
+
+
+    for (let i = 0; i < leafCount; i++) {
+
+        createClickLeaf(
+            event.clientX,
+            event.clientY
+        );
+
+    }
+
+});
+
+
+function createClickLeaf(x, y) {
+
+    const leaf =
+        document.createElement("span");
+
+    leaf.className = "click-leaf";
+
+
+    /*
+        Pick a color from the CURRENT season.
+    */
+
+   const seasonColors = 
+    seasons[activeSeason].colors;
+
+    const color =
+        seasonColors[
+            Math.floor(
+                Math.random() * seasonColors.length
+            )
+        ];
+
+
+    leaf.style.left = `${x}px`;
+    leaf.style.top = `${y}px`;
+    leaf.style.background = color;
+
+
+    /*
+        Give every leaf slightly different
+        movement and rotation.
+    */
+
+    const angle =
+        Math.random() * Math.PI * 2;
+
+    const distance =
+        35 + Math.random() * 65;
+
+    const startX =
+        Math.cos(angle) * 8;
+
+    const startY =
+        Math.sin(angle) * 8;
+
+    const endX =
+        Math.cos(angle) * distance;
+
+    const endY =
+        Math.sin(angle) * distance;
+
+
+    leaf.style.setProperty(
+        "--start-x",
+        `${startX}px`
+    );
+
+    leaf.style.setProperty(
+        "--start-y",
+        `${startY}px`
+    );
+
+    leaf.style.setProperty(
+        "--end-x",
+        `${endX}px`
+    );
+
+    leaf.style.setProperty(
+        "--end-y",
+        `${endY}px`
+    );
+
+    leaf.style.setProperty(
+        "--start-rotation",
+        `${Math.random() * 360}deg`
+    );
+
+    leaf.style.setProperty(
+        "--end-rotation",
+        `${360 + Math.random() * 720}deg`
+    );
+
+    leaf.style.setProperty(
+        "--leaf-duration",
+        `${1.1 + Math.random() * 0.8}s`
+    );
+
+
+    /*
+        Slightly randomize the shape.
+    */
+
+    const scale =
+        0.7 + Math.random() * 0.7;
+
+    leaf.style.width =
+        `${12 * scale}px`;
+
+    leaf.style.height =
+        `${8 * scale}px`;
+
+
+    document.body.appendChild(leaf);
+
+
+    /*
+        Clean it up afterwards.
+    */
+
+    setTimeout(() => {
+        leaf.remove();
+    }, 2200);
+
+}
+
 
 /* =========================================
    HERO NAME LETTER REVEAL
