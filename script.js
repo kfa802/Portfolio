@@ -60,6 +60,16 @@ const TRANSITION_DURATION = 7000;
 
 
 /* =========================================
+   REDUCED MOTION
+========================================= */
+
+const prefersReducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+/* =========================================
    COLOR HELPERS
 ========================================= */
 
@@ -327,7 +337,8 @@ class LeafSystem {
                 this.width + 30
             ) {
 
-                leaf.x = -30;
+                leaf.x =
+                    -30;
 
             }
 
@@ -446,7 +457,6 @@ const gradientB =
         "bg-gradient-b"
     );
 
-
 const particlesA =
     document.getElementById(
         "bg-particles-a"
@@ -464,17 +474,14 @@ let activeGradient =
 let inactiveGradient =
     gradientB;
 
-
 let activeParticles =
     particlesA;
 
 let inactiveParticles =
     particlesB;
 
-
 let currentSeasonIndex =
     0;
-
 
 let activeSeason =
     seasonOrder[
@@ -526,10 +533,6 @@ function changeSeason() {
         ];
 
 
-    /*
-       Prepare inactive background.
-    */
-
     inactiveGradient.className =
         "bg-gradient";
 
@@ -542,10 +545,6 @@ function changeSeason() {
         "0";
 
 
-    /*
-       Create leaves for next season.
-    */
-
     inactiveLeafSystem =
         new LeafSystem(
             inactiveParticles,
@@ -554,10 +553,6 @@ function changeSeason() {
 
     inactiveLeafSystem.animate();
 
-
-    /*
-       Crossfade.
-    */
 
     requestAnimationFrame(() => {
 
@@ -575,10 +570,6 @@ function changeSeason() {
 
     });
 
-
-    /*
-       Swap layers after transition.
-    */
 
     setTimeout(() => {
 
@@ -624,25 +615,24 @@ function changeSeason() {
    SEASON TIMER
 ========================================= */
 
-setInterval(
-    changeSeason,
-    SEASON_DURATION
-);
+if (!prefersReducedMotion) {
+
+    setInterval(
+        changeSeason,
+        SEASON_DURATION
+    );
+
+}
 
 
 /* =========================================
-   REDUCED MOTION
+   HERO NAME LETTER REVEAL
 ========================================= */
 
-const prefersReducedMotion =
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-
-/* =========================================
-   HERO NAME ANIMATION
-========================================= */
+const hero =
+    document.querySelector(
+        ".hero"
+    );
 
 const heroName =
     document.querySelector(
@@ -650,24 +640,11 @@ const heroName =
     );
 
 
-/*
-   Set staggered delays on every letter.
-
-   The first line starts quickly.
-   The second line starts slightly later,
-   making the name feel like it is being
-   written/revealed naturally.
-*/
-
-function prepareHeroLetters() {
-
-    if (!heroName) {
-        return;
-    }
+if (heroName) {
 
     const firstLine =
         heroName.querySelector(
-            ".name-line:not(.name-line-second)"
+            ".name-line"
         );
 
     const secondLine =
@@ -676,176 +653,192 @@ function prepareHeroLetters() {
         );
 
 
+    /* FIRST LINE */
+
     if (firstLine) {
 
-        const letters =
-            firstLine.querySelectorAll(
-                ".letter:not(.space)"
+        firstLine
+            .querySelectorAll(
+                ".letter"
+            )
+            .forEach(
+                (letter, index) => {
+
+                    /*
+                       The space does not need
+                       its own delay.
+                    */
+
+                    if (
+                        letter.classList.contains(
+                            "space"
+                        )
+                    ) {
+
+                        return;
+
+                    }
+
+                    letter.style.setProperty(
+                        "--letter-delay",
+                        `${0.10 + index * 0.045}s`
+                    );
+
+                }
             );
-
-        letters.forEach(
-            (letter, index) => {
-
-                letter.style.setProperty(
-                    "--letter-delay",
-                    `${0.12 + index * 0.055}s`
-                );
-
-            }
-        );
 
     }
 
+
+    /* SECOND LINE */
 
     if (secondLine) {
 
-        const letters =
-            secondLine.querySelectorAll(
+        secondLine
+            .querySelectorAll(
                 ".letter"
+            )
+            .forEach(
+                (letter, index) => {
+
+                    letter.style.setProperty(
+                        "--letter-delay",
+                        `${0.62 + index * 0.055}s`
+                    );
+
+                }
             );
 
-        letters.forEach(
-            (letter, index) => {
+    }
 
-                letter.style.setProperty(
-                    "--letter-delay",
-                    `${0.72 + index * 0.065}s`
-                );
 
-            }
+    /* =========================================
+       PLAY HERO ANIMATION
+    ========================================= */
+
+    function playHeroName() {
+
+        if (
+            !heroName ||
+            prefersReducedMotion
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+           Remove the class first.
+           Force a reflow.
+           Add it again.
+
+           This makes the CSS animation
+           properly restart.
+        */
+
+        heroName.classList.remove(
+            "play"
+        );
+
+        void heroName.offsetWidth;
+
+        heroName.classList.add(
+            "play"
         );
 
     }
 
-}
 
+    /* =========================================
+       INITIAL LOAD
+    ========================================= */
 
-/*
-   Replay the name animation.
+    if (prefersReducedMotion) {
 
-   requestAnimationFrame gives the browser
-   one frame to register the reset before
-   starting the animation again.
-*/
+        heroName.classList.add(
+            "play"
+        );
 
-function replayHeroName() {
+    } else {
 
-    if (!heroName || prefersReducedMotion) {
-        return;
+        /*
+           Small delay so the page has loaded
+           before the name starts appearing.
+        */
+
+        window.setTimeout(
+            playHeroName,
+            150
+        );
+
     }
 
-    heroName.classList.add(
-        "replaying"
-    );
+
+    /* =========================================
+       REPLAY WHEN RETURNING TO HERO
+    ========================================= */
+
+    if (
+        hero &&
+        !prefersReducedMotion
+    ) {
+
+        let heroWasVisible =
+            true;
 
 
-    requestAnimationFrame(() => {
+        const heroNameObserver =
+            new IntersectionObserver(
+                entries => {
 
-        requestAnimationFrame(() => {
-
-            heroName.classList.remove(
-                "replaying"
-            );
-
-        });
-
-    });
-
-}
-
-
-prepareHeroLetters();
-
-
-/*
-   Play the animation on initial page load.
-*/
-
-if (
-    heroName &&
-    !prefersReducedMotion
-) {
-
-    replayHeroName();
-
-}
-
-
-/* =========================================
-   HERO RE-ENTRY OBSERVER
-========================================= */
-
-/*
-   The hero animation plays again when the
-   hero leaves the screen and later comes
-   back into view.
-
-   This means:
-   - Load page → animation
-   - Scroll down → hero leaves
-   - Scroll back up → animation again
-*/
-
-if (
-    heroName &&
-    !prefersReducedMotion
-) {
-
-    let heroWasVisible =
-        true;
-
-
-    const heroObserver =
-        new IntersectionObserver(
-            entries => {
-
-                entries.forEach(
-                    entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
+                    entries.forEach(
+                        entry => {
 
                             if (
-                                !heroWasVisible
+                                entry.isIntersecting
                             ) {
 
-                                replayHeroName();
+                                if (
+                                    !heroWasVisible
+                                ) {
+
+                                    playHeroName();
+
+                                }
+
+                                heroWasVisible =
+                                    true;
+
+                            } else {
+
+                                heroWasVisible =
+                                    false;
 
                             }
 
-                            heroWasVisible =
-                                true;
-
-                        } else {
-
-                            heroWasVisible =
-                                false;
-
                         }
+                    );
 
-                    }
-                );
+                },
+                {
+                    threshold:
+                        0.35
+                }
+            );
 
-            },
-            {
-                threshold:
-                    0.25
-            }
+
+        heroNameObserver.observe(
+            hero
         );
 
-
-    heroObserver.observe(
-        document.querySelector(
-            ".hero"
-        )
-    );
+    }
 
 }
 
 
 /* =========================================
-   SCROLL REVEAL
+   SCROLL REVEALS
 ========================================= */
 
 const revealElements =
@@ -854,14 +847,7 @@ const revealElements =
     );
 
 
-/*
-   Reduced motion:
-   Everything is simply visible.
-*/
-
-if (
-    prefersReducedMotion
-) {
+if (prefersReducedMotion) {
 
     revealElements.forEach(
         element => {
@@ -875,21 +861,9 @@ if (
 
 } else {
 
-
-    /*
-       Normal scrolling.
-
-       IMPORTANT:
-       We intentionally DO NOT call
-       observer.unobserve().
-
-       This allows the animation to happen
-       again when the user scrolls back up.
-    */
-
     const revealObserver =
         new IntersectionObserver(
-            (entries) => {
+            entries => {
 
                 entries.forEach(
                     entry => {
@@ -908,8 +882,8 @@ if (
                                Remove the class when the
                                element leaves the viewport.
 
-                               When it comes back,
-                               the CSS transition plays again.
+                               This allows the animation to
+                               replay when scrolling back.
                             */
 
                             entry.target.classList.remove(
@@ -923,18 +897,11 @@ if (
 
             },
             {
-
-                /*
-                   A slightly larger threshold
-                   makes the reveal feel intentional.
-                */
-
                 threshold:
                     0.12,
 
                 rootMargin:
                     "0px 0px -50px 0px"
-
             }
         );
 
@@ -964,9 +931,13 @@ const scrollProgress =
 
 function updateScrollProgress() {
 
+    if (!scrollProgress) {
+        return;
+    }
+
+
     const scrollTop =
         window.scrollY;
-
 
     const documentHeight =
         document.documentElement
@@ -990,8 +961,7 @@ function updateScrollProgress() {
         (
             scrollTop /
             documentHeight
-        ) *
-        100;
+        ) * 100;
 
 
     scrollProgress.style.width =
@@ -1020,54 +990,56 @@ document
     .querySelectorAll(
         'a[href^="#"]'
     )
-    .forEach(anchor => {
+    .forEach(
+        anchor => {
 
-        anchor.addEventListener(
-            "click",
-            event => {
+            anchor.addEventListener(
+                "click",
+                event => {
 
-                const targetId =
-                    anchor.getAttribute(
-                        "href"
-                    );
+                    const targetId =
+                        anchor.getAttribute(
+                            "href"
+                        );
 
 
-                if (
-                    !targetId ||
-                    targetId === "#"
-                ) {
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
 
-                    return;
+                        return;
+
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (!target) {
+
+                        return;
+
+                    }
+
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView({
+
+                        behavior:
+                            prefersReducedMotion
+                                ? "auto"
+                                : "smooth"
+
+                    });
 
                 }
+            );
 
-
-                const target =
-                    document.querySelector(
-                        targetId
-                    );
-
-
-                if (!target) {
-
-                    return;
-
-                }
-
-
-                event.preventDefault();
-
-
-                target.scrollIntoView({
-
-                    behavior:
-                        prefersReducedMotion
-                            ? "auto"
-                            : "smooth"
-
-                });
-
-            }
-        );
-
-    });
+        }
+    );
