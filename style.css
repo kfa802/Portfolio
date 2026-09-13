@@ -114,6 +114,15 @@ main, header, footer {
   justify-content: space-between;
 }
 
+.hero-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--panel-border);
+  margin-bottom: 1.5rem;
+}
+
 .hero-content {
   max-width: var(--max-width);
   margin: 0 auto;
