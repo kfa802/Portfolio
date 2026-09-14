@@ -1207,3 +1207,18 @@ document
 
         }
     );
+
+    /* =========================================
+   GALLERY
+========================================= */
+
+function openGallery() {
+    document.getElementById("gallery-lightbox").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+
+function closeGallery() {
+    document.getElementById("gallery-lightbox").style.display = "none";
+    document.body.style.overflow = "";
+}
