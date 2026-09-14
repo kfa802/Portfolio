@@ -2158,14 +2158,16 @@ a {
     letter-spacing: -0.04em;
 }
 
-.project-next-link strong span {
-    color: var(--accent-amber);
-
-    transition:
-        transform 0.3s ease;
+.project-next-link strong .next-project-title {
+    font-size: 2.1rem;
 }
 
-.project-next-link:hover strong span {
+.project-next-link strong span:last-child {
+    color: var(--accent-amber);
+    transition: transform 0.3s ease;
+}
+
+.project-next-link:hover strong span:last-child {
     transform: translateX(7px);
 }
 
@@ -2303,6 +2305,22 @@ a {
     object-fit: cover;
     border: 1px solid var(--panel-border);
     border-radius: 4px;
+}
+
+.overview-images img:nth-child(1) {
+    object-position: 0% 100%;
+}
+
+.overview-images img:nth-child(2) {
+    object-position: 0% 100%;
+}
+
+.overview-images img:nth-child(3) {
+    object-position: 0% 100%;
+}
+
+.overview-images img:nth-child(4) {
+    object-position: 0% 100%;
 }
 
 .prototyping-images {
