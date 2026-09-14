@@ -2529,3 +2529,7 @@ a {
 .about-page .about-links {
     margin-top: 40px;
 }
+
+.project-page-heading h1.womens-suffrage-title {
+    font-size: 4.1rem !important;
+}
