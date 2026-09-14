@@ -10,7 +10,10 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Hearing Loss Experience — Kristine Fogh Andersen</title>
+    <title>
+        Hearing Loss Experience — Kristine Fogh Andersen
+    </title>
+
 
     <link
         rel="preconnect"
@@ -35,10 +38,23 @@
 
 </head>
 
+
 <body>
 
-    <div class="bg-gradient bg-gradient-a" id="bg-gradient-a"></div>
-    <div class="bg-gradient bg-gradient-b" id="bg-gradient-b"></div>
+
+    <!-- =========================================
+         BACKGROUND
+    ========================================= -->
+
+    <div
+        class="bg-gradient bg-gradient-a"
+        id="bg-gradient-a"
+    ></div>
+
+    <div
+        class="bg-gradient bg-gradient-b"
+        id="bg-gradient-b"
+    ></div>
 
     <canvas
         class="bg-particles"
@@ -53,6 +69,10 @@
     <div class="bg-vignette"></div>
 
 
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
     <header class="site-header">
 
         <div class="container nav">
@@ -63,6 +83,7 @@
             >
                 KFA
             </a>
+
 
             <nav class="nav-links">
 
@@ -89,13 +110,17 @@
     </header>
 
 
+    <!-- =========================================
+         PROJECT HERO
+    ========================================= -->
+
     <main>
 
-        <!-- HERO -->
 
         <section class="project-page-hero">
 
             <div class="container">
+
 
                 <a
                     href="../index.html#work"
@@ -107,6 +132,7 @@
 
 
                 <div class="project-page-heading reveal">
+
 
                     <div class="project-meta">
 
@@ -121,8 +147,8 @@
                     </div>
 
 
-                    <h1>
-                        Hearing Loss Experience
+                    <h1 class="hearing-loss-title">
+                        Hearing Loss Simulation in VR
                     </h1>
 
 
@@ -142,34 +168,58 @@
 
                     </div>
 
+
                 </div>
 
+
+                <!-- HERO VIDEO -->
 
                 <div class="project-hero-media reveal">
 
-                    <img
-                        src="../assets/projects/hearing-loss-hero.jpg"
-                        alt="Hearing Loss VR experience"
+                    <video
+                        controls
+                        preload="metadata"
+                        poster="../assets/hearinglossimg.png"
                     >
 
+                        <source
+                            src="../assets/Hearing Loss Simulation P5 Project.mp4"
+                            type="video/mp4"
+                        >
+
+                        Your browser does not support
+                        the video element.
+
+                    </video>
+
                 </div>
+
 
             </div>
 
         </section>
 
 
-        <!-- OVERVIEW -->
+        <!-- =========================================
+             OVERVIEW
+        ========================================= -->
 
-        <section class="project-section">
+        <section
+            id="overview"
+            class="project-section"
+        >
 
             <div class="container">
 
                 <div class="project-content-grid">
 
+
                     <div class="project-section-label reveal">
 
-                        <span>01</span>
+                        <span>
+                            01
+                        </span>
+
                         Overview
 
                     </div>
@@ -177,28 +227,69 @@
 
                     <div class="project-section-content reveal">
 
+
                         <h2>
                             Experiencing communication
                             from another perspective.
                         </h2>
 
-                        <p>
-                            This project is a VR experience focused
-                            on creating empathy around hearing loss.
-                        </p>
 
                         <p>
-                            Instead of explaining hearing loss only
-                            through information, the experience lets
-                            the user interact with an environment
-                            where understanding conversations and
+                            This project is a VR experience
+                            focused on creating empathy around
+                            hearing loss.
+                        </p>
+
+
+                        <p>
+                            Instead of explaining hearing loss
+                            only through information, the
+                            experience lets the user interact
+                            with an environment where
+                            understanding conversations and
                             sounds becomes more difficult.
                         </p>
 
+
                         <p>
-                            The project was developed in Unity with
-                            virtual reality as the main platform.
+                            The project was developed in Unity
+                            with virtual reality as the main
+                            platform.
                         </p>
+
+
+                        <div class="overview-images">
+
+                            <img
+                                src="../assets/projects/hearing-loss-1.jpg"
+                                alt="Hearing Loss VR environment"
+                            >
+
+                            <img
+                                src="../assets/projects/hearing-loss-2.jpg"
+                                alt="Hearing Loss VR experience"
+                            >
+
+                        </div>
+
+
+                        <!-- SCROLL TO FINDINGS -->
+
+                        <a
+                            href="#findings"
+                            class="hero-scroll"
+                        >
+
+                            <span class="scroll-arrow">
+                                ↓
+                            </span>
+
+                            <span>
+                                SCROLL TO EXPLORE
+                            </span>
+
+                        </a>
+
 
                     </div>
 
@@ -209,17 +300,129 @@
         </section>
 
 
-        <!-- ROLE -->
+        <!-- =========================================
+             FINDINGS
+        ========================================= -->
 
-        <section class="project-section project-section-alt">
+        <section
+            id="findings"
+            class="project-section project-section-alt"
+        >
 
             <div class="container">
 
                 <div class="project-content-grid">
 
+
                     <div class="project-section-label reveal">
 
-                        <span>02</span>
+                        <span>
+                            02
+                        </span>
+
+                        Findings
+
+                    </div>
+
+
+                    <div class="project-section-content reveal">
+
+
+                        <h2>
+                            What we learned from testing.
+                        </h2>
+
+
+                        <p>
+                            Testing the experience helped us
+                            identify areas where the interaction
+                            and communication could be improved.
+                        </p>
+
+
+                        <div class="findings-images">
+
+
+                            <figure class="reveal">
+
+                                <img
+                                    src="../assets/finding-1.png"
+                                    alt="Finding from Hearing Loss VR testing"
+                                >
+
+                                <figcaption>
+                                    Finding from testing and
+                                    user feedback.
+                                </figcaption>
+
+                            </figure>
+
+
+                            <figure class="reveal">
+
+                                <img
+                                    src="../assets/finding-2.png"
+                                    alt="Finding from Hearing Loss VR testing"
+                                >
+
+                                <figcaption>
+                                    Another finding that
+                                    influenced the experience.
+                                </figcaption>
+
+                            </figure>
+
+
+                        </div>
+
+
+                        <!-- SCROLL TO MY ROLE -->
+
+                        <a
+                            href="#role"
+                            class="hero-scroll"
+                        >
+
+                            <span class="scroll-arrow">
+                                ↓
+                            </span>
+
+                            <span>
+                                SCROLL TO EXPLORE
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             MY ROLE
+        ========================================= -->
+
+        <section
+            id="role"
+            class="project-section project-section-alt"
+        >
+
+            <div class="container">
+
+                <div class="project-content-grid">
+
+
+                    <div class="project-section-label reveal">
+
+                        <span>
+                            03
+                        </span>
+
                         My role
 
                     </div>
@@ -227,55 +430,94 @@
 
                     <div class="project-section-content reveal">
 
+
                         <h2>
                             VR interaction & experience design.
                         </h2>
 
-                        <p>
-                            I worked on the Unity implementation of
-                            the VR experience and the systems needed
-                            to make the interaction feel natural
-                            inside the virtual environment.
-                        </p>
 
                         <p>
-                            The project uses Unity's XR tools and
-                            OpenXR to create an experience designed
-                            for a VR headset.
+                            I worked on the Unity implementation
+                            of the VR experience and the systems
+                            needed to make the interaction feel
+                            natural inside the virtual environment.
+                        </p>
+
+
+                        <p>
+                            The project uses Unity's XR tools
+                            and OpenXR to create an experience
+                            designed for a VR headset.
                         </p>
 
 
                         <div class="project-role-list">
 
+
                             <div class="project-role-item">
 
-                                <span>01</span>
+                                <span>
+                                    01
+                                </span>
+
                                 Unity development
 
                             </div>
 
+
                             <div class="project-role-item">
 
-                                <span>02</span>
+                                <span>
+                                    02
+                                </span>
+
                                 VR interaction
 
                             </div>
 
+
                             <div class="project-role-item">
 
-                                <span>03</span>
+                                <span>
+                                    03
+                                </span>
+
                                 OpenXR
 
                             </div>
 
+
                             <div class="project-role-item">
 
-                                <span>04</span>
+                                <span>
+                                    04
+                                </span>
+
                                 Experience design
 
                             </div>
 
+
                         </div>
+
+
+                        <!-- SCROLL TO DEVELOPMENT -->
+
+                        <a
+                            href="#development"
+                            class="hero-scroll"
+                        >
+
+                            <span class="scroll-arrow">
+                                ↓
+                            </span>
+
+                            <span>
+                                SCROLL TO EXPLORE
+                            </span>
+
+                        </a>
+
 
                     </div>
 
@@ -286,17 +528,26 @@
         </section>
 
 
-        <!-- DEVELOPMENT -->
+        <!-- =========================================
+             DEVELOPMENT
+        ========================================= -->
 
-        <section class="project-section">
+        <section
+            id="development"
+            class="project-section"
+        >
 
             <div class="container">
 
                 <div class="project-content-grid">
 
+
                     <div class="project-section-label reveal">
 
-                        <span>03</span>
+                        <span>
+                            04
+                        </span>
+
                         Development
 
                     </div>
@@ -304,20 +555,24 @@
 
                     <div class="project-section-content reveal">
 
+
                         <h2>
-                            Designing for presence and interaction.
+                            Designing for presence
+                            and interaction.
                         </h2>
 
+
                         <p>
-                            VR changes how the player interacts with
-                            a game. Instead of relying only on a
-                            traditional screen and controller, the
-                            environment itself becomes part of the
-                            experience.
+                            VR changes how the player interacts
+                            with a game. Instead of relying only
+                            on a traditional screen and controller,
+                            the environment itself becomes part
+                            of the experience.
                         </p>
 
 
                         <div class="project-feature-grid">
+
 
                             <article class="project-feature reveal">
 
@@ -325,14 +580,17 @@
                                     01
                                 </span>
 
+
                                 <h3>
                                     VR interaction
                                 </h3>
 
+
                                 <p>
-                                    Interactions are designed around
-                                    the player's physical presence
-                                    inside the virtual environment.
+                                    Interactions are designed
+                                    around the player's physical
+                                    presence inside the virtual
+                                    environment.
                                 </p>
 
                             </article>
@@ -344,14 +602,16 @@
                                     02
                                 </span>
 
+
                                 <h3>
                                     Audio experience
                                 </h3>
 
+
                                 <p>
-                                    Sound plays a central role in
-                                    communicating the experience of
-                                    hearing loss.
+                                    Sound plays a central role
+                                    in communicating the
+                                    experience of hearing loss.
                                 </p>
 
                             </article>
@@ -363,14 +623,17 @@
                                     03
                                 </span>
 
+
                                 <h3>
                                     Immersion
                                 </h3>
 
+
                                 <p>
-                                    The environment is designed to
-                                    make the user feel present rather
-                                    than simply observe the situation.
+                                    The environment is designed
+                                    to make the user feel present
+                                    rather than simply observe
+                                    the situation.
                                 </p>
 
                             </article>
@@ -382,20 +645,43 @@
                                     04
                                 </span>
 
+
                                 <h3>
                                     Accessibility
                                 </h3>
 
+
                                 <p>
-                                    The project explores how interactive
-                                    media can communicate experiences
-                                    that can be difficult to understand
-                                    from the outside.
+                                    The project explores how
+                                    interactive media can
+                                    communicate experiences
+                                    that can be difficult to
+                                    understand from the outside.
                                 </p>
 
                             </article>
 
+
                         </div>
+
+
+                        <!-- SCROLL TO GALLERY -->
+
+                        <a
+                            href="#gallery"
+                            class="hero-scroll"
+                        >
+
+                            <span class="scroll-arrow">
+                                ↓
+                            </span>
+
+                            <span>
+                                SCROLL TO EXPLORE
+                            </span>
+
+                        </a>
+
 
                     </div>
 
@@ -406,17 +692,26 @@
         </section>
 
 
-        <!-- GALLERY -->
+        <!-- =========================================
+             GALLERY
+        ========================================= -->
 
-        <section class="project-section">
+        <section
+            id="gallery"
+            class="project-section project-section-alt"
+        >
 
             <div class="container">
 
                 <div class="project-content-grid">
 
+
                     <div class="project-section-label reveal">
 
-                        <span>04</span>
+                        <span>
+                            05
+                        </span>
+
                         Gallery
 
                     </div>
@@ -424,7 +719,11 @@
 
                     <div class="project-section-content">
 
+
                         <div class="project-gallery">
+
+
+                            <!-- IMAGE 1 -->
 
                             <figure class="project-gallery-large reveal">
 
@@ -436,6 +735,8 @@
                             </figure>
 
 
+                            <!-- IMAGE 2 -->
+
                             <figure class="reveal">
 
                                 <img
@@ -446,64 +747,75 @@
                             </figure>
 
 
-                            <figure class="reveal">
+                            <!-- IMAGE 3 -->
+
+                            <button
+                                class="gallery-more reveal"
+                                onclick="openGallery()"
+                            >
 
                                 <img
                                     src="../assets/projects/hearing-loss-3.jpg"
                                     alt="Hearing Loss VR experience"
                                 >
 
-                            </figure>
+                                <span>
+                                    +1 more
+                                </span>
+
+                            </button>
+
 
                         </div>
 
-                    </div>
 
-                </div>
+                        <!-- HIDDEN FULL GALLERY -->
 
-            </div>
-
-        </section>
-
-
-        <!-- VIDEO -->
-
-        <section class="project-section project-section-alt">
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-                    <div class="project-section-label reveal">
-
-                        <span>05</span>
-                        Experience
-
-                    </div>
+                        <div
+                            class="gallery-lightbox"
+                            id="gallery-lightbox"
+                        >
 
 
-                    <div class="project-section-content reveal">
+                            <button
+                                class="gallery-close"
+                                onclick="closeGallery()"
+                            >
+                                ×
+                            </button>
 
-                        <h2>
-                            See the experience.
-                        </h2>
+
+                            <div class="gallery-lightbox-content">
 
 
-                        <div class="project-video">
-
-                            <video controls preload="metadata">
-
-                                <source
-                                    src="../assets/projects/hearing-loss-video.mp4"
-                                    type="video/mp4"
+                                <img
+                                    src="../assets/projects/hearing-loss-1.jpg"
+                                    alt="Hearing Loss VR environment"
                                 >
 
-                                Your browser does not support
-                                the video element.
 
-                            </video>
+                                <img
+                                    src="../assets/projects/hearing-loss-2.jpg"
+                                    alt="Hearing Loss VR experience"
+                                >
+
+
+                                <img
+                                    src="../assets/projects/hearing-loss-3.jpg"
+                                    alt="Hearing Loss VR experience"
+                                >
+
+
+                                <img
+                                    src="../assets/projects/hearing-loss-hero.jpg"
+                                    alt="Hearing Loss VR experience"
+                                >
+
+
+                            </div>
 
                         </div>
+
 
                     </div>
 
@@ -514,19 +826,25 @@
         </section>
 
 
-        <!-- LINKS -->
+        <!-- =========================================
+             LINKS
+        ========================================= -->
 
-        <section class="project-section project-links-section">
+        <section
+            class="project-section project-links-section"
+        >
 
             <div class="container">
 
                 <div class="project-links reveal">
+
 
                     <div>
 
                         <span class="project-links-label">
                             Explore the project
                         </span>
+
 
                         <h2>
                             Want to see more?
@@ -536,6 +854,7 @@
 
 
                     <div class="project-buttons">
+
 
                         <a
                             href="#"
@@ -547,6 +866,7 @@
                             <span>↗</span>
                         </a>
 
+
                         <a
                             href="#"
                             class="button button-secondary"
@@ -557,6 +877,7 @@
                             <span>↗</span>
                         </a>
 
+
                     </div>
 
                 </div>
@@ -566,25 +887,36 @@
         </section>
 
 
-        <!-- BACK -->
+        <!-- =========================================
+             NEXT PROJECT
+        ========================================= -->
 
         <section class="project-next">
 
             <div class="container">
+
 
                 <a
                     href="../index.html#work"
                     class="project-next-link reveal"
                 >
 
+
                     <span>
                         Back to
                     </span>
 
+
                     <strong>
+
                         Selected work
-                        <span>→</span>
+
+                        <span>
+                            →
+                        </span>
+
                     </strong>
+
 
                 </a>
 
@@ -592,8 +924,13 @@
 
         </section>
 
+
     </main>
 
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
 
     <footer class="site-footer">
 
