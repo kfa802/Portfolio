@@ -2533,3 +2533,12 @@ a {
 .project-page-heading h1.womens-suffrage-title {
     font-size: 4.1rem !important;
 }
+
+.womens-suffrage-images img:nth-child(1) {
+    object-position: 45% 70%;
+}
+
+.womens-suffrage-images img:nth-child(2) {
+    object-position: 40% 70%;
+}
+
