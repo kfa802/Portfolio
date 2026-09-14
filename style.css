@@ -2375,6 +2375,7 @@ a {
     border-radius: 4px;
 }
 
+
 .gallery-close {
     position: fixed;
     top: 20px;
@@ -2385,4 +2386,23 @@ a {
     color: var(--text);
     font-size: 2.5rem;
     cursor: pointer;
+}
+
+.project-section .hero-scroll {
+    margin-top: 80px;
+}
+
+.hero-scroll {
+    overflow: visible;
+}
+
+.project-section {
+    overflow: visible;
+}
+.video-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
 }
