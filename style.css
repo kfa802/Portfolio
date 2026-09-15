@@ -2577,3 +2577,62 @@ a {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(236, 233, 225, 0.3);
 }
+
+/* Project card personality icons */
+
+.project-card:hover .project-image-arrow {
+    font-size: 0;
+}
+
+.project-card:hover .project-image-arrow::after {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.project-plan-bee:hover .project-image-arrow::after {
+    content: "🐝";
+}
+
+.project-womens-suffrage:hover .project-image-arrow::after {
+    content: "✊";
+}
+
+.project-hearing-loss:hover .project-image-arrow::after {
+    content: "👂";
+}
+
+.project-harry-potter:hover .project-image-arrow::after {
+    content: "🪄";
+}
+
+.project-3d:hover .project-image-arrow::after {
+    content: "🌲";
+}
+
+.project-resident-evil:hover .project-image-arrow::after {
+    content: "🧟  ";
+}
+
+.project-whisker-town:hover .project-image-arrow::after {
+    content: "🐱";
+}
+
+.project-dance-pads:hover .project-image-arrow::after {
+    content: "💃";
+}
+
+.project-zombie:hover .project-image-arrow::after {
+    content: "☣";
+}
+
+.project-trivia:hover .project-image-arrow::after {
+    content: "❓";
+}
+
+.project-liv:hover .project-image-arrow::after {
+    content: "❤️‍🩹";
+}
+
+.project-blue-planet:hover .project-image-arrow::after {
+    content: "🐟";
+}
