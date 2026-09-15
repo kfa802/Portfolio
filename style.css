@@ -2850,4 +2850,14 @@ a {
 
 }
 
+.findings-images p {
+    margin-top: 40px;
+}
+
+.project-page-intro strong,
+.project-section-content strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
 

@@ -1005,81 +1005,33 @@ if (heroName) {
    SCROLL REVEALS
 ========================================= */
 
-const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
-
+const heroMediaEls = document.querySelectorAll(".project-hero-media.reveal");
+const otherRevealEls = document.querySelectorAll(".reveal:not(.project-hero-media)");
 
 if (prefersReducedMotion) {
 
-    revealElements.forEach(
-        element => {
-
-            element.classList.add(
-                "visible"
-            );
-
-        }
-    );
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
 
 } else {
 
-    const revealObserver =
-        new IntersectionObserver(
-            entries => {
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            entry.target.classList.toggle("visible", entry.isIntersecting);
+        });
+    }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
 
-                entries.forEach(
-                    entry => {
+    otherRevealEls.forEach(el => revealObserver.observe(el));
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+    // Hero media: don't start observing until the user actually scrolls,
+    // so it never reveals on initial load even if it fits in the viewport.
+    function startObservingHeroMedia() {
+        heroMediaEls.forEach(el => revealObserver.observe(el));
+        window.removeEventListener("scroll", startObservingHeroMedia);
+    }
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
-
-                        } else {
-
-                            /*
-                               Remove the class when the
-                               element leaves the viewport.
-
-                               This allows the animation to
-                               replay when scrolling back.
-                            */
-
-                            entry.target.classList.remove(
-                                "visible"
-                            );
-
-                        }
-
-                    }
-                );
-
-            },
-            {
-                threshold:
-                    0.12,
-
-                rootMargin:
-                    "0px 0px -50px 0px"
-            }
-        );
-
-
-    revealElements.forEach(
-        element => {
-
-            revealObserver.observe(
-                element
-            );
-
-        }
-    );
-
+    if (heroMediaEls.length) {
+        window.addEventListener("scroll", startObservingHeroMedia, { passive: true, once: true });
+    }
 }
 
 
