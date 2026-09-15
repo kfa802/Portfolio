@@ -2860,4 +2860,129 @@ a {
     font-weight: 600;
 }
 
+.magic-load {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    overflow: hidden;
 
+    opacity: 1;
+
+    animation: magicLoad 2.5s ease-out forwards;
+}
+
+.magic-spark {
+    position: absolute;
+
+    color: #ffd966;
+    font-family: serif;
+    font-size: 2rem;
+    font-weight: 700;
+
+    text-shadow:
+        0 0 5px #fff3a3,
+        0 0 12px #ffd966,
+        0 0 25px rgba(255, 210, 70, 0.9);
+
+    opacity: 0;
+
+    animation:
+        magicSpark 2.2s ease-out forwards,
+        magicTwinkle 0.45s ease-in-out infinite alternate;
+}
+
+
+/* More sparkles across the screen */
+
+.spark-1 {
+    left: 8%;
+    top: 75%;
+    animation-delay: 0.1s;
+}
+
+.spark-2 {
+    left: 18%;
+    top: 35%;
+    animation-delay: 0.35s;
+}
+
+.spark-3 {
+    left: 30%;
+    top: 65%;
+    animation-delay: 0.55s;
+}
+
+.spark-4 {
+    left: 42%;
+    top: 25%;
+    animation-delay: 0.2s;
+}
+
+.spark-5 {
+    left: 55%;
+    top: 70%;
+    animation-delay: 0.45s;
+}
+
+.spark-6 {
+    left: 67%;
+    top: 32%;
+    animation-delay: 0.7s;
+}
+
+
+/* Fade the whole effect away */
+
+@keyframes magicLoad {
+
+    0% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* Sparkles float upward */
+
+@keyframes magicSpark {
+
+    0% {
+        opacity: 0;
+        transform: translateY(80px) scale(0.3) rotate(0deg);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    55% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-180px) scale(1.4) rotate(180deg);
+    }
+}
+
+
+/* Gentle magical twinkle */
+
+@keyframes magicTwinkle {
+
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1.25);
+    }
+}
