@@ -2545,4 +2545,35 @@ a {
 .project-page-heading h1.hearing-loss-title {
     font-size: 5.2rem !important;
 }
+.social-links {
+    display: flex;
+    gap: 18px;
+    margin-top: 32px;
+}
 
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(236, 233, 225, 0.15);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.social-icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(236, 233, 225, 0.3);
+}
