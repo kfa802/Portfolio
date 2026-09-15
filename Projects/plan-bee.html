@@ -117,9 +117,16 @@
     <main>
 
 
-        <section class="project-page-hero">
+     <section class="project-page-hero">
 
-            <div class="container">
+    <div class="plan-bee-flying">
+        <span>🐝</span>
+        <span>🐝</span>
+        <span>🐝</span>
+        <span>🐝</span>
+    </div>
+
+    <div class="container">
 
                 <a
                     href="../index.html#work"
@@ -163,6 +170,7 @@
                         <span>C#</span>
                         <span>Game Design</span>
                         <span>Systems</span>
+                        <span>Prototyping</span>
 
                     </div>
 
@@ -220,8 +228,7 @@
                     <div class="project-section-content reveal">
 
                         <h2>
-                            Managing a colony through
-                            an unpredictable environment.
+                            Managing a bee colony through changing seasons.
                         </h2>
 
 
@@ -233,10 +240,10 @@
 
 
                         <p>
-                            The game revolves around balancing the
-                            needs of the hive while dealing with
-                            changing seasons, weather and other
-                            environmental challenges.
+                            The player must manage limited resources to buy
+                            new bee types with different functions
+                            and expand the hive with different zones
+                            to protect the colony and queen from threats like snow and wasps.
                         </p>
 
 
@@ -328,26 +335,25 @@
 
 
                         <p>
-                            My main role in the project was working
-                            with the bee systems, gameplay logic and
-                            several of the environmental systems.
+                            My main role in the project was working with
+                            the bee systems, gameplay logic and environmental systems.
                         </p>
 
 
                         <p>
-                            I worked with the base Bee class and
-                            inheritance structure used by the
-                            different types of bees, as well as
-                            systems for placing and managing
-                            different hive zones.
+                            I worked on the base classes and inheritance structure for the
+                            different types of bees and enemies. I also developed systems for
+                            managing hive zones and expanding the hive through a purchase system.
                         </p>
 
 
                         <p>
-                            I also worked on the seasonal and weather
-                            systems, including how environmental
-                            conditions affect the bees and their
-                            ability to collect resources.
+                            I also worked on the seasonal and weather systems and how they
+                            affect the bees and their ability to collect resources. For example,
+                            during winter, forager bees cannot collect pollen, which means the player
+                            has to plan ahead and manage their resources carefully. This is important since
+                            pollen is turned into honey by the worker bees, which is then used as currency to
+                            expand the hive and buy new bees.
                         </p>
 
 
@@ -357,7 +363,7 @@
 
                                 <span>01</span>
 
-                                Bee class & inheritance
+                                Bees & Inheritance
 
                             </div>
 
@@ -366,7 +372,7 @@
 
                                 <span>02</span>
 
-                                Bee zones & placement
+                                Bee Zones & Functions
 
                             </div>
 
@@ -375,7 +381,7 @@
 
                                 <span>03</span>
 
-                                Seasons & weather
+                                Seasons & Weather
 
                             </div>
 
@@ -384,7 +390,7 @@
 
                                 <span>04</span>
 
-                                Resource systems
+                                Resource & Purchase Systems 
 
                             </div>
 
@@ -446,21 +452,12 @@
 
 
                         <p>
-                            A large part of the project was making
-                            separate gameplay systems communicate
-                            with each other without making the
-                            project difficult to manage.
+                            A large part of the project was making the different gameplay systems
+                            work together while keeping the code manageable. The bee, hive, resource,
+                            season and weather systems all affect each other, so changes in one system can
+                            also affect the others.
                         </p>
 
-
-                        <div class="project-system-image reveal">
-
-                            <img
-                                src="../assets/flowchart.png"
-                                alt="Plan Bee systems and gameplay"
-                            >
-
-                        </div>
 
 
                         <div class="project-feature-grid">
@@ -473,14 +470,14 @@
 
 
                                 <h3>
-                                    Bee system
+                                    Bee Systems
                                 </h3>
 
 
                                 <p>
                                     Different bee types inherit from
                                     a shared base class while having
-                                    their own behaviours and roles.
+                                    their own behaviours and roles in the hive.
                                 </p>
 
                             </article>
@@ -499,10 +496,9 @@
 
 
                                 <p>
-                                    Zones control where bees can
-                                    perform specific activities and
-                                    manage the available capacity
-                                    within the hive.
+                                    Zones control where bees can perform specific activities.
+                                    Buying new zones also increases the hive's capacity.
+                                    
                                 </p>
 
                             </article>
@@ -516,14 +512,14 @@
 
 
                                 <h3>
-                                    Seasons
+                                    Seasons & Weather
                                 </h3>
 
 
                                 <p>
-                                    Spring, summer, autumn and winter
-                                    change the conditions the colony
-                                    has to deal with.
+                                    Each season changes the conditions the colony
+                                    has to deal with, while weather can affect bee
+                                    behaviour and enemy activity.
                                 </p>
 
                             </article>
@@ -537,18 +533,27 @@
 
 
                                 <h3>
-                                    Weather
+                                    Purchase System
                                 </h3>
 
 
                                 <p>
-                                    Weather conditions can affect bee
-                                    behaviour and resource gathering,
-                                    creating additional challenges
-                                    for the player.
+                                    Forager bees collect pollen, which worker bees
+                                    turn into honey. The player can then use the
+                                    honey as currency to buy new bees and zones. 
                                 </p>
 
                             </article>
+
+                            
+
+                        </div>
+                               <div class="project-system-image reveal">
+
+                            <img
+                                src="../assets/flowchart.png"
+                                alt="Plan Bee systems and gameplay"
+                            >
 
                         </div>
 

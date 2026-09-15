@@ -620,6 +620,7 @@ a {
 
     color:
         rgba(236, 233, 225, 0.68);
+     white-space: nowrap;
 }
 
 .hero-tagline span {
@@ -2636,3 +2637,217 @@ a {
 .project-blue-planet:hover .project-image-arrow::after {
     content: "🐟";
 }
+
+/* =========================================
+   PLAN BEE HERO ANIMATION
+========================================= */
+
+.plan-bee-heading {
+    opacity: 0;
+    transform: translateY(35px);
+    animation: planBeeTextReveal 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.plan-bee-heading .project-meta {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: planBeeTextReveal 0.8s 0.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.plan-bee-heading h1 {
+    opacity: 0;
+    transform: translateY(45px);
+    filter: blur(8px);
+    animation: planBeeTitleReveal 1.1s 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.plan-bee-heading .project-page-intro {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: planBeeTextReveal 0.9s 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.plan-bee-heading .project-tags {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: planBeeTextReveal 0.8s 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes planBeeTextReveal {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes planBeeTitleReveal {
+
+    0% {
+        opacity: 0;
+        transform: translateY(45px);
+        filter: blur(8px);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateY(-3px);
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+
+}
+
+
+/* =========================================
+   FLYING BEES
+========================================= */
+
+.project-page-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-bee-flying {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.plan-bee-flying span {
+    position: absolute;
+    display: block;
+    font-size: 1.3rem;
+    opacity: 0;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+
+    animation:
+        beeFlyAcross
+        12s
+        linear
+        infinite;
+}
+
+
+/* Different bees start in different places */
+
+.plan-bee-flying span:nth-child(1) {
+    top: 28%;
+    left: -5%;
+    animation-delay: 0s;
+    animation-duration: 13s;
+}
+
+.plan-bee-flying span:nth-child(2) {
+    top: 52%;
+    left: -8%;
+    animation-delay: 3s;
+    animation-duration: 16s;
+    font-size: 1rem;
+}
+
+.plan-bee-flying span:nth-child(3) {
+    top: 38%;
+    left: -6%;
+    animation-delay: 6s;
+    animation-duration: 14s;
+    font-size: 1.5rem;
+}
+
+.plan-bee-flying span:nth-child(4) {
+    top: 70%;
+    left: -10%;
+    animation-delay: 8s;
+    animation-duration: 18s;
+    font-size: 0.9rem;
+}
+
+
+@keyframes beeFlyAcross {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateX(-10vw)
+            translateY(20px)
+            rotate(-8deg);
+    }
+
+    8% {
+        opacity: 0.75;
+    }
+
+    25% {
+        transform:
+            translateX(30vw)
+            translateY(-18px)
+            rotate(5deg);
+    }
+
+    50% {
+        transform:
+            translateX(65vw)
+            translateY(15px)
+            rotate(-4deg);
+    }
+
+    75% {
+        transform:
+            translateX(100vw)
+            translateY(-20px)
+            rotate(7deg);
+    }
+
+    92% {
+        opacity: 0.75;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateX(120vw)
+            translateY(10px)
+            rotate(-5deg);
+    }
+
+}
+
+
+/* Keep the hero text above the bees */
+
+.project-page-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .plan-bee-heading,
+    .plan-bee-heading .project-meta,
+    .plan-bee-heading h1,
+    .plan-bee-heading .project-page-intro,
+    .plan-bee-heading .project-tags {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        animation: none;
+    }
+
+    .plan-bee-flying {
+        display: none;
+    }
+
+}
+
+
