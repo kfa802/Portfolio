@@ -2610,7 +2610,7 @@ a {
 }
 
 .project-resident-evil:hover .project-image-arrow::after {
-    content: "🧟  ";
+    content: "☣";
 }
 
 .project-whisker-town:hover .project-image-arrow::after {
@@ -2622,7 +2622,7 @@ a {
 }
 
 .project-zombie:hover .project-image-arrow::after {
-    content: "☣";
+    content: "🧟";
 }
 
 .project-trivia:hover .project-image-arrow::after {
