@@ -3123,3 +3123,43 @@ a {
         flex-wrap: wrap;
     }
 }
+
+.hp-img4 {
+    object-fit: cover !important;
+    object-position: 70% 30% !important;
+}
+
+.hp-img6 {
+    object-fit: cover !important;
+    object-position: 50% 60% !important;
+}
+
+.hp-img67 {
+    object-fit: cover !important;
+    object-position: 80% 30% !important;
+}
+
+.hp-img677 {
+    object-fit: cover !important;
+    object-position: 100% 0% !important;
+}
+
+.zombie-img1 {
+    object-fit: cover !important;
+    object-position: 50% 50% !important;
+}
+
+.zombie-img2 {
+    object-fit: cover !important;
+    object-position: 70% 30% !important;
+}
+
+.zombie-img3 {
+    object-fit: cover !important;
+    object-position: 80% 30% !important;
+}
+
+.zombie-img4 {
+    object-fit: cover !important;
+    object-position: 50% 50% !important;
+}
