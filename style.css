@@ -2986,3 +2986,140 @@ a {
         transform: scale(1.25);
     }
 }
+
+.work-category {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 5rem 0 2rem;
+}
+
+.work-category h3 {
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.work-category::after {
+    content: "";
+    height: 1px;
+    background: var(--border);
+    flex: 1;
+}
+
+.work-category:first-of-type {
+    margin-top: 3rem;
+}
+
+.research-list {
+    margin-top: 3rem;
+}
+
+.research-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 4rem;
+    padding: 3rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.research-item:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.research-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.research-content h3 {
+    max-width: 850px;
+    margin: 0 0 1rem;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    line-height: 1.15;
+    font-weight: 500;
+}
+
+.research-venue {
+    margin: 0 0 1rem;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.research-description {
+    max-width: 650px;
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.research-links {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.research-links a,
+.research-profile a {
+    color: var(--accent-amber);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.research-links a:hover,
+.research-profile a:hover {
+    opacity: 0.55;
+}
+
+.research-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.research-profile a {
+    color: var(--text);
+}
+
+@media (max-width: 700px) {
+
+    .research-item {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem 0;
+    }
+
+    .research-meta {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .research-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .research-links {
+        gap: 1.25rem;
+        flex-wrap: wrap;
+    }
+}
