@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Nico Nitro — Kristine Fogh Andersen
+    </title>
+
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+
+    <!-- NICO NITRO-SPECIFIC STYLING -->
+
+    <style>
+
+        .nico-overview-images {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+
+        .nico-overview-image {
+            width: 100%;
+            height: 360px;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+
+        .nico-overview-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .nico-overview-image-1 img {
+            object-position: 50% 50%;
+        }
+
+
+        .nico-overview-image-2 img {
+            object-position: 50% 50%;
+        }
+
+
+        @media (max-width: 700px) {
+
+            .nico-overview-images {
+                grid-template-columns: 1fr;
+            }
+
+            .nico-overview-image {
+                height: 320px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         BACKGROUND
+    ========================================== -->
+
+    <div
+        class="bg-gradient bg-gradient-a"
+        id="bg-gradient-a"
+    ></div>
+
+    <div
+        class="bg-gradient bg-gradient-b"
+        id="bg-gradient-b"
+    ></div>
+
+    <canvas
+        class="bg-particles"
+        id="bg-particles-a"
+    ></canvas>
+
+    <canvas
+        class="bg-particles"
+        id="bg-particles-b"
+    ></canvas>
+
+    <div class="bg-vignette"></div>
+
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="site-header">
+
+        <div class="container nav">
+
+            <a
+                href="../index.html"
+                class="logo"
+            >
+                KFA
+            </a>
+
+
+            <nav class="nav-links">
+
+                <a href="../index.html#about">
+                    About
+                </a>
+
+                <a href="../index.html#work">
+                    Work
+                </a>
+
+                <a href="../index.html#research">
+                    Research
+                </a>
+
+                <a href="../index.html#skills">
+                    Skills
+                </a>
+
+                <a href="../index.html#contact">
+                    Contact
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         PROJECT
+    ========================================== -->
+
+    <main>
+
+
+        <!-- =========================================
+             HERO
+        ========================================== -->
+
+        <section class="project-page-hero">
+
+            <div class="container">
+
+
+                <a
+                    href="../index.html#work"
+                    class="project-back"
+                >
+
+                    <span>←</span>
+
+                    Back to selected work
+
+                </a>
+
+
+
+                <div class="project-page-heading reveal">
+
+
+                    <div class="project-meta">
+
+                        <span class="project-number">
+                            03
+                        </span>
+
+                        <span class="project-type">
+                            3D platform game · Visual Computing
+                        </span>
+
+                    </div>
+
+
+
+                    <h1>
+                        Nico Nitro
+                    </h1>
+
+
+
+                    <p class="project-page-intro">
+
+                        A 3D platform game combining
+                        <strong>traditional controller input with
+                        camera-based hand-gesture recognition</strong>
+                        to create a more physical way of interacting
+                        with gameplay abilities.
+
+                    </p>
+
+
+
+                    <div class="project-tags">
+
+                        <span>
+                            Unity
+                        </span>
+
+                        <span>
+                            C#
+                        </span>
+
+                        <span>
+                            Python
+                        </span>
+
+                        <span>
+                            OpenCV
+                        </span>
+
+                        <span>
+                            Computer Vision
+                        </span>
+
+                        <span>
+                            Game Design
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- HERO VIDEO -->
+
+                <div class="project-hero-media reveal">
+
+                    <video
+                        controls
+                        preload="metadata"
+                        poster="../assets/nn2.png"
+                    >
+
+                        <source
+                            src="../assets/NicoNitro.mp4"
+                            type="video/mp4"
+                        >
+
+                        Your browser does not support
+                        the video element.
+
+                    </video>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             OVERVIEW
+        ========================================== -->
+
+        <section
+            id="overview"
+            class="project-section"
+        >
+
+            <div class="container">
+
+
+                <div class="project-content-grid">
+
+
+                    <div class="project-section-label reveal">
+
+                        <span>
+                            01
+                        </span>
+
+                        Overview
+
+                    </div>
+
+
+
+                    <div class="project-section-content reveal">
+
+
+                        <h2>
+                            A platformer with computer vision at its core.
+                        </h2>
+
+
+
+                        <p>
+
+                            Nico Nitro is a 3D platform game developed
+                            as a Visual Computing project. The game explores
+                            how <strong>hand recognition can be used as an
+                            alternative form of game input</strong>.
+
+                        </p>
+
+
+
+                        <p>
+
+                            Players guide Nico through a frozen island
+                            across four levels. Traditional controls are
+                            used for movement, while hand gestures trigger
+                            special abilities such as <strong>double jump,
+                            dash and smash</strong>.
+
+                        </p>
+
+
+
+                        <div class="project-feature-grid">
+
+
+                            <article class="project-feature reveal">
+
+                                <span class="project-feature-number">
+                                    01
+                                </span>
+
+                                <h3>
+                                    Computer vision
+                                </h3>
+
+                                <p>
+                                    A camera-based system recognises
+                                    hand gestures and turns them into
+                                    gameplay input.
+                                </p>
+
+                            </article>
+
+
+
+                            <article class="project-feature reveal">
+
+                                <span class="project-feature-number">
+                                    02
+                                </span>
+
+                                <h3>
+                                    Multimodal input
+                                </h3>
+
+                                <p>
+                                    Controller or keyboard input handles
+                                    movement while gestures control
+                                    special abilities.
+                                </p>
+
+                            </article>
+
+
+
+                            <article class="project-feature reveal">
+
+                                <span class="project-feature-number">
+                                    03
+                                </span>
+
+                                <h3>
+                                    3D platforming
+                                </h3>
+
+                                <p>
+                                    A stylised frozen island provides
+                                    the setting for the platforming
+                                    challenges.
+                                </p>
+
+                            </article>
+
+
+
+                            <article class="project-feature reveal">
+
+                                <span class="project-feature-number">
+                                    04
+                                </span>
+
+                                <h3>
+                                    Four levels
+                                </h3>
+
+                                <p>
+                                    The game gradually introduces
+                                    its mechanics and abilities across
+                                    four playable levels.
+                                </p>
+
+                            </article>
+
+
+                        </div>
+
+
+
+                        <!-- OVERVIEW IMAGES -->
+
+                        <div class="nico-overview-images">
+
+                            <div class="nico-overview-image nico-overview-image-1">
+
+                                <img
+                                    src="../assets/niconitro2.png"
+                                    alt="Nico Nitro gameplay"
+                                >
+
+                            </div>
+
+
+                            <div class="nico-overview-image nico-overview-image-2">
+
+                                <img
+                                    src="../assets/niconitro3.png"
+                                    alt="Nico Nitro gameplay"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <a
+                            href="#computer-vision"
+                            class="hero-scroll"
+                        >
+
+                            <span class="scroll-arrow">
+                                ↓
+                            </span>
+
+                            <span>
+                                SCROLL TO EXPLORE
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             COMPUTER VISION
+        ========================================== -->
+
+        <section
+            id="computer-vision"
+            class="project-section project-section-alt"
+        >
+
+            <div class="container">
+
+
+                <div class="project-content-grid">
+
+
+                    <div class="project-section-label reveal">
+
+                        <span>
+                            02
+                        </span>
+
+                        Computer Vision
+
+                    </div>
+
+
+
+                    <div class="project-section-content reveal">
+
+
+                        <h2>
+                            Turning hand movements into gameplay.
+                        </h2>
+
+
+
+                        <p>
+
+                            The central technical part of the project was
+                            developing a computer vision system that could
+                            recognise hand gestures through a camera and
+                            use them as real-time game input.
+
+                        </p>
+
+
+
+                        <p>
+
+                            <strong>Python and OpenCV</strong> were used
+                            to process the camera feed. Image filtering,
+                            contour detection, convex hulls and convexity
+                            defects were used to analyse the shape of
+                            the player's hand.
+
+                        </p>
+
+
+
+                        <div class="project-feature-grid">
+
+
+                            <article class="project-feature reveal">
+
+                                <span class="project-feature-number">
+                                    01
+                                </span>
+
+                                <h3>
+                                    Hand detection
+                                </h3>
+
+                                <p>
+                                    The camera feed is processed to
+                                    isolate and analyse the player's hand.
+                                </p>
+
+                            </article>
+
+
+
+                            <article class="project-feature reveal">
+
+                                <span class="project-feature-number">
+                                    02
+                                </span>
+
+                                <h3>
+                                    Gesture recognition
+                                </h3>
+
+                                <p>
+                                    The shape of the hand is analysed
+                                    to distinguish between different
+                                    gestures.
+                                </p>
+
+                            </article>
+
+
+
+                            <article class="project-feature reveal">
+
+                                <span class="project-feature-number">
+                                    03
+                                </span>
+
+                                <h3>
+                                    Real-time input
+                                </h3>
+
+                                <p>
+                                    Recognised gestures are translated
+                                    into gameplay abilities while
+                                    the player is playing.
+                                </p>
+
+                            </article>
+
+
+
+                            <article class="project-feature reveal">
+
+                                <span class="project-feature-number">
+                                    04
+                                </span>
+
+                                <h3>
+                                    Game interaction
+                                </h3>
+
+                                <p>
+                                    The computer vision system becomes
+                                    part of the game's interaction rather
+                                    than a separate interface.
+                                </p>
+
+                            </article>
+
+
+                        </div>
+
+
+
+                        <a
+                            href="#gallery"
+                            class="hero-scroll"
+                        >
+
+                            <span class="scroll-arrow">
+                                ↓
+                            </span>
+
+                            <span>
+                                SCROLL TO EXPLORE
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             GALLERY
+        ========================================== -->
+
+        <section
+            id="gallery"
+            class="project-section"
+        >
+
+            <div class="container">
+
+
+                <div class="project-content-grid">
+
+
+                    <div class="project-section-label reveal">
+
+                        <span>
+                            04
+                        </span>
+
+                        Gallery
+
+                    </div>
+
+
+
+                    <div class="project-section-content">
+
+
+                        <div class="project-gallery">
+
+
+                            <figure class="project-gallery-large reveal">
+
+                                <img
+                                    src="../assets/niconitro1.png"
+                                    alt="Nico Nitro gameplay"
+                                >
+
+                            </figure>
+
+
+
+                            <figure class="reveal">
+
+                                <img
+                                    src="../assets/niconitro4.png"
+                                    alt="Nico Nitro gameplay"
+                                >
+
+                            </figure>
+
+
+
+                            <button
+                                class="gallery-more reveal"
+                                onclick="openGallery()"
+                            >
+
+                                <img
+                                    src="../assets/niconitro5.png"
+                                    alt="Nico Nitro gameplay"
+                                >
+
+                                <span>
+                                    +1 more
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+
+
+                        <div
+                            class="gallery-lightbox"
+                            id="gallery-lightbox"
+                        >
+
+
+                            <button
+                                class="gallery-close"
+                                onclick="closeGallery()"
+                            >
+                                ×
+                            </button>
+
+
+
+                            <div class="gallery-lightbox-content">
+
+
+                                <img
+                                    src="../assets/niconitro1.png"
+                                    alt="Nico Nitro gameplay"
+                                >
+
+
+                                <img
+                                    src="../assets/niconitro2.png"
+                                    alt="Nico Nitro gameplay"
+                                >
+
+
+                                <img
+                                    src="../assets/niconitro3.png"
+                                    alt="Nico Nitro gameplay"
+                                >
+
+
+                                <img
+                                    src="../assets/niconitro4.png"
+                                    alt="Nico Nitro gameplay"
+                                >
+
+
+                                <img
+                                    src="../assets/niconitro5.png"
+                                    alt="Nico Nitro gameplay"
+                                >
+
+
+                                <img
+                                    src="../assets/niconitro6.png"
+                                    alt="Nico Nitro gameplay"
+                                >
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             LINKS
+        ========================================== -->
+
+        <section class="project-section project-links-section">
+
+            <div class="container">
+
+
+                <div class="project-links reveal">
+
+
+                    <div>
+
+                        <span class="project-links-label">
+                            Explore the project
+                        </span>
+
+
+                        <h2>
+                            Want to see more?
+                        </h2>
+
+                    </div>
+
+
+
+                    <div class="project-buttons">
+
+
+                        <a
+                            href="#"
+                            class="button"
+                        >
+
+                            Project report
+
+                            <span>
+                                ↗
+                            </span>
+
+                        </a>
+
+
+
+                        <a
+                            href="#"
+                            class="button button-secondary"
+                        >
+
+                            GitHub
+
+                            <span>
+                                ↗
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             NEXT PROJECT
+        ========================================== -->
+
+        <section class="project-next">
+
+            <div class="container">
+
+
+                <a
+                    href="blue-planet.html"
+                    class="project-next-link reveal"
+                >
+
+                    <span>
+                        Next project
+                    </span>
+
+
+                    <strong>
+
+                        <span class="next-project-title">
+                            Blue Planet
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </strong>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <p>
+                © 2026 Kristine Fogh Andersen
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="../script.js"></script>
+
+
+</body>
+
+</html>

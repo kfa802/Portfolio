@@ -1945,52 +1945,45 @@ a {
 
 .project-feature-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-    gap: 1px;
-
+    grid-template-columns: 1fr;
     margin-top: 55px;
-
-    border: 1px solid var(--panel-border);
-
-    background: var(--panel-border);
+    border-top: 1px solid var(--panel-border);
 }
 
 .project-feature {
-    padding: 35px;
-
-    background: rgba(23, 32, 42, 0.72);
+    display: grid;
+    grid-template-columns: 55px minmax(140px, 0.45fr) minmax(0, 1fr);
+    gap: 25px;
+    align-items: start;
+    padding: 25px 0;
+    border-bottom: 1px solid var(--panel-border);
+    background: transparent;
 }
 
 .project-feature-number {
     display: block;
-
-    margin-bottom: 30px;
-
+    margin: 0;
+    padding-top: 2px;
     color: var(--accent-amber);
-
     font-family: var(--display-font);
     font-size: 0.75rem;
     font-weight: 600;
 }
 
 .project-feature h3 {
-    margin: 0 0 12px;
-
+    margin: 0;
     font-family: var(--display-font);
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     font-weight: 500;
-
     color: var(--text);
 }
 
 .project-feature p {
     margin: 0;
-
+    max-width: 500px;
     font-size: 0.9rem;
     line-height: 1.7;
+    color: var(--text-muted);
 }
 
 
@@ -2210,9 +2203,18 @@ a {
         margin-bottom: 0;
     }
 
-    .project-feature-grid {
-        grid-template-columns: 1fr;
-    }
+ .project-feature-grid {
+    grid-template-columns: 1fr;
+}
+
+.project-feature {
+    grid-template-columns: 40px 1fr;
+    gap: 15px;
+}
+
+.project-feature p {
+    grid-column: 2;
+}
 
     .project-gallery {
         grid-template-columns: 1fr;
@@ -3190,11 +3192,59 @@ a {
     object-position: 50% 50% !important;
 }
 
+
+
     .liv-hero-video video {
         aspect-ratio: auto;
         object-fit: contain;
         background: #080b10;
     }
+
+
+  /* =========================================
+   LIV FEATURE IMAGES
+========================================= */
+
+.project-feature-image {
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.project-feature-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Adjust these individually */
+
+.project-feature-image-1 img {
+    object-position: 50% 30%;
+}
+
+.project-feature-image-2 img {
+    object-position: 50% 60%;
+}
+
+.project-feature-image-3 img {
+    object-position: center center;
+}
+
+.project-feature-image-4 img {
+    object-position: center center;
+}
+
+@media (max-width: 700px) {
+
+    .project-feature-image {
+        height: 320px;
+    }
+
+}
+
 /* =========================================
    LIV RESEARCH
 ========================================= */
@@ -3526,4 +3576,6 @@ a {
     }
 
 }
+
+
     
