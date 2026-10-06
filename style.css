@@ -3189,3 +3189,341 @@ a {
     object-fit: cover !important;
     object-position: 50% 50% !important;
 }
+
+    .liv-hero-video video {
+        aspect-ratio: auto;
+        object-fit: contain;
+        background: #080b10;
+    }
+/* =========================================
+   LIV RESEARCH
+========================================= */
+
+.research-study {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    margin: 3rem 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.research-study-item {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.4rem 1.25rem;
+}
+
+.research-study-item:nth-child(odd) {
+    border-right: 1px solid rgba(255,255,255,0.12);
+}
+
+.research-study-item:nth-child(-n+2) {
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.research-study-item strong {
+    flex-shrink: 0;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 500;
+}
+
+.research-study-item span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.research-study-item small {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    opacity: 0.55;
+}
+
+/* =========================================
+   KNOWLEDGE RESULT
+========================================= */
+
+.research-result {
+    margin: 4rem 0 0;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.research-result-heading {
+    margin-bottom: 2.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.5;
+}
+
+
+/* COMPARISON */
+
+.research-comparison {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
+    align-items: center;
+    width: 100%;
+}
+
+
+.research-comparison-item {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.research-comparison-item:last-child {
+    text-align: right;
+    align-items: flex-end;
+}
+
+
+.research-comparison-label {
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+
+.research-comparison-item strong {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1;
+    font-weight: 500;
+}
+
+
+.research-comparison-description {
+    margin-top: 0.65rem;
+    max-width: 220px;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    opacity: 0.55;
+}
+
+
+.research-comparison-item:last-child
+.research-comparison-description {
+    text-align: right;
+}
+
+
+/* CENTER VS */
+
+.research-comparison-vs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 70px;
+    font-size: 0.75rem;
+    opacity: 0.4;
+}
+
+
+/* TAKEAWAY */
+
+.research-result-takeaway {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+}
+
+
+.research-result-takeaway strong {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+.research-result-takeaway span {
+    font-size: 0.8rem;
+    opacity: 0.55;
+}
+
+
+/* =========================================
+   LARGE RESEARCH IMAGE
+========================================= */
+
+.research-large-image {
+    width: 100%;
+    margin-top: 0.75rem;
+    margin-bottom: 3rem;
+    overflow: hidden;
+}
+
+
+.research-large-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .research-comparison {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .research-comparison-item,
+    .research-comparison-item:last-child {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .research-comparison-vs {
+        display: none;
+    }
+
+    .research-result-takeaway {
+        display: block;
+    }
+
+    .research-result-takeaway strong,
+    .research-result-takeaway span {
+        display: block;
+    }
+
+    .research-result-takeaway span {
+        margin-top: 0.35rem;
+    }
+
+    .research-large-image {
+        margin-top: 2rem;
+    }
+
+}
+
+
+/* =========================================
+   ENGAGEMENT
+========================================= */
+
+.research-highlight {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    margin: 3.5rem 0;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.research-highlight-number {
+    display: flex;
+    align-items: baseline;
+    gap: 0.2rem;
+}
+
+.research-highlight-number strong {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    line-height: 1;
+    font-weight: 500;
+}
+
+.research-highlight-number span {
+    font-size: 1.2rem;
+    opacity: 0.45;
+}
+
+.research-highlight-label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.5;
+}
+
+.research-highlight p {
+    margin-bottom: 1rem;
+}
+
+
+/* =========================================
+   LIMITATIONS
+========================================= */
+
+.research-note {
+    margin: 3rem 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.research-note > span {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.5;
+}
+
+.research-note p {
+    max-width: 700px;
+    margin: 0;
+    opacity: 0.65;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .research-study {
+        grid-template-columns: 1fr;
+    }
+
+    .research-study-item {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .research-study-item:last-child {
+        border-bottom: none;
+    }
+
+    .research-result-scores {
+        gap: 1rem;
+    }
+
+    .research-score strong {
+        font-size: 2.5rem;
+    }
+
+    .research-result-divider {
+        font-size: 0.65rem;
+    }
+
+    .research-highlight {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+}
+    
