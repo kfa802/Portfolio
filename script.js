@@ -1098,6 +1098,8 @@ window.addEventListener(
 updateScrollProgress();
 
 
+
+
 /* =========================================
    SMOOTH ANCHOR NAVIGATION
 ========================================= */
