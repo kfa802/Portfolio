@@ -2852,6 +2852,465 @@ a {
 
 }
 
+/* =========================================
+   SEMESTER PROJECT TIMELINE
+========================================= */
+
+.semester-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 10px;
+}
+
+
+/* =========================================
+   CURRENT 7TH SEMESTER
+========================================= */
+
+.timeline-current {
+    position: relative;
+
+    /* Keep the original project width */
+    display: block;
+
+    min-height: 55px;
+}
+
+
+/* vertical line above first project */
+
+.timeline-current::after {
+    content: "";
+    position: absolute;
+
+    /*
+       This places the timeline in the
+       empty space to the LEFT of the card.
+    */
+    left: -86px;
+
+    top: 50%;
+    bottom: -28px;
+
+    width: 1px;
+
+    background: rgba(236, 233, 225, 0.16);
+
+    z-index: 0;
+}
+
+
+/* 7th semester label */
+
+/* =========================================
+   CURRENT 7TH SEMESTER
+========================================= */
+
+.timeline-current {
+    position: relative;
+    display: block;
+    min-height: 55px;
+}
+
+
+/* vertical line above first project */
+
+.timeline-current::after {
+    content: "";
+    position: absolute;
+
+    left: -86px;
+    top: 50%;
+    bottom: -28px;
+
+    width: 1px;
+
+    background: rgba(236, 233, 225, 0.16);
+
+    z-index: 0;
+}
+
+
+/* =========================================
+   CURRENT 7TH SEMESTER
+========================================= */
+
+.timeline-current {
+    position: relative;
+    display: block;
+    min-height: 55px;
+}
+
+
+/* Vertical timeline line */
+
+.timeline-current::after {
+    content: "";
+    position: absolute;
+
+    left: -86px;
+    top: 50%;
+    bottom: -28px;
+
+    width: 1px;
+
+    background: rgba(236, 233, 225, 0.16);
+
+    z-index: 0;
+}
+
+
+/* Make the marker itself NOT create
+   a positioning context */
+
+.timeline-current .timeline-marker {
+    position: static;
+    width: 0;
+    height: 0;
+    min-height: 0;
+}
+
+
+/* 7th semester label */
+
+.timeline-current .current-label {
+    position: absolute;
+
+    left: -240px;
+    top: 50%;
+
+    width: 135px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
+    padding-right: 18px;
+
+    z-index: 2;
+}
+
+
+.timeline-current .current-label span {
+    color: var(--accent-amber);
+
+    font-family: var(--display-font);
+    font-size: 0.65rem;
+    font-weight: 600;
+
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+.timeline-current .current-label small {
+    margin-top: 4px;
+
+    color: var(--text-muted);
+
+    font-size: 0.48rem;
+    font-weight: 500;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* 7th semester dot */
+
+.timeline-current .current-dot {
+    position: absolute;
+
+    left: -86px;
+    top: 50%;
+
+    width: 10px;
+    height: 10px;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid var(--accent-amber);
+    border-radius: 50%;
+
+    background: var(--bg);
+
+    box-shadow:
+        0 0 0 5px rgba(255, 180, 84, 0.08);
+
+    z-index: 4;
+}
+
+
+/* No horizontal line for current semester */
+
+.timeline-current .current-line,
+.timeline-current .current-connector {
+    display: none;
+}
+
+/* =========================================
+   PROJECT TIMELINE ROW
+========================================= */
+
+.timeline-project {
+    position: relative;
+
+    /*
+       IMPORTANT:
+       No grid columns here.
+
+       The card keeps the exact same width
+       it had before the timeline existed.
+    */
+    display: block;
+
+    align-items: center;
+}
+
+
+/* vertical timeline line */
+
+.timeline-project::before {
+    content: "";
+
+    position: absolute;
+
+    /*
+       Timeline sits outside the card.
+    */
+    left: -86px;
+
+    top: -28px;
+    bottom: -28px;
+
+    width: 1px;
+
+    background: rgba(236, 233, 225, 0.16);
+
+    z-index: 0;
+}
+
+
+/* don't extend below final project */
+
+.timeline-project:last-child::before {
+    bottom: 50%;
+}
+
+
+/* =========================================
+   SEMESTER LABEL
+========================================= */
+
+.timeline-label {
+    position: absolute;
+
+    left: -240px;
+    top: 50%;
+
+    width: 135px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    padding-right: 18px;
+
+    z-index: 2;
+}
+
+
+.timeline-label span {
+    color: var(--text-muted);
+
+    font-family: var(--display-font);
+
+    font-size: 0.65rem;
+    font-weight: 500;
+
+    letter-spacing: 0.06em;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   TIMELINE DOT + CONNECTOR
+========================================= */
+
+.timeline-marker {
+    position: absolute;
+
+    /*
+       Dot is positioned in the empty
+       space to the left of the card.
+    */
+    left: -86px;
+    top: 0;
+
+    width: 1px;
+    height: 100%;
+
+    min-height: 20px;
+
+    z-index: 3;
+}
+
+
+/* dot */
+
+.timeline-dot {
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+
+    width: 8px;
+    height: 8px;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(236, 233, 225, 0.45);
+
+    border-radius: 50%;
+
+    background: var(--bg);
+
+    z-index: 4;
+}
+
+
+/* line from dot to card */
+
+.timeline-connector {
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+
+    width: 86px;
+    height: 1px;
+
+    background: rgba(236, 233, 225, 0.18);
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.timeline-project .project-card {
+    position: relative;
+
+    z-index: 2;
+
+    /*
+       The card is now completely independent
+       of the timeline width.
+    */
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* =========================================
+   MINI PROJECTS
+========================================= */
+
+.mini-projects-group {
+    margin-top: 100px;
+}
+
+
+/* =========================================
+   HIDE TIMELINE WHEN THERE IS
+   NOT ENOUGH EMPTY SPACE
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .timeline-label,
+    .current-label,
+    .timeline-marker,
+    .timeline-current::after,
+    .timeline-project::before {
+        /* Timeline remains closer to the cards */
+    }
+
+    .timeline-label,
+    .current-label {
+        left: -190px;
+    }
+
+    .timeline-marker {
+        left: -60px;
+    }
+
+    .timeline-project::before,
+    .timeline-current::after {
+        left: -60px;
+    }
+
+    .timeline-connector,
+    .current-line {
+        width: 60px;
+    }
+}
+
+
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .timeline-label,
+    .current-label,
+    .timeline-marker,
+    .timeline-current::after,
+    .timeline-project::before,
+    .timeline-connector,
+    .current-line,
+    .timeline-current .current-dot {
+        display: none;
+    }
+
+    .timeline-current {
+        min-height: 45px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .semester-timeline {
+        gap: 22px;
+    }
+
+    .timeline-project .project-card-content {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .mini-projects-group {
+        margin-top: 70px;
+    }
+}
 
 /* =========================================
    FLYING BEES
