@@ -3312,6 +3312,21 @@ a {
     }
 }
 
+.project-year {
+    color: var(--text);
+    font-family: var(--display-font);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding-left: 0.8rem;
+    margin-left: 0.2rem;
+    border-left: 1px solid rgba(236, 233, 225, 0.18);
+}
+
+.project-type {
+    color: var(--text-muted);
+}
+
 /* =========================================
    FLYING BEES
 ========================================= */
