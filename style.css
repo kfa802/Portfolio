@@ -497,6 +497,12 @@ a {
     overflow: visible;
 }
 
+/* Mabye this name stylling instead? */
+/*.hero-name {
+    letter-spacing: -0.05em;
+    font-weight: 500;
+    text-shadow: none;
+}*/
 
 
 /* INDIVIDUAL LETTERS */
@@ -3605,15 +3611,6 @@ main#top,
    NOT ENOUGH EMPTY SPACE
 ========================================= */
 
-@media (max-width: 1100px) {
-
-    .timeline-label,
-    .current-label,
-    .timeline-marker,
-    .timeline-current::after,
-    .timeline-project::before {
-        /* Timeline remains closer to the cards */
-    }
 
     .timeline-label,
     .current-label {
@@ -3633,7 +3630,6 @@ main#top,
     .current-line {
         width: 60px;
     }
-}
 
 
 
@@ -4795,5 +4791,96 @@ main#top,
 .about-image-wrap.reveal,
 .about-image-wrap.reveal.visible {
     clip-path: none;
+}
+
+/* =========================================
+   CUSTOM CURSOR
+========================================= */
+
+@media (hover: hover) and (pointer: fine) {
+    body.has-custom-cursor,
+    body.has-custom-cursor a,
+    body.has-custom-cursor button {
+        cursor: none;
+    }
+}
+
+.cursor-dot,
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    margin: -3px 0 0 -3px;
+    border-radius: 50%;
+    background: var(--accent-amber);
+}
+
+.cursor-ring-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(236, 233, 225, 0.5);
+    border-radius: 50%;
+
+    transition:
+        width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.cursor-ring-inner span {
+    font-size: 1.1rem;
+    line-height: 1;
+    color: var(--accent-amber);
+    opacity: 0;
+    transform: translate(-3px, 3px);
+    transition:
+        opacity 0.25s ease,
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* over links and buttons */
+.cursor-ring.is-link .cursor-ring-inner {
+    width: 56px;
+    height: 56px;
+    border-color: var(--accent-amber);
+    background: rgba(255, 180, 84, 0.1);
+}
+
+/* over project cards */
+.cursor-ring.is-card .cursor-ring-inner {
+    width: 76px;
+    height: 76px;
+    border-color: rgba(255, 180, 84, 0.45);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(6px);
+}
+
+.cursor-ring.is-card .cursor-ring-inner span {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* hide the small dot so it doesn't sit on top of the arrow */
+body.cursor-on-card .cursor-dot {
+    opacity: 0 !important;
 }
 

@@ -1204,3 +1204,48 @@ document
         });
 
     });
+
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    const dot = document.createElement("div");
+    dot.className = "cursor-dot";
+
+    const ring = document.createElement("div");
+    ring.className = "cursor-ring";
+    ring.innerHTML = '<div class="cursor-ring-inner"><span>View</span></div>';
+
+    document.body.append(ring, dot);
+    document.body.classList.add("has-custom-cursor");
+
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+
+    window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        dot.style.opacity = 1;
+        ring.style.opacity = 1;
+    });
+
+    document.addEventListener("mouseleave", () => {
+        dot.style.opacity = 0;
+        ring.style.opacity = 0;
+    });
+
+    // ring follows with a slight delay
+    function animateRing() {
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
+        ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+        requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // change shape depending on what's under the cursor
+    document.addEventListener("mouseover", (e) => {
+        const card = e.target.closest(".project-card");
+        const link = e.target.closest("a, button");
+        ring.classList.toggle("is-card", !!card);
+        ring.classList.toggle("is-link", !card && !!link);
+    });
+}
