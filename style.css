@@ -4884,3 +4884,504 @@ body.cursor-on-card .cursor-dot {
     opacity: 0 !important;
 }
 
+/* =========================================================
+   MOBILE PATCH — paste at the VERY BOTTOM of your stylesheet
+   (order matters: these rules need to come after everything else)
+========================================================= */
+ 
+/* ---------------------------------------------------------
+   0. Missing variables
+   Your research styles use var(--border) and var(--muted),
+   but they were never defined, so those borders/colours
+   were silently failing on every screen size.
+--------------------------------------------------------- */
+:root {
+    --border: var(--panel-border);
+    --muted: var(--text-muted);
+}
+ 
+/* Stop sideways wiggle on iOS (overflow-x: hidden alone isn't enough) */
+html,
+body {
+    max-width: 100%;
+    overflow-x: clip;
+}
+ 
+ 
+/* ---------------------------------------------------------
+   1. Timeline: hide whenever there isn't room beside the cards
+   Labels sit ~190-240px left of a 780px column, so they only
+   fit on screens wider than ~1180px. Your old breakpoint was
+   900px, which left the labels cut off on tablets/small laptops.
+--------------------------------------------------------- */
+@media (max-width: 1180px) {
+ 
+    .timeline-label,
+    .current-label,
+    .timeline-current .current-label,
+    .timeline-marker,
+    .timeline-current::after,
+    .timeline-project::before,
+    .timeline-connector,
+    .current-line,
+    .timeline-current .current-dot {
+        display: none;
+    }
+ 
+    /* the 7th-semester block only holds the label, so without
+       the timeline it's just an empty gap above the first card */
+    .timeline-current {
+        display: none;
+    }
+}
+ 
+ 
+/* ---------------------------------------------------------
+   2. Touch devices: no hover effects, no custom cursor
+--------------------------------------------------------- */
+@media (hover: none), (pointer: coarse) {
+ 
+    .cursor-dot,
+    .cursor-ring {
+        display: none !important;
+    }
+ 
+    /* hover "sticks" after a tap on phones, so neutralise lifts/zooms */
+    .project-card:hover {
+        transform: none;
+    }
+ 
+    .project-card:hover .project-image img,
+    .project-gallery figure:hover img,
+    .project-system-image:hover img,
+    .about-photo:hover img {
+        transform: none;
+        filter: none;
+    }
+ 
+    .skill-row:hover {
+        transform: none;
+        background: transparent;
+    }
+ 
+    /* Speech bubble: on touch it toggles on tap (needs the small
+       JS snippet that adds .show-bubble), instead of sticky hover */
+    .about-image-wrap:hover .about-speech-bubble {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+    }
+ 
+    .about-image-wrap.show-bubble .about-speech-bubble {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+ 
+ 
+/* ---------------------------------------------------------
+   3. Phones and small tablets
+--------------------------------------------------------- */
+@media (max-width: 700px) {
+ 
+    /* ---------- Header ---------- */
+ 
+    .site-header {
+        padding: 20px 0;
+    }
+ 
+    .nav {
+        flex-wrap: wrap;
+        gap: 10px 16px;
+    }
+ 
+ 
+    /* ---------- Hero ---------- */
+ 
+    .hero {
+        min-height: 100svh;
+        padding: 90px 20px 50px;
+    }
+ 
+    .hero-top {
+        flex-wrap: wrap;
+        gap: 6px 14px;
+        font-size: 0.6rem;
+    }
+ 
+    .hero-content {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+ 
+    .hero-label {
+        font-size: 0.64rem;
+        letter-spacing: 0.1em;
+    }
+ 
+    .hero-label > span:not(.hero-dot) + span:not(.hero-dot)::before {
+        margin: 0 8px;
+    }
+ 
+    /* Name lines are nowrap, so size must scale with screen width.
+       "KRISTINE FOGH" is the widest line; if it touches the edge on a small phone, lower 11.5vw to 10.5vw. */
+    .hero-name {
+        font-size: clamp(2.2rem, 11.5vw, 5rem);
+        letter-spacing: -0.08em;
+    }
+ 
+    /* This was nowrap on desktop and ran off the screen on phones */
+    .hero-tagline {
+        white-space: normal;
+        max-width: 100%;
+        margin-top: 24px;
+        font-size: 1.05rem;
+    }
+ 
+ 
+    /* ---------- Section headings ---------- */
+ 
+    .section-heading {
+        margin-bottom: 32px;
+    }
+ 
+    .section-heading > div {
+        min-width: 0;
+    }
+ 
+    .section-intro {
+        font-size: 0.9rem;
+    }
+ 
+ 
+    /* ---------- About ---------- */
+ 
+    .about-image-wrap {
+        max-width: 420px;
+    }
+ 
+    /* Desktop bubble sits to the right of the photo, which is
+       off-screen on mobile. Put it over the bottom of the photo. */
+    .about-speech-bubble {
+        top: auto;
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+        padding: 12px 14px;
+        border-radius: 14px;
+    }
+ 
+    .about-speech-bubble::after {
+        display: none;
+    }
+ 
+    .about-links {
+        margin-top: 28px;
+    }
+ 
+    .about-page {
+        max-width: 100%;
+    }
+ 
+    .about-photo-grid {
+        margin-top: 60px;
+    }
+ 
+ 
+    /* ---------- Projects ---------- */
+ 
+    .projects {
+        gap: 22px;
+    }
+ 
+    .project-card {
+        border-radius: 16px;
+        backdrop-filter: blur(6px);
+    }
+ 
+    .project-card-content h3 {
+        font-size: 1.45rem;
+    }
+ 
+    .project-card-content > p {
+        font-size: 0.92rem;
+        line-height: 1.65;
+    }
+ 
+    .project-year {
+        padding-left: 0.6rem;
+    }
+ 
+    .work-category {
+        margin: 3.5rem 0 1.5rem;
+        gap: 1rem;
+    }
+ 
+    .work-category h3 {
+        font-size: 0.95rem;
+    }
+ 
+    /* hover emoji on the arrow never fires on touch; keep it simple */
+    .project-image-arrow {
+        font-size: 0.9rem;
+    }
+ 
+ 
+    /* ---------- Skills ---------- */
+ 
+    .skill-row:hover {
+        transform: none;
+    }
+ 
+ 
+    /* ---------- Scroll-reveal: much lighter on phones ----------
+       14px blur + clip-path on many big elements makes mobile
+       browsers stutter. Same idea, cheaper. */
+ 
+    .reveal {
+        transform: translateY(24px) scale(0.99);
+        filter: blur(5px);
+        clip-path: inset(6% 0 6% 0 round 16px);
+        transition-duration: 0.8s, 0.9s, 0.9s, 0.9s;
+    }
+ 
+    .reveal.visible {
+        filter: blur(0);
+    }
+ 
+ 
+    /* ---------- Project pages ---------- */
+ 
+    .project-page-heading h1 {
+        overflow-wrap: break-word;
+    }
+ 
+    /* These had !important pixel sizes (4.1rem / 5.2rem) that
+       overflowed phones. !important here beats them because this
+       rule comes later with the same specificity. */
+    .project-page-heading h1.womens-suffrage-title {
+        font-size: clamp(2.2rem, 10.5vw, 4.1rem) !important;
+    }
+ 
+    .project-page-heading h1.hearing-loss-title {
+        font-size: clamp(2.6rem, 12.5vw, 5.2rem) !important;
+    }
+ 
+    .project-page-intro {
+        margin: 24px 0 22px;
+    }
+ 
+    .project-section-content h2 {
+        margin-bottom: 22px;
+    }
+ 
+    .project-section-content p {
+        font-size: 0.95rem;
+        line-height: 1.75;
+    }
+ 
+    .project-hero-media video {
+        aspect-ratio: 16 / 10;
+    }
+ 
+    .liv-hero-video video {
+        aspect-ratio: auto;
+    }
+ 
+    .project-feature {
+        padding: 20px 0;
+    }
+ 
+    .project-feature-number {
+        padding-top: 3px;
+    }
+ 
+    .project-feature h3 {
+        font-size: 1.05rem;
+    }
+ 
+    .project-feature p {
+        max-width: none;
+    }
+ 
+    .overview-images,
+    .prototyping-images {
+        gap: 12px;
+        margin-top: 28px;
+    }
+ 
+    .development-images,
+    .nico-overview-images {
+        margin-top: 2rem;
+    }
+ 
+    .overview-image,
+    .hearing-overview-image {
+        margin-top: 2rem;
+    }
+ 
+    .project-gallery {
+        gap: 12px;
+    }
+ 
+    .project-section .hero-scroll {
+        margin-top: 50px;
+    }
+ 
+    .video-scroll {
+        bottom: 20px;
+    }
+ 
+    .project-links {
+        gap: 28px;
+    }
+ 
+    .project-links-section {
+        padding-bottom: 90px;
+    }
+ 
+    .project-next {
+        padding: 50px 0 90px;
+    }
+ 
+    .project-next-link strong {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+ 
+    .project-next-link strong .next-project-title {
+        font-size: clamp(1.4rem, 7vw, 2.1rem);
+    }
+ 
+    .project-role-item {
+        gap: 14px;
+        font-size: 0.9rem;
+    }
+ 
+ 
+    /* ---------- Gallery lightbox ---------- */
+ 
+    .gallery-lightbox {
+        padding: 70px 14px 30px;
+    }
+ 
+    .gallery-lightbox-content {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+ 
+    .gallery-close {
+        top: 12px;
+        right: 18px;
+    }
+ 
+ 
+    /* ---------- Research (LIV page etc.) ---------- */
+ 
+    .research-profile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+ 
+    .research-item {
+        gap: 1.25rem;
+    }
+ 
+    .research-study-item {
+        padding: 1.1rem 0.5rem;
+    }
+ 
+    .research-study-item strong {
+        font-size: 1.6rem;
+    }
+ 
+    .research-highlight {
+        margin: 2.5rem 0;
+    }
+ 
+    .research-large-image {
+        margin-bottom: 2rem;
+    }
+ 
+    .project-feature-image {
+        border-radius: 0.75rem;
+    }
+ 
+ 
+    /* ---------- Contact / footer ---------- */
+ 
+    .contact-section {
+        padding-bottom: 90px;
+    }
+ 
+    .contact-email {
+        overflow-wrap: anywhere;
+    }
+ 
+    .social-links {
+        flex-wrap: wrap;
+    }
+}
+ 
+ 
+/* ---------------------------------------------------------
+   4. Small phones (iPhone SE / mini sizes)
+--------------------------------------------------------- */
+@media (max-width: 480px) {
+ 
+    .container {
+        width: min(calc(100% - 32px), var(--max-width));
+    }
+ 
+    .hero {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+ 
+    /* grid-column: span 2 created a phantom second column
+       once the grid dropped to one column */
+    .about-photo-wide,
+    .about-photo-large {
+        grid-column: span 1;
+    }
+ 
+    .overview-images,
+    .prototyping-images {
+        grid-template-columns: 1fr;
+    }
+ 
+    .project-image {
+        height: 200px;
+    }
+ 
+    .project-card-content {
+        padding: 22px 18px 24px;
+    }
+ 
+    .project-tags span {
+        font-size: 0.68rem;
+        padding: 5px 9px;
+    }
+ 
+    .project-links {
+        padding: 28px 22px;
+    }
+ 
+    .button {
+        min-height: 44px;
+    }
+ 
+    /* keep all 5 nav links on one line */
+    .nav-links {
+        gap: 10px;
+    }
+ 
+    .nav-links a {
+        font-size: 0.72rem;
+    }
+}
+ 
+
