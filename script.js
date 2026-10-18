@@ -1353,3 +1353,156 @@ document.addEventListener("keydown", event => {
         previousGalleryImage();
     }
 });
+
+/* =========================================
+   ABOUT PHOTO GALLERY LIGHTBOX
+========================================= */
+
+const aboutPhotoGrid = document.querySelector(".about-photo-grid");
+
+if (aboutPhotoGrid) {
+    const aboutPhotos = Array.from(
+        aboutPhotoGrid.querySelectorAll(".about-photo img")
+    );
+
+    if (aboutPhotos.length > 0) {
+        const lightbox = document.createElement("div");
+        lightbox.className = "about-lightbox";
+        lightbox.setAttribute("role", "dialog");
+        lightbox.setAttribute("aria-modal", "true");
+        lightbox.setAttribute("aria-label", "Photo viewer");
+
+        lightbox.innerHTML = `
+            <button class="about-lightbox-close"
+                    type="button"
+                    aria-label="Close photo viewer">×</button>
+
+            <button class="about-lightbox-prev"
+                    type="button"
+                    aria-label="Previous photo">←</button>
+
+            <img class="about-lightbox-image" alt="">
+
+            <button class="about-lightbox-next"
+                    type="button"
+                    aria-label="Next photo">→</button>
+
+            <div class="about-lightbox-counter"></div>
+        `;
+
+        document.body.appendChild(lightbox);
+
+        const lightboxImage = lightbox.querySelector(
+            ".about-lightbox-image"
+        );
+
+        const counter = lightbox.querySelector(
+            ".about-lightbox-counter"
+        );
+
+        const closeButton = lightbox.querySelector(
+            ".about-lightbox-close"
+        );
+
+        const previousButton = lightbox.querySelector(
+            ".about-lightbox-prev"
+        );
+
+        const nextButton = lightbox.querySelector(
+            ".about-lightbox-next"
+        );
+
+        let currentIndex = 0;
+        let previouslyFocused = null;
+
+        function showAboutPhoto(index) {
+            currentIndex =
+                (index + aboutPhotos.length) % aboutPhotos.length;
+
+            const photo = aboutPhotos[currentIndex];
+
+            lightboxImage.src = photo.src;
+            lightboxImage.alt = photo.alt || "About Me photo";
+
+            counter.textContent =
+                `${currentIndex + 1} / ${aboutPhotos.length}`;
+        }
+
+        function openAboutPhoto(index) {
+            previouslyFocused = document.activeElement;
+
+            showAboutPhoto(index);
+
+            lightbox.classList.add("is-open");
+            document.body.style.overflow = "hidden";
+
+            closeButton.focus();
+        }
+
+        function closeAboutPhoto() {
+            lightbox.classList.remove("is-open");
+            document.body.style.overflow = "";
+
+            lightboxImage.removeAttribute("src");
+
+            if (previouslyFocused) {
+                previouslyFocused.focus();
+            }
+        }
+
+        function showNextAboutPhoto() {
+            showAboutPhoto(currentIndex + 1);
+        }
+
+        function showPreviousAboutPhoto() {
+            showAboutPhoto(currentIndex - 1);
+        }
+
+        // Make every gallery photo clickable
+        aboutPhotos.forEach((photo, index) => {
+            photo.style.cursor = "pointer";
+
+            photo.addEventListener("click", () => {
+                openAboutPhoto(index);
+            });
+        });
+
+        // Lightbox controls
+        closeButton.addEventListener(
+            "click",
+            closeAboutPhoto
+        );
+
+        nextButton.addEventListener(
+            "click",
+            showNextAboutPhoto
+        );
+
+        previousButton.addEventListener(
+            "click",
+            showPreviousAboutPhoto
+        );
+
+        // Close when clicking the dark background
+        lightbox.addEventListener("click", event => {
+            if (event.target === lightbox) {
+                closeAboutPhoto();
+            }
+        });
+
+        // Keyboard controls
+        document.addEventListener("keydown", event => {
+            if (!lightbox.classList.contains("is-open")) {
+                return;
+            }
+
+            if (event.key === "Escape") {
+                closeAboutPhoto();
+            } else if (event.key === "ArrowRight") {
+                showNextAboutPhoto();
+            } else if (event.key === "ArrowLeft") {
+                showPreviousAboutPhoto();
+            }
+        });
+    }
+}
