@@ -1506,3 +1506,142 @@ if (aboutPhotoGrid) {
         });
     }
 }
+
+
+/* =========================================
+   PROJECT PAGE — CLICKABLE IMAGES
+========================================= */
+
+const projectImages = Array.from(
+    document.querySelectorAll(
+        "main img:not(.gallery-lightbox img)"
+    )
+).filter(image => !image.closest(".gallery-lightbox"));
+
+if (projectImages.length > 0) {
+    const projectLightbox = document.createElement("div");
+
+    projectLightbox.className = "about-lightbox";
+    projectLightbox.setAttribute("role", "dialog");
+    projectLightbox.setAttribute("aria-modal", "true");
+    projectLightbox.setAttribute("aria-label", "Project image viewer");
+
+    projectLightbox.innerHTML = `
+        <button class="about-lightbox-close"
+                type="button"
+                aria-label="Close image viewer">×</button>
+
+        <button class="about-lightbox-prev"
+                type="button"
+                aria-label="Previous image">←</button>
+
+        <img class="about-lightbox-image" alt="">
+
+        <button class="about-lightbox-next"
+                type="button"
+                aria-label="Next image">→</button>
+
+        <div class="about-lightbox-counter"></div>
+    `;
+
+    document.body.appendChild(projectLightbox);
+
+    const imageElement = projectLightbox.querySelector(
+        ".about-lightbox-image"
+    );
+
+    const counterElement = projectLightbox.querySelector(
+        ".about-lightbox-counter"
+    );
+
+    const closeButton = projectLightbox.querySelector(
+        ".about-lightbox-close"
+    );
+
+    const previousButton = projectLightbox.querySelector(
+        ".about-lightbox-prev"
+    );
+
+    const nextButton = projectLightbox.querySelector(
+        ".about-lightbox-next"
+    );
+
+    let currentProjectImage = 0;
+    let previousFocus = null;
+
+    function showProjectImage(index) {
+        currentProjectImage =
+            (index + projectImages.length) % projectImages.length;
+
+        const image = projectImages[currentProjectImage];
+
+        imageElement.src = image.currentSrc || image.src;
+        imageElement.alt = image.alt || "Project image";
+
+        counterElement.textContent =
+            `${currentProjectImage + 1} / ${projectImages.length}`;
+    }
+
+    function openProjectImage(index) {
+        previousFocus = document.activeElement;
+
+        showProjectImage(index);
+
+        projectLightbox.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+
+        closeButton.focus();
+    }
+
+    function closeProjectImage() {
+        projectLightbox.classList.remove("is-open");
+        document.body.style.overflow = "";
+
+        imageElement.removeAttribute("src");
+
+        if (previousFocus) {
+            previousFocus.focus();
+        }
+    }
+
+    function nextProjectImage() {
+        showProjectImage(currentProjectImage + 1);
+    }
+
+    function previousProjectImage() {
+        showProjectImage(currentProjectImage - 1);
+    }
+
+    projectImages.forEach((image, index) => {
+        image.style.cursor = "pointer";
+
+        image.addEventListener("click", () => {
+            openProjectImage(index);
+        });
+    });
+
+    closeButton.addEventListener("click", closeProjectImage);
+    nextButton.addEventListener("click", nextProjectImage);
+    previousButton.addEventListener("click", previousProjectImage);
+
+    projectLightbox.addEventListener("click", event => {
+        if (event.target === projectLightbox) {
+            closeProjectImage();
+        }
+    });
+
+    document.addEventListener("keydown", event => {
+        if (!projectLightbox.classList.contains("is-open")) {
+            return;
+        }
+
+        if (event.key === "Escape") {
+            closeProjectImage();
+        } else if (event.key === "ArrowRight") {
+            nextProjectImage();
+        } else if (event.key === "ArrowLeft") {
+            previousProjectImage();
+        }
+    });
+}
+

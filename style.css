@@ -5807,5 +5807,12 @@ body {
 }
 
 
+/* Clickable project images */
+.project-section-content img,
+.project-hero-media img {
+    cursor: pointer;
+}
+
+
  
 
