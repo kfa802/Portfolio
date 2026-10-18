@@ -5814,5 +5814,52 @@ body {
 }
 
 
+/* Hearing Loss — Overview image */
+.hearing-overview-image {
+    width: 100%;
+    height: auto;
+    margin: 35px 0;
+}
+
+.hearing-overview-image img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* =========================================
+   MOBILE — HERO LABELS
+========================================= */
+
+@media (max-width: 600px) {
+
+    .hero-label {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 22px;
+        font-size: 0.58rem;
+        letter-spacing: 0.08em;
+        line-height: 1.2;
+    }
+
+    .hero-label > span {
+        white-space: nowrap;
+    }
+
+    .hero-label .hero-dot {
+        flex-shrink: 0;
+    }
+
+}
+
+
+
+
+
  
 
