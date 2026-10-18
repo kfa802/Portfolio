@@ -1446,45 +1446,131 @@ main#top,
 
 
 /* =========================================
-   SKILL TAGS
+   SKILL TAGS — MINT / BLUE
 ========================================= */
 
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
 }
-
 
 .skill-tags span {
     display: inline-flex;
     align-items: center;
+    padding: 9px 13px;
 
-    padding: 7px 11px;
-
-    border: 1px solid var(--panel-border);
+    border: 1px solid rgba(99, 230, 216, 0.3);
     border-radius: 999px;
 
-    color: var(--text-muted);
+    color: #A8F3EB;
+    background: rgba(99, 230, 216, 0.08);
 
-    background: rgba(255, 255, 255, 0.025);
-
-    font-size: 0.72rem;
-    line-height: 1;
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
 
     transition:
         color 0.2s ease,
         border-color 0.2s ease,
-        background 0.2s ease;
+        background-color 0.2s ease;
+}
+
+.skill-tags span:hover {
+    color: #D5FFFA;
+    border-color: rgba(99, 230, 216, 0.75);
+    background: rgba(99, 230, 216, 0.16);
 }
 
 
-.skill-tags span:hover {
-    color: var(--text);
+/* =========================================
+   SKILL ROWS — SMOOTH, NO JUMPING
+========================================= */
 
-    border-color: rgba(255, 180, 84, 0.35);
+.skill-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 60px 220px minmax(0, 1fr);
+    gap: 40px;
 
-    background: rgba(255, 180, 84, 0.06);
+    padding: 42px 0;
+    border-bottom: 1px solid var(--panel-border);
+
+    /* No scaling or padding changes on hover */
+    transition: background-color 0.25s ease;
+}
+
+.skill-row:hover {
+    background-color: rgba(99, 230, 216, 0.025);
+}
+
+
+/* =========================================
+   SKILL TITLES
+========================================= */
+
+.skill-index {
+    padding-top: 5px;
+    color: var(--accent-amber, #FFB454);
+    font-family: var(--display-font);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.skill-title h3 {
+    margin: 0;
+    font-family: var(--display-font);
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+
+/* =========================================
+   SKILL DESCRIPTIONS
+========================================= */
+
+.skill-content {
+    max-width: 600px;
+}
+
+.skill-content p {
+    margin: 0 0 22px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+    .skill-row {
+        grid-template-columns: 32px minmax(0, 1fr);
+        gap: 12px;
+        padding: 30px 0;
+    }
+
+    .skill-title {
+        grid-column: 2;
+    }
+
+    .skill-content {
+        grid-column: 2;
+    }
+
+    .skill-tags {
+        gap: 8px;
+    }
+
+    .skill-tags span {
+        padding: 8px 11px;
+        font-size: 0.75rem;
+    }
 }
 
 
@@ -2573,7 +2659,6 @@ main#top,
 
 .project-links {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
 
@@ -2582,8 +2667,15 @@ main#top,
     padding: 55px;
 
     border: 1px solid var(--panel-border);
+    border-radius: 22px;
 
-    background: rgba(25, 32, 44, 0.58);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.07),
+        rgba(255, 255, 255, 0.025)
+    );
+
+    backdrop-filter: blur(12px);
 }
 
 .project-links-label {
@@ -2688,6 +2780,64 @@ main#top,
 .project-next-link:hover strong span:last-child {
     transform: translateX(7px);
 }
+
+
+/* =========================================
+   PREVIOUS PROJECT
+========================================= */
+
+.project-previous-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 24px;
+    padding: 12px 18px;
+
+    border: 1px solid rgba(99, 230, 216, 0.22);
+    border-radius: 12px;
+
+    background: rgba(99, 230, 216, 0.055);
+
+    color: var(--text-main);
+    font-size: 0.88rem;
+    text-decoration: none;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.project-previous-link > span {
+    color: var(--accent-mint);
+    font-size: 1.1rem;
+    transition: transform 0.25s ease;
+}
+
+.project-previous-link:hover {
+    background: rgba(99, 230, 216, 0.11);
+    border-color: var(--accent-mint);
+    transform: translateX(-3px);
+}
+
+.project-previous-link:hover > span {
+    transform: translateX(-3px);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+    .project-previous-link {
+        margin-top: 20px;
+        padding: 11px 14px;
+        font-size: 0.82rem;
+    }
+}
+
 
 
 /* =========================================
@@ -3000,6 +3150,7 @@ main#top,
     margin-top: 35px;
     flex-wrap: wrap;
 }
+
 
 .about-button {
     display: inline-flex;
@@ -5383,5 +5534,7 @@ body {
         font-size: 0.72rem;
     }
 }
+
+
  
 
