@@ -5835,7 +5835,7 @@ body {
    MOBILE — HERO LABELS AND TAGLINE
 ========================================= */
 
-@media (max-width: 600px) {
+@media screen and (max-width: 700px) {
 
     /* Keywords above the name */
     .hero-label {
@@ -5843,14 +5843,12 @@ body {
         flex-wrap: nowrap;
         align-items: center;
         gap: 9px;
-
         width: 100%;
         margin-bottom: 20px;
 
         font-size: 0.52rem;
         letter-spacing: 0.04em;
         line-height: 1;
-
         white-space: nowrap;
     }
 
@@ -5865,13 +5863,14 @@ body {
         flex-shrink: 0;
     }
 
-.hero-tagline {
-    max-width: 100%;
-    margin-top: 14px;
-    font-size: 0.7rem;
-    line-height: 1.5;
-    white-space: normal;
-}
+    /* Tagline beneath the name */
+    .hero .hero-tagline {
+        max-width: 100%;
+        margin-top: 14px;
+        font-size: 0.65rem !important;
+        line-height: 1.5;
+        white-space: normal;
+    }
 
 }
 
