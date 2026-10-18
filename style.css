@@ -1446,7 +1446,7 @@ main#top,
 
 
 /* =========================================
-   SKILL TAGS — MINT / BLUE
+   SKILL TAGS — WHITE
 ========================================= */
 
 .skill-tags {
@@ -1460,11 +1460,11 @@ main#top,
     align-items: center;
     padding: 9px 13px;
 
-    border: 1px solid rgba(99, 230, 216, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 999px;
 
-    color: #A8F3EB;
-    background: rgba(99, 230, 216, 0.08);
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.06);
 
     font-size: 0.78rem;
     font-weight: 500;
@@ -1478,11 +1478,10 @@ main#top,
 }
 
 .skill-tags span:hover {
-    color: #D5FFFA;
-    border-color: rgba(99, 230, 216, 0.75);
-    background: rgba(99, 230, 216, 0.16);
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.12);
 }
-
 
 /* =========================================
    SKILL ROWS — SMOOTH, NO JUMPING
