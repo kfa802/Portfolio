@@ -1645,3 +1645,63 @@ if (projectImages.length > 0) {
     });
 }
 
+/* =========================================
+   CUSTOM CURSOR
+========================================= */
+
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+
+    const cursorDot = document.querySelector(".cursor-dot");
+    const cursorRing = document.querySelector(".cursor-ring");
+
+    if (cursorDot && cursorRing) {
+
+        document.body.classList.add("has-custom-cursor");
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+
+        let ringX = mouseX;
+        let ringY = mouseY;
+
+        document.addEventListener("mousemove", event => {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
+
+            cursorDot.style.opacity = "1";
+            cursorRing.style.opacity = "1";
+        });
+
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.18;
+            ringY += (mouseY - ringY) * 0.18;
+
+            cursorRing.style.left = `${ringX}px`;
+            cursorRing.style.top = `${ringY}px`;
+
+            requestAnimationFrame(animateRing);
+        }
+
+        animateRing();
+
+        document.addEventListener("mouseover", event => {
+            if (event.target.closest("a, button, .project-card")) {
+                cursorRing.classList.add("is-active");
+            }
+        });
+
+        document.addEventListener("mouseout", event => {
+            if (event.target.closest("a, button, .project-card")) {
+                cursorRing.classList.remove("is-active");
+            }
+        });
+
+        document.addEventListener("mouseleave", () => {
+            cursorDot.style.opacity = "0";
+            cursorRing.style.opacity = "0";
+        });
+    }
+}
