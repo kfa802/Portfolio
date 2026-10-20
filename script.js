@@ -1658,6 +1658,9 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
 
         document.body.classList.add("has-custom-cursor");
 
+        const hoverTargets =
+            "a, button, .project-card, main img, .about-lightbox-image";
+
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
 
@@ -1688,13 +1691,13 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
         animateRing();
 
         document.addEventListener("mouseover", event => {
-            if (event.target.closest("a, button, .project-card")) {
+            if (event.target.closest(hoverTargets)) {
                 cursorRing.classList.add("is-active");
             }
         });
 
         document.addEventListener("mouseout", event => {
-            if (event.target.closest("a, button, .project-card")) {
+            if (event.target.closest(hoverTargets)) {
                 cursorRing.classList.remove("is-active");
             }
         });
