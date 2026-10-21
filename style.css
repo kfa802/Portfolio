@@ -5876,6 +5876,33 @@ body {
 
 }
 
+/* Tighter gap between hero video and first section */
+
+.project-page-hero {
+    padding-bottom: 1.5rem;
+}
+
+.project-page-hero + .project-section {
+    padding-top: 3rem;
+}
+
+.project-video-scroll {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.75rem;
+}   
+
+.project-video-scroll {
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 1.75rem auto 0;
+    transform: none;
+    text-align: center;
+}
+
 
 
 
