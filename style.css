@@ -5902,6 +5902,17 @@ body {
     transform: none;
     text-align: center;
 }
+.project-section-content p a {
+    color: var(--accent-amber);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s ease;
+}
+
+.project-section-content p a:hover {
+    opacity: 0.75;
+}
+
 
 
 

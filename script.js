@@ -1510,13 +1510,17 @@ if (aboutPhotoGrid) {
 
 /* =========================================
    PROJECT PAGE — CLICKABLE IMAGES
+   Images inside links (project cards, social
+   icons, next-project links) are skipped, so
+   they just follow their link.
 ========================================= */
 
 const projectImages = Array.from(
-    document.querySelectorAll(
-        "main img:not(.gallery-lightbox img)"
-    )
-).filter(image => !image.closest(".gallery-lightbox"));
+    document.querySelectorAll("main img")
+).filter(image =>
+    !image.closest(".gallery-lightbox") &&
+    !image.closest("a")
+);
 
 if (projectImages.length > 0) {
     const projectLightbox = document.createElement("div");
