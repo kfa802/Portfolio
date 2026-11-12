@@ -1014,11 +1014,23 @@ if (prefersReducedMotion) {
 
 } else {
 
+    // Reveal once, and stagger elements that enter the screen together
     const revealObserver = new IntersectionObserver(entries => {
+        let step = 0;
         entries.forEach(entry => {
-            entry.target.classList.toggle("visible", entry.isIntersecting);
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const delay = Math.min(step * 0.09, 0.45);
+            step++;
+            if (delay > 0) {
+                el.style.transitionDelay = delay + "s";
+                // clear it afterwards so hover effects aren't delayed
+                setTimeout(() => { el.style.transitionDelay = ""; }, (delay + 1.2) * 1000);
+            }
+            el.classList.add("visible");
+            revealObserver.unobserve(el);
         });
-    }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
+    }, { threshold: 0, rootMargin: "0px 0px -40px 0px" });
 
     otherRevealEls.forEach(el => revealObserver.observe(el));
 

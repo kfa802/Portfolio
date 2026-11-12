@@ -1997,11 +1997,11 @@ main#top,
         0;
 
     transform:
-        translateY(35px)
-        scale(0.985);
+        translateY(24px)
+        scale(0.99);
 
     filter:
-        blur(14px);
+        blur(8px);
 
     clip-path:
         inset(
@@ -2011,10 +2011,10 @@ main#top,
     
 
     transition:
-        opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-        clip-path 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+        clip-path 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.visible {
@@ -2639,7 +2639,7 @@ main#top,
     object-fit: cover;
 
     transition:
-        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 
@@ -2954,7 +2954,7 @@ main#top,
     height: auto;
 
     transition:
-        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .project-system-image:hover img {
@@ -5255,7 +5255,7 @@ body {
         transform: translateY(24px) scale(0.99);
         filter: blur(5px);
         clip-path: inset(6% 0 6% 0 round 16px);
-        transition-duration: 0.8s, 0.9s, 0.9s, 0.9s;
+        transition-duration: 0.7s, 0.75s, 0.75s, 0.75s;
     }
  
     .reveal.visible {
@@ -5920,3 +5920,257 @@ body {
 
  
 
+
+
+/* =========================================
+   TOOL LOGOS (Skills section)
+========================================= */
+
+.tool-logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 12px;
+    margin: 8px 0 48px;
+}
+
+.tool-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px 8px 14px;
+
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.tool-logo:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.tool-logo img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+/* Black logos (Unity, GitHub, LaTeX) turned light for the dark background */
+.tool-logo img.tool-logo-invert {
+    filter: invert(1) brightness(0.95);
+}
+
+.tool-logo span {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.2;
+}
+
+@media (max-width: 700px) {
+    .tool-logos {
+        grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+        gap: 8px;
+    }
+
+    .tool-logo {
+        padding: 14px 6px 10px;
+    }
+
+    .tool-logo img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+
+/* About page: tighter gap between photo gallery and Research */
+.section:has(.about-photo-grid) {
+    padding-bottom: 30px;
+}
+
+#research.section {
+    padding-top: 50px;
+}
+
+
+/* =========================================
+   HERO NAME — refined (tight letters, amber surname, buttons)
+========================================= */
+
+/* flex removes the whitespace gaps between the letter spans */
+.hero-name .name-line {
+    display: flex;
+}
+
+.hero-name {
+    letter-spacing: -0.045em;
+    line-height: 0.9;
+    text-shadow: none;
+}
+
+.hero-name .letter.space {
+    width: 0.28em;
+}
+
+.hero-name .name-line:first-child .letter {
+    text-shadow: 0 0 40px rgba(236, 233, 225, 0.12);
+}
+
+.hero-name .name-line-second .letter {
+    color: var(--accent-amber);
+}
+
+.hero-name .name-line-second .letter.hero-name-dot {
+    color: var(--text);
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+}
+
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 22px;
+    border: 1px solid rgba(236, 233, 225, 0.3);
+    border-radius: 999px;
+    color: var(--text);
+    font-family: var(--body-font);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-button:hover {
+    transform: translateY(-2px);
+    border-color: rgba(236, 233, 225, 0.6);
+}
+
+.hero-button-primary {
+    background: var(--accent-amber);
+    border-color: var(--accent-amber);
+    color: #17202A;
+}
+
+.hero-button-primary:hover {
+    background: #ffc370;
+    border-color: #ffc370;
+}
+
+@media (max-width: 700px) {
+    .hero-name {
+        letter-spacing: -0.03em;
+    }
+
+    .hero-buttons {
+        gap: 10px;
+        margin-top: 22px;
+    }
+
+    .hero-button {
+        padding: 10px 16px;
+        font-size: 0.66rem;
+    }
+}
+
+
+/* =========================================
+   SCROLL REVEAL — smoother version
+   (overrides the older reveal rules above)
+========================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    filter: blur(6px);
+    clip-path: none;
+    transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: none;
+}
+
+/* Logo tiles cascade in one by one
+   (animates `translate`/`scale` so the hover `transform` still works instantly) */
+.tool-logos.reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+}
+
+.tool-logos .tool-logo {
+    opacity: 0;
+}
+
+.tool-logos.visible .tool-logo {
+    animation: toolTileIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes toolTileIn {
+    from { opacity: 0; translate: 0 16px; scale: 0.96; }
+    to   { opacity: 1; translate: 0 0;    scale: 1; }
+}
+
+@media (max-width: 700px) {
+    .reveal {
+        transform: translateY(22px);
+        filter: none;
+        transition-duration: 0.75s, 0.8s, 0.75s;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .tool-logos .tool-logo {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
+}
+
+.tool-logos.visible .tool-logo:nth-child(1) { animation-delay: 0.00s; }
+.tool-logos.visible .tool-logo:nth-child(2) { animation-delay: 0.03s; }
+.tool-logos.visible .tool-logo:nth-child(3) { animation-delay: 0.06s; }
+.tool-logos.visible .tool-logo:nth-child(4) { animation-delay: 0.09s; }
+.tool-logos.visible .tool-logo:nth-child(5) { animation-delay: 0.12s; }
+.tool-logos.visible .tool-logo:nth-child(6) { animation-delay: 0.15s; }
+.tool-logos.visible .tool-logo:nth-child(7) { animation-delay: 0.18s; }
+.tool-logos.visible .tool-logo:nth-child(8) { animation-delay: 0.21s; }
+.tool-logos.visible .tool-logo:nth-child(9) { animation-delay: 0.24s; }
+.tool-logos.visible .tool-logo:nth-child(10) { animation-delay: 0.27s; }
+.tool-logos.visible .tool-logo:nth-child(11) { animation-delay: 0.30s; }
+.tool-logos.visible .tool-logo:nth-child(12) { animation-delay: 0.33s; }
+.tool-logos.visible .tool-logo:nth-child(13) { animation-delay: 0.36s; }
+.tool-logos.visible .tool-logo:nth-child(14) { animation-delay: 0.39s; }
+.tool-logos.visible .tool-logo:nth-child(15) { animation-delay: 0.42s; }
+.tool-logos.visible .tool-logo:nth-child(16) { animation-delay: 0.45s; }
+.tool-logos.visible .tool-logo:nth-child(17) { animation-delay: 0.48s; }
+.tool-logos.visible .tool-logo:nth-child(18) { animation-delay: 0.51s; }
+.tool-logos.visible .tool-logo:nth-child(19) { animation-delay: 0.54s; }
+.tool-logos.visible .tool-logo:nth-child(20) { animation-delay: 0.57s; }
+.tool-logos.visible .tool-logo:nth-child(21) { animation-delay: 0.60s; }
+.tool-logos.visible .tool-logo:nth-child(22) { animation-delay: 0.63s; }
