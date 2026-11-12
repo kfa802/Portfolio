@@ -1724,3 +1724,105 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
         });
     }
 }
+
+/* =========================================
+   NAVIGATION — sticky header + current page
+========================================= */
+
+(function () {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+
+    // Show/hide on scroll direction
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+        const y = window.scrollY;
+        header.classList.toggle("is-scrolled", y > 20);
+
+        lastY = y;
+        ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+        if (!ticking) {
+            requestAnimationFrame(onScroll);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    onScroll();
+
+
+    // Highlight the current page
+    const links = header.querySelectorAll(".nav-links a[data-nav]");
+    function setActive(name) {
+        links.forEach(a => {
+            const on = a.dataset.nav === name;
+            a.classList.toggle("is-active", on);
+            if (on) a.setAttribute("aria-current", "page");
+            else a.removeAttribute("aria-current");
+        });
+    }
+
+    const page = document.body.dataset.page || "home";
+    setActive(page);
+
+    // On the homepage, follow the section you're in
+    if (page === "home") {
+        const sections = ["work", "contact"]
+            .map(id => document.getElementById(id))
+            .filter(Boolean);
+
+        function updateFromScroll() {
+            let current = "home";
+            sections.forEach(sec => {
+                if (sec.getBoundingClientRect().top < window.innerHeight * 0.4) {
+                    current = sec.id;
+                }
+            });
+            // at the very bottom of the page, the last section is the current one
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40) {
+                current = "contact";
+            }
+            setActive(current);
+        }
+
+        window.addEventListener("scroll", updateFromScroll, { passive: true });
+        updateFromScroll();
+    }
+})();
+
+
+/* =========================================
+   BACK BUTTON — returns to the page you came from
+========================================= */
+
+(function () {
+    const btn = document.querySelector(".nav-history");
+    let previous = null;
+
+    try {
+        previous = JSON.parse(sessionStorage.getItem("kfaLastPage") || "null");
+        // remember this page for the next one
+        sessionStorage.setItem("kfaLastPage", JSON.stringify({
+            url: location.href.split("#")[0],
+            title: (document.body.dataset.page === "home")
+                ? "Home"
+                : document.title.split(/\s[—–|-]\s/)[0].trim()
+        }));
+    } catch (e) { /* storage blocked: just don't show the button */ }
+
+    if (!btn || !previous || previous.url === location.href.split("#")[0]) return;
+
+    btn.hidden = false;
+    btn.title = "Back to " + previous.title;
+    btn.setAttribute("aria-label", "Back to " + previous.title);
+
+    btn.addEventListener("click", () => {
+        // history.back keeps the scroll position you left the page at
+        if (history.length > 1) history.back();
+        else location.href = previous.url;
+    });
+})();
