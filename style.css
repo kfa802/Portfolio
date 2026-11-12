@@ -6523,3 +6523,74 @@ button.nav-back {
         padding: 6px 0;
     }
 }
+
+
+/* Leaf trail canvas (hold + drag the mouse) */
+.leaf-trail {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+/* Big animated name is decorative — don't highlight it when dragging */
+.hero-name {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Small screens: logo doubles as Home, tighter spacing so everything fits */
+@media (max-width: 700px) {
+    .nav-links a[data-nav="home"] {
+        display: none;
+    }
+
+    .nav-links a {
+        padding: 6px 7px;
+        font-size: 0.76rem;
+    }
+
+    .nav-back {
+        padding: 5px 9px;
+    }
+
+    .site-header .nav {
+        padding-left: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .nav-links a {
+        padding: 5px 5px;
+        font-size: 0.7rem;
+    }
+
+    .nav-left .logo {
+        font-size: 1rem;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 420px) {
+    .nav {
+        gap: 4px;
+    }
+
+    .nav-left {
+        gap: 4px;
+    }
+
+    .nav-left .logo {
+        margin-right: 2px;
+    }
+
+    .nav-links a {
+        padding: 6px 5px;
+    }
+
+    .site-header .nav {
+        padding: 6px 4px 6px 10px;
+    }
+}

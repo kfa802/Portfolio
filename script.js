@@ -1771,7 +1771,7 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
 
     // On the homepage, follow the section you're in
     if (page === "home") {
-        const sections = ["work", "contact"]
+        const sections = ["work", "research", "contact"]
             .map(id => document.getElementById(id))
             .filter(Boolean);
 
@@ -1825,4 +1825,170 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
         if (history.length > 1) history.back();
         else location.href = previous.url;
     });
+})();
+
+
+/* =========================================
+   LEAF TRAIL — hold the mouse button and drag
+========================================= */
+
+(function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return; // mouse only
+
+    const canvas = document.createElement("canvas");
+    canvas.className = "leaf-trail";
+    canvas.setAttribute("aria-hidden", "true");
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext("2d");
+
+    let w = 0, h = 0;
+    function resize() {
+        const dpr = window.devicePixelRatio || 1;
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    const leaves = [];
+    const MAX_LEAVES = 140;
+    let dragging = false;
+    let lastX = 0, lastY = 0, distSinceLeaf = 0;
+    let running = false;
+
+    function currentColors() {
+        try { return seasons[activeSeason].colors; }
+        catch (e) { return ["#D9823B", "#E6A04B", "#C96B3B"]; }
+    }
+
+    function spawn(x, y, dx, dy) {
+        const colors = currentColors();
+        const speed = Math.min(Math.hypot(dx, dy), 30);
+        leaves.push({
+            x: x + (Math.random() - 0.5) * 10,
+            y: y + (Math.random() - 0.5) * 10,
+            // drift a little in the drag direction, then fall
+            vx: dx * 0.04 + (Math.random() - 0.5) * 1.2,
+            vy: dy * 0.04 - Math.random() * 0.8,
+            size: 5 + Math.random() * 5 + speed * 0.08,
+            rot: Math.random() * Math.PI * 2,
+            vr: (Math.random() - 0.5) * 0.12,
+            sway: Math.random() * Math.PI * 2,
+            life: 0,
+            maxLife: 70 + Math.random() * 50,
+            color: colors[Math.floor(Math.random() * colors.length)]
+        });
+        if (leaves.length > MAX_LEAVES) leaves.shift();
+    }
+
+    function drawLeaf(l, alpha) {
+        ctx.save();
+        ctx.translate(l.x, l.y);
+        ctx.rotate(l.rot);
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = l.color;
+        const s = l.size;
+        ctx.beginPath();
+        ctx.moveTo(0, -s);
+        ctx.bezierCurveTo(s * 0.9, -s * 0.5, s * 0.9, s * 0.5, 0, s);
+        ctx.bezierCurveTo(-s * 0.9, s * 0.5, -s * 0.9, -s * 0.5, 0, -s);
+        ctx.fill();
+        ctx.restore();
+    }
+
+    function tick() {
+        ctx.clearRect(0, 0, w, h);
+        for (let i = leaves.length - 1; i >= 0; i--) {
+            const l = leaves[i];
+            l.life++;
+            l.sway += 0.08;
+            l.vy += 0.035;              // gentle gravity
+            l.vx *= 0.98;
+            l.x += l.vx + Math.sin(l.sway) * 0.5;
+            l.y += l.vy;
+            l.rot += l.vr;
+            const t = l.life / l.maxLife;
+            if (t >= 1) { leaves.splice(i, 1); continue; }
+            // quick fade in, slow fade out
+            const alpha = t < 0.1 ? t / 0.1 : 1 - (t - 0.1) / 0.9;
+            drawLeaf(l, alpha * 0.9);
+        }
+        if (leaves.length || dragging) {
+            requestAnimationFrame(tick);
+        } else {
+            running = false;
+            ctx.clearRect(0, 0, w, h);
+        }
+    }
+
+    function start() {
+        if (!running) { running = true; requestAnimationFrame(tick); }
+    }
+
+    // Drags that start on empty background shouldn't highlight text.
+    // Only counts as "text" when the mouse is really on letters.
+    const INTERACTIVE = "a, button, input, textarea, select, label, img, video, iframe, [contenteditable]";
+
+    function pointIsOnText(x, y) {
+        let node = null, offset = 0;
+        if (document.caretRangeFromPoint) {
+            const r = document.caretRangeFromPoint(x, y);
+            if (r) { node = r.startContainer; offset = r.startOffset; }
+        } else if (document.caretPositionFromPoint) {
+            const p = document.caretPositionFromPoint(x, y);
+            if (p) { node = p.offsetNode; offset = p.offset; }
+        }
+        if (!node || node.nodeType !== 3 || !node.textContent.trim()) return false;
+        const range = document.createRange();
+        range.setStart(node, Math.max(0, offset - 1));
+        range.setEnd(node, Math.min(node.length, offset + 1));
+        for (const rect of range.getClientRects()) {
+            if (x >= rect.left - 2 && x <= rect.right + 2 &&
+                y >= rect.top - 2 && y <= rect.bottom + 2) return true;
+        }
+        return false;
+    }
+
+    window.addEventListener("mousedown", e => {
+        if (e.button !== 0) return;
+        if (e.target.closest && e.target.closest(INTERACTIVE)) return;
+        if (pointIsOnText(e.clientX, e.clientY)) return;
+        e.preventDefault();
+        const sel = window.getSelection && window.getSelection();
+        if (sel) sel.removeAllRanges();
+    });
+
+    window.addEventListener("pointerdown", e => {
+        if (e.pointerType !== "mouse" || e.button !== 0) return;
+        dragging = true;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        distSinceLeaf = 0;
+    });
+
+    window.addEventListener("pointermove", e => {
+        if (!dragging) return;
+        const dx = e.clientX - lastX;
+        const dy = e.clientY - lastY;
+        distSinceLeaf += Math.hypot(dx, dy);
+        // one leaf roughly every 14px of movement
+        while (distSinceLeaf > 14) {
+            spawn(e.clientX, e.clientY, dx, dy);
+            distSinceLeaf -= 14;
+        }
+        lastX = e.clientX;
+        lastY = e.clientY;
+        start();
+    });
+
+    const stop = () => { dragging = false; };
+    window.addEventListener("pointerup", stop);
+    window.addEventListener("pointercancel", stop);
+    window.addEventListener("blur", stop);
+    // native drags (images/links) swallow pointer events; end the trail cleanly
+    window.addEventListener("dragstart", stop);
 })();
