@@ -3248,64 +3248,7 @@ main#top,
     border-color: rgba(236, 233, 225, 0.3);
 }
 
-/* Project card personality icons */
 
-.project-card:hover .project-image-arrow {
-    font-size: 0;
-}
-
-.project-card:hover .project-image-arrow::after {
-    font-size: 1.2rem;
-    line-height: 1;
-}
-
-.project-plan-bee:hover .project-image-arrow::after {
-    content: "🐝";
-}
-
-.project-womens-suffrage:hover .project-image-arrow::after {
-    content: "✊";
-}
-
-.project-hearing-loss:hover .project-image-arrow::after {
-    content: "👂";
-}
-
-.project-harry-potter:hover .project-image-arrow::after {
-    content: "🪄";
-}
-
-.project-3d:hover .project-image-arrow::after {
-    content: "🌲";
-}
-
-.project-resident-evil:hover .project-image-arrow::after {
-    content: "☣";
-}
-
-.project-whisker-town:hover .project-image-arrow::after {
-    content: "🐱";
-}
-
-.project-dance-pads:hover .project-image-arrow::after {
-    content: "💃";
-}
-
-.project-zombie:hover .project-image-arrow::after {
-    content: "🧟";
-}
-
-.project-trivia:hover .project-image-arrow::after {
-    content: "❓";
-}
-
-.project-liv:hover .project-image-arrow::after {
-    content: "❤️‍🩹";
-}
-
-.project-blue-planet:hover .project-image-arrow::after {
-    content: "🐟";
-}
 
 /* =========================================
    PLAN BEE HERO ANIMATION
@@ -6593,4 +6536,1107 @@ button.nav-back {
     .site-header .nav {
         padding: 6px 4px 6px 10px;
     }
+}
+
+
+/* =========================================
+   SEMESTER TIMELINE — cleaned up
+   One variable controls where the line sits, so the
+   line, every dot and every label always line up.
+========================================= */
+
+.semester-timeline {
+    --tl-x: -64px;            /* line position, relative to the cards */
+    --tl-line: rgba(236, 233, 225, 0.22);
+    gap: 36px;
+}
+
+/* the line (built from each row's segment) */
+.timeline-current::after,
+.timeline-project::before {
+    left: var(--tl-x);
+    width: 2px;
+    margin-left: -1px;
+    background: var(--tl-line);
+}
+
+.timeline-current::after {
+    top: 50%;
+    bottom: -36px;
+    background: linear-gradient(to bottom, var(--accent-amber), var(--tl-line));
+}
+
+.timeline-project::before {
+    top: -36px;
+    bottom: -36px;
+}
+
+.timeline-project:last-child::before {
+    bottom: 50%;
+    background: linear-gradient(to bottom, var(--tl-line), rgba(236, 233, 225, 0.05));
+}
+
+/* dots */
+.timeline-marker,
+.timeline-current .timeline-marker {
+    left: var(--tl-x);
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(236, 233, 225, 0.55);
+    background: var(--bg);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.timeline-current .current-dot {
+    left: var(--tl-x);
+    width: 14px;
+    height: 14px;
+    border: 0;
+    background: var(--accent-amber);
+    box-shadow: 0 0 0 0 rgba(255, 180, 84, 0.45);
+    animation: timelinePulse 2.4s ease-out infinite;
+}
+
+@keyframes timelinePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 180, 84, 0.45); }
+    70%  { box-shadow: 0 0 0 12px rgba(255, 180, 84, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 180, 84, 0); }
+}
+
+/* line from the dot to the card */
+.timeline-connector,
+.current-line {
+    width: calc(var(--tl-x) * -1);
+    background: linear-gradient(to right, var(--tl-line), rgba(236, 233, 225, 0.06));
+    transition: background 0.3s ease;
+}
+
+/* labels */
+.timeline-label,
+.timeline-current .current-label {
+    left: calc(var(--tl-x) - 152px);
+    width: 140px;
+    padding-right: 20px;
+}
+
+.timeline-label span {
+    color: rgba(236, 233, 225, 0.72);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    transition: color 0.3s ease;
+}
+
+.timeline-current .current-label span {
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.timeline-current .current-label small {
+    margin-top: 6px;
+    padding: 2px 8px;
+    border: 1px solid rgba(255, 180, 84, 0.4);
+    border-radius: 999px;
+    color: var(--accent-amber);
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+}
+
+/* hovering a card lights up its spot on the timeline */
+.timeline-project:hover .timeline-dot {
+    border-color: var(--accent-amber);
+    background: var(--accent-amber);
+    box-shadow: 0 0 0 5px rgba(255, 180, 84, 0.15);
+    transform: translate(-50%, -50%) scale(1.15);
+}
+
+.timeline-project:hover .timeline-connector {
+    background: linear-gradient(to right, var(--accent-amber), rgba(255, 180, 84, 0.15));
+}
+
+.timeline-project:hover .timeline-label span {
+    color: var(--accent-amber);
+}
+
+/* not enough room for labels on mid-size screens: keep line + dots */
+@media (max-width: 1180px) {
+    .timeline-label,
+    .timeline-current .current-label {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .timeline-marker,
+    .timeline-current::after,
+    .timeline-project::before,
+    .timeline-connector,
+    .timeline-current .current-dot {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .timeline-current .current-dot {
+        animation: none;
+    }
+}
+
+
+/* =========================================
+   PROJECT CARDS — refreshed
+========================================= */
+
+.project-card {
+    border-radius: 22px;
+    border-color: rgba(236, 233, 225, 0.12);
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02) 60%);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.35s ease,
+        box-shadow 0.45s ease,
+        background 0.35s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 180, 84, 0.35);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(255, 180, 84, 0.08);
+}
+
+/* image: wide crop with a soft fade into the card */
+.project-image {
+    height: auto;
+    aspect-ratio: 16 / 7.5;
+}
+
+.project-image::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 45%;
+    background: linear-gradient(to bottom, transparent, rgba(23, 32, 42, 0.45));
+    pointer-events: none;
+}
+
+.project-image-arrow {
+    z-index: 2;
+}
+
+/* content */
+.project-card-content {
+    padding: 26px 32px 28px;
+}
+
+.project-meta {
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.project-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: rgba(255, 180, 84, 0.14);
+    font-size: 0.72rem;
+}
+
+.project-year {
+    padding-left: 12px;
+    border-left: 1px solid rgba(236, 233, 225, 0.18);
+}
+
+.project-type {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+}
+
+.project-card-content h3 {
+    margin-bottom: 10px;
+    font-size: clamp(1.45rem, 2.6vw, 1.8rem);
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+}
+
+.project-card-content > p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.project-tags {
+    gap: 6px;
+    margin-top: 18px;
+}
+
+.project-tags span {
+    padding: 5px 10px;
+    font-size: 0.68rem;
+    border-color: rgba(236, 233, 225, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.project-tags span.project-tags-more {
+    color: var(--accent-amber);
+    border-color: rgba(255, 180, 84, 0.3);
+}
+
+/* "View project" footer */
+.timeline-project .project-card-content::after,
+.mini-projects-group .project-card-content::after {
+    content: "View project  →";
+    display: block;
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(236, 233, 225, 0.1);
+    color: var(--text);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    white-space: pre;
+    transition: color 0.25s ease;
+}
+
+.project-card:hover .project-card-content::after {
+    color: var(--accent-amber);
+}
+
+@media (max-width: 700px) {
+    .project-image {
+        aspect-ratio: 16 / 9;
+    }
+
+    .project-card-content {
+        padding: 20px 20px 22px;
+    }
+}
+
+/* Timeline segments meet exactly (no overlapping = no bright patches) */
+.timeline-current::after {
+    bottom: 0;
+}
+
+.timeline-project::before {
+    top: -36px;
+    bottom: 0;
+}
+
+.timeline-project:last-child::before {
+    bottom: 50%;
+}
+
+
+/* =========================================
+   PROJECT CARD ARROW — amber on hover (replaces the emoji icons)
+========================================= */
+
+.project-image-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    opacity: 0.9;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-image-arrow {
+    font-size: 0;           /* hide the text arrow, draw it below instead */
+}
+
+.project-image-arrow::after {
+    content: "\2197";       /* ↗ */
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover .project-image-arrow {
+    transform: scale(1.08);
+    background: var(--accent-amber);
+    border-color: var(--accent-amber);
+    color: #17202A;
+    opacity: 1;
+}
+
+.project-card:hover .project-image-arrow::after {
+    transform: rotate(45deg) translate(1px, -1px);   /* ↗ turns into → */
+}
+
+
+/* =========================================
+   HOMEPAGE ABOUT — refreshed
+========================================= */
+
+#about .about-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+}
+
+#about .large-text {
+    font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+    line-height: 1.22;
+    letter-spacing: -0.04em;
+    margin-bottom: 22px;
+}
+
+.about-highlight {
+    color: var(--accent-amber);
+}
+
+#about .about-text > p:not(.large-text) {
+    max-width: 480px;
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+
+#about .about-text strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* quick facts */
+.about-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.about-facts li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 110px;
+    padding: 12px 16px;
+    border: 1px solid rgba(236, 233, 225, 0.12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.about-facts strong {
+    font-family: var(--display-font);
+    font-size: 1.35rem;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text);
+}
+
+.about-facts span {
+    color: var(--text-muted);
+    font-size: 0.74rem;
+}
+
+/* buttons */
+.about-button-primary {
+    background: var(--accent-amber);
+    border-color: var(--accent-amber);
+    color: #17202A;
+    font-weight: 600;
+}
+
+.about-button-primary:hover {
+    background: #ffc370;
+    border-color: #ffc370;
+    color: #17202A;
+}
+
+/* photo with an offset amber frame */
+#about .about-image-wrap {
+    justify-self: center;
+    width: 100%;
+    max-width: 380px;
+}
+
+#about .about-image {
+    position: relative;
+    max-width: none;
+    border: 0;
+    border-radius: 22px;
+    background: none;
+    transform: rotate(1.5deg);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#about .about-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid rgba(255, 180, 84, 0.55);
+    border-radius: 22px;
+    transform: translate(14px, 14px) rotate(-3deg);
+    z-index: -1;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#about .about-image img {
+    border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+#about .about-image-wrap:hover .about-image {
+    transform: rotate(0deg);
+}
+
+#about .about-image-wrap:hover .about-image::before {
+    transform: translate(18px, 18px) rotate(-1deg);
+}
+
+/* "Currently working on" card, always visible */
+.about-status {
+    position: absolute;
+    left: -28px;
+    bottom: 28px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 10px;
+    row-gap: 3px;
+    align-items: center;
+    max-width: 250px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: var(--text);
+    color: var(--bg);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.25);
+    z-index: 3;
+}
+
+.about-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-amber);
+    animation: timelinePulse 2.4s ease-out infinite;
+}
+
+.about-status-label {
+    font-family: var(--display-font);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.about-status-text {
+    grid-column: 1 / -1;
+    font-family: var(--display-font);
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+@media (max-width: 900px) {
+    #about .about-grid {
+        grid-template-columns: 1fr;
+        gap: 56px;
+    }
+
+    #about .about-image-wrap {
+        max-width: 340px;
+    }
+
+    .about-status {
+        left: -12px;
+        bottom: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-facts li {
+        min-width: 0;
+        flex: 1 1 0;
+        padding: 10px 12px;
+    }
+
+    .about-facts strong {
+        font-size: 1.15rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-status-dot {
+        animation: none;
+    }
+}
+
+/* "Currently working on" card: only shows when hovering the photo
+   (on touch screens there's no hover, so it stays visible there) */
+@media (hover: hover) and (pointer: fine) {
+    .about-status {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px) scale(0.97);
+        transition:
+            opacity 0.3s ease,
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            visibility 0.3s ease;
+    }
+
+    #about .about-image-wrap:hover .about-status {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+}
+
+
+/* =========================================
+   CONTACT — refreshed
+========================================= */
+
+.contact-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    padding: 52px;
+    overflow: hidden;
+    border: 1px solid rgba(236, 233, 225, 0.14);
+    border-radius: 26px;
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02) 65%);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* soft amber glow in the corner */
+.contact-card::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    left: -120px;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 180, 84, 0.18), transparent 70%);
+    pointer-events: none;
+}
+
+.contact-intro {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contact-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 18px;
+    color: var(--accent-amber);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.contact-eyebrow-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-amber);
+    animation: timelinePulse 2.4s ease-out infinite;
+}
+
+.contact-title {
+    margin: 0;
+    color: var(--text);
+    font-family: var(--display-font);
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+}
+
+.contact-sub {
+    max-width: 360px;
+    margin: 18px 0 0;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 30px;
+}
+
+button.hero-button {
+    background: transparent;
+    font-family: var(--body-font);
+    cursor: pointer;
+}
+
+.contact-copy.is-copied {
+    border-color: var(--accent-mint);
+    color: var(--accent-mint);
+}
+
+/* contact rows */
+.contact-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border: 1px solid rgba(236, 233, 225, 0.1);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--text);
+    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+}
+
+a.contact-row:hover,
+.contact-row-phone:hover {
+    border-color: rgba(255, 180, 84, 0.4);
+    background: rgba(255, 180, 84, 0.06);
+}
+
+a.contact-row:hover {
+    transform: translateX(4px);
+}
+
+.contact-row-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: rgba(236, 233, 225, 0.08);
+    color: var(--accent-amber);
+    font-family: var(--display-font);
+    font-weight: 700;
+}
+
+.contact-row-logo img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.contact-row-logo img.linkedin-logo { transform: scale(1.3); }
+.contact-row-logo img.github-logo { transform: scale(1.1); }
+
+.contact-row-text {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.contact-row-label {
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.contact-row-value {
+    overflow: hidden;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.contact-row-arrow {
+    color: var(--text-muted);
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+a.contact-row:hover .contact-row-arrow {
+    color: var(--accent-amber);
+    transform: translate(2px, -2px);
+}
+
+.contact-row-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.contact-mini {
+    padding: 6px 12px;
+    border: 1px solid rgba(236, 233, 225, 0.2);
+    border-radius: 999px;
+    color: var(--text);
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-mini:hover {
+    border-color: var(--accent-amber);
+    background: var(--accent-amber);
+    color: #17202A;
+}
+
+/* small socials row */
+.contact-socials {
+    position: relative;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(236, 233, 225, 0.1);
+}
+
+.contact-socials-label {
+    margin-right: 4px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.contact-socials .social-icon {
+    width: 40px;
+    height: 40px;
+}
+
+/* footer */
+.footer-top {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+}
+
+.footer-top:hover {
+    color: var(--accent-amber);
+}
+
+@media (max-width: 860px) {
+    .contact-card {
+        grid-template-columns: 1fr;
+        gap: 34px;
+        padding: 34px 22px;
+    }
+
+    .contact-buttons {
+        padding-top: 24px;
+    }
+}
+
+@media (max-width: 420px) {
+    .contact-row {
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .contact-row-value {
+        font-size: 0.86rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-eyebrow-dot {
+        animation: none;
+    }
+}
+
+
+/* =========================================
+   PROJECT CARD — "View project" pill + hover video
+========================================= */
+
+/* the round arrow grows into a "View project →" pill */
+.project-image-arrow {
+    width: auto;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 14px;
+    border-radius: 999px;
+    gap: 0;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        gap 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        padding 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-image-arrow::before {
+    content: "View project";
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    font-family: var(--body-font);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    transition:
+        max-width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.25s ease;
+}
+
+.project-card:hover .project-image-arrow {
+    gap: 8px;
+    padding: 0 18px;
+    transform: none;
+}
+
+.project-card:hover .project-image-arrow::before {
+    max-width: 110px;
+    opacity: 1;
+    transition-delay: 0.05s, 0.1s;
+}
+
+/* the footer line is no longer needed */
+.timeline-project .project-card-content::after,
+.mini-projects-group .project-card-content::after {
+    display: none;
+}
+
+/* video preview */
+.project-preview-video {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+}
+
+.project-preview-video.is-playing {
+    opacity: 1;
+}
+
+.project-image::after {
+    z-index: 1;
+}
+
+
+/* =========================================
+   CONTACT ICONS — one clean style
+========================================= */
+
+.contact-row-logo img,
+.contact-social img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    opacity: 1;
+    transform: none;
+    filter: brightness(0) invert(0.92);
+    transition: filter 0.25s ease;
+}
+
+.contact-row-logo {
+    background: rgba(236, 233, 225, 0.08);
+    transition: background-color 0.25s ease;
+}
+
+a.contact-row:hover .contact-row-logo {
+    background: var(--accent-amber);
+}
+
+a.contact-row:hover .contact-row-logo img {
+    filter: brightness(0) opacity(0.85);
+}
+
+.contact-socials .contact-social {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(236, 233, 225, 0.18);
+    background: rgba(236, 233, 225, 0.06);
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.contact-socials .contact-social:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-amber);
+    background: var(--accent-amber);
+}
+
+.contact-socials .contact-social:hover img {
+    filter: brightness(0) opacity(0.85);
+}
+
+
+/* =========================================
+   Card corner: back to the round amber arrow (no label)
+========================================= */
+
+.project-image-arrow,
+.project-card:hover .project-image-arrow {
+    width: 44px;
+    min-width: 0;
+    padding: 0;
+    gap: 0;
+    border-radius: 50%;
+}
+
+.project-image-arrow::before {
+    display: none;
+}
+
+.project-card:hover .project-image-arrow {
+    transform: scale(1.08);
+}
+
+
+/* =========================================
+   CURSOR — grows into a "View project" bubble over project cards
+========================================= */
+
+.cursor-ring {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cursor-label {
+    opacity: 0;
+    transform: scale(0.6);
+    color: #17202A;
+    font-family: var(--body-font);
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: center;
+    white-space: nowrap;
+    transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cursor-ring.is-view {
+    width: 96px;
+    height: 96px;
+    margin: -48px 0 0 -48px;
+    border-color: var(--accent-amber);
+    background: var(--accent-amber);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cursor-ring.is-view .cursor-label {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.08s;
+}
+
+.cursor-dot.is-hidden {
+    opacity: 0 !important;
+}
+
+
+/* =========================================
+   Outline buttons — bolder, less faded
+========================================= */
+
+.about-button {
+    border-color: rgba(236, 233, 225, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    font-weight: 600;
+}
+
+.about-button:hover {
+    border-color: var(--text);
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--text);
+}
+
+.about-button-primary,
+.about-button-primary:hover {
+    color: #17202A;
+}
+
+.hero-button:not(.hero-button-primary) {
+    border-color: rgba(236, 233, 225, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.about-button.about-button-primary {
+    border-color: var(--accent-amber);
+    background: var(--accent-amber);
+    color: #17202A;
+}
+
+.about-button.about-button-primary:hover {
+    border-color: #ffc370;
+    background: #ffc370;
+}
+
+
+/* Cursor "View project" bubble — soft faded amber like the original hover ring */
+.cursor-ring.is-view {
+    width: 104px;
+    height: 104px;
+    margin: -52px 0 0 -52px;
+    border: 1px solid var(--accent-amber);
+    background: rgba(255, 180, 84, 0.16);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    box-shadow: none;
+}
+
+.cursor-label {
+    color: var(--text);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+.cursor-ring {
+    transition:
+        width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        margin 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        opacity 0.3s ease;
+}
+
+/* Orange "View project" text in the cursor bubble */
+.cursor-label {
+    color: var(--accent-amber);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Tighter gap between Research (ORCID button) and Contact */
+#research.section {
+    padding-bottom: 30px;
+}
+
+#contact.section {
+    padding-top: 90px;
 }

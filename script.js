@@ -1706,15 +1706,29 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
 
         animateRing();
 
+        // label shown inside the ring over project cards
+        const cursorLabel = document.createElement("span");
+        cursorLabel.className = "cursor-label";
+        cursorLabel.innerHTML = "View<br>project";
+        cursorRing.appendChild(cursorLabel);
+
         document.addEventListener("mouseover", event => {
             if (event.target.closest(hoverTargets)) {
                 cursorRing.classList.add("is-active");
             }
+            const onCard = !!event.target.closest(".project-card");
+            cursorRing.classList.toggle("is-view", onCard);
+            cursorDot.classList.toggle("is-hidden", onCard);
         });
 
         document.addEventListener("mouseout", event => {
             if (event.target.closest(hoverTargets)) {
                 cursorRing.classList.remove("is-active");
+            }
+            const to = event.relatedTarget;
+            if (!to || !to.closest || !to.closest(".project-card")) {
+                cursorRing.classList.remove("is-view");
+                cursorDot.classList.remove("is-hidden");
             }
         });
 
@@ -1991,4 +2005,103 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     window.addEventListener("blur", stop);
     // native drags (images/links) swallow pointer events; end the trail cleanly
     window.addEventListener("dragstart", stop);
+})();
+
+
+/* =========================================
+   CONTACT — copy email button
+========================================= */
+
+document.querySelectorAll(".contact-copy").forEach(btn => {
+    const label = btn.querySelector(".contact-copy-text");
+    const original = label.textContent;
+    btn.addEventListener("click", async () => {
+        const text = btn.dataset.copy;
+        try {
+            await navigator.clipboard.writeText(text);
+        } catch (e) {
+            // fallback for older browsers / file://
+            const t = document.createElement("textarea");
+            t.value = text;
+            t.style.position = "fixed";
+            t.style.opacity = "0";
+            document.body.appendChild(t);
+            t.select();
+            try { document.execCommand("copy"); } catch (err) {}
+            t.remove();
+        }
+        label.textContent = "Copied ✓";
+        btn.classList.add("is-copied");
+        setTimeout(() => {
+            label.textContent = original;
+            btn.classList.remove("is-copied");
+        }, 1800);
+    });
+});
+
+
+/* =========================================
+   PROJECT CARDS — play a video preview on hover
+   (mouse only; the video loads the first time you hover)
+========================================= */
+
+(function () {
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData = navigator.connection && navigator.connection.saveData;
+    if (!canHover || reduceMotion || saveData) return;
+
+    document.querySelectorAll(".project-card[data-preview]").forEach(card => {
+        const box = card.querySelector(".project-image");
+        if (!box) return;
+        let video = null;
+        let hovering = false;
+        let startTime = null;   // set once the video's length is known
+
+        function ensureVideo() {
+            if (video) return video;
+            video = document.createElement("video");
+            video.className = "project-preview-video";
+            video.src = card.dataset.preview;
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            video.preload = "metadata";
+            video.setAttribute("aria-hidden", "true");
+
+            // skip intro/title cards: start a little way in
+            video.addEventListener("loadedmetadata", () => {
+                const custom = parseFloat(card.dataset.previewStart);
+                startTime = !isNaN(custom)
+                    ? custom
+                    : Math.min(video.duration * 0.15, 20);
+                if (!isFinite(startTime)) startTime = 0;
+                video.currentTime = startTime;
+            }, { once: true });
+
+            video.addEventListener("playing", () => {
+                if (hovering) video.classList.add("is-playing");
+            });
+
+            const img = box.querySelector("img");
+            img ? img.after(video) : box.prepend(video);
+            return video;
+        }
+
+        card.addEventListener("mouseenter", () => {
+            hovering = true;
+            const v = ensureVideo();
+            // always start from the beginning of the preview
+            if (startTime !== null) v.currentTime = startTime;
+            const p = v.play();
+            if (p && p.catch) p.catch(() => {});
+        });
+
+        card.addEventListener("mouseleave", () => {
+            hovering = false;
+            if (!video) return;
+            video.classList.remove("is-playing");
+            video.pause();
+        });
+    });
 })();

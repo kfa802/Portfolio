@@ -16,7 +16,7 @@
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=18">
 
   <style>
     /* Contact details: email + phone */
@@ -222,29 +222,30 @@
         <div class="about-text reveal">
 
           <p class="large-text">
-            I'm an MSc Medialogy student interested in designing
-            technical and creative solutions to real-world challenges.
+            I design and build <span class="about-highlight">interactive experiences</span>
+            that people actually enjoy using.
           </p>
 
           <p>
-            I enjoy creating things that people can interact with, from
-            games and websites to experimental interfaces and immersive
-            experiences.
+            I'm an MSc Medialogy student at Aalborg University Copenhagen,
+            working across <strong>code</strong>, <strong>visual design</strong>
+            and <strong>user research</strong>, from rough idea to tested prototype.
           </p>
 
-          <p>
-            My work usually combines programming with visual design,
-            interaction and research.
-          </p>
+          <ul class="about-facts">
+            <li><strong>11</strong><span>projects</span></li>
+            <li><strong>2</strong><span>conference papers</span></li>
+            <li><strong>MSc</strong><span>Medialogy, AAU</span></li>
+          </ul>
 
           <div class="about-links">
             <a
               href="assets/CV_KristineFoghAndersen.pdf"
-              class="about-button"
+              class="about-button about-button-primary"
               download
             >Download CV ↓</a>
 
-            <a href="about.html" class="about-button">Read more about me →</a>
+            <a href="about.html" class="about-button">More about me →</a>
           </div>
 
         </div>
@@ -252,13 +253,14 @@
         <div class="about-image-wrap reveal">
 
           <div class="about-image">
-            <img src="assets/about-photo.jpg" alt="Creative workspace">
+            <img src="assets/about-photo.jpg" alt="Kristine Fogh Andersen">
           </div>
 
-          <div class="about-speech-bubble">
-            <span class="speech-label">Currently working on</span>
-            <span class="speech-text">
-              7th semester project about pandas in collaboration with Copenhagen Zoo
+          <div class="about-status">
+            <span class="about-status-dot" aria-hidden="true"></span>
+            <span class="about-status-label">Currently working on</span>
+            <span class="about-status-text">
+              A panda project with Copenhagen Zoo
             </span>
           </div>
 
@@ -323,6 +325,7 @@
               <a
                 href="projects/womens-suffrage.html"
                 class="project-card reveal project-womens-suffrage"
+                data-preview="assets/A%20Learning%20Game%20about%20Women%27s%20Suffrage%20in%20Denmark%20(AV%20Production).mp4"
               >
                 <div class="project-image">
                   <img
@@ -374,6 +377,7 @@
               <a
                 href="projects/hearing-loss.html"
                 class="project-card reveal project-hearing-loss"
+                data-preview="assets/Hearing%20Loss%20Simulation%20P5%20Project.mp4"
               >
                 <div class="project-image">
                   <img
@@ -424,6 +428,7 @@
               <a
                 href="projects/dance-pads.html"
                 class="project-card reveal project-dance-pads"
+                data-preview="assets/Darda%20-%20The%20Rise%20of%20The%20Dance%20Devil.mp4"
               >
                 <div class="project-image">
                   <img
@@ -472,6 +477,7 @@
               <a
                 href="projects/nico-nitro.html"
                 class="project-card reveal project-nico"
+                data-preview="assets/Nicoav.mp4"
               >
                 <div class="project-image">
                   <img
@@ -521,6 +527,7 @@
               <a
                 href="projects/liv.html"
                 class="project-card reveal project-liv"
+                data-preview="assets/Livav.mp4"
               >
                 <div class="project-image">
                   <img
@@ -572,6 +579,7 @@
               <a
                 href="projects/blue-planet.html"
                 class="project-card reveal project-blue-planet"
+                data-preview="assets/Blueplanet%20Av.mp4"
               >
                 <div class="project-image">
                   <img
@@ -630,6 +638,7 @@
             <a
               href="projects/plan-bee.html"
               class="project-card reveal project-plan-bee"
+                data-preview="assets/Plan-Bee-Video-Smaller.mp4"
             >
               <div class="project-image">
                 <img
@@ -705,6 +714,7 @@
             <a
               href="projects/harry-potter-escape-room.html"
               class="project-card reveal project-harry-potter"
+                data-preview="assets/Harry%20Potter%20Themed%20Escape%20Room%20-%20Mini%20Project.mp4"
             >
               <div class="project-image">
                 <img
@@ -745,6 +755,7 @@
             <a
               href="projects/zombie-game.html"
               class="project-card reveal project-zombie"
+                data-preview="assets/Zombie%20VR-Game.mp4"
             >
               <div class="project-image">
                 <img
@@ -785,6 +796,7 @@
             <a
               href="projects/but-worse-resident-evil.html"
               class="project-card reveal project-resident-evil"
+                data-preview="assets/Resident%20Evil%20(but%20worse)%20Mini%20Project.mp4"
             >
               <div class="project-image">
                 <img
@@ -978,76 +990,97 @@
         <h2>Contact</h2>
       </div>
 
-      <div class="contact-content reveal">
+      <div class="contact-card reveal">
 
-        <p class="large-text">
-          Have a project, job opportunity, or just want to say hi?
-        </p>
+        <div class="contact-intro">
 
-        <div class="contact-details">
+          <span class="contact-eyebrow">
+            <span class="contact-eyebrow-dot" aria-hidden="true"></span>
+            Get in touch
+          </span>
 
-          <div class="contact-item">
-            <span class="contact-label">Email</span>
-            <a href="mailto:kfoghandersen@gmail.com" class="contact-email">
-              kfoghandersen@gmail.com
+          <p class="contact-title">
+            Let's build something
+            <span class="about-highlight">together.</span>
+          </p>
+
+          <p class="contact-sub">
+            Have a project, a job opportunity, or just want to say hi?
+            My inbox is always open.
+          </p>
+
+          <div class="contact-buttons">
+            <a href="mailto:kfoghandersen@gmail.com" class="hero-button hero-button-primary">
+              Email me ↗
             </a>
-          </div>
-
-          <div class="contact-item">
-            <span class="contact-label">Phone</span>
-            <a href="tel:+4530365483" class="contact-email">
-              +45 30 36 54 83
-            </a>
-            <div class="contact-actions">
-              <a href="tel:+4530365483" class="contact-action">Call</a>
-              <a href="sms:+4530365483" class="contact-action">Text</a>
-            </div>
+            <button type="button" class="hero-button contact-copy" data-copy="kfoghandersen@gmail.com">
+              <span class="contact-copy-text">Copy email</span>
+            </button>
           </div>
 
         </div>
 
-        <div class="social-links">
+        <ul class="contact-list">
 
-          <a
-            href="https://www.instagram.com/kristine_fogh/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-icon"
-            aria-label="Instagram"
-          >
-            <img src="assets/Insta.png" alt="Instagram" class="instagram-logo">
+          <li>
+            <a href="mailto:kfoghandersen@gmail.com" class="contact-row">
+              <span class="contact-row-icon" aria-hidden="true">@</span>
+              <span class="contact-row-text">
+                <span class="contact-row-label">Email</span>
+                <span class="contact-row-value">kfoghandersen@gmail.com</span>
+              </span>
+              <span class="contact-row-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+
+          <li>
+            <div class="contact-row contact-row-phone">
+              <span class="contact-row-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+              </span>
+              <span class="contact-row-text">
+                <span class="contact-row-label">Phone</span>
+                <a href="tel:+4530365483" class="contact-row-value">+45 30 36 54 83</a>
+              </span>
+              <span class="contact-row-actions">
+                <a href="tel:+4530365483" class="contact-mini">Call</a>
+                <a href="sms:+4530365483" class="contact-mini">Text</a>
+              </span>
+            </div>
+          </li>
+
+          <li>
+            <a href="https://www.linkedin.com/in/kristine-fogh-andersen-061573448/" target="_blank" rel="noopener noreferrer" class="contact-row">
+              <span class="contact-row-icon contact-row-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg" alt=""></span>
+              <span class="contact-row-text">
+                <span class="contact-row-label">LinkedIn</span>
+                <span class="contact-row-value">Kristine Fogh Andersen</span>
+              </span>
+              <span class="contact-row-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://github.com/kfa802" target="_blank" rel="noopener noreferrer" class="contact-row">
+              <span class="contact-row-icon contact-row-logo"><img src="https://cdn.simpleicons.org/github" alt=""></span>
+              <span class="contact-row-text">
+                <span class="contact-row-label">GitHub</span>
+                <span class="contact-row-value">kfa802</span>
+              </span>
+              <span class="contact-row-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="contact-socials">
+          <span class="contact-socials-label">Also on</span>
+          <a href="https://www.instagram.com/kristine_fogh/" target="_blank" rel="noopener noreferrer" class="social-icon contact-social" aria-label="Instagram">
+            <img src="https://cdn.simpleicons.org/instagram" alt="">
           </a>
-
-          <a
-            href="https://www.facebook.com/kristine.foghandersen?locale=da_DK"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-icon"
-            aria-label="Facebook"
-          >
-            <img src="assets/Facebook_Logo_2023.png" alt="Facebook" class="facebook-logo">
+          <a href="https://www.facebook.com/kristine.foghandersen?locale=da_DK" target="_blank" rel="noopener noreferrer" class="social-icon contact-social" aria-label="Facebook">
+            <img src="https://cdn.simpleicons.org/facebook" alt="">
           </a>
-
-          <a
-            href="https://github.com/kfa802"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-icon"
-            aria-label="GitHub"
-          >
-            <img src="assets/github2.png" alt="GitHub" class="github-logo">
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/kristine-fogh-andersen-061573448/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-icon" 
-            aria-label="LinkedIn"
-          >
-            <img src="assets/linkedin.webp" alt="LinkedIn" class="linkedin-logo">
-          </a>
-
         </div>
 
       </div>
@@ -1066,13 +1099,13 @@
 
     <div class="container footer-inner">
       <p>© 2026 Kristine Fogh Andersen</p>
-      <p></p>
+      <a href="#top" class="footer-top">Back to top ↑</a>
     </div>
 
   </footer>
 
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=18"></script>
 
 </body>
 
