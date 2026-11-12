@@ -2158,3 +2158,28 @@ document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
         video.addEventListener('webkitendfullscreen', backToPreview); // iPhone
     });
 })();
+
+/* ===== Project pages: big play button on videos ===== */
+(function () {
+    document.querySelectorAll('.pj-video').forEach(function (wrap) {
+        var video = wrap.querySelector('video');
+        var btn = wrap.querySelector('.pj-play');
+        if (!video || !btn) return;
+        btn.addEventListener('click', function () {
+            video.controls = true;
+            wrap.classList.add('is-playing');
+            video.play().catch(function () {});
+        });
+        video.addEventListener('play', function () { wrap.classList.add('is-playing'); });
+    });
+})();
+
+/* ===== Normal mouse while something is full screen ===== */
+(function () {
+    function update() {
+        var fs = document.fullscreenElement || document.webkitFullscreenElement;
+        document.body.classList.toggle('is-fullscreen', !!fs);
+    }
+    document.addEventListener('fullscreenchange', update);
+    document.addEventListener('webkitfullscreenchange', update);
+})();

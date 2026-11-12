@@ -33,7 +33,7 @@
 
     <link
         rel="stylesheet"
-        href="../style.css?v=38"
+        href="../style.css?v=43"
     >
 
 </head>
@@ -103,645 +103,216 @@
          PROJECT HERO
     ========================================= -->
 
-    <main>
+    <main class="pj-page">
 
+        <!-- =========================================
+             PROJECT PAGE — same style as the About page
+             HOW TO SWAP A PICTURE: every picture sits in a
+             <figure class="ab-figure"> ... </figure> block.
+             Change the src="" and the <figcaption> text.
+        ========================================= -->
 
-        <section class="project-page-hero">
+        <!-- ===== HERO ===== -->
+        <section class="pj-hero">
+            <div class="pj-wrap">
 
-            <div class="container">
-
-
-                <a
-                    href="../index.html#work"
-                    class="project-back"
-                >
-                    <span>←</span>
-                    Back to selected work
-                </a>
-
-
-                <div class="project-page-heading reveal">
-
-
-                    <div class="project-meta">
-
-                        <span class="project-number">
-                            02
-                        </span>
-
-                               <span class="project-year">
-                                                2025
-                                </span>
-
-
-                        <span class="project-type">
-                            VR · Immersive interaction 
-                        </span>
-
+                <div class="pj-hero-text reveal">
+                    <div class="pj-meta">
+                        <span class="ab-chapter-num">02</span>
+                        <span>2025</span>
                     </div>
 
-
-                    <h1 class="hearing-loss-title">
-                        Hearing Loss Simulation
+                    <h1 class="pj-title">
+                        Hearing Loss Simulation<span class="ab-dot">.</span>
                     </h1>
 
-
-<p class="project-page-intro">
-    An <strong>immersive VR simulation</strong> of progressive hearing
-    loss, exploring whether experiencing it first-hand can build
-    understanding of how to communicate with people who have it.
-</p>
-
-
-                    <div class="project-tags">
-
-                        <span>Unity</span>
-                        <span>C#</span>
-                        <span>VR</span>
-                        <span>OpenXR</span>
-                         <span>XRI</span> 
-                        <span>Research</span>
-
-                    </div>
-
-
+                    <p class="pj-lead">
+                        An <strong>immersive VR simulation</strong> of progressive hearing loss, exploring whether experiencing it first-hand can build understanding of how to communicate with people who have it.
+                    </p>
                 </div>
 
-
-                <!-- HERO VIDEO -->
-
-                <div class="project-hero-media reveal">
-
-                    <video
-                        controls
-                        preload="metadata"
-                        poster="../assets/hearing2.png"
-                    >
-
-                        <source
-                            src="../assets/Hearing Loss Simulation P5 Project.mp4"
-                            type="video/mp4"
-                        >
-
-                        Your browser does not support
-                        the video element.
-
-                    </video>
-
-                </div>
-                <a
-    href="#overview"
-    class="hero-scroll project-video-scroll"
->
-
-    <span class="scroll-arrow">
-        ↓
-    </span>
-
-    <span>
-        SCROLL TO EXPLORE
-    </span>
-
-</a>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             OVERVIEW
-        ========================================= -->
-
-        <section
-            id="overview"
-            class="project-section"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>
-                            01
-                        </span>
-
-                        Overview
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            Experiencing communication
-                            from another perspective.
-                        </h2>
-
-
-                        <p>
-                            This project explores how VR can be used
-                            to communicate the everyday challenges
-                            of hearing loss.
-                        </p>
-
-
-                        <p>
-                            Set in a café, the experience places the
-                            user in conversations with three other
-                            people while gradually changing the
-                            clarity of speech and surrounding sound
-                            to simulate different levels of hearing
-                            loss.
-                        </p>
-
-
-                        <p>
-                            Rather than simply explaining hearing
-                            loss, the experience lets users encounter
-                            the frustration, confusion and social
-                            difficulty that can come with struggling
-                            to follow a conversation.
-                        </p>
-
-
-<div class="hearing-overview-image">
-
-    <img
-        src="../assets/hl3.png"
-        alt="Hearing Loss VR café environment"
-    >
-
-</div>
-
-
-                        <!-- SCROLL TO RESEARCH -->
-
-                        <a
-                            href="#research"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             RESEARCH
-        ========================================= -->
-
-        <section
-            id="research"
-            class="project-section project-section-alt"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>
-                            02
-                        </span>
-
-                        Research
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            Testing whether experience
-                            can support understanding.
-                        </h2>
-
-                        <p>
-                            We tested whether a VR simulation of progressive hearing loss
-                            could increase empathy and understanding in adults with normal
-                            hearing. 14 participants (aged 23–63) answered pre- and
-                            post-experience vignette scenarios, completed a presence
-                            questionnaire and took part in interviews.
-                        </p>
-
-                        <div class="project-feature-grid">
-
-                            <article class="project-feature reveal">
-                                <span class="project-feature-number">01</span>
-                                <h3>Presence</h3>
-                                <p>
-                                    Participants felt strongly "there" in the café
-                                    (IPQ mean 1.02, in the high range), mainly through
-                                    spatial presence and involvement.
-                                </p>
-                            </article>
-
-                            <article class="project-feature reveal">
-                                <span class="project-feature-number">02</span>
-                                <h3>Emotional response</h3>
-                                <p>
-                                    As the hearing loss progressed, participants described
-                                    stress, frustration and feeling excluded from the
-                                    conversation.
-                                </p>
-                            </article>
-
-                            <article class="project-feature reveal">
-                                <span class="project-feature-number">03</span>
-                                <h3>Knowledge</h3>
-                                <p>
-                                    Mentions of supportive communication strategies rose
-                                    from 17 to 30 after the experience, and 8 of 14
-                                    participants showed clear progress.
-                                </p>
-                            </article>
-
-                            <article class="project-feature reveal">
-                                <span class="project-feature-number">04</span>
-                                <h3>Key finding</h3>
-                                <p>
-                                    Empathy did not change significantly, likely because
-                                    participants were already empathic, but they learned
-                                    how to communicate more supportively.
-                                </p>
-                            </article>
-
-                        </div>
-
-<p>
-    The research article about this project has been accepted for
-    <a href="https://ud26.ie/" target="_blank" rel="noopener noreferrer">UD26</a>,
-    the 8th International Universal Design Conference in Galway.
-    The project is also being presented as a poster.
-</p>
-
-
-
-
-                        <!-- SCROLL TO ROLE -->
-
-                        <a
-                            href="#role"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             MY ROLE
-        ========================================= -->
-
-        <section
-            id="role"
-            class="project-section"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>
-                            03
-                        </span>
-
-                        My role
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            Building the VR experience
-                            in Unity.
-                        </h2>
-
-<p>
-    My primary role was developing core systems in Unity. I built an
-    event system that runs the café conversation step by step,
-    handles the user's choices and moves the player through four
-    stages of hearing loss.
-</p>
-
-<p>
-    I also built the VR interactions using the XR Interaction
-    Toolkit, including grabbable objects and button selection, and
-    added animations for the characters, synced with the
-    dialogue audio.
-</p>
-
-                        <div class="project-role-list">
-                            <div class="project-role-item"><span>01</span>Event system</div>
-                            <div class="project-role-item"><span>02</span>VR interaction</div>
-                            <div class="project-role-item"><span>03</span>Character animation</div>
-                            <div class="project-role-item"><span>04</span>Unity &amp; OpenXR</div>
-                        </div>
-
-
-
-
-                        <!-- SCROLL TO GALLERY -->
-
-                        <a
-                            href="#gallery"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             GALLERY
-        ========================================= -->
-
-<section
-    id="gallery"
-    class="project-section"
->
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>
-                            04
-                        </span>
-
-                        Gallery
-
-                    </div>
-
-
-                    <div class="project-section-content">
-
-
-                        <div class="project-gallery">
-
-
-                            <!-- IMAGE 1 -->
-
-                            <figure class="project-gallery-large reveal">
-
-                                <img
-                                    src="../assets/hearinglossimg.png"
-                                    alt="Hearing Loss VR café environment"
-                                >
-
-                            </figure>
-
-
-                            <!-- IMAGE 2 -->
-
-                            <figure class="reveal">
-
-                                <img
-                                    src="../assets/hl2.png"
-                                    alt="Hearing Loss VR experience"
-                                >
-
-                            </figure>
-
-
-                            <!-- IMAGE 3 -->
-
-                            <button
-                                class="gallery-more reveal"
-                                onclick="openGallery()"
-                            >
-
-                                <img
-                                    src="../assets/hl3.png"
-                                    alt="Hearing Loss VR experience"
-                                >
-
-                                <span>
-                                    +1 more
-                                </span>
-
-                            </button>
-
-
-                        </div>
-
-
-                        <!-- HIDDEN FULL GALLERY -->
-
-                        <div
-                            class="gallery-lightbox"
-                            id="gallery-lightbox"
-                        >
-
-
-                            <button
-                                class="gallery-close"
-                                onclick="closeGallery()"
-                            >
-                                ×
-                            </button>
-
-
-                            <div class="gallery-lightbox-content">
-
-
-                                <img
-                                    src="../assets/hearinglossimg.png"
-                                    alt="Hearing Loss VR café environment"
-                                >
-
-
-                                <img
-                                    src="../assets/hl2.png"
-                                    alt="Hearing Loss VR experience"
-                                >
-
-
-                                <img
-                                    src="../assets/hl3.png"
-                                    alt="Hearing Loss VR experience"
-                                >
-
-
-                                <img
-                                    src="../assets/HL1.png"
-                                    alt="Hearing Loss VR experience"
-                                >
-
-                                    <img
-                                    src="../assets/hero-hearing.png"
-                                    alt="Hearing Loss VR experience"
-                                >
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             LINKS
-        ========================================= -->
-
-        <section
-            class="project-section project-links-section"
-        >
-
-            <div class="container">
-
-                <div class="project-links reveal">
-
-
+                <dl class="pj-facts pj-facts-3 reveal">
                     <div>
+                        <dt>Type</dt>
+                        <dd>VR · Immersive interaction</dd>
+                    </div>
+                    <div>
+                        <dt>Tools</dt>
+                        <dd>Unity · C# · VR</dd>
+                    </div>
+                    <div>
+                        <dt>Topics</dt>
+                        <dd>OpenXR · XRI · Research</dd>
+                    </div>
+                </dl>
 
-                        <span class="project-links-label">
-                            Explore the project
-                        </span>
-
-
-                        <h2>
-                            Want to see more?
-                        </h2>
-
+                    <div class="pj-hero-media reveal">
+                        <div class="pj-video">
+                            <video preload="metadata" playsinline poster="../assets/hearing2.png">
+                                <source src="../assets/Hearing Loss Simulation P5 Project.mp4" type="video/mp4">
+                            </video>
+                            <button class="pj-play" type="button" aria-label="Play video"></button>
+                        </div>
                     </div>
 
-
-                    <div class="project-buttons">
-
-
-                        <a
-                            href="https://github.com/MieMEne/HearingLossSimulation"
-                            class="button button-secondary"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            GitHub
-                            <span>↗</span>
-                        </a>
+            </div>
+        </section>
 
 
-                    </div>
+        <section class="pj-body">
 
+
+            <!-- ===== 01 · OVERVIEW ===== -->
+            <article id="overview" class="ab-chapter">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">01</span>
+                    <h2>Experiencing communication from another perspective</h2>
+                    <p>
+                        This project explores how VR can be used to communicate the everyday challenges of hearing loss.
+                    </p>
+                    <p>
+                        Set in a café, the experience places the user in conversations with three other people while gradually changing the clarity of speech and surrounding sound to simulate different levels of hearing loss.
+                    </p>
+                    <p>
+                        Rather than simply explaining hearing loss, the experience lets users encounter the frustration, confusion and social difficulty that can come with struggling to follow a conversation.
+                    </p>
                 </div>
 
+                <div class="ab-media reveal">
+                    <figure class="ab-figure">
+                        <img src="../assets/hl3.png" alt="Hearing Loss VR café environment" loading="lazy">
+                    </figure>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 02 · RESEARCH ===== -->
+            <article id="research" class="ab-chapter pj-chapter-solo">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">02</span>
+                    <h2>Testing whether experience can support understanding</h2>
+                    <p>
+                        We tested whether a VR simulation of progressive hearing loss could increase empathy and understanding in adults with normal hearing. 14 participants (aged 23–63) answered pre- and post-experience vignette scenarios, completed a presence questionnaire and took part in interviews.
+                    </p>
+                    <p>
+                        The research article about this project has been accepted for <a href="https://ud26.ie/" rel="noopener noreferrer" target="_blank">UD26</a>, the 8th International Universal Design Conference in Galway. The project is also being presented as a poster.
+                    </p>
+                </div>
+
+
+                <div class="pj-features pj-features-4 reveal">
+                    <div class="pj-feature">
+                        <span>01</span>
+                        <h3>Presence</h3>
+                        <p>Participants felt strongly "there" in the café (IPQ mean 1.02, in the high range), mainly through spatial presence and involvement.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>02</span>
+                        <h3>Emotional response</h3>
+                        <p>As the hearing loss progressed, participants described stress, frustration and feeling excluded from the conversation.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>03</span>
+                        <h3>Knowledge</h3>
+                        <p>Mentions of supportive communication strategies rose from 17 to 30 after the experience, and 8 of 14 participants showed clear progress.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>04</span>
+                        <h3>Key finding</h3>
+                        <p>Empathy did not change significantly, likely because participants were already empathic, but they learned how to communicate more supportively.</p>
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 03 · MY ROLE ===== -->
+            <article id="my-role" class="ab-chapter">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">03</span>
+                    <h2>Building the VR experience in Unity</h2>
+                    <p>
+                        My primary role was developing core systems in Unity. I built an event system that runs the café conversation step by step, handles the user's choices and moves the player through four stages of hearing loss.
+                    </p>
+                    <p>
+                        I also built the VR interactions using the XR Interaction Toolkit, including grabbable objects and button selection, and added animations for the characters, synced with the dialogue audio.
+                    </p>
+
+                    <div class="pj-chips">
+                        <span>Event system</span>
+                        <span>VR interaction</span>
+                        <span>Character animation</span>
+                        <span>Unity &amp; OpenXR</span>
+                    </div>
+                </div>
+
+                <div class="ab-media reveal">
+                    <!-- swap: looping clip (silent) -->
+                    <figure class="ab-figure">
+                        <video src="../assets/hearing-vr-loop.mp4" muted loop playsinline autoplay preload="metadata"></video>
+                        <figcaption>Grabbing objects and choosing replies in VR</figcaption>
+                    </figure>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 04 · GALLERY ===== -->
+            <article id="gallery" class="pj-gallery-chapter">
+
+                <div class="pj-gallery-head reveal">
+                    <span class="ab-chapter-num">04</span>
+                    <h2>Gallery</h2>
+                </div>
+
+                <!-- the first pictures show here; the rest open in the viewer -->
+                <div class="project-gallery pj-gallery reveal">
+                    <img class="pj-gallery-big" src="../assets/hearinglossimg.png" alt="Hearing Loss VR café environment" loading="lazy">
+                    <img src="../assets/hl2.png" alt="Hearing Loss VR experience" loading="lazy">
+                    <button class="gallery-more" type="button" onclick="openGallery(2)">
+                        <img src="../assets/hl3.png" alt="Hearing Loss VR experience" loading="lazy">
+                        <span></span>
+                    </button>
+                </div>
+
+                <!-- full-screen viewer: ALL gallery pictures go in here -->
+                <div class="gallery-lightbox" id="gallery-lightbox">
+                    <button class="gallery-close" onclick="closeGallery()">×</button>
+                    <div class="gallery-lightbox-content">
+                        <img src="../assets/hearinglossimg.png" alt="Hearing Loss VR café environment">
+                        <img src="../assets/hl2.png" alt="Hearing Loss VR experience">
+                        <img src="../assets/hl3.png" alt="Hearing Loss VR experience">
+                        <img src="../assets/HL1.png" alt="Hearing Loss VR experience">
+                        <img src="../assets/hero-hearing.png" alt="Hearing Loss VR experience">
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== LINKS + NEXT ===== -->
+            <div class="pj-end pj-end-3 reveal">
+                <a class="pj-end-card" href="https://github.com/MieMEne/HearingLossSimulation" target="_blank" rel="noopener">
+                    <span class="pj-end-label">Explore the project</span>
+                    <strong>GitHub <span>↗</span></strong>
+                </a>
+                <a class="pj-end-card" href="womens-suffrage.html">
+                    <span class="pj-end-label">Previous project</span>
+                    <strong><span>←</span> Women&#x27;s Suffrage Game</strong>
+                </a>
+                <a class="pj-end-card pj-end-next" href="dance-pads.html">
+                    <span class="pj-end-label">Next project</span>
+                    <strong>Dance Pads <span>→</span></strong>
+                </a>
             </div>
 
         </section>
 
-
-      
-
-<!-- =========================================
-     PROJECT NAVIGATION
-========================================= -->
-
-<section class="project-next">
-    <div class="container">
-
-        <!-- Main next project link -->
-
-        <a
-            href="dance-pads.html"
-            class="project-next-link reveal"
-        >
-            <span>Next project</span>
-
-            <strong>
-                <span class="next-project-title">
-                    Dance Pads
-                </span>
-                <span>→</span>
-            </strong>
-        </a>
-
-        <!-- Smaller previous project link -->
-
-        <a
-            href="womens-suffrage.html"
-            class="project-previous-link reveal"
-        >
-            <span>←</span>
-            Previous project: Women's Suffrage Game
-        </a>
-
-    </div>
-</section>
-
-
-
+    </main>
 
     <!-- =========================================
          FOOTER
@@ -760,7 +331,7 @@
     </footer>
 
 
-    <script src="../script.js?v=38"></script>
+    <script src="../script.js?v=43"></script>
 
 </body>
 

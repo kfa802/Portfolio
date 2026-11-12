@@ -33,7 +33,7 @@
 
     <link
         rel="stylesheet"
-        href="../style.css?v=38"
+        href="../style.css?v=43"
     >
 
 </head>
@@ -103,701 +103,214 @@
          PROJECT HERO
     ========================================= -->
 
-    <main>
+    <main class="pj-page">
 
+        <!-- =========================================
+             PROJECT PAGE — same style as the About page
+             HOW TO SWAP A PICTURE: every picture sits in a
+             <figure class="ab-figure"> ... </figure> block.
+             Change the src="" and the <figcaption> text.
+        ========================================= -->
 
-        <section class="project-page-hero">
+        <!-- ===== HERO ===== -->
+        <section class="pj-hero">
+            <div class="pj-wrap">
 
-            <div class="container">
-
-
-                <a
-                    href="../index.html#work"
-                    class="project-back"
-                >
-                    <span>←</span>
-                    Back to selected work
-                </a>
-
-
-                <div class="project-page-heading reveal">
-
-
-                    <div class="project-meta">
-
-                        <span class="project-number">
-                            03
-                        </span>
-
-                                        <span class="project-year">
-                                            2025
-                                        </span>
-
-                        <span class="project-type">
-                            Physical prototype · Interaction
-                        </span>
-
+                <div class="pj-hero-text reveal">
+                    <div class="pj-meta">
+                        <span class="ab-chapter-num">03</span>
+                        <span>2025</span>
                     </div>
 
-
-                    <h1>
-                        Dance Pads
+                    <h1 class="pj-title">
+                        Dance Pads<span class="ab-dot">.</span>
                     </h1>
 
-
-                    <p class="project-page-intro">
-                        A <strong>cooperative dance game</strong>
-                        built around custom physical dance pads,
-                        exploring whether interactive sound could
-                        strengthen teamwork and social interaction.
+                    <p class="pj-lead">
+                        A <strong>cooperative dance game</strong> built around custom physical dance pads, exploring whether interactive sound could strengthen teamwork and social interaction.
                     </p>
-
-
-                    <div class="project-tags">
-
-                        <span>Unity</span>
-                        <span>C#</span>
-                        <span>Arduino</span>
-                        <span>Physical Computing</span>
-                        <span>Pure Data</span>
-
-                    </div>
-
-
                 </div>
 
-
-                <!-- HERO VIDEO -->
-
-                <div class="project-hero-media reveal">
-
-                    <video
-                        controls
-                        preload="metadata"
-                        poster="../assets/dancepad.png"
-                    >
-
-                        <source
-                            src="../assets/Darda - The Rise of The Dance Devil.mp4"
-                            type="video/mp4"
-                        >
-
-                        Your browser does not support
-                        the video element.
-
-                    </video>
-
-                </div>
-                <a
-    href="#overview"
-    class="hero-scroll project-video-scroll"
->
-
-    <span class="scroll-arrow">
-        ↓
-    </span>
-
-    <span>
-        SCROLL TO EXPLORE
-    </span>
-
-</a>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             OVERVIEW & RESEARCH
-        ========================================= -->
-
-        <section
-            id="overview"
-            class="project-section"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>01</span>
-                        Overview &amp; Research
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            Dancing together through sound.
-                        </h2>
-
-
-                        <p>
-                            The project explored whether
-                            <strong>interactive sound</strong>
-                            could strengthen teamwork and social
-                            interaction in a cooperative dance game.
-                        </p>
-
-
-                        <p>
-                            Two players used custom-built dance
-                            pads with four directional pressure
-                            buttons to follow beat-synchronised
-                            arrows. A shared score, multipliers
-                            and visual feedback encouraged players
-                            to work towards the same goal.
-                        </p>
-
-
-                        <p>
-                            Interactive audio was used to provide
-                            confirmation, motivation and feedback
-                            throughout the game. We evaluated it
-                            with an A/B test of 12 players
-                            (6 pairs) at AAU's Friday Bar,
-                            comparing the game with and without
-                            interactive sound.
-                        </p>
-
-
-
-
-                        <div class="project-feature-grid">
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    01
-                                </span>
-
-                                <h3>
-                                    Interactive Sound
-                                </h3>
-
-                                <p>
-                                    Audio cues like a "pling"
-                                    confirmed successful steps and
-                                    helped players stay motivated.
-                                </p>
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    02
-                                </span>
-
-                                <h3>
-                                    Cooperative Play
-                                </h3>
-
-                                <p>
-                                    Shared scoring and progress
-                                    were designed to encourage
-                                    players to focus on a
-                                    common goal.
-                                </p>
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    03
-                                </span>
-
-                                <h3>
-                                    Key Finding
-                                </h3>
-
-                                <p>
-                                    Sound was a nice extra for
-                                    feedback and motivation, but
-                                    players mostly focused on their
-                                    own steps and relied on the
-                                    visuals, so it did not clearly
-                                    increase teamwork.
-                                </p>
-
-                            </article>
-
-
-                        </div>
-
-                        <div class="overview-image">
-
-    <img
-        src="../assets/dance7.png"
-        alt="Custom-built Dance Pads"
-    >
-
-</div>
-
-
-                        <a
-                            href="#development"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             DEVELOPMENT
-        ========================================= -->
-
-        <section
-            id="development"
-            class="project-section project-section-alt"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>02</span>
-                        Development
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            Building the game from the ground up.
-                        </h2>
-
-
-                        <p>
-                            The project combined physical computing
-                            with game development. The team built
-                            the dance pads from individual
-                            components, wiring pressure buttons
-                            and connecting the physical input to
-                            the game through a Seeeduino.
-                        </p>
-
-
-                        <p>
-                            The physical input was translated
-                            into gameplay in Unity, alongside
-                            the rhythm, scoring and feedback
-                            systems. Interactive audio was created
-                            and implemented to give players
-                            immediate feedback throughout
-                            the experience.
-                        </p>
-
-
-                        <div class="project-feature-grid">
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    01
-                                </span>
-
-                                <h3>
-                                    Physical Computing
-                                </h3>
-
-                                <p>
-                                    Building the dance pads from
-                                    physical components and wiring
-                                    four directional pressure
-                                    buttons into each pad.
-                                </p>
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    02
-                                </span>
-
-                                <h3>
-                                    Seeeduino
-                                </h3>
-
-                                <p>
-                                    Reading button inputs through
-                                    a Seeeduino and connecting the
-                                    physical interactions to
-                                    the game.
-                                </p>
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    03
-                                </span>
-
-                                <h3>
-                                    Unity &amp; C#
-                                </h3>
-
-                                <p>
-                                    Connecting physical input to
-                                    the game and implementing
-                                    rhythm, scoring and player
-                                    feedback systems.
-                                </p>
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    04
-                                </span>
-
-                                <h3>
-                                    Interactive Audio
-                                </h3>
-
-                                <p>
-                                    Creating and integrating
-                                    audio feedback in Pure Data
-                                    to support timing, motivation
-                                    and successful interactions.
-                                </p>
-
-                                
-
-                            </article>
-
-                            
-
-
-                        </div>
-
-                        <div class="development-images">
-    <div class="development-image">
-        <img
-            src="../assets/dance4.png"
-            alt="Dance Pad development"
-        >
-    </div>
-
-    <div class="development-image">
-        <img
-            src="../assets/dance3.png"
-            alt="Dance Pad prototype development"
-        >
-    </div>
-</div>
-                        
-
-
-                        <a
-                            href="#gallery"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             GALLERY
-        ========================================= -->
-
-        <section
-            id="gallery"
-            class="project-section"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>03</span>
-                        Gallery
-
-                    </div>
-
-
-                    <div class="project-section-content">
-
-
-                        <div class="project-gallery">
-
-
-                            <!-- IMAGE 1 -->
-
-                            <figure class="project-gallery-large reveal">
-
-                                <img
-                                    src="../assets/dancepad.png"
-                                    alt="Dance Pads physical prototype"
-                                >
-
-                            </figure>
-
-
-                            <!-- IMAGE 2 -->
-
-                            <figure class="reveal">
-
-                                <img
-                                    src="../assets/dance1.png"
-                                    alt="Dance Pads interaction"
-                                >
-
-                            </figure>
-
-
-                            <!-- IMAGE 3 -->
-
-                            <button
-                                class="gallery-more reveal"
-                                onclick="openGallery()"
-                            >
-
-                                <img
-                                    src="../assets/dance2.png"
-                                    alt="Dance Pads project"
-                                >
-
-                                <span>
-                                    +1 more
-                                </span>
-
-                            </button>
-
-
-                        </div>
-
-
-                        <!-- HIDDEN FULL GALLERY -->
-
-                        <div
-                            class="gallery-lightbox"
-                            id="gallery-lightbox"
-                        >
-
-
-                            <button
-                                class="gallery-close"
-                                onclick="closeGallery()"
-                            >
-                                ×
-                            </button>
-
-
-                            <div class="gallery-lightbox-content">
-
-
-                                <img
-                                    src="../assets/dancepad.png"
-                                    alt="Dance Pads physical prototype"
-                                >
-
-
-                                <img
-                                    src="../assets/dance1.png"
-                                    alt="Dance Pads interaction"
-                                >
-
-
-                                <img
-                                    src="../assets/dance2.png"
-                                    alt="Dance Pads project"
-                                >
-
-
-                                <img
-                                    src="../assets/dance3.png"
-                                    alt="Dance Pads project"
-                                >
-
-                                   <img
-                                    src="../assets/dance5.png"
-                                    alt="Dance Pads project"
-                                >
-
-                                      <img
-                                    src="../assets/dance6.png"
-                                    alt="Dance Pads project"
-                                >
-
-                                      <img
-                                    src="../assets/dance7.png"
-                                    alt="Dance Pads project"
-                                >
-
-                                    <img
-                                    src="../assets/dance4.png"
-                                    alt="Dance Pads project"
-                                >
-
-                                <img
-                                    src="../assets/dancepad_design.png"
-                                    alt="Dance Pads project"
-                                >
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             LINKS
-        ========================================= -->
-
-        <section
-            class="project-section project-links-section"
-        >
-
-            <div class="container">
-
-                <div class="project-links reveal">
-
-
+                <dl class="pj-facts pj-facts-3 reveal">
                     <div>
+                        <dt>Type</dt>
+                        <dd>Physical prototype · Interaction</dd>
+                    </div>
+                    <div>
+                        <dt>Tools</dt>
+                        <dd>Unity · C# · Arduino · Pure Data</dd>
+                    </div>
+                    <div>
+                        <dt>Topics</dt>
+                        <dd>Physical Computing</dd>
+                    </div>
+                </dl>
 
-                        <span class="project-links-label">
-                            Explore the project
-                        </span>
-
-
-                        <h2>
-                            Want to see more?
-                        </h2>
-
+                    <div class="pj-hero-media reveal">
+                        <div class="pj-video">
+                            <video preload="metadata" playsinline poster="../assets/dancepad.png">
+                                <source src="../assets/Darda - The Rise of The Dance Devil.mp4" type="video/mp4">
+                            </video>
+                            <button class="pj-play" type="button" aria-label="Play video"></button>
+                        </div>
                     </div>
 
-
-                    <div class="project-buttons">
-
-
-                        <a
-                            href="https://github.com/bollemedost/P4-Dance-Dance-Slay-Together"
-                            class="button button-secondary"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            GitHub
-                            <span>↗</span>
-                        </a>
+            </div>
+        </section>
 
 
-                    </div>
+        <section class="pj-body">
 
+
+            <!-- ===== 01 · OVERVIEW & RESEARCH ===== -->
+            <article id="overview-research" class="ab-chapter">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">01</span>
+                    <h2>Dancing together through sound</h2>
+                    <p>
+                        The project explored whether <strong>interactive sound</strong> could strengthen teamwork and social interaction in a cooperative dance game.
+                    </p>
+                    <p>
+                        Two players used custom-built dance pads with four directional pressure buttons to follow beat-synchronised arrows. A shared score, multipliers and visual feedback encouraged players to work towards the same goal.
+                    </p>
+                    <p>
+                        Interactive audio was used to provide confirmation, motivation and feedback throughout the game. We evaluated it with an A/B test of 12 players (6 pairs) at AAU's Friday Bar, comparing the game with and without interactive sound.
+                    </p>
                 </div>
 
+                <div class="ab-media reveal">
+                    <figure class="ab-figure">
+                        <img src="../assets/dance7.png" alt="Custom-built Dance Pads" loading="lazy">
+                    </figure>
+                </div>
+
+                <div class="pj-features pj-features-3 reveal">
+                    <div class="pj-feature">
+                        <span>01</span>
+                        <h3>Interactive Sound</h3>
+                        <p>Audio cues like a "pling" confirmed successful steps and helped players stay motivated.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>02</span>
+                        <h3>Cooperative Play</h3>
+                        <p>Shared scoring and progress were designed to encourage players to focus on a common goal.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>03</span>
+                        <h3>Key Finding</h3>
+                        <p>Sound was a nice extra for feedback and motivation, but players mostly focused on their own steps and relied on the visuals, so it did not clearly increase teamwork.</p>
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 02 · DEVELOPMENT ===== -->
+            <article id="development" class="ab-chapter ab-chapter-flip">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">02</span>
+                    <h2>Building the game from the ground up</h2>
+                    <p>
+                        The project combined physical computing with game development. The team built the dance pads from individual components, wiring pressure buttons and connecting the physical input to the game through a Seeeduino.
+                    </p>
+                    <p>
+                        The physical input was translated into gameplay in Unity, alongside the rhythm, scoring and feedback systems. Interactive audio was created and implemented to give players immediate feedback throughout the experience.
+                    </p>
+                </div>
+
+                <div class="ab-media pj-media-two reveal">
+                    <figure class="ab-figure">
+                        <img src="../assets/dance4.png" alt="Dance Pad development" loading="lazy">
+                    </figure>
+                    <figure class="ab-figure">
+                        <img src="../assets/dance3.png" alt="Dance Pad prototype development" loading="lazy">
+                    </figure>
+                </div>
+
+                <div class="pj-features pj-features-4 reveal">
+                    <div class="pj-feature">
+                        <span>01</span>
+                        <h3>Physical Computing</h3>
+                        <p>Building the dance pads from physical components and wiring four directional pressure buttons into each pad.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>02</span>
+                        <h3>Seeeduino</h3>
+                        <p>Reading button inputs through a Seeeduino and connecting the physical interactions to the game.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>03</span>
+                        <h3>Unity & C#</h3>
+                        <p>Connecting physical input to the game and implementing rhythm, scoring and player feedback systems.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>04</span>
+                        <h3>Interactive Audio</h3>
+                        <p>Creating and integrating audio feedback in Pure Data to support timing, motivation and successful interactions.</p>
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 03 · GALLERY ===== -->
+            <article id="gallery" class="pj-gallery-chapter">
+
+                <div class="pj-gallery-head reveal">
+                    <span class="ab-chapter-num">03</span>
+                    <h2>Gallery</h2>
+                </div>
+
+                <!-- the first pictures show here; the rest open in the viewer -->
+                <div class="project-gallery pj-gallery reveal">
+                    <img class="pj-gallery-big" src="../assets/dancepad.png" alt="Dance Pads physical prototype" loading="lazy">
+                    <img src="../assets/Dance1.png" alt="Dance Pads interaction" loading="lazy">
+                    <button class="gallery-more" type="button" onclick="openGallery(2)">
+                        <img src="../assets/dance2.png" alt="Dance Pads project" loading="lazy">
+                        <span></span>
+                    </button>
+                </div>
+
+                <!-- full-screen viewer: ALL gallery pictures go in here -->
+                <div class="gallery-lightbox" id="gallery-lightbox">
+                    <button class="gallery-close" onclick="closeGallery()">×</button>
+                    <div class="gallery-lightbox-content">
+                        <img src="../assets/dancepad.png" alt="Dance Pads physical prototype">
+                        <img src="../assets/Dance1.png" alt="Dance Pads interaction">
+                        <img src="../assets/dance2.png" alt="Dance Pads project">
+                        <img src="../assets/dance3.png" alt="Dance Pads project">
+                        <img src="../assets/dance5.png" alt="Dance Pads project">
+                        <img src="../assets/dance6.png" alt="Dance Pads project">
+                        <img src="../assets/dance7.png" alt="Dance Pads project">
+                        <img src="../assets/dance4.png" alt="Dance Pads project">
+                        <img src="../assets/dancepad_design.png" alt="Dance Pads project">
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== LINKS + NEXT ===== -->
+            <div class="pj-end pj-end-3 reveal">
+                <a class="pj-end-card" href="https://github.com/bollemedost/P4-Dance-Dance-Slay-Together" target="_blank" rel="noopener">
+                    <span class="pj-end-label">Explore the project</span>
+                    <strong>GitHub <span>↗</span></strong>
+                </a>
+                <a class="pj-end-card" href="hearing-loss.html">
+                    <span class="pj-end-label">Previous project</span>
+                    <strong><span>←</span> Hearing Loss Simulation</strong>
+                </a>
+                <a class="pj-end-card pj-end-next" href="nico-nitro.html">
+                    <span class="pj-end-label">Next project</span>
+                    <strong>Nico Nitro <span>→</span></strong>
+                </a>
             </div>
 
         </section>
 
-
-       <!-- =========================================
-     NEXT PROJECT
-========================================== -->
-
-<section class="project-next">
-
-    <div class="container">
-
-        <a
-            href="nico-nitro.html"
-            class="project-next-link reveal"
-        >
-            <span>
-                Next project
-            </span>
-
-            <strong>
-                <span class="next-project-title">
-                    Nico Nitro
-                </span>
-
-                <span>→</span>
-            </strong>
-        </a>
-
-        <a
-            href="hearing-loss.html"
-            class="project-previous-link reveal"
-        >
-            <span>←</span>
-            Previous project: Hearing Loss Simulation
-        </a>
-
-    </div>
-
-</section>
-
-</main>
+    </main>
 
     <!-- =========================================
          FOOTER
@@ -816,7 +329,7 @@
     </footer>
 
 
-    <script src="../script.js?v=38"></script>
+    <script src="../script.js?v=43"></script>
 
 </body>
 

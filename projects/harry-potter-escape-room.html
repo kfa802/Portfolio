@@ -33,7 +33,7 @@
 
     <link
         rel="stylesheet"
-        href="../style.css?v=38"
+        href="../style.css?v=43"
     >
 
 </head>
@@ -114,590 +114,188 @@
          PROJECT HERO
     ========================================= -->
 
-    <main>
+    <main class="pj-page">
 
+        <!-- =========================================
+             PROJECT PAGE — same style as the About page
+             HOW TO SWAP A PICTURE: every picture sits in a
+             <figure class="ab-figure"> ... </figure> block.
+             Change the src="" and the <figcaption> text.
+        ========================================= -->
 
-        <section class="project-page-hero">
+        <!-- ===== HERO ===== -->
+        <section class="pj-hero">
+            <div class="pj-wrap">
 
-            <div class="container">
-
-
-                <a
-                    href="../index.html#work"
-                    class="project-back"
-                >
-                    <span>←</span>
-                    Back to selected work
-                </a>
-
-
-                <div class="project-page-heading reveal">
-
-
-                    <div class="project-meta">
-
-                        <span class="project-number">
-                            03
-                        </span>
-
-                                        <span class="project-year">
-                                            2025
-                                        </span>
-
-                        <span class="project-type">
-                            VR · Escape room
-                        </span>
-
+                <div class="pj-hero-text reveal">
+                    <div class="pj-meta">
+                        <span class="ab-chapter-num">03</span>
+                        <span>2025</span>
                     </div>
 
-
-                    <h1 class="harry-potter-title">
-                        Harry Potter Escape Room
+                    <h1 class="pj-title">
+                        Harry Potter Escape Room<span class="ab-dot">.</span>
                     </h1>
 
+                    <p class="pj-lead">
+                        An <strong>immersive VR escape room</strong> inspired by the magical world of Harry Potter, combining exploration, puzzles and interactive challenges.
+                    </p>
+                </div>
 
-                    <p class="project-page-intro">
-                        An <strong>immersive VR escape room</strong> inspired by
-                        the magical world of Harry Potter,
-                        combining exploration, puzzles and
-                        interactive challenges.
+                <dl class="pj-facts pj-facts-3 reveal">
+                    <div>
+                        <dt>Type</dt>
+                        <dd>VR · Escape room</dd>
+                    </div>
+                    <div>
+                        <dt>Tools</dt>
+                        <dd>Unity · C# · VR · Meta Quest</dd>
+                    </div>
+                    <div>
+                        <dt>Topics</dt>
+                        <dd>OpenXR · Immersive Technologies</dd>
+                    </div>
+                </dl>
+
+                    <div class="pj-hero-media reveal">
+                        <div class="pj-video">
+                            <video preload="metadata" playsinline poster="../assets/hp-img1.png">
+                                <source src="../assets/Harry%20Potter%20Themed%20Escape%20Room%20-%20Mini%20Project.mp4" type="video/mp4">
+                            </video>
+                            <button class="pj-play" type="button" aria-label="Play video"></button>
+                        </div>
+                    </div>
+
+            </div>
+        </section>
+
+
+        <section class="pj-body">
+
+
+            <!-- ===== 01 · OVERVIEW ===== -->
+            <article id="overview" class="ab-chapter">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">01</span>
+                    <h2>A Magical Escape Room in virtual reality</h2>
+                    <p>
+                        Harry Potter Escape Room is a mini-project exploring different <strong>VR techniques</strong> and <strong>interactions</strong> through puzzle solving, exploration, and magical gimmicks.
+                    </p>
+                    <p>
+                        The player takes on the role of a student exploring a magical environment, discovering clues and interacting with objects to solve puzzles and progress through the escape room.
+                    </p>
+                    <p>
+                        The project focuses on how VR interactions, environmental design, and playful mechanics can be combined to create an immersive and engaging experience.
+                    </p>
+                </div>
+
+                <div class="ab-media pj-media-two reveal">
+                    <figure class="ab-figure">
+                        <img src="../assets/hp-img4.png" alt="Escape room environment in VR" loading="lazy">
+                    </figure>
+                    <figure class="ab-figure">
+                        <img src="../assets/hp-img6.png" alt="VR gameplay in the escape room" loading="lazy">
+                    </figure>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 02 · MY ROLE ===== -->
+            <article id="my-role" class="ab-chapter ab-chapter-flip">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">02</span>
+                    <h2>Designing interaction in VR</h2>
+                    <p>
+                        I primarily worked on the <strong>interactive systems</strong> that control the progression of the escape room. I developed the puzzle sequence, ensuring that the puzzles are completed in the intended order as the player progresses through the experience.
+                    </p>
+                    <p>
+                        I also worked on the primary <strong>VR interactions</strong>, designing how the player interacts with objects and the environment. In addition, I contributed to the design of the puzzles and how they connect to the overall progression of the escape room.
+                    </p>
+                    <p>
+                        Another part of my role was creating an atmosphere that felt authentic to the Harry Potter universe through <strong>visual design</strong>, lighting, and particle systems. These elements helped make the environment feel more magical and <strong>immersive</strong>.
                     </p>
 
-
-                    <div class="project-tags">
-
-                        <span>Unity</span>
-                        <span>C#</span>
-                        <span>VR</span>
-                        <span>OpenXR</span>
-                        <span>Immersive Technologies</span>
-                        <span>Meta Quest</span>
-
+                    <div class="pj-chips">
+                        <span>Progression systems</span>
+                        <span>VR interactions</span>
+                        <span>Puzzle design</span>
+                        <span>Visual atmosphere</span>
                     </div>
-
-
                 </div>
 
-
-                <!-- HERO VIDEO -->
-
-                <div class="project-hero-media reveal">
-
-                    <video
-                        controls
-                        preload="metadata"
-                        poster="../assets/hp-img1.png"
-                    >
-
-                        <source
-                            src="../assets/Harry%20Potter%20Themed%20Escape%20Room%20-%20Mini%20Project.mp4"
-                            type="video/mp4"
-                        >
-
-                        Your browser does not support
-                        the video element.
-
-                    </video>
-
+                <div class="ab-media pj-media-two reveal">
+                    <figure class="ab-figure">
+                        <img src="../assets/hppp.png" alt="Escape room puzzle area" loading="lazy">
+                    </figure>
+                    <figure class="ab-figure">
+                        <img src="../assets/hpimggg.png" alt="Escape room VR gameplay" loading="lazy">
+                    </figure>
                 </div>
-                <a
-    href="#overview"
-    class="hero-scroll project-video-scroll"
->
 
-    <span class="scroll-arrow">
-        ↓
-    </span>
-
-    <span>
-        SCROLL TO EXPLORE
-    </span>
-
-</a>
+            </article>
 
 
+            <!-- ===== 03 · GALLERY ===== -->
+            <article id="gallery" class="pj-gallery-chapter">
+
+                <div class="pj-gallery-head reveal">
+                    <span class="ab-chapter-num">03</span>
+                    <h2>Gallery</h2>
+                </div>
+
+                <!-- the first pictures show here; the rest open in the viewer -->
+                <div class="project-gallery pj-gallery reveal">
+                    <img class="pj-gallery-big" src="../assets/hp-img77.png" alt="Harry Potter Escape Room VR" loading="lazy">
+                    <img src="../assets/hp-img9.png" alt="Harry Potter Escape Room VR" loading="lazy">
+                    <button class="gallery-more" type="button" onclick="openGallery(2)">
+                        <img src="../assets/hpimg.png" alt="Harry Potter Escape Room VR" loading="lazy">
+                        <span></span>
+                    </button>
+                </div>
+
+                <!-- full-screen viewer: ALL gallery pictures go in here -->
+                <div class="gallery-lightbox" id="gallery-lightbox">
+                    <button class="gallery-close" onclick="closeGallery()">×</button>
+                    <div class="gallery-lightbox-content">
+                        <img src="../assets/hp-img77.png" alt="Harry Potter Escape Room VR">
+                        <img src="../assets/hp-img9.png" alt="Harry Potter Escape Room VR">
+                        <img src="../assets/hpimg.png" alt="Harry Potter Escape Room VR">
+                        <img src="../assets/hp-img4.png" alt="Escape room environment in VR">
+                        <img src="../assets/hp-img1.png" alt="Harry Potter Escape Room VR">
+                        <img src="../assets/hp-img3.png" alt="Harry Potter Escape Room VR">
+                        <img src="../assets/hp-img6.png" alt="VR gameplay in the escape room">
+                        <img src="../assets/hp-img8.png" alt="Harry Potter Escape Room VR">
+                        <img src="../assets/hp.img7.png" alt="Harry Potter Escape Room VR">
+                        <img src="../assets/hp8.png" alt="Harry Potter Escape Room VR">
+                        <img src="../assets/hpimggg.png" alt="Escape room VR gameplay">
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== LINKS + NEXT ===== -->
+            <div class="pj-end pj-end-3 reveal">
+                <a class="pj-end-card" href="https://github.com/bollemedost/PIT-EscapeRoom" target="_blank" rel="noopener">
+                    <span class="pj-end-label">Explore the project</span>
+                    <strong>GitHub <span>↗</span></strong>
+                </a>
+                <a class="pj-end-card" href="trivia-quiz.html">
+                    <span class="pj-end-label">Previous project</span>
+                    <strong><span>←</span> Trivia Quiz</strong>
+                </a>
+                <a class="pj-end-card pj-end-next" href="zombie-game.html">
+                    <span class="pj-end-label">Next project</span>
+                    <strong>Zombie Game <span>→</span></strong>
+                </a>
             </div>
 
         </section>
 
-
-        <!-- =========================================
-             OVERVIEW
-        ========================================= -->
-
-        <section
-            id="overview"
-            class="project-section"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>01</span>
-                        Overview
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            A Magical Escape Room in virtual reality.
-                        </h2>
-
-
-                        <p>
-                            Harry Potter Escape Room is a mini-project exploring different <strong>VR techniques</strong> and <strong>interactions</strong> through puzzle solving, exploration, and magical gimmicks.
-                        </p>
-
-
-                        <p>
-                            The player takes on the role of a student exploring a magical environment, discovering clues and interacting with objects to solve puzzles and progress through the escape room.
-                        </p>
-
-
-                        <p>
-                            The project focuses on how VR interactions, environmental design, and playful mechanics can be combined to create an immersive and engaging experience.
-                        </p>
-
-
-                        <div class="overview-images">
-
-                            <img
-                                class="hp-img4"
-                                src="../assets/hp-img4.png"
-                                alt="Escape room environment in VR"
-                            >
-
-                            <img
-                                class="hp-img6"
-                                src="../assets/hp-img6.png"
-                                alt="VR gameplay in the escape room"
-                            >
-
-                        </div>
-
-
-                        <a
-                            href="#role"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             MY ROLE
-        ========================================= -->
-
-        <section
-            id="role"
-            class="project-section project-section-alt"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>02</span>
-                        My role
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            Designing interaction in VR.
-                        </h2>
-
-
-                        <p>
-                            I primarily worked on the <strong>interactive systems</strong> that control the progression of the escape room.
-                            I developed the puzzle sequence, ensuring that the puzzles are completed in the intended order
-                            as the player progresses through the experience.
-                        </p>
-
-
-                        <p>
-                            I also worked on the primary <strong>VR interactions</strong>, designing how the player interacts with objects
-                            and the environment. In addition, I contributed to the design of the puzzles and how they connect
-                            to the overall progression of the escape room.
-                        </p>
-
-
-                        <p>
-                            Another part of my role was creating an atmosphere that felt authentic to the Harry Potter universe
-                            through <strong>visual design</strong>, lighting, and particle systems.
-                            These elements helped make the environment feel more magical and <strong>immersive</strong>.
-                        </p>
-
-
-                        <div class="project-role-list">
-
-
-                            <div class="project-role-item">
-
-                                <span>01</span>
-
-                                Progression systems
-
-                            </div>
-
-
-                            <div class="project-role-item">
-
-                                <span>02</span>
-
-                                VR interactions
-
-                            </div>
-
-
-                            <div class="project-role-item">
-
-                                <span>03</span>
-
-                                Puzzle design
-
-                            </div>
-
-
-                            <div class="project-role-item">
-
-                                <span>04</span>
-
-                                Visual atmosphere
-
-                            </div>
-
-
-                        </div>
-
-
-                        <div class="overview-images">
-
-                            <img
-                                class="hp-img67"
-                                src="../assets/hppp.png"
-                                alt="Escape room puzzle area"
-                            >
-
-                            <img
-                                class="hp-img677"
-                                src="../assets/hpimggg.png"
-                                alt="Escape room VR gameplay"
-                            >
-
-                        </div>
-
-
-                        <a
-                            href="#gallery"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             GALLERY
-        ========================================= -->
-
-        <section
-            id="gallery"
-            class="project-section"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>03</span>
-                        Gallery
-
-                    </div>
-
-
-                    <div class="project-section-content">
-
-
-                        <div class="project-gallery">
-
-
-                            <!-- IMAGE 1 -->
-
-                            <figure class="project-gallery-large reveal">
-
-                                <img
-                                    src="../assets/hp-img77.png"
-                                    alt="Harry Potter Escape Room VR"
-                                >
-
-                            </figure>
-
-
-                            <!-- IMAGE 2 -->
-
-                            <figure class="reveal">
-
-                                <img
-                                    src="../assets/hp-img9.png"
-                                    alt="Harry Potter Escape Room VR"
-                                >
-
-                            </figure>
-
-
-                            <!-- IMAGE 3 -->
-
-                            <button
-                                class="gallery-more reveal"
-                                onclick="openGallery()"
-                            >
-
-                                <img
-                                    src="../assets/hpimg.png"
-                                    alt="Harry Potter Escape Room VR"
-                                >
-
-                                <span>
-                                    +8 more
-                                </span>
-
-                            </button>
-
-
-                        </div>
-
-
-                        <!-- HIDDEN FULL GALLERY -->
-
-                        <div
-                            class="gallery-lightbox"
-                            id="gallery-lightbox"
-                        >
-
-
-                            <button
-                                class="gallery-close"
-                                onclick="closeGallery()"
-                            >
-                                ×
-                            </button>
-
-
-                            <div class="gallery-lightbox-content">
-
-
-                                <img
-                                    src="../assets/hp-img77.png"
-                                    alt="Harry Potter Escape Room VR"
-                                >
-
-
-                                <img
-                                    src="../assets/hp-img9.png"
-                                    alt="Harry Potter Escape Room VR"
-                                >
-
-
-                                <img
-                                    src="../assets/hpimg.png"
-                                    alt="Harry Potter Escape Room VR"
-                                >
-
-
-                                <img
-                                    src="../assets/hp-img4.png"
-                                    alt="Escape room environment in VR"
-                                >
-
-
-                                <img
-                                    src="../assets/hp-img1.png"
-                                    alt="Harry Potter Escape Room VR"
-                                >
-
-                                <img
-                                    src="../assets/hp-img3.png"
-                                    alt="Harry Potter Escape Room VR"
-                                >
-
-                                <img
-                                    src="../assets/hp-img6.png"
-                                    alt="VR gameplay in the escape room"
-                                >
-
-                                 <img
-                                    src="../assets/hp-img8.png"
-                                    alt="Harry Potter Escape Room VR"
-                                >
-
-                                 <img
-                                    src="../assets/hp-img7.png"
-                                    alt="Harry Potter Escape Room VR"
-                                >
-
-                                 <img
-                                    src="../assets/hp8.png"
-                                    alt="Harry Potter Escape Room VR"
-                                >
-
-                                <img
-                                    src="../assets/hpimggg.png"
-                                    alt="Escape room VR gameplay"
-                                >
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             LINKS
-        ========================================= -->
-
-        <section
-            class="project-section project-links-section"
-        >
-
-            <div class="container">
-
-                <div class="project-links reveal">
-
-
-                    <div>
-
-                        <span class="project-links-label">
-                            Explore the project
-                        </span>
-
-
-                        <h2>
-                            Want to see more?
-                        </h2>
-
-                    </div>
-
-
-                    <div class="project-buttons">
-
-
-                        <a
-                            href="https://github.com/bollemedost/PIT-EscapeRoom"
-                            class="button button-secondary"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            GitHub
-                            <span>↗</span>
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-       <!-- =========================================
-     NEXT PROJECT
-========================================== -->
-
-<section class="project-next">
-
-    <div class="container">
-
-        <a
-            href="zombie-game.html"
-            class="project-next-link reveal"
-        >
-            <span>
-                Next project
-            </span>
-
-            <strong>
-                <span class="next-project-title">
-                    Zombie Game
-                </span>
-
-                <span>→</span>
-            </strong>
-        </a>
-
-        <a
-            href="trivia-quiz.html"
-            class="project-previous-link reveal"
-        >
-            <span>←</span>
-            Previous project: Trivia Quiz
-        </a>
-
-    </div>
-
-</section>
-
-</main>
+    </main>
 
     <!-- =========================================
          FOOTER
@@ -716,7 +314,7 @@
     </footer>
 
 
-    <script src="../script.js?v=38"></script>
+    <script src="../script.js?v=43"></script>
 
 
 </body>

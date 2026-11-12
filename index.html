@@ -16,7 +16,7 @@
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="style.css?v=38">
+  <link rel="stylesheet" href="style.css?v=44">
 
   <style>
     /* Contact details: email + phone */
@@ -325,7 +325,6 @@
               <a
                 href="projects/womens-suffrage.html"
                 class="project-card reveal project-womens-suffrage"
-                data-preview="assets/A%20Learning%20Game%20about%20Women%27s%20Suffrage%20in%20Denmark%20(AV%20Production).mp4"
               >
                 <div class="project-image">
                   <img
@@ -377,7 +376,6 @@
               <a
                 href="projects/hearing-loss.html"
                 class="project-card reveal project-hearing-loss"
-                data-preview="assets/Hearing%20Loss%20Simulation%20P5%20Project.mp4"
               >
                 <div class="project-image">
                   <img
@@ -428,7 +426,6 @@
               <a
                 href="projects/dance-pads.html"
                 class="project-card reveal project-dance-pads"
-                data-preview="assets/Darda%20-%20The%20Rise%20of%20The%20Dance%20Devil.mp4"
               >
                 <div class="project-image">
                   <img
@@ -477,7 +474,6 @@
               <a
                 href="projects/nico-nitro.html"
                 class="project-card reveal project-nico"
-                data-preview="assets/Nicoav.mp4"
               >
                 <div class="project-image">
                   <img
@@ -527,7 +523,6 @@
               <a
                 href="projects/liv.html"
                 class="project-card reveal project-liv"
-                data-preview="assets/Livav.mp4"
               >
                 <div class="project-image">
                   <img
@@ -579,7 +574,6 @@
               <a
                 href="projects/blue-planet.html"
                 class="project-card reveal project-blue-planet"
-                data-preview="assets/Blueplanet%20Av.mp4"
               >
                 <div class="project-image">
                   <img
@@ -638,7 +632,6 @@
             <a
               href="projects/plan-bee.html"
               class="project-card reveal project-plan-bee"
-                data-preview="assets/Plan-Bee-Video-Smaller.mp4"
             >
               <div class="project-image">
                 <img
@@ -714,7 +707,6 @@
             <a
               href="projects/harry-potter-escape-room.html"
               class="project-card reveal project-harry-potter"
-                data-preview="assets/Harry%20Potter%20Themed%20Escape%20Room%20-%20Mini%20Project.mp4"
             >
               <div class="project-image">
                 <img
@@ -755,7 +747,6 @@
             <a
               href="projects/zombie-game.html"
               class="project-card reveal project-zombie"
-                data-preview="assets/Zombie%20VR-Game.mp4"
             >
               <div class="project-image">
                 <img
@@ -796,7 +787,6 @@
             <a
               href="projects/but-worse-resident-evil.html"
               class="project-card reveal project-resident-evil"
-                data-preview="assets/Resident%20Evil%20(but%20worse)%20Mini%20Project.mp4"
             >
               <div class="project-image">
                 <img
@@ -854,126 +844,99 @@
         <h2>Research &amp; Publications</h2>
       </div>
 
-      <div class="research-list">
-
+      <!-- each publication is one card. Status: rs-published / rs-accepted / rs-progress -->
+      <div class="research-list rs-list">
 
         <!-- 2024 — Published conference paper -->
-
-        <article class="research-item reveal">
-
-          <div class="research-meta">
-            <span>2024</span>
-            <span>Conference Paper</span>
-          </div>
-
-          <div class="research-content">
-
-            <h3>
-              A Serious Game for Promoting Knowledge about Suicidal Thoughts
-              for Students at Higher Education
-            </h3>
-
-            <p class="research-venue">
-              GoodIT '24 · Proceedings of the 2024 International Conference on
-              Information Technology for Social Good
+        <article class="rs-card reveal">
+          <a class="rs-thumb" href="projects/liv.html" aria-label="Open the LIV project">
+            <img src="assets/Liv_Ven.png" alt="LIV game" loading="lazy">
+            <span class="rs-thumb-label">LIV <span>→</span></span>
+          </a>
+          <div class="rs-body">
+            <div class="rs-top">
+              <span class="rs-status rs-published">Published</span>
+              <span class="rs-year">2024</span>
+              <span class="rs-type">Conference paper</span>
+            </div>
+            <h3>A Serious Game for Promoting Knowledge about Suicidal Thoughts for Students at Higher Education</h3>
+            <p class="rs-venue">
+              <span class="rs-venue-tag">GoodIT '24</span>
+              Proceedings of the 2024 International Conference on Information Technology for Social Good
             </p>
-
-            <p class="research-description">
+            <p class="rs-desc">
               Research exploring how a serious game can support knowledge and
               engagement among students in higher education.
             </p>
-
-            <div class="research-links">
-              <a
-                href="https://vbn.aau.dk/da/publications/a-serious-game-for-promoting-knowledge-about-suicidal-thoughts-fo/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >View publication ↗</a>
-
-              <a
-                href="https://doi.org/10.1145/3677525.3678680"
-                target="_blank"
-                rel="noopener noreferrer"
-              >DOI ↗</a>
+            <div class="rs-links">
+              <a href="https://vbn.aau.dk/da/publications/a-serious-game-for-promoting-knowledge-about-suicidal-thoughts-fo/" target="_blank" rel="noopener noreferrer" class="rs-btn rs-btn-primary">View publication <span>↗</span></a>
+              <a href="https://doi.org/10.1145/3677525.3678680" target="_blank" rel="noopener noreferrer" class="rs-btn">DOI <span>↗</span></a>
             </div>
-
           </div>
-
         </article>
 
-
         <!-- 2026 — Hearing Loss -->
-
-        <article class="research-item reveal">
-
-          <div class="research-meta">
-            <span>2026</span>
-            <span>Conference Paper</span>
-          </div>
-
-          <div class="research-content">
-
+        <article class="rs-card reveal">
+          <a class="rs-thumb" href="projects/hearing-loss.html" aria-label="Open the Hearing Loss Simulation project">
+            <img src="assets/HL1.png" alt="Hearing Loss Simulation" loading="lazy">
+            <span class="rs-thumb-label">Hearing Loss <span>→</span></span>
+          </a>
+          <div class="rs-body">
+            <div class="rs-top">
+              <span class="rs-status rs-accepted">Accepted</span>
+              <span class="rs-year">2026</span>
+              <span class="rs-type">Conference paper · Poster</span>
+            </div>
             <h3>Hearing Loss Simulation</h3>
-
-            <p class="research-venue">
-              UD26 · 8th International Universal Design Conference · Galway, Ireland
+            <p class="rs-venue">
+              <span class="rs-venue-tag">UD26</span>
+              8th International Universal Design Conference · Galway, Ireland
             </p>
-
-            <p class="research-description">
+            <p class="rs-desc">
               An immersive VR experience exploring hearing loss and accessibility
               through interactive simulation. The accompanying research article
               has been accepted for UD26, with the project also being presented
               as a conference poster.
             </p>
-
-            <div class="research-links">
-              <a
-                href="https://ud26.ie/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >UD26 Conference ↗</a>
+            <div class="rs-links">
+              <a href="https://ud26.ie/" target="_blank" rel="noopener noreferrer" class="rs-btn rs-btn-primary">UD26 Conference <span>↗</span></a>
             </div>
-
           </div>
-
         </article>
 
-
         <!-- 2026 — Bachelor research -->
-
-        <article class="research-item reveal">
-
-          <div class="research-meta">
-            <span>2026</span>
-            <span>Research in Progress</span>
-          </div>
-
-          <div class="research-content">
-
+        <article class="rs-card rs-card-progress reveal">
+          <div class="rs-body">
+            <div class="rs-top">
+              <span class="rs-status rs-progress"><i></i>In progress</span>
+              <span class="rs-year">2026</span>
+              <span class="rs-type">Research article</span>
+            </div>
             <h3>Bachelor Research Project</h3>
-
-            <p class="research-venue">Aalborg University · Medialogy</p>
-
-            <p class="research-description">
+            <p class="rs-venue">
+              <span class="rs-venue-tag">AAU</span>
+              Aalborg University · Medialogy
+            </p>
+            <p class="rs-desc">
               Ongoing research developed as part of my Bachelor project,
               investigating adaptive interactive experiences and player
               behaviour. A research article is currently in development, with
               future conference submission under consideration.
             </p>
-
           </div>
-
         </article>
-
 
       </div>
 
-      <div class="research-profile reveal">
-        <a
-          href="https://orcid.org/0009-0005-2789-0941"
-          target="_blank"
-          rel="noopener noreferrer"
-        >ORCID ↗</a>
+      <div class="research-profile rs-profile reveal">
+        <a href="https://orcid.org/0009-0005-2789-0941" target="_blank" rel="noopener noreferrer" class="rs-orcid">
+          <span class="rs-orcid-id">iD</span>
+          <span class="rs-orcid-text">
+            <strong>ORCID</strong>
+            <small>0009-0005-2789-0941</small>
+          </span>
+          <span class="rs-orcid-arrow">↗</span>
+        </a>
       </div>
 
     </section>
@@ -1105,7 +1068,7 @@
   </footer>
 
 
-  <script src="script.js?v=38"></script>
+  <script src="script.js?v=44"></script>
 
 </body>
 

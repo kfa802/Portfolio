@@ -33,7 +33,7 @@
 
     <link
         rel="stylesheet"
-        href="../style.css?v=38"
+        href="../style.css?v=43"
     >
 
 </head>
@@ -102,485 +102,184 @@
          PROJECT HERO
     ========================================= -->
 
-    <main>
+    <main class="pj-page">
 
+        <!-- =========================================
+             PROJECT PAGE — same style as the About page
+             HOW TO SWAP A PICTURE: every picture sits in a
+             <figure class="ab-figure"> ... </figure> block.
+             Change the src="" and the <figcaption> text.
+        ========================================= -->
 
-        <section class="project-page-hero">
+        <!-- ===== HERO ===== -->
+        <section class="pj-hero">
+            <div class="pj-wrap">
 
-            <div class="container">
-
-
-                <a
-                    href="../index.html#work"
-                    class="project-back"
-                >
-                    <span>←</span>
-                    Back to selected work
-                </a>
-
-
-                <div class="project-page-heading reveal">
-
-
-                    <div class="project-meta">
-
-                        <span class="project-number">
-                            05
-                        </span>
-
-                                                                    <span class="project-year">
-                                            2024
-                                        </span>
-
-                        <span class="project-type">
-                            3D game · Unity
-                        </span>
-
+                <div class="pj-hero-text reveal">
+                    <div class="pj-meta">
+                        <span class="ab-chapter-num">05</span>
+                        <span>2024</span>
                     </div>
 
+                    <h1 class="pj-title">
+                        Resident Evil <span class="project-title-small"> (But Worse) </span><span class="ab-dot">.</span>
+                    </h1>
 
-<h1>
-    Resident Evil
-    <span class="project-title-small">
-        (But Worse)
-    </span>
-</h1>
-
-
-                    <p class="project-page-intro">
-                        A <strong>third-person 3D horror shooter</strong>
-                        inspired by the Resident Evil games, built in
-                        Unity with enemy AI, shooting and a strong focus
-                        on world building.
+                    <p class="pj-lead">
+                        A <strong>third-person 3D horror shooter</strong> inspired by the Resident Evil games, built in Unity with enemy AI, shooting and a strong focus on world building.
                     </p>
+                </div>
 
+                <dl class="pj-facts pj-facts-3 reveal">
+                    <div>
+                        <dt>Type</dt>
+                        <dd>3D game · Unity</dd>
+                    </div>
+                    <div>
+                        <dt>Tools</dt>
+                        <dd>Unity · C#</dd>
+                    </div>
+                    <div>
+                        <dt>Topics</dt>
+                        <dd>3D · AI · World Building · Game Development</dd>
+                    </div>
+                </dl>
 
-                    <div class="project-tags">
-
-                        <span>Unity</span>
-                        <span>C#</span>
-                        <span>3D</span>
-                        <span>AI</span>
-                        <span>World Building</span>
-                        <span>Game Development</span>
-
+                    <div class="pj-hero-media reveal">
+                        <div class="pj-video">
+                            <video preload="metadata" playsinline poster="../assets/residenthero.png">
+                                <source src="../assets/Resident%20Evil%20%28but%20worse%29%20Mini%20Project.mp4" type="video/mp4">
+                            </video>
+                            <button class="pj-play" type="button" aria-label="Play video"></button>
+                        </div>
                     </div>
 
-
-                </div>
-
-
-                <!-- HERO VIDEO -->
-
-                <div class="project-hero-media reveal">
-
-                    <video
-                        controls
-                        preload="metadata"
-                        poster="../assets/residenthero.png"
-                    >
-
-                        <source
-                            src="../assets/Resident%20Evil%20%28but%20worse%29%20Mini%20Project.mp4"
-                            type="video/mp4"
-                        >
-
-                        Your browser does not support
-                        the video element.
-
-                    </video>
-
-                </div>
-
-                <a
-    href="#overview"
-    class="hero-scroll project-video-scroll"
->
-
-    <span class="scroll-arrow">
-        ↓
-    </span>
-
-    <span>
-        SCROLL TO EXPLORE
-    </span>
-
-</a>
-
-
             </div>
-
         </section>
 
 
-        <!-- =========================================
-             OVERVIEW
-        ========================================= -->
-
-        <section
-            id="overview"
-            class="project-section"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
+        <section class="pj-body">
 
 
-                    <div class="project-section-label reveal">
+            <!-- ===== 01 · OVERVIEW ===== -->
+            <article id="overview" class="ab-chapter">
 
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">01</span>
+                    <h2>Exploring 3D game development</h2>
+                    <p>
+                        This project was an exploration of <strong>3D game development in Unity</strong>, inspired by the atmosphere of the Resident Evil games. The player explores a horror-inspired environment, shooting zombies that attack when you get too close, while collecting ammo and health herbs along the way.
+                    </p>
+                    <p>
+                        Zombies spawn throughout the map, and <strong>Mr. X constantly chases the player</strong>, so you have to keep moving to survive.
+                    </p>
+                    <p>
+                        A big focus of the project was <strong>world building</strong>, using terrain tools, particle effects, lighting and audio to create the atmosphere.
+                    </p>
+                </div>
+
+                <div class="ab-media pj-media-two reveal">
+                    <figure class="ab-figure">
+                        <img src="../assets/resident4.png" alt="Resident Evil (But Worse) environment" loading="lazy">
+                    </figure>
+                    <figure class="ab-figure">
+                        <img src="../assets/resident3.png" alt="Resident Evil (But Worse) environment" loading="lazy">
+                    </figure>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 02 · DEVELOPMENT ===== -->
+            <article id="development" class="ab-chapter pj-chapter-solo">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">02</span>
+                    <h2>Building the gameplay systems</h2>
+                    <p>
+                        The development focused on connecting the systems needed for a responsive 3D horror game, from player controls and shooting to enemy AI and environmental atmosphere.
+                    </p>
+                </div>
+
+
+                <div class="pj-features pj-features-4 reveal">
+                    <div class="pj-feature">
                         <span>01</span>
-                        Overview
-
+                        <h3>Enemy AI</h3>
+                        <p>Zombies spawn across the map and attack when the player is within range, while Mr. X constantly chases the player using NavMesh pathfinding.</p>
                     </div>
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            Exploring 3D game development.
-                        </h2>
-
-
-                        <p>
-                            This project was an exploration of
-                            <strong>3D game development in Unity</strong>,
-                            inspired by the atmosphere of the Resident Evil
-                            games. The player explores a horror-inspired
-                            environment, shooting zombies that attack when
-                            you get too close, while collecting ammo and
-                            health herbs along the way.
-                        </p>
-
-
-                        <p>
-                            Zombies spawn throughout the map, and
-                            <strong>Mr. X constantly chases the player</strong>,
-                            so you have to keep moving to survive.
-                        </p>
-
-
-                        <p>
-                            A big focus of the project was
-                            <strong>world building</strong>, using terrain tools,
-                            particle effects, lighting and audio to create
-                            the atmosphere.
-                        </p>
-
-
-                        <div class="overview-images">
-
-
-                            <img
-                                src="../assets/resident4.png"
-                                alt="Resident Evil (But Worse) environment"
-                            >
-
-
-                            <img
-                                src="../assets/resident3.png"
-                                alt="Resident Evil (But Worse) environment"
-                            >
-
-
-                        </div>
-
-
-                        <a
-                            href="#development"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             DEVELOPMENT
-        ========================================= -->
-
-        <section
-            id="development"
-            class="project-section project-section-alt"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
+                    <div class="pj-feature">
                         <span>02</span>
-                        Development
-
+                        <h3>Raycasting</h3>
+                        <p>Raycasting was used for aiming, shooting and detecting objects in front of the player, connecting the camera direction to gameplay interactions.</p>
                     </div>
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            Building the gameplay systems.
-                        </h2>
-
-
-                        <p>
-                            The development focused on connecting the
-                            systems needed for a responsive 3D horror
-                            game, from player controls and shooting to
-                            enemy AI and environmental atmosphere.
-                        </p>
-
-
-                        <div class="project-feature-grid">
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    01
-                                </span>
-
-                                <h3>
-                                    Enemy AI
-                                </h3>
-
-                                <p>
-                                    Zombies spawn across the map and
-                                    attack when the player is within
-                                    range, while Mr. X constantly
-                                    chases the player using NavMesh
-                                    pathfinding.
-                                </p>
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    02
-                                </span>
-
-                                <h3>
-                                    Raycasting
-                                </h3>
-
-                                <p>
-                                    Raycasting was used for aiming,
-                                    shooting and detecting objects
-                                    in front of the player, connecting
-                                    the camera direction to gameplay
-                                    interactions.
-                                </p>
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    03
-                                </span>
-
-                                <h3>
-                                    Finite State Machines
-                                </h3>
-
-                                <p>
-                                    Finite state machines were used
-                                    to structure player movement and
-                                    aiming behaviours, making different
-                                    states easier to manage and
-                                    transition between.
-                                </p>
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    04
-                                </span>
-
-                                <h3>
-                                    World building
-                                </h3>
-
-                                <p>
-                                    Terrain tools, particle effects,
-                                    lighting and audio build the
-                                    atmosphere, while ammo and health
-                                    herbs reward exploring the map.
-                                </p>
-
-                            </article>
-
-
-                        </div>
-
-                  
-
-
-                        <a
-                            href="#gallery"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-          <!-- GALLERY -->
-
-        <section id="gallery" class="project-section">
-            <div class="container">
-
-                <div class="project-content-grid">
-
-                    <div class="project-section-label reveal">
+                    <div class="pj-feature">
                         <span>03</span>
-                        Gallery
+                        <h3>Finite State Machines</h3>
+                        <p>Finite state machines were used to structure player movement and aiming behaviours, making different states easier to manage and transition between.</p>
                     </div>
-
-                    <div class="project-section-content">
-
-                        <div class="project-gallery">
-
-                            <figure class="project-gallery-large reveal">
-                                <img
-                                    src="../assets/resident1.png"
-                                    alt="Resident Evil (But Worse) environment"
-                                >
-                            </figure>
-
-                            <figure class="reveal">
-                                <img
-                                    src="../assets/resident10.png"
-                                    alt="Resident Evil (But Worse) environment"
-                                >
-                            </figure>
-
-                            <button
-                                class="gallery-more reveal"
-                                onclick="openGallery()"
-                            >
-                                <img
-                                    src="../assets/resident2.png"
-                                    alt="Resident Evil (But Worse) gameplay"
-                                >
-
-                                <span>+9 more</span>
-                            </button>
-
-                        </div>
-
-
-                        <!-- FULL GALLERY LIGHTBOX -->
-
-                        <div
-                            class="gallery-lightbox"
-                            id="gallery-lightbox"
-                        >
-
-                            <button
-                                class="gallery-close"
-                                onclick="closeGallery()"
-                            >
-                                ×
-                            </button>
-
-                            <div class="gallery-lightbox-content">
-
-                                <img src="../assets/resident1.png" alt="Resident Evil (But Worse) environment">
-                                <img src="../assets/resident10.png" alt="Resident Evil (But Worse) environment">
-                                <img src="../assets/resident2.png" alt="Resident Evil (But Worse) gameplay">
-                                <img src="../assets/resident3.png" alt="Resident Evil (But Worse) environment">
-                                <img src="../assets/resident4.png" alt="Resident Evil (But Worse) environment">
-                                <img src="../assets/resident5.png" alt="Resident Evil (But Worse) screenshot">
-                                <img src="../assets/resident6.png" alt="Resident Evil (But Worse) screenshot">
-                                <img src="../assets/resident7.png" alt="Resident Evil (But Worse) screenshot">
-                                <img src="../assets/resident8.png" alt="Resident Evil (But Worse) screenshot">
-                                <img src="../assets/resident9.png" alt="Resident Evil (But Worse) screenshot">
-                                <img src="../assets/residenthero.png" alt="Resident Evil (But Worse) screenshot">
-                                <img src="../assets/residenthero2.png" alt="Resident Evil (But Worse) screenshot">
-
-                            </div>
-
-                        </div>
-
+                    <div class="pj-feature">
+                        <span>04</span>
+                        <h3>World building</h3>
+                        <p>Terrain tools, particle effects, lighting and audio build the atmosphere, while ammo and health herbs reward exploring the map.</p>
                     </div>
-
                 </div>
 
-            </div>
-        </section>
+            </article>
 
 
-        <!-- NEXT PROJECT -->
+            <!-- ===== 03 · GALLERY ===== -->
+            <article id="gallery" class="pj-gallery-chapter">
 
-        <section class="project-next">
-            <div class="container">
+                <div class="pj-gallery-head reveal">
+                    <span class="ab-chapter-num">03</span>
+                    <h2>Gallery</h2>
+                </div>
 
-                <a
-                    href="../index.html#work"
-                    class="project-next-link reveal"
-                >
-                    <span>Next project</span>
+                <!-- the first pictures show here; the rest open in the viewer -->
+                <div class="project-gallery pj-gallery reveal">
+                    <img class="pj-gallery-big" src="../assets/resident1.png" alt="Resident Evil (But Worse) environment" loading="lazy">
+                    <img src="../assets/resident10.png" alt="Resident Evil (But Worse) environment" loading="lazy">
+                    <button class="gallery-more" type="button" onclick="openGallery(2)">
+                        <img src="../assets/resident2.png" alt="Resident Evil (But Worse) gameplay" loading="lazy">
+                        <span></span>
+                    </button>
+                </div>
 
-                    <strong>
-                        <span class="next-project-title">
-                            Selected Work
-                        </span>
+                <!-- full-screen viewer: ALL gallery pictures go in here -->
+                <div class="gallery-lightbox" id="gallery-lightbox">
+                    <button class="gallery-close" onclick="closeGallery()">×</button>
+                    <div class="gallery-lightbox-content">
+                        <img src="../assets/resident1.png" alt="Resident Evil (But Worse) environment">
+                        <img src="../assets/resident10.png" alt="Resident Evil (But Worse) environment">
+                        <img src="../assets/resident2.png" alt="Resident Evil (But Worse) gameplay">
+                        <img src="../assets/resident3.png" alt="Resident Evil (But Worse) environment">
+                        <img src="../assets/resident4.png" alt="Resident Evil (But Worse) environment">
+                        <img src="../assets/resident5.png" alt="Resident Evil (But Worse) screenshot">
+                        <img src="../assets/resident6.png" alt="Resident Evil (But Worse) screenshot">
+                        <img src="../assets/resident7.png" alt="Resident Evil (But Worse) screenshot">
+                        <img src="../assets/resident8.png" alt="Resident Evil (But Worse) screenshot">
+                        <img src="../assets/resident9.png" alt="Resident Evil (But Worse) screenshot">
+                        <img src="../assets/residenthero.png" alt="Resident Evil (But Worse) screenshot">
+                        <img src="../assets/residenthero2.png" alt="Resident Evil (But Worse) screenshot">
+                    </div>
+                </div>
 
-                        <span>→</span>
-                    </strong>
+            </article>
+
+
+            <!-- ===== LINKS + NEXT ===== -->
+            <div class="pj-end pj-end-2 reveal">
+                <a class="pj-end-card" href="zombie-game.html">
+                    <span class="pj-end-label">Previous project</span>
+                    <strong><span>←</span> Zombie Game</strong>
                 </a>
-
-                <a
-                    href="zombie-game.html"
-                    class="project-previous-link reveal"
-                >
-                    <span>←</span>
-                    Previous project: Zombie Game
+                <a class="pj-end-card pj-end-next" href="../index.html#work">
+                    <span class="pj-end-label">Back to</span>
+                    <strong>Selected Work <span>→</span></strong>
                 </a>
-
             </div>
+
         </section>
 
     </main>
@@ -602,7 +301,7 @@
     </footer>
 
 
-    <script src="../script.js?v=38"></script>
+    <script src="../script.js?v=43"></script>
 
 </body>
 

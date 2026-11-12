@@ -33,7 +33,7 @@
 
     <link
         rel="stylesheet"
-        href="../style.css?v=38"
+        href="../style.css?v=43"
     >
 
 
@@ -179,801 +179,194 @@
          PROJECT HERO
     ========================================= -->
 
-    <main>
+    <main class="pj-page">
 
+        <!-- =========================================
+             PROJECT PAGE — same style as the About page
+             HOW TO SWAP A PICTURE: every picture sits in a
+             <figure class="ab-figure"> ... </figure> block.
+             Change the src="" and the <figcaption> text.
+        ========================================= -->
 
-        <section class="project-page-hero">
+        <!-- ===== HERO ===== -->
+        <section class="pj-hero">
+            <div class="pj-wrap">
 
-            <div class="container">
-
-
-                <a
-                    href="../index.html#work"
-                    class="project-back"
-                >
-
-                    <span>
-                        ←
-                    </span>
-
-                    Back to selected work
-
-                </a>
-
-
-                <div class="project-page-heading reveal">
-
-
-                    <div class="project-meta">
-
-
-                        <span class="project-number">
-                            02
-                        </span>
-
-                                                                    <span class="project-year">
-                                            2026
-                                        </span>
-
-
-                        <span class="project-type">
-                            Web application · React
-                        </span>
-
-
+                <div class="pj-hero-text reveal">
+                    <div class="pj-meta">
+                        <span class="ab-chapter-num">02</span>
+                        <span>2026</span>
                     </div>
 
-
-                    <h1>
-                        Trivia Quiz Website
+                    <h1 class="pj-title">
+                        Trivia Quiz Website<span class="ab-dot">.</span>
                     </h1>
 
-
-                    <p class="project-page-intro">
-
-                        A <strong>full-stack quiz platform</strong>
-                        where users can play trivia, create their
-                        own quizzes and share them with others.
-
+                    <p class="pj-lead">
+                        A <strong>full-stack quiz platform</strong> where users can play trivia, create their own quizzes and share them with others.
                     </p>
-
-
-                    <div class="project-tags">
-
-
-                        <span>
-                            React
-                        </span>
-
-
-                        <span>
-                            Node.js
-                        </span>
-
-
-                        <span>
-                            Express
-                        </span>
-
-
-                        <span>
-                            JavaScript
-                        </span>
-
-
-                    </div>
-
-
                 </div>
 
-
-                <!-- =========================================
-                     HERO IMAGE
-                ========================================= -->
-
-                <div class="project-hero-media reveal">
-
-                    <img
-                        src="../assets/frontpage.png"
-                        alt="Trivia Quiz main menu"
-                    >
-
-                </div>
-
-                <a
-    href="#overview"
-    class="hero-scroll project-video-scroll"
->
-
-    <span class="scroll-arrow">
-        ↓
-    </span>
-
-    <span>
-        SCROLL TO EXPLORE
-    </span>
-
-</a>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             OVERVIEW
-        ========================================= -->
-
-        <section
-            id="overview"
-            class="project-section"
-        >
-
-            <div class="container">
-
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-
-                        <span>
-                            01
-                        </span>
-
-
-                        Overview
-
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            A quiz platform built with React and Node.js.
-                        </h2>
-
-
-                        <p>
-
-                            Trivia Quiz lets users
-                            <strong>
-                                play quizzes, create their own
-                                and share them with others.
-                            </strong>
-
-                            Questions can also be fetched from
-                            the Open Trivia Database, and logged-in users
-                            can track their results in a score history.
-
-                        </p>
-
-
-                        <p>
-
-                            The project was built individually as a
-                            single-page web application for a Web
-                            Programming course, combining a React
-                            frontend with a Node.js and Express
-                            backend.
-
-                        </p>
-
-
-                        <div class="project-feature-grid">
-
-
-                            <article class="project-feature reveal">
-
-
-                                <span class="project-feature-number">
-                                    01
-                                </span>
-
-
-                                <h3>
-                                    Play
-                                </h3>
-
-
-                                <p>
-
-                                    Choose a category, difficulty,
-                                    number of questions and time
-                                    per question.
-
-                                </p>
-
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-
-                                <span class="project-feature-number">
-                                    02
-                                </span>
-
-
-                                <h3>
-                                    Create
-                                </h3>
-
-
-                                <p>
-
-                                    Build your own quizzes with
-                                    custom questions and answers.
-
-                                </p>
-
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-
-                                <span class="project-feature-number">
-                                    03
-                                </span>
-
-
-                                <h3>
-                                    Share
-                                </h3>
-
-
-                                <p>
-
-                                    Saved quizzes can be shared
-                                    with others through unique
-                                    links.
-
-                                </p>
-
-
-                            </article>
-
-
-                        </div>
-
-
-                        <!-- =========================================
-                             OVERVIEW IMAGES
-                        ========================================= -->
-
-                        <div class="trivia-overview-images">
-
-
-                            <div
-                                class="trivia-overview-image trivia-overview-image-1"
-                            >
-
-                                <img
-                                    src="../assets/SetupQuizpage.png"
-                                    alt="Quiz setup screen"
-                                >
-
-                            </div>
-
-
-                            <div
-                                class="trivia-overview-image trivia-overview-image-2"
-                            >
-
-                                <img
-                                    src="../assets/scoreHistory.png"
-                                    alt="Score history screen"
-                                >
-
-                            </div>
-
-
-                        </div>
-
-
-                        <a
-                            href="#development"
-                            class="hero-scroll"
-                        >
-
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-
-                        </a>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-        <!-- =========================================
-             DEVELOPMENT
-        ========================================= -->
-
-        <section
-            id="development"
-            class="project-section project-section-alt"
-        >
-
-            <div class="container">
-
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-
-                        <span>
-                            02
-                        </span>
-
-
-                        Development
-
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            Connecting the frontend and backend.
-                        </h2>
-
-
-                        <p>
-
-                            The main challenge was making the
-                            different parts of the application work
-                            together. React handles the interface,
-                            while the Node.js and Express backend
-                            handles users, quizzes and data.
-                            MongoDB was originally planned for storage, but
-                            the connection failed, so I switched to JSON
-                            files, which work locally but would not scale
-                            to many users.
-
-                        </p>
-
-
-                        <p>
-
-                            User accounts were handled with
-                            <strong>
-                                JWT and bcrypt
-                            </strong>,
-
-                            while the quiz content was connected
-                            to the Open Trivia Database API.
-
-                        </p>
-
-
-                        <div class="project-feature-grid">
-
-
-                            <article class="project-feature reveal">
-
-
-                                <span class="project-feature-number">
-                                    01
-                                </span>
-
-
-                                <h3>
-                                    React
-                                </h3>
-
-
-                                <p>
-
-                                    Building the interactive
-                                    quiz interface and managing
-                                    the user experience.
-
-                                </p>
-
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-
-                                <span class="project-feature-number">
-                                    02
-                                </span>
-
-
-                                <h3>
-                                    Backend
-                                </h3>
-
-
-                                <p>
-
-                                    Using Node.js and Express to
-                                    handle users, quizzes and
-                                    data requests.
-
-                                </p>
-
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-
-                                <span class="project-feature-number">
-                                    03
-                                </span>
-
-
-                                <h3>
-                                    Authentication
-                                </h3>
-
-
-                                <p>
-
-                                    JWT and bcrypt handle login and
-                                    password hashing, and custom
-                                    middleware protects private routes.
-
-                                </p>
-
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-
-                                <span class="project-feature-number">
-                                    04
-                                </span>
-
-
-                                <h3>
-                                    API Integration
-                                </h3>
-
-
-                                <p>
-
-                                    Connecting the application
-                                    to the Open Trivia Database
-                                    for quiz questions.
-
-                                </p>
-
-
-                            </article>
-
-
-                        </div>
-
-
-                        <a
-                            href="#gallery"
-                            class="hero-scroll"
-                        >
-
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-
-                        </a>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-        <!-- =========================================
-             GALLERY
-        ========================================= -->
-
-        <section
-            id="gallery"
-            class="project-section"
-        >
-
-            <div class="container">
-
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-
-                        <span>
-                            03
-                        </span>
-
-
-                        Gallery
-
-
-                    </div>
-
-
-                    <div class="project-section-content">
-
-
-                        <div class="project-gallery">
-
-
-                            <!-- IMAGE 1 -->
-
-                            <figure class="project-gallery-large reveal">
-
-
-                                <img
-                                    src="../assets/YourQuizzes.png"
-                                    alt="Your saved quizzes"
-                                >
-
-
-                            </figure>
-
-
-                            <!-- IMAGE 2 -->
-
-                            <figure class="reveal">
-
-
-                                <img
-                                    src="../assets/QuickQuestion.png"
-                                    alt="Quick question popup"
-                                >
-
-
-                            </figure>
-
-
-                            <!-- IMAGE 3 -->
-
-                            <button
-                                class="gallery-more reveal"
-                                onclick="openGallery()"
-                            >
-
-
-                                <img
-                                    src="../assets/FriendsQuiz.png"
-                                    alt="Play a friend's quiz screen"
-                                >
-
-
-                                <span>
-                                    +3 more
-                                </span>
-
-
-                            </button>
-
-
-                        </div>
-
-
-                        <!-- =========================================
-                             HIDDEN FULL GALLERY
-                        ========================================= -->
-
-                        <div
-                            class="gallery-lightbox"
-                            id="gallery-lightbox"
-                        >
-
-
-                            <button
-                                class="gallery-close"
-                                onclick="closeGallery()"
-                            >
-                                ×
-                            </button>
-
-
-                            <div class="gallery-lightbox-content">
-
-
-                                <img
-                                    src="../assets/YourQuizzes.png"
-                                    alt="Your saved quizzes"
-                                >
-
-
-                                <img
-                                    src="../assets/QuickQuestion.png"
-                                    alt="Quick question popup"
-                                >
-
-
-                                <img
-                                    src="../assets/FriendsQuiz.png"
-                                    alt="Play a friend's quiz screen"
-                                >
-
-
-                                <img
-                                    src="../assets/SetupQuizpage.png"
-                                    alt="Quiz setup screen"
-                                >
-
-
-                                <img
-                                    src="../assets/scoreHistory.png"
-                                    alt="Score history screen"
-                                >
-
-
-                                <img
-                                    src="../assets/frontpage.png"
-                                    alt="Trivia Quiz main menu"
-                                >
-
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-        <!-- =========================================
-             LINKS
-        ========================================= -->
-
-        <section
-            class="project-section project-links-section"
-        >
-
-            <div class="container">
-
-
-                <div class="project-links reveal">
-
-
+                <dl class="pj-facts pj-facts-2 reveal">
                     <div>
-
-
-                        <span class="project-links-label">
-                            Explore the project
-                        </span>
-
-
-                        <h2>
-                            Want to see more?
-                        </h2>
-
-
+                        <dt>Type</dt>
+                        <dd>Web application · React</dd>
                     </div>
-
-
-                    <div class="project-buttons">
-
-
-                        <a
-                            href="https://github.com/kfa802/Trivia-app"
-                            class="button button-secondary"
-                            target="_blank"
-                            rel="noopener"
-                        >
-
-                            GitHub
-
-                            <span>
-                                ↗
-                            </span>
-
-                        </a>
-
-
+                    <div>
+                        <dt>Tools</dt>
+                        <dd>React · Node.js · Express · JavaScript</dd>
                     </div>
+                </dl>
 
-
+                <div class="pj-hero-media reveal">
+                    <img src="../assets/frontpage.png" alt="Trivia Quiz main menu">
                 </div>
 
-
             </div>
-
-
         </section>
 
 
-       <!-- =========================================
-     NEXT PROJECT
-========================================== -->
+        <section class="pj-body">
 
-<section class="project-next">
 
-    <div class="container">
+            <!-- ===== 01 · OVERVIEW ===== -->
+            <article id="overview" class="ab-chapter">
 
-        <a
-            href="harry-potter-escape-room.html"
-            class="project-next-link reveal"
-        >
-            <span>
-                Next project
-            </span>
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">01</span>
+                    <h2>A quiz platform built with React and Node.js</h2>
+                    <p>
+                        Trivia Quiz lets users <strong> play quizzes, create their own and share them with others. </strong> Questions can also be fetched from the Open Trivia Database, and logged-in users can track their results in a score history.
+                    </p>
+                    <p>
+                        The project was built individually as a single-page web application for a Web Programming course, combining a React frontend with a Node.js and Express backend.
+                    </p>
+                </div>
 
-            <strong>
-                <span class="next-project-title">
-                    Harry Potter Escape Room
-                </span>
+                <div class="ab-media pj-media-two reveal">
+                    <figure class="ab-figure">
+                        <img src="../assets/SetupQuizpage.png" alt="Quiz setup screen" loading="lazy">
+                    </figure>
+                    <figure class="ab-figure ab-figure-contain">
+                        <img src="../assets/scoreHistory.png" alt="Score history screen" loading="lazy">
+                    </figure>
+                </div>
 
-                <span>→</span>
-            </strong>
-        </a>
+                <div class="pj-features pj-features-3 reveal">
+                    <div class="pj-feature">
+                        <span>01</span>
+                        <h3>Play</h3>
+                        <p>Choose a category, difficulty, number of questions and time per question.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>02</span>
+                        <h3>Create</h3>
+                        <p>Build your own quizzes with custom questions and answers.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>03</span>
+                        <h3>Share</h3>
+                        <p>Saved quizzes can be shared with others through unique links.</p>
+                    </div>
+                </div>
 
-        <a
-            href="plan-bee.html"
-            class="project-previous-link reveal"
-        >
-            <span>←</span>
-            Previous project: Plan Bee
-        </a>
+            </article>
 
-    </div>
 
-</section>
+            <!-- ===== 02 · DEVELOPMENT ===== -->
+            <article id="development" class="ab-chapter pj-chapter-solo">
 
-</main>
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">02</span>
+                    <h2>Connecting the frontend and backend</h2>
+                    <p>
+                        The main challenge was making the different parts of the application work together. React handles the interface, while the Node.js and Express backend handles users, quizzes and data. MongoDB was originally planned for storage, but the connection failed, so I switched to JSON files, which work locally but would not scale to many users.
+                    </p>
+                    <p>
+                        User accounts were handled with <strong> JWT and bcrypt </strong>, while the quiz content was connected to the Open Trivia Database API.
+                    </p>
+                </div>
 
+
+                <div class="pj-features pj-features-4 reveal">
+                    <div class="pj-feature">
+                        <span>01</span>
+                        <h3>React</h3>
+                        <p>Building the interactive quiz interface and managing the user experience.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>02</span>
+                        <h3>Backend</h3>
+                        <p>Using Node.js and Express to handle users, quizzes and data requests.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>03</span>
+                        <h3>Authentication</h3>
+                        <p>JWT and bcrypt handle login and password hashing, and custom middleware protects private routes.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>04</span>
+                        <h3>API Integration</h3>
+                        <p>Connecting the application to the Open Trivia Database for quiz questions.</p>
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 03 · GALLERY ===== -->
+            <article id="gallery" class="pj-gallery-chapter">
+
+                <div class="pj-gallery-head reveal">
+                    <span class="ab-chapter-num">03</span>
+                    <h2>Gallery</h2>
+                </div>
+
+                <!-- the first pictures show here; the rest open in the viewer -->
+                <div class="project-gallery pj-gallery reveal">
+                    <img class="pj-gallery-big" src="../assets/YourQuizzes.png" alt="Your saved quizzes" loading="lazy">
+                    <img src="../assets/QuickQuestion.png" alt="Quick question popup" loading="lazy">
+                    <button class="gallery-more" type="button" onclick="openGallery(2)">
+                        <img src="../assets/FriendsQuiz.png" alt="Play a friend&#x27;s quiz screen" loading="lazy">
+                        <span></span>
+                    </button>
+                </div>
+
+                <!-- full-screen viewer: ALL gallery pictures go in here -->
+                <div class="gallery-lightbox" id="gallery-lightbox">
+                    <button class="gallery-close" onclick="closeGallery()">×</button>
+                    <div class="gallery-lightbox-content">
+                        <img src="../assets/YourQuizzes.png" alt="Your saved quizzes">
+                        <img src="../assets/QuickQuestion.png" alt="Quick question popup">
+                        <img src="../assets/FriendsQuiz.png" alt="Play a friend&#x27;s quiz screen">
+                        <img src="../assets/SetupQuizpage.png" alt="Quiz setup screen">
+                        <img src="../assets/scoreHistory.png" alt="Score history screen">
+                        <img src="../assets/frontpage.png" alt="Trivia Quiz main menu">
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== LINKS + NEXT ===== -->
+            <div class="pj-end pj-end-3 reveal">
+                <a class="pj-end-card" href="https://github.com/kfa802/Trivia-app" target="_blank" rel="noopener">
+                    <span class="pj-end-label">Explore the project</span>
+                    <strong>GitHub <span>↗</span></strong>
+                </a>
+                <a class="pj-end-card" href="plan-bee.html">
+                    <span class="pj-end-label">Previous project</span>
+                    <strong><span>←</span> Plan Bee</strong>
+                </a>
+                <a class="pj-end-card pj-end-next" href="harry-potter-escape-room.html">
+                    <span class="pj-end-label">Next project</span>
+                    <strong>Harry Potter Escape Room <span>→</span></strong>
+                </a>
+            </div>
+
+        </section>
+
+    </main>
 
     <!-- =========================================
          FOOTER
@@ -996,7 +389,7 @@
     </footer>
 
 
-    <script src="../script.js?v=38"></script>
+    <script src="../script.js?v=43"></script>
 
 
 </body>

@@ -32,7 +32,7 @@
 
     <link
         rel="stylesheet"
-        href="../style.css?v=38"
+        href="../style.css?v=43"
     >
 
 </head>
@@ -101,792 +101,335 @@
          PROJECT HERO
     ========================================== -->
 
-    <main>
+    <main class="pj-page">
 
-        <section class="project-page-hero">
+        <!-- =========================================
+             PROJECT PAGE — same style as the About page
+             HOW TO SWAP A PICTURE: every picture sits in a
+             <figure class="ab-figure"> ... </figure> block.
+             Change the src="" and the <figcaption> text.
+        ========================================= -->
 
-            <div class="container">
+        <!-- ===== HERO ===== -->
+        <section class="pj-hero">
+            <div class="pj-wrap">
 
-                <a
-                    href="../index.html#work"
-                    class="project-back"
-                >
-                    <span>←</span>
-                    Back to selected work
-                </a>
-
-
-                <div class="project-page-heading reveal">
-
-                    <div class="project-meta">
-
-                        <span class="project-number">
-                            01
-                        </span>
-
-                               <span class="project-year">
-                                                2026
-                                            </span>
-
-
-                        <span class="project-type">
-                            Learning game · Unity
-                        </span>
-
+                <div class="pj-hero-text reveal">
+                    <div class="pj-meta">
+                        <span class="ab-chapter-num">01</span>
+                        <span>2026</span>
+                        <span class="pj-meta-dot">·</span>
+                        <span>Learning game · Unity</span>
                     </div>
 
-
-                    <h1 class="womens-suffrage-title">
-                        A Learning Game about Women's Suffrage in Denmark
+                    <h1 class="pj-title">
+                        A Learning Game about Women's Suffrage in Denmark<span class="ab-dot">.</span>
                     </h1>
 
+                    <p class="pj-lead">
+                        An educational learning game exploring student
+                        <strong>engagement</strong> and <strong>learning outcomes</strong>
+                        compared to a digital text-based approach.
+                    </p>
+                </div>
 
-                    <p class="project-page-intro">
-                    An educational learning game exploring student
-                    <strong>engagement</strong> and <strong>learning outcomes</strong> compared to a digital text-based approach.
+                <!-- quick facts -->
+                <dl class="pj-facts reveal">
+                    <div>
+                        <dt>Project</dt>
+                        <dd>Bachelor project · group</dd>
+                    </div>
+                    <div>
+                        <dt>For</dt>
+                        <dd>7th–9th grade students</dd>
+                    </div>
+                    <div>
+                        <dt>My focus</dt>
+                        <dd>Unity development, gameplay systems</dd>
+                    </div>
+                    <div>
+                        <dt>Partners</dt>
+                        <dd>Arbejdermuseet · Højdevangskolen</dd>
+                    </div>
+                    <div>
+                        <dt>Tools</dt>
+                        <dd>Unity · C#</dd>
+                    </div>
+                </dl>
+
+                <!-- hero video -->
+                <div class="pj-hero-media reveal">
+                    <div class="pj-video">
+                        <video preload="metadata" playsinline poster="../assets/hero-woman.png">
+                            <source src="../assets/A Learning Game about Women's Suffrage in Denmark (AV Production).mp4" type="video/mp4">
+                        </video>
+                        <button class="pj-play" type="button" aria-label="Play video"></button>
+                    </div>
+                </div>
+
+                <div class="pj-tags reveal">
+                    <span>Learning Games</span>
+                    <span>Narrative</span>
+                    <span>A/B Testing</span>
+                    <span>Collaboration</span>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="pj-body">
+
+            <!-- ===== 01 · OVERVIEW ===== -->
+            <article id="overview" class="ab-chapter">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">01</span>
+                    <h2>Learning history through interaction</h2>
+                    <p>
+                        The project is a narrative-driven learning game about the fight for women's
+                        suffrage in Denmark from 1896 to 1918. Designed for students in 7th–9th grade,
+                        the player follows <strong>Agnes</strong> through a third-person perspective and
+                        experiences important historical events and years through her story, choices
+                        and interactions.
+                    </p>
+                    <p>
+                        The game combines narrative, gameplay and minigames that challenge players on
+                        the historical knowledge they have acquired throughout the experience.
+                    </p>
+                </div>
+
+                <div class="ab-media pj-media-two reveal">
+                    <!-- swap: overview pictures -->
+                    <figure class="ab-figure">
+                        <img src="../assets/kvindeoptog1.png" alt="The women's march recreated in the game" loading="lazy">
+                        <figcaption>The march, in the game</figcaption>
+                    </figure>
+                    <figure class="ab-figure">
+                        <img src="../assets/kvindeoptog2.png" alt="Historical photo of the women's march" loading="lazy">
+                        <figcaption>The historical photo it's based on</figcaption>
+                    </figure>
+                </div>
+
+                <!-- what the game is made of -->
+                <div class="pj-features reveal">
+                    <div class="pj-feature">
+                        <span>01</span>
+                        <h3>Narrative</h3>
+                        <p>Follow Agnes through the events leading up to women's suffrage in Denmark.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>02</span>
+                        <h3>Exploration</h3>
+                        <p>Explore the environment and interact with characters, objects and events.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>03</span>
+                        <h3>Minigames</h3>
+                        <p>Test the historical knowledge gained throughout the experience.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>04</span>
+                        <h3>Historical events</h3>
+                        <p>Experience key moments from 1896 to 1918 through Agnes' story.</p>
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 02 · FINDINGS ===== -->
+            <article id="findings" class="ab-chapter ab-chapter-flip">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">02</span>
+                    <h2>Evaluation and findings</h2>
+                    <p>
+                        To evaluate the learning experience, we ran an <strong>A/B test</strong>
+                        comparing the game with traditional text-based learning, measuring both
+                        engagement and learning outcomes.
+                    </p>
+                    <p>
+                        There was no statistically significant difference in learning outcome, but the
+                        game showed a <strong>medium effect size</strong>, suggesting a possible positive
+                        effect with a larger sample.
+                    </p>
+                    <p>
+                        The game group reported higher engagement, with significantly higher scores in
+                        <strong>focused attention</strong>, <strong>perceived usability</strong> and
+                        <strong>reward</strong>. So while the game didn't clearly improve short-term
+                        learning, it did make students more engaged.
+                    </p>
+                </div>
+
+                <div class="ab-media reveal">
+                    <!-- swap: findings graph -->
+                    <figure class="ab-figure ab-figure-contain">
+                        <img src="../assets/LearningOutcome-dark.png" alt="Learning outcome distribution for group A and group B" loading="lazy">
+                        <figcaption>Learning outcome · text (A) vs. game (B)</figcaption>
+                    </figure>
+                </div>
+
+                <!-- key results -->
+                <div class="pj-stats reveal">
+                    <div class="pj-stat">
+                        <strong>A/B</strong>
+                        <span>game vs. text-based learning</span>
+                    </div>
+                    <div class="pj-stat">
+                        <strong>Medium</strong>
+                        <span>effect size on learning outcome</span>
+                    </div>
+                    <div class="pj-stat">
+                        <strong>↑ Engagement</strong>
+                        <span>focused attention, usability and reward</span>
+                    </div>
+                </div>
+
+                <figure class="ab-figure ab-figure-contain pj-wide-figure reveal">
+                    <img src="../assets/UESsubscales-dark.png" alt="UES-SF subscale distributions for group A and group B" loading="lazy">
+                    <figcaption>Engagement (UES-SF) subscales · text (A) vs. game (B)</figcaption>
+                </figure>
+
+            </article>
+
+
+            <!-- ===== 03 · MY ROLE ===== -->
+            <article id="role" class="ab-chapter">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">03</span>
+                    <h2>Designing interaction and gameplay</h2>
+                    <p>
+                        Everyone in our bachelor group took part in <strong>testing</strong>,
+                        <strong>design</strong> and <strong>implementation</strong>, but my main focus
+                        was developing the game in <strong>Unity</strong>.
+                    </p>
+                    <p>
+                        I built several of the <strong>core systems</strong> the game relies on,
+                        including the game events that control the order of the narrative, so certain
+                        events only unlock after earlier ones are completed. I also designed and
+                        implemented the <strong>player interactions</strong>, animations, movement and
+                        behaviour.
+                    </p>
+                    <p>
+                        I also helped shape the <strong>visual style</strong>: adjusting the environment
+                        settings and adding rain and other particle effects so the world felt more
+                        realistic and alive.
                     </p>
 
-
-                    <div class="project-tags">
-
-                             <span>Unity</span> 
-                    <span>C#</span> 
-                    <span>Learning Games</span> 
-                    <span>Bachelor Project</span> 
-                    <span>Collaboration</span>
-                    <span>Arbejdermuseet</span>
-                    <span>A/B Testing</span> 
-                    <span>Narrative</span>
-
+                    <div class="pj-chips">
+                        <span>Unity development</span>
+                        <span>Gameplay systems</span>
+                        <span>Interaction</span>
+                        <span>Visual style</span>
                     </div>
-
                 </div>
 
-
-                <!-- HERO VIDEO -->
-
-                <div class="project-hero-media reveal">
-
-                    <video
-                        controls
-                        preload="metadata"
-                        poster="../assets/hero-woman.png"
-                    >
-
-                        <source
-                            src="../assets/A Learning Game about Women's Suffrage in Denmark (AV Production).mp4"
-                            type="video/mp4"
-                        >
-
-                        Your browser does not support
-                        the video element.
-
-                    </video>
-
+                <div class="ab-media pj-media-two reveal">
+                    <!-- swap: role pictures -->
+                    <figure class="ab-figure">
+                        <img src="../assets/triggerzone1.png" alt="Trigger zones in the Unity scene" loading="lazy">
+                        <figcaption>Trigger zones driving the story events</figcaption>
+                    </figure>
+                    <figure class="ab-figure">
+                        <img src="../assets/RainPS.png" alt="Rain particle system in Unity" loading="lazy">
+                        <figcaption>The rain particle system</figcaption>
+                    </figure>
                 </div>
 
-                <a
-    href="#overview"
-    class="hero-scroll project-video-scroll"
->
-
-    <span class="scroll-arrow">
-        ↓
-    </span>
-
-    <span>
-        SCROLL TO EXPLORE
-    </span>
-
-</a>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             OVERVIEW
-        ========================================== -->
-
-        <section
-            id="overview"
-            class="project-section"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-                    <div class="project-section-label reveal">
-
-                        <span>01</span>
-                        Overview
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-                        <h2>
-                            Learning history through interaction.
-                        </h2>
-
-
-                        <p>
-                            The project is a narrative-driven learning game about the fight for women's
-                            suffrage in Denmark from 1896 to 1918.
-                            Designed for students in 7th–9th grade, the player follows Agnes through
-                            a third-person perspective and experiences important historical events and years
-                            through her story, choices, and interactions.
-                        </p>
-
-
-                        <p>
-                            The game combines narrative, gameplay, and minigames that challenge players on the historical knowledge
-                            they have acquired throughout the experience.
-                        </p>
-
-                        <div class="overview-images womens-suffrage-images">
-
-                            <img
-                                src="../assets/kvindeoptog1.png"
-                                alt="Women's Suffrage gameplay"
-                            >
-
-                            <img
-                                src="../assets/kvindeoptog2.png"
-                                alt="Women's Suffrage gameplay"
-                            >
-
-                        </div>
-
-                        <div class="project-feature-grid">
-
-    <article class="project-feature reveal">
-
-        <span class="project-feature-number">
-            01
-        </span>
-
-        <h3>
-            Narrative
-        </h3>
-
-        <p>
-            Follow Agnes through the events leading up to women's suffrage in Denmark.
-        </p>
-
-    </article>
-
-
-    <article class="project-feature reveal">
-
-        <span class="project-feature-number">
-            02
-        </span>
-
-        <h3>
-            Exploration
-        </h3>
-
-        <p>
-            Explore the environment and interact with characters, objects, and events.
-        </p>
-
-    </article>
-
-
-    <article class="project-feature reveal">
-
-        <span class="project-feature-number">
-            03
-        </span>
-
-        <h3>
-            Minigames
-        </h3>
-
-        <p>
-            Test the historical knowledge gained throughout the experience through interactive minigames.
-        </p>
-
-    </article>
-
-
-    <article class="project-feature reveal">
-
-        <span class="project-feature-number">
-            04
-        </span>
-
-        <h3>
-            Historical Events
-        </h3>
-
-        <p>
-            Experience key moments from 1896 to 1918 through Agnes' story and progression.
-        </p>
-
-    </article>
-
-</div>
-
-
-                        <!-- SCROLL TO FINDINGS -->
-
-                        <a
-                            href="#findings"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-                
-
-            </div>
-
-            
-
-        </section>
-
-
-        <!-- =========================================
-             FINDINGS
-        ========================================== -->
-
-        <section
-            id="findings"
-            class="project-section project-section-alt"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-                    <div class="project-section-label reveal">
-
-                        <span>02</span>
-                        Findings
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-                        <h2>
-                            Evaluation and Findings. 
-                        </h2>
-
-
-                        <p>
-                            To evaluate the learning experience, we conducted <strong> A/B testing</strong> comparing
-                             the game-based approach with traditional text-based learning. We measured both player engagement and learning outcomes to compare the students' experience and learning across the two approaches.
-                        </p>
-
-                          <p>
-                            While there was no statistically significant difference in learning outcome,
-                            the game showed a <strong> medium effect size</strong>, suggesting a potential positive effect with a larger sample.
-                        </p>
-
-
-                        <div class="findings-images">
-
-                            <figure class="reveal">
-
-                                <img
-                                    src="../assets/LearningOutcome.png"
-                                    alt="Finding from user testing"
-                                >
-
-                                <figcaption>
-                                    Learning Outcome Distribution, Comparing Group A and Group B.
-                                </figcaption>
-
-                            </figure>
-
-                              <p>
-                                Even though the learning outcome was inconclusive, the game group reported higher engagement, with significantly higher scores in <strong>focused attention</strong>, <strong>perceived usability</strong> and <strong>reward</strong>. Overall, the results suggest that while the game did not significantly improve short-term learning outcomes, it successfully increased student engagement.
-
-                            </p>
-
-
-                            <figure class="reveal">
-
-                                <img
-                                    src="../assets/UESsubscales.png"
-                                    alt="Finding from user testing"
-                                >
-
-                                <figcaption>
-                                    UES-SF Subscale Distributions, Comparing Group A and Group B.
-                                </figcaption>
-
-                            </figure>
-
-                        </div>
-
-
-                        <!-- SCROLL TO MY ROLE -->
-
-                        <a
-                            href="#role"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             MY ROLE
-        ========================================== -->
-
-        <section
-            id="role"
-            class="project-section"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-                    <div class="project-section-label reveal">
-
-                        <span>03</span>
-                        My role
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-                        <h2>
-                            Designing interaction and gameplay.
-                        </h2>
-
-
-<p>
-    Our bachelor project required everyone to take part in every
-    aspect, including <strong>testing</strong>,
-    <strong>design</strong> and <strong>implementation</strong>,
-    but my primary focus was developing the game in
-    <strong>Unity</strong>.
-</p>
-
-
-<p>
-    I built several of the <strong>core systems</strong> the game
-    relies on, including the game events that control the order of
-    the narrative and make sure certain events only unlock after
-    earlier ones are completed. I also designed and implemented the
-    <strong>player interactions</strong>, animations, movement and
-    behaviour.
-</p>
-
-
-<p>
-    I also helped shape the <strong>visual style</strong> and
-    atmosphere of the game. Beyond the core gameplay, I worked on
-    how the world feels: adjusting the environment settings and
-    adding rain and other particle effects so the setting felt more
-    realistic and alive. These details supported the narrative and
-    made the experience more immersive for players.
-</p>
-
-
-                        <div class="project-role-list">
-
-                            <div class="project-role-item">
-
-                                <span>01</span>
-                                Unity development
-
-                            </div>
-
-
-                            <div class="project-role-item">
-
-                                <span>02</span>
-                                Gameplay systems
-
-                            </div>
-
-
-                            <div class="project-role-item">
-
-                                <span>03</span>
-                                Interaction
-
-                            </div>
-
-
-                            <div class="project-role-item">
-
-                                <span>04</span>
-                                Visual style
-
-                            </div>
-
-                        </div>
-
-                        
-                        <div class="overview-images womens-suffrage-images">
-
-                            <img
-                                src="../assets/triggerzone1.png"
-                                alt="Women's Suffrage gameplay"
-                            >
-
-                            <img
-                                src="../assets/RainPS.png"
-                                alt="Women's Suffrage gameplay"
-                            >
-
-                        </div>
-
-
-                        <!-- SCROLL TO DEVELOPMENT -->
-
-                        <a
-                            href="#development"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             COLLABORATIONS
-        ========================================== -->
-
-        <section
-            id="development"
-            class="project-section project-section-alt"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-                    <div class="project-section-label reveal">
-
-                        <span>04</span>
-                        Collaborations
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-                        <h2>
-                            Collaborations and Historical Content.
-                        </h2>
-
-
-                        <p>
-                            The project was developed in collaboration with <strong>Lasse Madsen</strong> at <strong>Højdevangskolen</strong>, who provided access to our intended target group of 7th–9th grade students for testing and feedback. This allowed us to test the game with the students it was designed for and use their feedback to improve the experience.
-                        </p>
-
-                        <p>
-                            We also collaborated with <strong>Arbejdermuseet</strong>, whose historical expertise and feedback helped us strengthen the accuracy and communication of the game's historical content. Their input helped us consider how historical events and information could be presented in a way that was both historically accurate and understandable for our target audience.
-                        </p>
-
-                            <figure class="reveal">
-
-                                <img
-                                    src="../assets/Arbejdermuseet_vs_spillet_transparent.png"
-                                    alt="Comparison between Arbejdermuseet's exhibition and the game"
-                                >
-
-                            </figure>
-
-
-
-
-                        <!-- SCROLL TO GALLERY -->
-
-                        <a
-                            href="#gallery"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             GALLERY
-        ========================================== -->
-
-        <section
-            id="gallery"
-            class="project-section"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-                    <div class="project-section-label reveal">
-
-                        <span>05</span>
-                        Gallery
-
-                    </div>
-
-
-                    <div class="project-section-content">
-
-                        <div class="project-gallery">
-
-
-                            <!-- IMAGE 1 -->
-
-                            <figure class="project-gallery-large reveal">
-
-                                <img
-                                    src="../assets/LightClueSchool.png"
-                                    alt="Women's Suffrage gameplay"
-                                >
-
-                            </figure>
-
-
-                            <!-- IMAGE 2 -->
-
-                            <figure class="reveal">
-
-                                <img
-                                    src="../assets/rain.png"
-                                    alt="Women's Suffrage gameplay"
-                                >
-
-                            </figure>
-
-
-                            <!-- IMAGE 3 -->
-
-                            <button
-                                class="gallery-more reveal"
-                                onclick="openGallery()"
-                            >
-
-                                <img
-                                    src="../assets/windowsunny.png"
-                                    alt="Women's Suffrage gameplay"
-                                >
-
-                                <span>
-                                    +1 more
-                                </span>
-
-                            </button>
-
-
-                        </div>
-
-
-                        <!-- HIDDEN FULL GALLERY -->
-
-                        <div
-                            class="gallery-lightbox"
-                            id="gallery-lightbox"
-                        >
-
-                            <button
-                                class="gallery-close"
-                                onclick="closeGallery()"
-                            >
-                                ×
-                            </button>
-
-
-                            <div class="gallery-lightbox-content">
-
-                                <img
-                                    src="../assets/LightClueSchool.png"
-                                    alt="Women's Suffrage gameplay"
-                                >
-
-                                <img
-                                    src="../assets/rain.png"
-                                    alt="Women's Suffrage gameplay"
-                                >
-
-                                <img
-                                    src="../assets/windowsunny.png"
-                                    alt="Women's Suffrage gameplay"
-                                >
-
-                                <img
-                                    src="../assets/barricade.png"
-                                    alt="Women's Suffrage game"
-                                >
-                                    <img
-                                    src="../assets/barricade2.png"
-                                    alt="Women's Suffrage game"
-                                >
-
-                                         <img
-                                    src="../assets/LowpolyBUILD.png"
-                                    alt="Women's Suffrage game"
-                                >
-
-                                         <img
-                                    src="../assets/LowpolyCH.png"
-                                    alt="Women's Suffrage game"
-                                >
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================================
-             LINKS
-        ========================================== -->
-
-        <section class="project-section project-links-section">
-
-            <div class="container">
-
-                <div class="project-links reveal">
-
-                    <div>
-
-                        <span class="project-links-label">
-                            Explore the project
+            </article>
+
+
+            <!-- ===== 04 · COLLABORATIONS ===== -->
+            <article id="collaborations" class="ab-chapter ab-chapter-flip">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">04</span>
+                    <h2>Collaborations and historical content</h2>
+                    <p>
+                        We worked with <strong>Lasse Madsen</strong> at <strong>Højdevangskolen</strong>,
+                        who gave us access to 7th–9th grade students. That let us test the game with the
+                        students it was made for and use their feedback to improve it.
+                    </p>
+                    <p>
+                        We also collaborated with <strong>Arbejdermuseet</strong>, whose historical
+                        expertise and feedback helped us make the game's content both accurate and
+                        understandable for our target group.
+                    </p>
+
+                    <a href="https://www.arbejdermuseet.dk" class="ab-partner-card pj-partner" target="_blank" rel="noopener">
+                        <span class="ab-partner-logo ab-partner-logo-white">
+                            <img src="../assets/new-project-8.jpg" alt="Arbejdermuseet" loading="lazy">
                         </span>
-
-
-                        <h2>
-                            Want to see more?
-                        </h2>
-
-                    </div>
-
-
-                    <div class="project-buttons">
-
-
-                        <a
-                            href="https://github.com/bollemedost/P6-Bachelor-Serious-Game"
-                            class="button button-secondary"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            GitHub
-                            <span>↗</span>
-                        </a>
-
-                    </div>
-
+                        <span class="ab-partner-info">
+                            <strong>Arbejdermuseet</strong>
+                            <span>The Workers Museum · Copenhagen</span>
+                        </span>
+                    </a>
                 </div>
 
-            </div>
+                <div class="ab-media reveal">
+                    <!-- swap: museum comparison (museum photo → game, two rows) -->
+                    <div class="pj-compare">
+                        <img src="../assets/museum-room1.jpg" alt="Room in Arbejdermuseet's exhibition" loading="lazy">
+                        <span class="pj-compare-arrow">→</span>
+                        <img src="../assets/game-room1.jpg" alt="The same room recreated in the game" loading="lazy">
+                        <img src="../assets/museum-room2.jpg" alt="Bedroom in Arbejdermuseet's exhibition" loading="lazy">
+                        <span class="pj-compare-arrow">→</span>
+                        <img src="../assets/game-room2.jpg" alt="The same bedroom recreated in the game" loading="lazy">
+                    </div>
+                    <p class="pj-caption">Arbejdermuseet's exhibition → the same rooms in the game</p>
+                </div>
 
-        </section>
-
-
-        <!-- =========================================
-             NEXT PROJECT
-        ========================================== -->
-
-        <section class="project-next">
-
-            <div class="container">
-
-                <a
-                    href="hearing-loss.html"
-                    class="project-next-link reveal"
-                >
-
-                    <span>
-                        Next project
-                    </span>
+            </article>
 
 
-                    <strong>
+            <!-- ===== 05 · GALLERY ===== -->
+            <article id="gallery" class="pj-gallery-chapter">
 
-                        <span class="next-project-title">
-                            Hearing Loss Simulation
-                        </span>
+                <div class="pj-gallery-head reveal">
+                    <span class="ab-chapter-num">05</span>
+                    <h2>Gallery</h2>
+                </div>
 
-                        <span>
-                            →
-                        </span>
+                <!-- the first pictures show here; the rest open in the viewer -->
+                <div class="project-gallery pj-gallery reveal">
+                    <img class="pj-gallery-big" src="../assets/LightClueSchool.png" alt="Agnes outside the school" loading="lazy">
+                    <img src="../assets/rain.png" alt="Rainy street" loading="lazy">
+                    <button class="gallery-more" type="button" onclick="openGallery(2)">
+                        <img src="../assets/windowsunny.png" alt="Sunny street" loading="lazy">
+                        <span></span>
+                    </button>
+                </div>
 
-                    </strong>
+                <!-- full-screen viewer: ALL gallery pictures go in here -->
+                <div class="gallery-lightbox" id="gallery-lightbox">
+                    <button class="gallery-close" onclick="closeGallery()">×</button>
+                    <div class="gallery-lightbox-content">
+                        <img src="../assets/LightClueSchool.png" alt="Agnes outside the school">
+                        <img src="../assets/rain.png" alt="Rainy street">
+                        <img src="../assets/windowsunny.png" alt="Sunny street">
+                        <img src="../assets/barricade.png" alt="Barricade scene">
+                        <img src="../assets/barricade2.png" alt="Barricade scene">
+                        <img src="../assets/LowpolyBUILD.png" alt="Low-poly buildings">
+                        <img src="../assets/LowpolyCH.png" alt="Low-poly characters">
+                    </div>
+                </div>
 
+            </article>
+
+
+            <!-- ===== LINKS + NEXT ===== -->
+            <div class="pj-end reveal">
+                <a class="pj-end-card" href="https://github.com/bollemedost/P6-Bachelor-Serious-Game" target="_blank" rel="noopener">
+                    <span class="pj-end-label">Explore the code</span>
+                    <strong>GitHub <span>↗</span></strong>
                 </a>
-
+                <a class="pj-end-card pj-end-next" href="hearing-loss.html">
+                    <span class="pj-end-label">Next project</span>
+                    <strong>Hearing Loss Simulation <span>→</span></strong>
+                </a>
             </div>
 
         </section>
@@ -911,7 +454,7 @@
     </footer>
 
 
-    <script src="../script.js?v=38"></script>
+    <script src="../script.js?v=43"></script>
 
 </body>
 

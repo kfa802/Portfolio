@@ -33,7 +33,7 @@
 
     <link
         rel="stylesheet"
-        href="../style.css?v=38"
+        href="../style.css?v=43"
     >
 
 
@@ -158,920 +158,250 @@
          PROJECT
     ========================================== -->
 
-    <main>
-
+    <main class="pj-page">
 
         <!-- =========================================
-             HERO
-        ========================================== -->
+             PROJECT PAGE — same style as the About page
+             HOW TO SWAP A PICTURE: every picture sits in a
+             <figure class="ab-figure"> ... </figure> block.
+             Change the src="" and the <figcaption> text.
+        ========================================= -->
 
-        <section class="project-page-hero">
+        <!-- ===== HERO ===== -->
+        <section class="pj-hero">
+            <div class="pj-wrap">
 
-            <div class="container">
-
-
-                <a
-                    href="../index.html#work"
-                    class="project-back"
-                >
-
-                    <span>←</span>
-
-                    Back to selected work
-
-                </a>
-
-
-
-                <div class="project-page-heading reveal">
-
-
-                    <div class="project-meta">
-
-                        <span class="project-number">
-                            04
-                        </span>
-
-                                <span class="project-year">
-                                            2024
-                                     </span>
-
-                        <span class="project-type">
-                            3D platform game · Visual Computing
-                        </span>
-
+                <div class="pj-hero-text reveal">
+                    <div class="pj-meta">
+                        <span class="ab-chapter-num">04</span>
+                        <span>2024</span>
                     </div>
 
-
-
-                    <h1>
-                        Nico Nitro
+                    <h1 class="pj-title">
+                        Nico Nitro<span class="ab-dot">.</span>
                     </h1>
 
-
-
-                    <p class="project-page-intro">
-
+                    <p class="pj-lead">
                         A 3D platform game combining <strong>traditional controller input with camera-based hand-gesture recognition</strong>, using hand gestures to control different gameplay abilities.
-
-
                     </p>
-
-
-
-                    <div class="project-tags">
-
-                        <span>
-                            Unity
-                        </span>
-
-                        <span>
-                            C#
-                        </span>
-
-                        <span>
-                            Python
-                        </span>
-
-                        <span>
-                            OpenCV
-                        </span>
-
-                        <span>
-                            Computer Vision
-                        </span>
-
-                        <span>
-                            Game Design
-                        </span>
-
-                    </div>
-
-
                 </div>
 
-
-
-                <!-- HERO VIDEO -->
-
-                <div class="project-hero-media reveal">
-
-                    <video
-                        controls
-                        preload="metadata"
-                        poster="../assets/nn2.png"
-                    >
-
-                        <source
-                            src="../assets/Nicoav.mp4"
-                            type="video/mp4"
-                        >
-
-                        Your browser does not support
-                        the video element.
-
-                    </video>
-
-                </div>
-                <a
-    href="#overview"
-    class="hero-scroll project-video-scroll"
->
-
-    <span class="scroll-arrow">
-        ↓
-    </span>
-
-    <span>
-        SCROLL TO EXPLORE
-    </span>
-
-</a>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================================
-             OVERVIEW
-        ========================================== -->
-
-        <section
-            id="overview"
-            class="project-section"
-        >
-
-            <div class="container">
-
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>
-                            01
-                        </span>
-
-                        Overview
-
-                    </div>
-
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            A platformer with computer vision at its core.
-                        </h2>
-
-
-
-                        <p>
-
-                            Nico Nitro is a 3D platform game developed
-                            as a Visual Computing project. The game explores
-                            how <strong>hand recognition can be used as an
-                            alternative form of game input</strong>.
-
-                        </p>
-
-
-
-                        <p>
-
-                            Players guide Nico through a frozen island
-                            across four levels. Traditional controls are
-                            used for movement, while hand gestures trigger
-                            special abilities such as <strong>double jump,
-                            dash and smash</strong>.
-
-                        </p>
-
-
-
-                        <div class="project-feature-grid">
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    01
-                                </span>
-
-                                <h3>
-                                    Computer vision
-                                </h3>
-
-                                <p>
-                                    A camera-based system recognises
-                                    hand gestures and turns them into
-                                    gameplay input.
-                                </p>
-
-                            </article>
-
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    02
-                                </span>
-
-                                <h3>
-                                    Multimodal input
-                                </h3>
-
-                                <p>
-                                    Controller or keyboard input handles
-                                    movement while gestures control
-                                    special abilities.
-                                </p>
-
-                            </article>
-
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    03
-                                </span>
-
-                                <h3>
-                                    3D platforming
-                                </h3>
-
-                                <p>
-                                    A stylised frozen island provides
-                                    the setting for the platforming
-                                    challenges.
-                                </p>
-
-                            </article>
-
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    04
-                                </span>
-
-                                <h3>
-                                    Four levels
-                                </h3>
-
-                                <p>
-                                    The game gradually introduces
-                                    its mechanics and abilities across
-                                    four playable levels.
-                                </p>
-
-                            </article>
-
-
-                        </div>
-
-
-
-                        <!-- OVERVIEW IMAGES -->
-
-                        <div class="nico-overview-images">
-
-                            <div class="nico-overview-image nico-overview-image-1">
-
-                                <img
-                                    src="../assets/nn1.png"
-                                    alt="Nico Nitro gameplay"
-                                >
-
-                            </div>
-
-
-                            <div class="nico-overview-image nico-overview-image-2">
-
-                                <img
-                                    src="../assets/nn4.png"
-                                    alt="Nico Nitro gameplay"
-                                >
-
-                            </div>
-
-                        </div>
-
-
-
-                        <a
-                            href="#computer-vision"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================================
-             COMPUTER VISION
-        ========================================== -->
-
-        <section
-            id="computer-vision"
-            class="project-section project-section-alt"
-        >
-
-            <div class="container">
-
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>
-                            02
-                        </span>
-
-                        Computer Vision
-
-                    </div>
-
-
-
-                    <div class="project-section-content reveal">
-
-
-                        <h2>
-                            Turning hand movements into gameplay.
-                        </h2>
-
-
-
-                        <p>
-
-                            The central technical part of the project was
-                            developing a computer vision system that could
-                            recognise hand gestures through a camera and
-                            use them as real-time game input.
-
-                        </p>
-
-
-
-                        <p>
-
-                            <strong>Python and OpenCV</strong> were used
-                            to process the camera feed. Image filtering,
-                            contour detection, convex hulls and convexity
-                            defects were used to analyse the shape of
-                            the player's hand.
-
-                        </p>
-
-
-
-                        <p>
-
-                            We first tried Teachable Machine, but its
-                            accuracy wasn't good enough, so we built our
-                            own recogniser in Python and OpenCV.
-
-                        </p>
-
-
-
-                        <div class="project-feature-grid">
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    01
-                                </span>
-
-                                <h3>
-                                    Hand detection
-                                </h3>
-
-                                <p>
-                                    The camera feed is processed to
-                                    isolate and analyse the player's hand.
-                                </p>
-
-                            </article>
-
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    02
-                                </span>
-
-                                <h3>
-                                    Gesture recognition
-                                </h3>
-
-                                <p>
-                                    The shape of the hand is analysed
-                                    to distinguish between different
-                                    gestures.
-                                </p>
-
-                            </article>
-
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    03
-                                </span>
-
-                                <h3>
-                                    Real-time input
-                                </h3>
-
-                                <p>
-                                    Recognised gestures are translated
-                                    into gameplay abilities while
-                                    the player is playing.
-                                </p>
-
-                            </article>
-
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    04
-                                </span>
-
-                                <h3>
-                                    Game interaction
-                                </h3>
-
-                                <p>
-                                    The computer vision system becomes
-                                    part of the game's interaction rather
-                                    than a separate interface.
-                                </p>
-
-                            </article>
-
-
-                        </div>
-
-
-
-                        <a
-                            href="#evaluation"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================================
-             EVALUATION
-        ========================================== -->
-
-        <section
-            id="evaluation"
-            class="project-section"
-        >
-
-            <div class="container">
-
-                <div class="project-content-grid">
-
-                    <div class="project-section-label reveal">
-
-                        <span>
-                            03
-                        </span>
-
-                        Evaluation
-
-                    </div>
-
-
-                    <div class="project-section-content reveal">
-
-                        <h2>
-                            Does hand recognition make a game more engaging?
-                        </h2>
-
-                        <p>
-                            We compared two versions in an A/B test with
-                            24 players aged 19–26: 12 played with hand
-                            recognition and 12 with a controller only.
-                            Engagement was measured with the User
-                            Engagement Scale (short form) and short interviews.
-                        </p>
-
-                        <div class="project-feature-grid">
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    01
-                                </span>
-
-                                <h3>
-                                    Engagement
-                                </h3>
-
-                                <p>
-                                    Players with hand recognition scored higher
-                                    (4.05 vs 3.69), but the difference was not
-                                    statistically significant (p = 0.079).
-                                </p>
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    02
-                                </span>
-
-                                <h3>
-                                    Aesthetic appeal
-                                </h3>
-
-                                <p>
-                                    The one significant difference: players rated
-                                    the game's aesthetic appeal higher with hand
-                                    recognition (p = 0.024).
-                                </p>
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    03
-                                </span>
-
-                                <h3>
-                                    Player feedback
-                                </h3>
-
-                                <p>
-                                    Players found the gestures new and original,
-                                    but they sometimes interrupted the
-                                    platforming. Animations and level design
-                                    were praised in both groups.
-                                </p>
-
-                            </article>
-
-
-                            <article class="project-feature reveal">
-
-                                <span class="project-feature-number">
-                                    04
-                                </span>
-
-                                <h3>
-                                    Takeaway
-                                </h3>
-
-                                <p>
-                                    Promising but inconclusive. All testers were
-                                    Medialogy students, so a larger and more
-                                    diverse sample is needed.
-                                </p>
-
-                            </article>
-
-                        </div>
-
-
-                        <a
-                            href="#gallery"
-                            class="hero-scroll"
-                        >
-
-                            <span class="scroll-arrow">
-                                ↓
-                            </span>
-
-                            <span>
-                                SCROLL TO EXPLORE
-                            </span>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================================
-             GALLERY
-        ========================================== -->
-
-        <section
-            id="gallery"
-            class="project-section"
-        >
-
-            <div class="container">
-
-
-                <div class="project-content-grid">
-
-
-                    <div class="project-section-label reveal">
-
-                        <span>
-                            04
-                        </span>
-
-                        Gallery
-
-                    </div>
-
-
-
-                    <div class="project-section-content">
-
-
-                        <div class="project-gallery">
-
-
-                            <figure class="project-gallery-large reveal">
-
-                                <img
-                                    src="../assets/nn5.png"
-                                    alt="Nico Nitro gameplay"
-                                >
-
-                            </figure>
-
-
-
-                            <figure class="reveal">
-
-                                <img
-                                    src="../assets/nn6.png"
-                                    alt="Nico Nitro gameplay"
-                                >
-
-                            </figure>
-
-
-
-                            <button
-                                class="gallery-more reveal"
-                                onclick="openGallery()"
-                            >
-
-                                <img
-                                    src="../assets/nn7.png"
-                                    alt="Nico Nitro gameplay"
-                                >
-
-                                <span>
-                                    +1 more
-                                </span>
-
-                            </button>
-
-
-                        </div>
-
-
-
-                        <div
-                            class="gallery-lightbox"
-                            id="gallery-lightbox"
-                        >
-
-
-                            <button
-                                class="gallery-close"
-                                onclick="closeGallery()"
-                            >
-                                ×
-                            </button>
-
-
-
-                            <div class="gallery-lightbox-content">
-
-
-                                <img
-                                    src="../assets/nn5.png"
-                                    alt="Nico Nitro gameplay"
-                                >
-
-
-                                <img
-                                    src="../assets/nn6.png"
-                                    alt="Nico Nitro gameplay"
-                                >
-
-
-                                <img
-                                    src="../assets/nn7.png"
-                                    alt="Nico Nitro gameplay"
-                                >
-
-
-                                <img
-                                    src="../assets/nn1.png"
-                                    alt="Nico Nitro gameplay"
-                                >
-
-
-                                <img
-                                    src="../assets/nn2.png"
-                                    alt="Nico Nitro gameplay"
-                                >
-
-
-                                <img
-                                    src="../assets/nn3.png"
-                                    alt="Nico Nitro gameplay"
-                                >
-
-                                 <img
-                                    src="../assets/nn4.png"
-                                    alt="Nico Nitro gameplay"
-                                >
-                             
-
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================================
-             LINKS
-        ========================================== -->
-
-        <section class="project-section project-links-section">
-
-            <div class="container">
-
-
-                <div class="project-links reveal">
-
-
+                <dl class="pj-facts pj-facts-3 reveal">
                     <div>
+                        <dt>Type</dt>
+                        <dd>3D platform game · Visual Computing</dd>
+                    </div>
+                    <div>
+                        <dt>Tools</dt>
+                        <dd>Unity · C# · Python · OpenCV</dd>
+                    </div>
+                    <div>
+                        <dt>Topics</dt>
+                        <dd>Computer Vision · Game Design</dd>
+                    </div>
+                </dl>
 
-                        <span class="project-links-label">
-                            Explore the project
-                        </span>
-
-
-                        <h2>
-                            Want to see more?
-                        </h2>
-
+                    <div class="pj-hero-media reveal">
+                        <div class="pj-video">
+                            <video preload="metadata" playsinline poster="../assets/nn2.png">
+                                <source src="../assets/Nicoav.mp4" type="video/mp4">
+                            </video>
+                            <button class="pj-play" type="button" aria-label="Play video"></button>
+                        </div>
                     </div>
 
+            </div>
+        </section>
 
 
-                    <div class="project-buttons">
+        <section class="pj-body">
 
 
+            <!-- ===== 01 · OVERVIEW ===== -->
+            <article id="overview" class="ab-chapter">
 
-                        <a
-                            href="https://github.com/bollemedost/P3-Projekt"
-                            class="button button-secondary"
-                            target="_blank"
-                            rel="noopener"
-                        >
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">01</span>
+                    <h2>A platformer with computer vision at its core</h2>
+                    <p>
+                        Nico Nitro is a 3D platform game developed as a Visual Computing project. The game explores how <strong>hand recognition can be used as an alternative form of game input</strong>.
+                    </p>
+                    <p>
+                        Players guide Nico through a frozen island across four levels. Traditional controls are used for movement, while hand gestures trigger special abilities such as <strong>double jump, dash and smash</strong>.
+                    </p>
+                </div>
 
-                            GitHub
+                <div class="ab-media pj-media-two reveal">
+                    <figure class="ab-figure">
+                        <img src="../assets/nn1.png" alt="Nico Nitro gameplay" loading="lazy">
+                    </figure>
+                    <figure class="ab-figure">
+                        <img src="../assets/nn4.png" alt="Nico Nitro gameplay" loading="lazy">
+                    </figure>
+                </div>
 
-                            <span>
-                                ↗
-                            </span>
-
-                        </a>
-
-
+                <div class="pj-features pj-features-4 reveal">
+                    <div class="pj-feature">
+                        <span>01</span>
+                        <h3>Computer vision</h3>
+                        <p>A camera-based system recognises hand gestures and turns them into gameplay input.</p>
                     </div>
+                    <div class="pj-feature">
+                        <span>02</span>
+                        <h3>Multimodal input</h3>
+                        <p>Controller or keyboard input handles movement while gestures control special abilities.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>03</span>
+                        <h3>3D platforming</h3>
+                        <p>A stylised frozen island provides the setting for the platforming challenges.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>04</span>
+                        <h3>Four levels</h3>
+                        <p>The game gradually introduces its mechanics and abilities across four playable levels.</p>
+                    </div>
+                </div>
+
+            </article>
 
 
+            <!-- ===== 02 · COMPUTER VISION ===== -->
+            <article id="computer-vision" class="ab-chapter pj-chapter-solo">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">02</span>
+                    <h2>Turning hand movements into gameplay</h2>
+                    <p>
+                        The central technical part of the project was developing a computer vision system that could recognise hand gestures through a camera and use them as real-time game input.
+                    </p>
+                    <p>
+                        <strong>Python and OpenCV</strong> were used to process the camera feed. Image filtering, contour detection, convex hulls and convexity defects were used to analyse the shape of the player's hand.
+                    </p>
+                    <p>
+                        We first tried Teachable Machine, but its accuracy wasn't good enough, so we built our own recogniser in Python and OpenCV.
+                    </p>
                 </div>
 
 
+                <div class="pj-features pj-features-4 reveal">
+                    <div class="pj-feature">
+                        <span>01</span>
+                        <h3>Hand detection</h3>
+                        <p>The camera feed is processed to isolate and analyse the player's hand.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>02</span>
+                        <h3>Gesture recognition</h3>
+                        <p>The shape of the hand is analysed to distinguish between different gestures.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>03</span>
+                        <h3>Real-time input</h3>
+                        <p>Recognised gestures are translated into gameplay abilities while the player is playing.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>04</span>
+                        <h3>Game interaction</h3>
+                        <p>The computer vision system becomes part of the game's interaction rather than a separate interface.</p>
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 03 · EVALUATION ===== -->
+            <article id="evaluation" class="ab-chapter pj-chapter-solo">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">03</span>
+                    <h2>Does hand recognition make a game more engaging?</h2>
+                    <p>
+                        We compared two versions in an A/B test with 24 players aged 19–26: 12 played with hand recognition and 12 with a controller only. Engagement was measured with the User Engagement Scale (short form) and short interviews.
+                    </p>
+                </div>
+
+
+                <div class="pj-features pj-features-4 reveal">
+                    <div class="pj-feature">
+                        <span>01</span>
+                        <h3>Engagement</h3>
+                        <p>Players with hand recognition scored higher (4.05 vs 3.69), but the difference was not statistically significant (p = 0.079).</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>02</span>
+                        <h3>Aesthetic appeal</h3>
+                        <p>The one significant difference: players rated the game's aesthetic appeal higher with hand recognition (p = 0.024).</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>03</span>
+                        <h3>Player feedback</h3>
+                        <p>Players found the gestures new and original, but they sometimes interrupted the platforming. Animations and level design were praised in both groups.</p>
+                    </div>
+                    <div class="pj-feature">
+                        <span>04</span>
+                        <h3>Takeaway</h3>
+                        <p>Promising but inconclusive. All testers were Medialogy students, so a larger and more diverse sample is needed.</p>
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 04 · GALLERY ===== -->
+            <article id="gallery" class="pj-gallery-chapter">
+
+                <div class="pj-gallery-head reveal">
+                    <span class="ab-chapter-num">04</span>
+                    <h2>Gallery</h2>
+                </div>
+
+                <!-- the first pictures show here; the rest open in the viewer -->
+                <div class="project-gallery pj-gallery reveal">
+                    <img class="pj-gallery-big" src="../assets/nn5.png" alt="Nico Nitro gameplay" loading="lazy">
+                    <img src="../assets/nn6.png" alt="Nico Nitro gameplay" loading="lazy">
+                    <button class="gallery-more" type="button" onclick="openGallery(2)">
+                        <img src="../assets/nn7.png" alt="Nico Nitro gameplay" loading="lazy">
+                        <span></span>
+                    </button>
+                </div>
+
+                <!-- full-screen viewer: ALL gallery pictures go in here -->
+                <div class="gallery-lightbox" id="gallery-lightbox">
+                    <button class="gallery-close" onclick="closeGallery()">×</button>
+                    <div class="gallery-lightbox-content">
+                        <img src="../assets/nn5.png" alt="Nico Nitro gameplay">
+                        <img src="../assets/nn6.png" alt="Nico Nitro gameplay">
+                        <img src="../assets/nn7.png" alt="Nico Nitro gameplay">
+                        <img src="../assets/nn1.png" alt="Nico Nitro gameplay">
+                        <img src="../assets/nn2.png" alt="Nico Nitro gameplay">
+                        <img src="../assets/nn3.png" alt="Nico Nitro gameplay">
+                        <img src="../assets/nn4.png" alt="Nico Nitro gameplay">
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== LINKS + NEXT ===== -->
+            <div class="pj-end pj-end-3 reveal">
+                <a class="pj-end-card" href="https://github.com/bollemedost/P3-Projekt" target="_blank" rel="noopener">
+                    <span class="pj-end-label">Explore the project</span>
+                    <strong>GitHub <span>↗</span></strong>
+                </a>
+                <a class="pj-end-card" href="dance-pads.html">
+                    <span class="pj-end-label">Previous project</span>
+                    <strong><span>←</span> Dance Pads</strong>
+                </a>
+                <a class="pj-end-card pj-end-next" href="liv.html">
+                    <span class="pj-end-label">Next project</span>
+                    <strong>LIV <span>→</span></strong>
+                </a>
             </div>
 
         </section>
 
-
-
-       <!-- =========================================
-     NEXT PROJECT
-========================================== -->
-
-<section class="project-next">
-
-    <div class="container">
-
-        <a
-            href="liv.html"
-            class="project-next-link reveal"
-        >
-            <span>
-                Next project
-            </span>
-
-            <strong>
-                <span class="next-project-title">
-                    LIV
-                </span>
-
-                <span>→</span>
-            </strong>
-        </a>
-
-        <a
-            href="dance-pads.html"
-            class="project-previous-link reveal"
-        >
-            <span>←</span>
-            Previous project: Dance Pads
-        </a>
-
-    </div>
-
-</section>
-
-
+    </main>
 
     <!-- =========================================
          FOOTER
@@ -1091,7 +421,7 @@
 
 
 
-    <script src="../script.js?v=38"></script>
+    <script src="../script.js?v=43"></script>
 
 
 </body>
