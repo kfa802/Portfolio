@@ -33,7 +33,7 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=18"
+        href="style.css?v=40"
     >
 
 </head>
@@ -104,204 +104,441 @@
 
     <main>
 
-        <section class="section container">
+        <!-- =========================================
+             ABOUT ME — editorial layout
+             HOW TO SWAP A PICTURE: every picture sits in a
+             <figure class="ab-figure"> ... </figure> block.
+             Change the src="" and the <figcaption> text.
+             For a video, use a <video> tag like in chapter 02.
+        ========================================= -->
+
+        <section class="section ab-page">
+
+            <!-- ===== INTRO ===== -->
+            <header class="ab-intro">
+
+                <div class="ab-intro-text reveal">
+                    <span class="ab-eyebrow">About me</span>
+
+                    <h1 class="ab-title">
+                        Hi, I'm Kristine<span class="ab-dot">.</span>
+                    </h1>
+
+                    <p class="ab-lead">
+                        I take broad problems and turn them into
+                        <span class="about-highlight">prototypes people can actually use</span>,
+                        play and learn from.
+                    </p>
+
+                    <p class="ab-sub">
+                        MSc Medialogy student at Aalborg University Copenhagen,
+                        working in the space between technology, design and creativity.
+                    </p>
+
+                    <div class="about-links">
+                        <a href="assets/CV_KristineFoghAndersen.pdf" class="about-button about-button-primary" download>Download CV ↓</a>
+                        <a href="assets/Diploma.pdf" class="about-button" target="_blank" rel="noopener">View diploma ↗</a>
+                        <a href="index.html#contact" class="about-button">Get in touch →</a>
+                    </div>
+                </div>
+
+                <!-- Intro portrait -->
+                <figure class="ab-portrait reveal">
+                    <img src="assets/ProfilePicturesMono1.png" alt="Portrait of Kristine Fogh Andersen">
+                </figure>
+
+            </header>
 
 
-            <a
-                href="index.html"
-                class="project-back"
-            >
-                <span>←</span>
-                Back to portfolio
-            </a>
+            <!-- ===== 01 · CODE ===== -->
+            <article class="ab-chapter">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">01</span>
+                    <h2>Code and craft</h2>
+                    <p>
+                        Code is where I get to build things myself. Most of my projects are made in
+                        <strong>Unity</strong> with <strong>C#</strong>, where I write the systems that
+                        make a game work: how the story unlocks step by step, how the player moves and
+                        interacts, and how all the parts talk to each other.
+                    </p>
+                    <p>
+                        What I enjoy most is finding the structure behind a project: working out which
+                        systems it needs, how they depend on each other, and then building them so they
+                        work together as one whole. Mapping it out first, like in the Plan Bee diagram,
+                        keeps the code clean and logical, even when a project grows.
+                    </p>
+                    <p>
+                        And I rarely stay in just one place. One day I'm writing systems, the next I'm
+                        working on interaction, visuals or storytelling, and I enjoy all of it.
+                    </p>
+                </div>
+
+                <div class="ab-media reveal">
+                    <!-- swap: Unity work video (silent) -->
+                    <figure class="ab-figure">
+                        <video src="assets/unity-work.mp4" muted loop playsinline autoplay preload="metadata"></video>
+                        <figcaption>7th semester panda project · working in Unity</figcaption>
+                    </figure>
+                    <!-- swap: picture of your code / systems work -->
+                    <figure class="ab-figure ab-figure-contain">
+                        <img src="assets/flowchart.png" alt="System diagram for the Plan Bee game" loading="lazy">
+                        <figcaption><a href="projects/plan-bee.html">Plan Bee</a> · mapping the game's systems</figcaption>
+                    </figure>
+                </div>
+
+            </article>
 
 
-            <!-- =========================================
-                 HEADING
-            ========================================= -->
+            <!-- ===== 02 · VISUALS ===== -->
+            <article class="ab-chapter ab-chapter-flip">
 
-            <div
-                class="section-heading reveal"
-                style="margin-top: 60px;"
-            >
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">02</span>
+                    <h2>How it looks matters too</h2>
+                    <p>
+                        I care as much about how a project <strong>looks and communicates</strong>
+                        as how it works. For me, creative expression happens through technology
+                        just as much as through visuals.
+                    </p>
+                    <p>
+                        I make the <strong>graphic design</strong>, <strong>illustrations</strong> and
+                        small <strong>animations</strong> that give an experience its personality:
+                        steam rising from a pot, an icon that tells you to shake your phone,
+                        objects you can pick up in a game. And I edit <strong>video</strong> to tell a
+                        project's story.
+                    </p>
+                </div>
 
-                <span class="section-number">
-                    01
-                </span>
+                <div class="ab-media reveal">
+                    <!-- swap: animation video -->
+                    <figure class="ab-figure">
+                        <video src="assets/steam-animation-web.mp4" muted loop playsinline autoplay preload="metadata"></video>
+                        <figcaption><a href="projects/liv.html">LIV</a> · animated kitchen scene</figcaption>
+                    </figure>
 
-                <h1>
-                    About Me
-                </h1>
-
-            </div>
-
-
-            <!-- =========================================
-                 INTRO TEXT
-            ========================================= -->
-
-            <div class="about-page reveal">
-
-
-<p class="large-text">
-    I'm Kristine, an MSc Medialogy student at Aalborg University
-    in Copenhagen, who enjoys taking a broad problem and turning it
-    into a concrete prototype that people can interact with and
-    benefit from.
-</p>
-
-<p>
-    I'm interested in the space between technology, design and
-    creativity. I like making things that are not only functional,
-    but also feel engaging. I enjoy working across every part of a
-    project. One day I'm writing code and building systems, the next
-    I'm working on interaction, visual design, storytelling or the
-    user experience.
-</p>
-
-<p>
-    For me, creative expression happens through technology as much
-    as through visuals. I enjoy designing systems in code where
-    different components and patterns work together as an integrated
-    whole, and finding structured, logical solutions to complex
-    problems. Alongside this, I have a strong passion for visual
-    design and video editing, and I care about how a project looks
-    and communicates, not only how it works.
-</p>
-
-<p>
-    My approach is shaped by Problem-Based Learning at AAU. I work
-    iteratively: defining a problem, researching it, developing
-    prototypes, testing them with users and refining the design
-    based on what I learn. I find this process rewarding, especially
-    seeing an early concept develop into a solution designed around
-    the needs of the people who will use it.
-</p>
-
-<p>
-    Collaboration is a big part of how I work, both in project groups
-    and with partners outside the university, like The Blue Planet
-    aquarium and Arbejdermuseet. Designing for real audiences keeps
-    the work grounded, and some of it has gone further than I expected:
-    our serious game LIV became a published conference paper, and the
-    Hearing Loss Simulation has been accepted for UD26 in Galway. You
-    can read more in my
-    <a href="index.html#research">Research &amp; Publications</a>.
-</p>
-
-<p>
-    I'm naturally curious and always want to learn something new.
-    I like experimenting with tools I haven't used before, picking
-    up new skills and seeing where an idea can go. Building things
-    is how I grow, both as a designer and developer and as a
-    person.
-</p>
-
-<div class="about-links">
-
-    <a
-        href="assets/CV_KristineFoghAndersen.pdf"
-        class="about-button"
-        download
-    >
-        Download CV ↓
-    </a>
-
-    <a
-        href="assets/Diploma.pdf"
-        class="about-button"
-        target="_blank"
-        rel="noopener"
-    >
-        View Diploma ↗
-    </a>
-
-    <a
-        href="index.html#contact"
-        class="about-button"
-    >
-        Get in touch →
-    </a>
-
-</div>
-
-
-            <!-- =========================================
-                 PHOTO GALLERY
-            ========================================= -->
-
-            <div class="about-photo-grid">
-
-
-                <div class="about-photo about-photo-large reveal">
-
-                    <img
-                        src="assets/ProfilePicturesMono1.png"
-                        alt="Kristine"
-                    >
+                    <!-- swap: graphic design / small animations -->
+                    <div class="ab-showcase">
+                        <figure class="ab-figure ab-tile">
+                            <img src="assets/spoon-trim.png" alt="Illustrated spoon game asset" loading="lazy">
+                            <figcaption>Game asset</figcaption>
+                        </figure>
+                        <figure class="ab-figure ab-tile">
+                            <img src="assets/teamwork-trim.png" alt="Illustration of two hands doing a high five" loading="lazy">
+                            <figcaption>Illustration</figcaption>
+                        </figure>
+                        <figure class="ab-figure ab-tile">
+                            <img src="assets/shake-phone-icon.webp" alt="Animated icon of a phone shaking with the word RYST" loading="lazy">
+                            <figcaption>Animated UI icon</figcaption>
+                        </figure>
+                    </div>
 
                 </div>
 
 
-                <div class="about-photo reveal">
+                <!-- ===== 02b · 3D WORK ===== -->
+                <div class="ab-subsection reveal">
+                    <div class="ab-subsection-text">
+                        <span class="ab-subhead">3D work</span>
+                        <h3>From model to shader</h3>
+                        <p>
+                            I model in <strong>Blender</strong> and like the technical side of visuals too.
+                            I modelled this little gnome, then used it to recreate the
+                            <strong>Dead Eye</strong> effect from <em>Red Dead Redemption 2</em> as a shader:
+                            the world fades to a warm sepia, the target lights up in red and gets
+                            marked with X's, before everything snaps back to full colour.
+                        </p>
+                        <!-- swap: shader graph picture -->
+                        <figure class="ab-figure ab-graph">
+                            <img src="assets/shader.jpg" alt="Shader graph for the Dead Eye effect" loading="lazy">
+                            <figcaption>Part of the shader graph</figcaption>
+                        </figure>
+                    </div>
 
-                    <img
-                        src="assets/ProfilePicturesMono.png"
-                        alt="Kristine working on a project"
-                    >
-
+                    <div class="ab-subsection-media">
+                        <!-- swap: shader video -->
+                        <figure class="ab-figure ab-sub-main">
+                            <video src="assets/deadeye-shader-web.mp4" muted loop playsinline autoplay preload="metadata"></video>
+                            <figcaption>Dead Eye shader · real-time graphics</figcaption>
+                        </figure>
+                        <!-- swap: Blender video -->
+                        <figure class="ab-figure ab-sub-main">
+                            <video src="assets/blender-model-web.mp4" muted loop playsinline autoplay preload="metadata"></video>
+                            <figcaption>Modelling the gnome in Blender</figcaption>
+                        </figure>
+                    </div>
                 </div>
 
 
-                <div class="about-photo reveal">
+                <!-- ===== 02c · ATMOSPHERE ===== -->
+                <div class="ab-subsection ab-subsection-flip reveal">
+                    <div class="ab-subsection-text">
+                        <span class="ab-subhead">Atmosphere &amp; environments</span>
+                        <h3>Setting the mood</h3>
+                        <p>
+                            A world feels real when the light, weather and small details are right.
+                            In the Women's Suffrage game I worked on the environment settings and added
+                            <strong>rain and other particle effects</strong> to make the streets feel alive.
+                        </p>
+                        <p>
+                            I like building that kind of mood in other projects too, from the candlelit
+                            study in the <a href="projects/harry-potter-escape-room.html">Harry Potter escape room</a>
+                            to the dark, rainy night in <a href="projects/but-worse-resident-evil.html">Resident Evil (but worse)</a>.
+                        </p>
+                    </div>
 
-                    <img
-                        src="assets/pp.jpg"
-                        alt="Kristine"
-                    >
-
+                    <div class="ab-subsection-media">
+                        <!-- swap: environment / particles -->
+                        <figure class="ab-figure">
+                            <img src="assets/rain.png" alt="Rainy street in the Women's Suffrage game" loading="lazy">
+                            <figcaption><a href="projects/womens-suffrage.html">Women's Suffrage game</a> · rainy street</figcaption>
+                        </figure>
+                        <figure class="ab-figure">
+                            <img src="assets/RainPS.png" alt="Rain particle system in the Unity editor" loading="lazy">
+                            <figcaption>The rain particle system</figcaption>
+                        </figure>
+                        <figure class="ab-figure">
+                            <video src="assets/hp-atmos-web.mp4" muted loop playsinline autoplay preload="metadata" aria-label="Candlelit wizard's study with a glowing green cauldron"></video>
+                            <figcaption><a href="projects/harry-potter-escape-room.html">Harry Potter escape room</a></figcaption>
+                        </figure>
+                        <figure class="ab-figure">
+                            <video src="assets/re-atmos-web.mp4" muted loop playsinline autoplay preload="metadata" aria-label="Rainy night with a flashlight beam in Resident Evil (but worse)"></video>
+                            <figcaption><a href="projects/but-worse-resident-evil.html">Resident Evil (but worse)</a></figcaption>
+                        </figure>
+                    </div>
                 </div>
 
 
-                <div class="about-photo reveal">
+                <!-- ===== 02d · PHOTOSHOP ===== -->
+                <div class="ab-subsection reveal">
+                    <div class="ab-subsection-text">
+                        <span class="ab-subhead">Photoshop</span>
+                        <h3>Playing with light and colour</h3>
+                        <p>
+                            I also edit and stylize in-game shots in <strong>Photoshop</strong>,
+                            playing with light, colour and mood.
+                        </p>
+                    </div>
 
-                    <img
-                        src="assets/IMG_9269.jpeg"
-                        alt="Kristine"
-                    >
+                    <div class="ab-subsection-media">
+                        <!-- swap: Photoshop work -->
+                        <figure class="ab-figure">
+                            <img src="assets/RDR BG1.png" alt="Stylized Red Dead Redemption 2 scene of a rider at sunset" loading="lazy">
+                            <figcaption>Red Dead Redemption 2 · stylized in Photoshop</figcaption>
+                        </figure>
+                        <figure class="ab-figure">
+                            <img src="assets/RDR BG2.png" alt="Stylized Red Dead Redemption 2 scene with a horse at dusk" loading="lazy">
+                            <figcaption>Red Dead Redemption 2 · stylized in Photoshop</figcaption>
+                        </figure>
+                    </div>
+                </div>
 
-                </div>  
+
+                <!-- ===== 02e · VIDEO EDITING ===== -->
+                <div class="ab-subsection ab-subsection-stack reveal">
+                    <div class="ab-subsection-text">
+                        <span class="ab-subhead">Video editing</span>
+                        <h3>Telling the story</h3>
+                        <p>
+                            Editing is where a project's story comes together. Every semester project
+                            ends with a short film that presents it, and I enjoy shaping those:
+                            choosing shots, finding the pacing and cutting to music.
+                        </p>
+                        <p>
+                            I edit in <strong>DaVinci Resolve</strong> and use
+                            <strong>After Effects</strong> for animation and motion. Outside school I also
+                            cut my own edits to music, like <em>In Dreams</em>, which I made in After Effects.
+                        </p>
+                    </div>
+
+                    <div class="ab-subsection-media ab-video-pair">
+                        <!-- swap: video editing clip -->
+                        <figure class="ab-figure">
+                            <button class="ab-video-play" type="button" aria-label="Play the Women's Suffrage film full screen with sound">
+                                <video src="assets/suffrage-edit-web.mp4" muted loop playsinline autoplay preload="metadata"></video>
+                                <span class="ab-video-hint">Click to watch with sound</span>
+                            </button>
+                            <figcaption><a href="projects/womens-suffrage.html">Women's Suffrage game</a> · from the project film</figcaption>
+                        </figure>
+                        <!-- swap: personal edit (square) -->
+                        <figure class="ab-figure">
+                            <button class="ab-video-play" type="button" aria-label="Play In Dreams full screen with sound">
+                                <video src="assets/in-dreams-web.mp4" muted loop playsinline autoplay preload="metadata"></video>
+                                <span class="ab-video-hint">Click to watch with sound</span>
+                            </button>
+                            <figcaption>In Dreams · a Red Dead Redemption 2 edit made in After Effects</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+            </article>
 
 
-                <div class="about-photo reveal">
+            <!-- ===== 03 · PROBLEM-BASED LEARNING ===== -->
+            <article class="ab-chapter">
 
-                    <img
-                        src="assets/IMG_7313.jpeg"
-                        alt="Kristine"
-                    >
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">03</span>
+                    <h2>Problem-Based Learning</h2>
+                    <p>
+                        At AAU, every semester is a group project built around a real problem.
+                        We go round the loop until the design fits the people it's for:
+                    </p>
+
+                    <ol class="ab-steps">
+                        <li>Define</li>
+                        <li>Research</li>
+                        <li>Prototype</li>
+                        <li>Test</li>
+                        <li>Refine</li>
+                    </ol>
+
+                    <p>
+                        It means starting with a <strong>problem</strong>, not a solution. We research it,
+                        involve the people it affects and let what we learn shape what we build.
+                        Every project ends in a report and a group exam, so I'm used to backing up
+                        design choices with research and data.
+                    </p>
+
+                    <p>
+                        Working in groups has shaped me just as much. I've learned to
+                        <strong>communicate clearly</strong>, <strong>give and take honest feedback</strong>
+                        and <strong>trust each other's strengths</strong>, because the best ideas
+                        rarely come from one person. It has also taught me to plan together, share
+                        the workload and keep a common goal in sight when deadlines get tight.
+                    </p>
+                </div>
+
+                <div class="ab-media reveal">
+                    <!-- swap: group / PBL pictures -->
+                    <figure class="ab-figure ab-figure-group">
+                        <img src="assets/bachlor.jpg" alt="Kristine and her bachelor project group outside Aalborg University" loading="lazy">
+                        <figcaption>My bachelor group at Aalborg University</figcaption>
+                    </figure>
+                    <div class="ab-media-two">
+                        <figure class="ab-figure">
+                            <img src="assets/Playtestsession2.jpg" alt="A playtest session" loading="lazy">
+                            <figcaption>Playtesting with users</figcaption>
+                        </figure>
+                        <figure class="ab-figure ab-figure-contain">
+                            <img src="assets/LearningOutcome-dark.png" alt="Chart comparing learning outcomes between two groups" loading="lazy">
+                            <figcaption>Measuring the results</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 04 · COLLABORATION ===== -->
+            <article class="ab-chapter ab-chapter-flip">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">04</span>
+                    <h2>Real partners, real audiences</h2>
+                    <p>
+                        Many of my projects are made together with partners outside the university,
+                        like <strong>Den Blå Planet</strong> and <strong>Arbejdermuseet</strong>.
+                        Designing for real people with real goals keeps the work grounded.
+                    </p>
+
+                    <p>
+                        Partners shape the work in ways a classroom can't. At
+                        <strong>Den Blå Planet</strong>, we tested our sea turtle game with 41 fourth-graders
+                        visiting the aquarium, and most said they had learned more about the turtles' challenges.
+                        At <strong>Arbejdermuseet</strong>, the museum's historical expertise helped us tell
+                        the story accurately, in a way 7th–9th graders could understand.
+                    </p>
+
+                    <p class="ab-quote">
+                        Seeing people play something I helped make, and actually take something
+                        away from it, is what makes this work meaningful to me.
+                    </p>
 
                 </div>
 
-                <div class="about-photo reveal">
+                <div class="ab-media reveal">
+                    <!-- partner cards -->
+                    <div class="ab-partner-cards">
+                        <a href="projects/blue-planet.html" class="ab-partner-card">
+                            <span class="ab-partner-logo ab-partner-logo-blue">
+                                <img src="assets/social.png" alt="Den Blå Planet" loading="lazy">
+                            </span>
+                            <span class="ab-partner-info">
+                                <strong>Den Blå Planet</strong>
+                                <span>National Aquarium Denmark · Blue Planet project</span>
+                            </span>
+                        </a>
+                        <a href="projects/womens-suffrage.html" class="ab-partner-card">
+                            <span class="ab-partner-logo ab-partner-logo-white">
+                                <img src="assets/new-project-8.jpg" alt="Arbejdermuseet" loading="lazy">
+                            </span>
+                            <span class="ab-partner-info">
+                                <strong>Arbejdermuseet</strong>
+                                <span>The Workers Museum · Women's Suffrage game</span>
+                            </span>
+                        </a>
+                    </div>
 
-    <img 
-        src="assets/RDR BG2.png"
-        alt="Kristine"
-    >
+                    <div class="ab-research-block">
+                        <span class="ab-subhead">Research highlights</span>
+                        <p class="ab-small">Two of my other projects have also reached a research audience:</p>
 
-</div>
+                        <ul class="ab-wins">
+                            <li>
+                                <span class="ab-win-tag">Published</span>
+                                <span class="ab-win-text"><strong>LIV</strong> · conference paper at GoodIT '24</span>
+                            </li>
+                            <li>
+                                <span class="ab-win-tag">Accepted</span>
+                                <span class="ab-win-text"><strong>Hearing Loss Simulation</strong> · UD26, Galway</span>
+                            </li>
+                        </ul>
+
+                        <a href="index.html#research" class="ab-text-link">See research &amp; publications →</a>
+                    </div>
+
+                </div>
+
+            </article>
 
 
-<div class="about-photo about-photo-wide reveal">
+            <!-- ===== 05 · LEARNING ===== -->
+            <article class="ab-chapter">
 
-    <img 
-        src="assets/RDR BG1.png"
-        alt="Kristine"
-    >
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">05</span>
+                    <h2>Always learning</h2>
+                    <p>
+                        I'm curious by nature. I like trying tools I've never used,
+                        picking up new skills and seeing where an idea can go.
+                    </p>
+                    <p class="ab-quote">
+                        Building things is how I grow, as a designer, a developer and a person.
+                    </p>
+                </div>
 
-</div>
+                <div class="ab-media reveal">
 
-            </div>
+
+                <div class="ab-media-row">
+                    <!-- swap: pictures of new tools you've tried -->
+                    <figure class="ab-figure">
+                        <img src="assets/PureData.png" alt="Pure Data sound patch" loading="lazy">
+                        <figcaption>Pure Data · sound</figcaption>
+                    </figure>
+                    <figure class="ab-figure">
+                        <img src="assets/newcircuit.png" alt="Arduino circuit diagram" loading="lazy">
+                        <figcaption>Arduino · <a href="projects/dance-pads.html">Dance Pads</a></figcaption>
+                    </figure>
+                    <figure class="ab-figure">
+                        <img src="assets/Amplitude.png" alt="Haptics editor" loading="lazy">
+                        <figcaption>Haptics · <a href="projects/zombie-game.html">Zombie VR</a></figcaption>
+                    </figure>
+                </div>
+                </div>
+
+            </article>
 
 
         </section>
@@ -538,6 +775,29 @@
     </section>
 
 
+    <section class="section ab-page ab-outside-section">
+            <!-- ===== OUTSIDE THE SCREEN (personal photos) ===== -->
+            <div class="ab-outside">
+                <h2 class="ab-outside-title reveal">Outside the screen</h2>
+
+                <div class="about-photo-grid">
+                    <div class="about-photo about-photo-large reveal">
+                        <img src="assets/ProfilePicturesMono.png" alt="Kristine">
+                    </div>
+                    <div class="about-photo reveal">
+                        <img src="assets/pp.jpg" alt="Kristine">
+                    </div>
+                    <div class="about-photo reveal">
+                        <img src="assets/IMG_9269.jpeg" alt="Kristine">
+                    </div>
+                    <div class="about-photo reveal">
+                        <img src="assets/IMG_7313.jpeg" alt="Kristine">
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
 
     </main>
 
@@ -559,7 +819,7 @@
     </footer>
 
 
-    <script src="script.js?v=18"></script>
+    <script src="script.js?v=40"></script>
 
 </body>
 

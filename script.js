@@ -2105,3 +2105,56 @@ document.querySelectorAll(".contact-copy").forEach(btn => {
         });
     });
 })();
+
+
+/* About page: videos can start a few seconds in (data-start="12") */
+document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
+    const start = parseFloat(v.dataset.start) || 0;
+    const jump = () => { try { v.currentTime = start; } catch (e) {} };
+    if (v.readyState >= 1) jump();
+    else v.addEventListener("loadedmetadata", jump, { once: true });
+    v.addEventListener("ended", jump);
+});
+
+/* ===== About page: click a film to watch it full screen with sound ===== */
+(function () {
+    document.querySelectorAll('.ab-video-play').forEach(function (btn) {
+        var video = btn.querySelector('video');
+        if (!video) return;
+
+        function backToPreview() {
+            video.muted = true;
+            video.controls = false;
+            video.play().catch(function () {});
+        }
+
+        btn.addEventListener('click', function () {
+            // clicks on the player controls while in full screen shouldn't restart it
+            if (document.fullscreenElement || document.webkitFullscreenElement) return;
+            // stop sound on any other film
+            document.querySelectorAll('.ab-video-play video').forEach(function (v) {
+                if (v !== video) { v.muted = true; }
+            });
+            video.currentTime = 0;
+            video.muted = false;
+            video.controls = true;
+            video.play().catch(function () {});
+
+            if (video.requestFullscreen) {
+                video.requestFullscreen().catch(function () {});
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+            } else if (video.webkitEnterFullscreen) {
+                video.webkitEnterFullscreen(); // iPhone
+            }
+        });
+
+        document.addEventListener('fullscreenchange', function () {
+            if (!document.fullscreenElement) backToPreview();
+        });
+        document.addEventListener('webkitfullscreenchange', function () {
+            if (!document.webkitFullscreenElement) backToPreview();
+        });
+        video.addEventListener('webkitendfullscreen', backToPreview); // iPhone
+    });
+})();
