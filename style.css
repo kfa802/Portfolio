@@ -10366,3 +10366,151 @@ img[src*="-card.png"] {
 @media (max-width: 480px) {
     .ab-qualities { grid-template-columns: 1fr; }
 }
+
+/* =========================================================
+   v59 · project cards: clearer "what is it" + styling
+   ========================================================= */
+/* type badge on the picture */
+.project-kind {
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(16, 22, 28, 0.62);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+.project-kind i {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent-amber);
+    font-size: 0.85rem;
+    font-style: normal;
+    letter-spacing: 0;
+}
+/* soft fade at the bottom of the picture so the card flows into the text */
+.project-image::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 45%;
+    background: linear-gradient(180deg, transparent, rgba(10, 16, 20, 0.45));
+    pointer-events: none;
+}
+
+/* one-line "what it is" under the title */
+.project-card .project-tagline {
+    position: relative;
+    margin: -2px 0 12px;
+    padding-left: 16px;
+    color: var(--text);
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+.project-card .project-tagline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.3em;
+    bottom: 0.3em;
+    width: 3px;
+    border-radius: 3px;
+    background: var(--accent-amber);
+}
+.project-card .project-tagline + p { font-size: 0.95rem; opacity: 0.85; }
+
+/* tags: tech first, in amber */
+.project-tags span.is-tech {
+    border-color: rgba(255, 180, 84, 0.5);
+    background: rgba(255, 180, 84, 0.1);
+    color: var(--accent-amber);
+    font-weight: 600;
+}
+@media (max-width: 600px) {
+    .project-kind { left: 12px; top: 12px; font-size: 0.68rem; padding: 6px 12px 6px 8px; }
+    .project-kind i { width: 22px; height: 22px; }
+}
+
+/* fun fact highlight replays every time it scrolls into view */
+.ab-clip.visible .ab-hl { transform: scaleX(0); }
+.ab-clip.hl-on .ab-hl { transform: scaleX(1); }
+.ab-clip:not(.hl-on) .ab-hl { transition: none; }
+
+/* v59b · contact link in "A little more about me" */
+.ab-me-cta {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    margin-top: 26px;
+    padding: 12px 20px;
+    border: 1px solid rgba(255, 180, 84, 0.45);
+    border-radius: 999px;
+    background: rgba(255, 180, 84, 0.08);
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.ab-me-cta strong { color: var(--accent-amber); }
+.ab-me-cta strong span { display: inline-block; transition: transform 0.25s ease; }
+.ab-me-cta:hover { background: rgba(255, 180, 84, 0.16); border-color: var(--accent-amber); transform: translateY(-2px); }
+.ab-me-cta:hover strong span { transform: translateX(5px); }
+/* contact link in the blue (mint) accent instead of amber */
+.ab-me-cta {
+    border-color: rgba(99, 230, 216, 0.5);
+    background: rgba(99, 230, 216, 0.08);
+}
+.ab-me-cta strong { color: var(--accent-mint); }
+.ab-me-cta:hover { background: rgba(99, 230, 216, 0.16); border-color: var(--accent-mint); }
+/* contact link: bigger and more prominent */
+.ab-me-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 520px;
+    margin-top: 30px;
+    padding: 18px 18px 18px 26px;
+    border: 1.5px solid rgba(99, 230, 216, 0.6);
+    border-radius: 999px;
+    background: linear-gradient(120deg, rgba(99, 230, 216, 0.18), rgba(99, 230, 216, 0.05));
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22), 0 0 0 6px rgba(99, 230, 216, 0.06);
+    color: var(--text);
+    font-size: 1rem;
+}
+.ab-me-cta strong {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--accent-mint);
+    color: #10221f;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+.ab-me-cta:hover {
+    background: linear-gradient(120deg, rgba(99, 230, 216, 0.28), rgba(99, 230, 216, 0.08));
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28), 0 0 0 9px rgba(99, 230, 216, 0.09);
+}
+@media (max-width: 520px) {
+    .ab-me-cta { flex-direction: column; align-items: flex-start; border-radius: 22px; }
+}

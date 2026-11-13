@@ -2305,3 +2305,19 @@ document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
     // the sound button is hidden while there are no interface sounds
     // document.body.appendChild(btn);
 })();
+
+/* ===== Fun fact: replay the marker highlight each time it comes into view ===== */
+(function () {
+    var clips = document.querySelectorAll('.ab-clip');
+    if (!clips.length || !('IntersectionObserver' in window)) {
+        clips.forEach(function (c) { c.classList.add('hl-on'); });
+        return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) en.target.classList.add('hl-on');
+            else en.target.classList.remove('hl-on');
+        });
+    }, { threshold: 0.6 });
+    clips.forEach(function (c) { io.observe(c); });
+})();
