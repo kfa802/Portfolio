@@ -33,7 +33,7 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=48"
+        href="style.css?v=58"
     >
 
 </head>
@@ -258,7 +258,13 @@
                     <div class="ab-subsection-media">
                         <!-- swap: shader video -->
                         <figure class="ab-figure ab-sub-main">
-                            <video src="assets/deadeye-shader-web.mp4" muted loop playsinline autoplay preload="metadata"></video>
+                            <div class="ab-sound-wrap">
+                                <video src="assets/deadeye-shader-web.mp4?v=2" muted loop playsinline autoplay preload="metadata"></video>
+                                <button class="ab-sound-btn" type="button" aria-label="Turn sound on" aria-pressed="false">
+                                    <svg class="ab-ico-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M17 9l5 6M22 9l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+                                    <svg class="ab-ico-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+                                </button>
+                            </div>
                             <figcaption>Dead Eye shader · real-time graphics</figcaption>
                         </figure>
                         <!-- swap: Blender video -->
@@ -778,7 +784,51 @@
     <section class="section ab-page ab-outside-section">
             <!-- ===== OUTSIDE THE SCREEN (personal photos) ===== -->
             <div class="ab-outside">
-                <h2 class="ab-outside-title reveal">Outside the screen</h2>
+                <!-- ===== a little more about me =====
+                     Left: who I am + hobbies. Right: personal qualities (edit freely). -->
+                <div class="ab-me2">
+                    <div class="ab-me2-intro reveal">
+                        <span class="ab-chapter-num">✦</span>
+                        <h2 class="ab-outside-title">A little more about me</h2>
+                        <p>
+                            When I'm not studying, you'll probably find me lifting weights, travelling
+                            or hanging out with friends. I also love working on personal projects
+                            (like this portfolio 😉), playing video games and watching movies.
+                        </p>
+                        <div class="ab-me-chips">
+                            <span>🏋️ Weightlifting</span>
+                            <span>✈️ Travelling</span>
+                            <span>🫶 Friends</span>
+                            <span>🛠️ Personal projects</span>
+                            <span>🎮 Video games</span>
+                            <span>🎬 Movies</span>
+                        </div>
+                    </div>
+
+                    <div class="ab-qualities reveal">
+                        <span class="ab-qualities-label">What I bring</span>
+                        <div class="ab-quality">
+                            <span>01</span>
+                            <h3>Ambition</h3>
+                            <p>I set high goals for my work and enjoy pushing a project further than it has to go.</p>
+                        </div>
+                        <div class="ab-quality">
+                            <span>02</span>
+                            <h3>Hard work</h3>
+                            <p>I put in the hours to get things right, whether it's code, design or a deadline.</p>
+                        </div>
+                        <div class="ab-quality">
+                            <span>03</span>
+                            <h3>Curiosity</h3>
+                            <p>I love learning new tools and figuring out how things work.</p>
+                        </div>
+                        <div class="ab-quality">
+                            <span>04</span>
+                            <h3>Team spirit</h3>
+                            <p>I like building things together and helping the team move forward.</p>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="about-photo-grid">
                     <div class="about-photo about-photo-large reveal">
@@ -792,6 +842,67 @@
                     </div>
                     <div class="about-photo reveal">
                         <img src="assets/IMG_7313.jpeg" alt="Kristine">
+                    </div>
+                </div>
+
+                <!-- ===== fun fact: the viral Succession edit ===== -->
+                <div class="ab-funfact reveal">
+                    <figure class="ab-funfact-video">
+                        <button class="ab-video-play" type="button" aria-label="Play the Succession edit full screen with sound">
+                            <video src="assets/succession-edit-web.mp4" muted loop playsinline autoplay preload="metadata"></video>
+                            <span class="ab-video-hint">Click to watch with sound</span>
+                        </button>
+                    </figure>
+
+                    <div class="ab-funfact-text">
+                        <span class="ab-funfact-label">✦ Fun fact</span>
+                        <h3>One of my edits went viral</h3>
+                        <p>
+                            In 2023 I made a <em>Succession</em> edit of Tom and Greg set to Taylor Swift's
+                            "You Belong With Me". It spread far beyond TikTok and ended up in some
+                            pretty big papers around the series finale.
+                        </p>
+
+                        <!-- zoomed screenshot: the actors mention the edit (Vulture) -->
+                        <a class="ab-clip reveal" href="https://www.vulture.com/2023/05/succession-tom-greg-fight-real-kiss.html" target="_blank" rel="noopener">
+                            <span class="ab-clip-paper">
+                                <img src="assets/vulture-quote-zoom.jpg" alt="Vulture: Braun said that he has sent the viral You Belong With Me fan-cam to Macfadyen" loading="lazy">
+                                <i class="ab-hl" style="left:13.1%;top:32%;width:81.4%;height:31%"></i>
+                                <i class="ab-hl ab-hl-2" style="left:0.8%;top:64.8%;width:24.2%;height:31%"></i>
+                            </span>
+                            <span class="ab-clip-src">Vulture, 2023 ↗</span>
+                        </a>
+
+                        <ul class="ab-press">
+                            <li>
+                                <a href="https://www.theguardian.com/culture/2023/jun/01/jennifer-wong-the-10-funniest-things-i-have-ever-seen-on-the-internet" target="_blank" rel="noopener">
+                                    <strong>The Guardian</strong>
+                                    <q>This Tom Greg montage set to You Belong With Me delighted me</q>
+                                    <span>↗</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.haaretz.com/life/television/2023-06-04/ty-article/.premium/good-luck-finding-a-successor-to-succession/00000188-8616-dded-a58e-af96fe620000" target="_blank" rel="noopener">
+                                    <strong>Haaretz</strong>
+                                    <q>chapeau to the fan who set the Tom-Greg bromance to Taylor Swift's …</q>
+                                    <span>↗</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.vulture.com/2023/05/succession-tom-greg-fight-real-kiss.html" target="_blank" rel="noopener">
+                                    <strong>Vulture</strong>
+                                    <span class="ab-press-note">Nicholas Braun (Cousin Greg) said he sent the viral fan-cam to Matthew Macfadyen (Tom)</span>
+                                    <span>↗</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.nytimes.com/2023/03/21/arts/television/matthew-macfadyen-succession.html" target="_blank" rel="noopener">
+                                    <strong>The New York Times</strong>
+                                    <q>fans have re-cut scenes of the pair scored to Taylor Swift's …</q>
+                                    <span>↗</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -819,7 +930,7 @@
     </footer>
 
 
-    <script src="script.js?v=48"></script>
+    <script src="script.js?v=58"></script>
 
 </body>
 

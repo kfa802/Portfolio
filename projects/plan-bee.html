@@ -33,7 +33,7 @@
 
     <link
         rel="stylesheet"
-        href="../style.css?v=49"
+        href="../style.css?v=58"
     >
 
 </head>
@@ -178,21 +178,21 @@
                     </p>
                 </div>
 
-                <div class="ab-media pj-media-two reveal">
-                    <figure class="ab-figure">
-                        <img src="../assets/summer.png" alt="Plan Bee in summer" loading="lazy">
-                    </figure>
-                    <figure class="ab-figure">
-                        <img src="../assets/spring2.png" alt="Plan Bee in spring" loading="lazy">
-                    </figure>
-                </div>
-
-                <div class="pj-media-row pj-media-row-2 reveal">
-                    <figure class="ab-figure">
-                        <img src="../assets/authum.png" alt="Plan Bee in autumn" loading="lazy">
-                    </figure>
-                    <figure class="ab-figure">
-                        <img src="../assets/winter.png" alt="Plan Bee in winter" loading="lazy">
+                <div class="ab-media reveal">
+                    <!-- seasons: one picture, tabs switch season (auto-plays) -->
+                    <figure class="pj-seasons" data-seasons>
+                        <div class="pj-seasons-stage">
+                        <img class="is-active" src="../assets/spring2.png" alt="Plan Bee in spring" loading="lazy">
+                        <img class="" src="../assets/summer.png" alt="Plan Bee in summer" loading="lazy">
+                        <img class="" src="../assets/authum.png" alt="Plan Bee in autumn" loading="lazy">
+                        <img class="" src="../assets/winter.png" alt="Plan Bee in winter" loading="lazy">
+                        </div>
+                        <div class="pj-seasons-tabs" role="tablist">
+                        <button type="button" class="is-active" data-i="0">Spring</button>
+                        <button type="button" class="" data-i="1">Summer</button>
+                        <button type="button" class="" data-i="2">Autumn</button>
+                        <button type="button" class="" data-i="3">Winter</button>
+                        </div>
                     </figure>
                 </div>
 
@@ -301,7 +301,7 @@
                     </p>
                 </div>
 
-                <div class="ab-media pj-media-two reveal">
+                <div class="ab-media pj-polaroids reveal">
                     <figure class="ab-figure ab-figure-contain">
                         <img src="../assets/LeveldesignPrototype.png" alt="Level design prototype for Plan Bee" loading="lazy">
                     </figure>
@@ -392,7 +392,7 @@
     </footer>
 
 
-    <script src="../script.js?v=49"></script>
+    <script src="../script.js?v=58"></script>
 
 </body>
 

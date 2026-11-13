@@ -2183,3 +2183,125 @@ document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
     document.addEventListener('fullscreenchange', update);
     document.addEventListener('webkitfullscreenchange', update);
 })();
+
+/* ===== Sound on/off button on looping videos ===== */
+(function () {
+    document.querySelectorAll('.ab-sound-btn').forEach(function (btn) {
+        var video = btn.parentElement.querySelector('video');
+        if (!video) return;
+        btn.addEventListener('click', function () {
+            var turnOn = video.muted;
+            document.querySelectorAll('video').forEach(function (v) { if (v !== video) v.muted = true; });
+            document.querySelectorAll('.ab-sound-btn').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', 'Turn sound on'); });
+            video.muted = !turnOn;
+            if (turnOn) { video.currentTime = 0; video.play().catch(function () {}); }
+            btn.setAttribute('aria-pressed', turnOn ? 'true' : 'false');
+            btn.setAttribute('aria-label', turnOn ? 'Turn sound off' : 'Turn sound on');
+        });
+    });
+})();
+
+/* ===== Plan Bee: season switcher (auto-plays, stops when clicked) ===== */
+(function () {
+    document.querySelectorAll('[data-seasons]').forEach(function (box) {
+        var imgs = box.querySelectorAll('.pj-seasons-stage img');
+        var tabs = box.querySelectorAll('.pj-seasons-tabs button');
+        var i = 0, timer = null;
+        function show(n) {
+            i = n;
+            imgs.forEach(function (im, k) { im.classList.toggle('is-active', k === n); });
+            tabs.forEach(function (t, k) { t.classList.toggle('is-active', k === n); });
+        }
+        tabs.forEach(function (t, k) {
+            t.addEventListener('click', function () { clearInterval(timer); show(k); });
+        });
+        timer = setInterval(function () { show((i + 1) % imgs.length); }, 3000);
+    });
+})();
+
+/* ===== UI sounds: soft click (made in code, no files) ===== */
+(function () {
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    var ctx = null, noise = null;
+    var enabled = true;
+    try { enabled = localStorage.getItem('kfaSound') !== 'off'; } catch (e) {}
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        try { if (localStorage.getItem('kfaSound') === null) enabled = false; } catch (e) {}
+    }
+
+    function audio() {
+        if (!ctx) {
+            ctx = new AC();
+            var len = ctx.sampleRate * 1;
+            noise = ctx.createBuffer(1, len, ctx.sampleRate);
+            var d = noise.getChannelData(0);
+            for (var i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+        }
+        if (ctx.state === 'suspended') ctx.resume();
+        return ctx;
+    }
+
+    function click() {
+        if (!enabled) return;
+        var c = audio(), t = c.currentTime;
+        var o = c.createOscillator(), g = c.createGain();
+        o.type = 'sine';
+        o.frequency.setValueAtTime(880, t);
+        o.frequency.exponentialRampToValueAtTime(420, t + 0.07);
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(0.12, t + 0.005);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.09);
+        o.connect(g).connect(c.destination);
+        o.start(t); o.stop(t + 0.1);
+    }
+
+    var lastWhoosh = 0;
+    function whoosh(strength) {
+        if (!enabled) return;
+        var c = audio(), t = c.currentTime;
+        var s = c.createBufferSource(); s.buffer = noise;
+        var f = c.createBiquadFilter(); f.type = 'bandpass'; f.Q.value = 0.9;
+        f.frequency.setValueAtTime(400, t);
+        f.frequency.exponentialRampToValueAtTime(1600 + 1400 * strength, t + 0.18);
+        f.frequency.exponentialRampToValueAtTime(500, t + 0.45);
+        var g = c.createGain();
+        var peak = 0.05 + 0.1 * strength;
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(peak, t + 0.12);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.5);
+        s.connect(f).connect(g).connect(c.destination);
+        s.start(t, Math.random() * 0.4); s.stop(t + 0.55);
+    }
+
+    // click sound on links, buttons and project cards — turned off for now.
+    // To turn it back on, remove the /* and */ around the next block.
+    /*
+    document.addEventListener('pointerdown', function (e) {
+        if (e.button !== 0) return;
+        if (e.target.closest && e.target.closest('a, button, [role="button"], .project-card, summary, label')) click();
+    }, true);
+    */
+
+    // small sound on/off button (bottom-left), choice is remembered
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'site-sound-toggle';
+    btn.innerHTML =
+        '<svg class="off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M17 9l5 6M22 9l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>' +
+        '<svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>';
+    function sync() {
+        btn.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+        btn.setAttribute('aria-label', enabled ? 'Turn interface sounds off' : 'Turn interface sounds on');
+        btn.title = enabled ? 'Sounds on' : 'Sounds off';
+    }
+    btn.addEventListener('click', function () {
+        enabled = !enabled;
+        try { localStorage.setItem('kfaSound', enabled ? 'on' : 'off'); } catch (e) {}
+        sync();
+        if (enabled) click();
+    });
+    sync();
+    // the sound button is hidden while there are no interface sounds
+    // document.body.appendChild(btn);
+})();
