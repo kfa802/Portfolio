@@ -2321,3 +2321,47 @@ document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
     }, { threshold: 0.6 });
     clips.forEach(function (c) { io.observe(c); });
 })();
+
+/* =========================================================
+   Project quick-switcher (side rail on project pages)
+   ========================================================= */
+(function () {
+    if (!/\/projects\/[^/]+\.html/.test(location.pathname)) return;
+    var projects = [
+        ['womens-suffrage', '🎓', "Women's Suffrage"],
+        ['hearing-loss', '🥽', 'Hearing Loss'],
+        ['dance-pads', '💃', 'Dance Pads'],
+        ['nico-nitro', '✋', 'Nico Nitro'],
+        ['liv', '🎓', 'LIV'],
+        ['blue-planet', '🐢', 'Blue Planet'],
+        ['plan-bee', '🐝', 'Plan Bee'],
+        ['trivia-quiz', '🌐', 'Trivia Quiz'],
+        ['harry-potter-escape-room', '🥽', 'Harry Potter'],
+        ['zombie-game', '🥽', 'Zombie Game'],
+        ['but-worse-resident-evil', '🕹️', 'Resident Evil']
+    ];
+    var here = location.pathname.split('/').pop().replace('.html', '');
+    var nav = document.createElement('nav');
+    nav.className = 'pj-switch';
+    nav.setAttribute('aria-label', 'All projects');
+    var html = '<button class="pj-switch-toggle" type="button" aria-expanded="false">' +
+        '<span aria-hidden="true">☰</span> Projects</button>' +
+        '<div class="pj-switch-panel"><span class="pj-switch-label">Projects</span><ol>';
+    projects.forEach(function (p, i) {
+        var cur = p[0] === here;
+        html += '<li><a href="' + p[0] + '.html"' + (cur ? ' class="is-current" aria-current="page"' : '') + '>' +
+            '<i aria-hidden="true">' + p[1] + '</i><span class="pj-switch-num">' + String(i + 1).padStart(2, '0') +
+            '</span><span class="pj-switch-name">' + p[2] + '</span></a></li>';
+    });
+    html += '</ol><a class="pj-switch-all" href="../index.html#projects">← All projects</a></div>';
+    nav.innerHTML = html;
+    document.body.appendChild(nav);
+    var btn = nav.querySelector('.pj-switch-toggle');
+    btn.addEventListener('click', function () {
+        var open = nav.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open);
+    });
+    document.addEventListener('click', function (e) {
+        if (!nav.contains(e.target)) { nav.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); }
+    });
+})();
