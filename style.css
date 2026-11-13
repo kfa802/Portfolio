@@ -10791,3 +10791,40 @@ img[src*="-card.png"] {
     .pj-switch .pj-switch-all { opacity: 1; }
     .pj-switch .pj-switch-num { opacity: 0.5; }
 }
+
+/* v67 · switcher a little more visible when closed */
+.pj-switch-panel {
+    border-color: rgba(255, 180, 84, 0.35);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(255, 180, 84, 0.06);
+}
+.pj-switch li a i { filter: grayscale(0.2) opacity(0.9); }
+.pj-switch-panel::after {
+    content: '›';
+    position: absolute;
+    right: -11px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent-amber);
+    color: #17202a;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.2s ease;
+}
+.pj-switch { animation: pjSwitchNudge 1.4s 1s ease-in-out 2; }
+@keyframes pjSwitchNudge {
+    0%, 100% { margin-left: 0; }
+    50% { margin-left: 5px; }
+}
+.pj-switch:hover .pj-switch-panel::after,
+.pj-switch:focus-within .pj-switch-panel::after { opacity: 0; }
+.pj-switch-panel { overflow: visible; }
+.pj-switch ol, .pj-switch-label, .pj-switch-all { overflow: hidden; }
+@media (max-width: 1260px) { .pj-switch-panel::after { display: none; } .pj-switch { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .pj-switch { animation: none; } }
