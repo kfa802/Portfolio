@@ -3246,3 +3246,17 @@ document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
         });
     }
 })();
+
+/* ===== About: gloomy / bright environment switch ===== */
+(function () {
+    document.querySelectorAll('[data-mood]').forEach(function (box) {
+        var imgs = box.querySelectorAll('.ab-mood-stage img');
+        var btns = box.querySelectorAll('.ab-mood-tabs button');
+        btns.forEach(function (b, i) {
+            b.addEventListener('click', function () {
+                imgs.forEach(function (im, j) { im.classList.toggle('is-on', i === j); });
+                btns.forEach(function (x, j) { x.classList.toggle('is-on', i === j); x.setAttribute('aria-pressed', i === j ? 'true' : 'false'); });
+            });
+        });
+    });
+})();

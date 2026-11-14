@@ -48,7 +48,7 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=103"
+        href="style.css?v=112"
     >
 
 </head>
@@ -330,9 +330,16 @@
 
                     <div class="ab-subsection-media">
                         <!-- swap: environment / particles -->
-                        <figure class="ab-figure">
-                            <img src="assets/rain-w.jpg" alt="Rainy street in the Women's Suffrage game" loading="lazy">
-                            <figcaption><a href="projects/womens-suffrage.html">Women's Suffrage game</a> · rainy street</figcaption>
+                        <figure class="ab-figure ab-mood" data-mood>
+                            <div class="ab-mood-stage">
+                                <img src="assets/rain-w.jpg" alt="Gloomy, rainy street early in the Women's Suffrage game" class="is-on" loading="lazy">
+                                <img src="assets/bright-environment-w.jpg" alt="The same street on a sunny day, with suffragettes marching, later in the game" loading="lazy">
+                                <div class="ab-mood-tabs" role="group" aria-label="Choose the version of the street">
+                                    <button type="button" class="is-on" aria-pressed="true" title="Early years">🌧️ Before</button>
+                                    <button type="button" aria-pressed="false" title="Closer to the vote">☀️ After</button>
+                                </div>
+                            </div>
+                            <figcaption><a href="projects/womens-suffrage.html">Women's Suffrage game</a> · before &amp; after</figcaption>
                         </figure>
                         <figure class="ab-figure">
                             <img src="assets/RainPS-w.jpg" alt="Rain particle system in the Unity editor" loading="lazy">
@@ -356,25 +363,29 @@
                         <span class="ab-subhead">Photoshop &amp; Illustrator</span>
                         <h3>Playing with light and colour</h3>
                         <p>
-                            I also edit and stylize in-game shots in <strong>Photoshop</strong>,
-                            playing with light, colour and mood, and make posters and illustrations
-                            in <strong>Illustrator</strong>.
+                            Editing is something I also do just for fun. I take shots from games like
+                            <em>Red Dead Redemption 2</em> and stylize them in <strong>Photoshop</strong>,
+                            and I've made posters and other illustrations from scratch in <strong>Illustrator</strong>.
                         </p>
+                        <ul class="ab-ps-tools" aria-label="Tools">
+                            <li><span class="ab-ps-dot ab-ps-dot-ps" aria-hidden="true">Ps</span>Photoshop</li>
+                            <li><span class="ab-ps-dot ab-ps-dot-ai" aria-hidden="true">Ai</span>Illustrator</li>
+                        </ul>
                     </div>
 
-                    <div class="ab-subsection-media ab-ps-grid">
-                        <figure class="ab-figure ab-poster">
+                    <div class="ab-subsection-media ab-ps-board">
+                        <figure class="ab-print ab-print-poster">
                             <img src="assets/illustrator-poster.jpg" alt="Poster titled Embrace the Future, showing a robot figure against a sunset sea" loading="lazy">
-                            <figcaption>“Embrace the Future” · poster made in Illustrator</figcaption>
+                            <span class="ab-print-tag ab-print-tag-ai">Illustrator</span>
                         </figure>
                         <!-- swap: Photoshop work -->
-                        <figure class="ab-figure">
+                        <figure class="ab-print ab-print-a">
                             <img src="assets/RDR-BG1-w.jpg" alt="Stylized Red Dead Redemption 2 scene of a rider at sunset" loading="lazy">
-                            <figcaption>Red Dead Redemption 2 · stylized in Photoshop</figcaption>
+                            <span class="ab-print-tag ab-print-tag-ps">Photoshop</span>
                         </figure>
-                        <figure class="ab-figure">
+                        <figure class="ab-print ab-print-b">
                             <img src="assets/RDR-BG2-w.jpg" alt="Stylized Red Dead Redemption 2 scene with a horse at dusk" loading="lazy">
-                            <figcaption>Red Dead Redemption 2 · stylized in Photoshop</figcaption>
+                            <span class="ab-print-tag ab-print-tag-ps">Photoshop</span>
                         </figure>
                     </div>
                 </div>
@@ -385,16 +396,30 @@
                     <div class="ab-subsection-text">
                         <span class="ab-subhead">Video editing</span>
                         <h3>Telling the story</h3>
-                        <p>
-                            Editing is where a project's story comes together. Every semester project
-                            ends with a short film that presents it, and I enjoy shaping those:
-                            choosing shots, finding the pacing and cutting to music.
+                        <div class="ab-text-cols">
+                            <div>
+                            <p>
+                            One of my biggest passions has always been <strong>video editing</strong>. I love
+                            combining visuals and sound and connecting them into a story that works as a whole.
                         </p>
-                        <p>
-                            I edit in <strong>DaVinci Resolve</strong> and use
-                            <strong>After Effects</strong> for animation and motion. Outside school I also
-                            cut my own edits to music, like <em>In Dreams</em>, which I made in After Effects.
+                            <p>
+                            At AAU, every project ends with an AV production that showcases it. I enjoy
+                            those most when I can give them a creative spin, like making a game trailer.
                         </p>
+                            </div>
+                            <div>
+                            <p>
+                            For fun, I also make edits of things I like, cut to music, where I look for connections
+                            between the visuals and the audio to make it entertaining. I edit in
+                            <strong>DaVinci Resolve</strong> and use <strong>After Effects</strong> for animation
+                            and motion.
+                        </p>
+                            <ul class="ab-ps-tools" aria-label="Tools">
+                            <li><span class="ab-ps-dot ab-ps-dot-dr" aria-hidden="true">DR</span>DaVinci Resolve</li>
+                            <li><span class="ab-ps-dot ab-ps-dot-ae" aria-hidden="true">Ae</span>After Effects</li>
+                        </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="ab-subsection-media ab-video-pair">
@@ -428,7 +453,9 @@
                     <h2>Problem-Based Learning</h2>
                     <p>
                         At AAU, every semester is a group project built around a real problem.
-                        We go round the loop until the design fits the people it's for:
+                        We work <strong>iteratively</strong>: we define the problem the user is facing,
+                        research it and develop a prototype that we test and then adjust based on
+                        user feedback.
                     </p>
 
                     <ol class="ab-steps">
@@ -440,18 +467,16 @@
                     </ol>
 
                     <p>
-                        It means starting with a <strong>problem</strong>, not a solution. We research it,
-                        involve the people it affects and let what we learn shape what we build.
-                        Every project ends in a report and a group exam, so I'm used to backing up
-                        design choices with research and data.
+                        This loop continues until the final prototype, so the user is part of the
+                        process the whole way through. That way, we make sure we're
+                        <strong>designing for the user</strong>, and our design choices are based on
+                        research and feedback, not just our own assumptions.
                     </p>
 
                     <p>
-                        Working in groups has shaped me just as much. I've learned to
-                        <strong>communicate clearly</strong>, <strong>give and take honest feedback</strong>
-                        and <strong>trust each other's strengths</strong>, because the best ideas
-                        rarely come from one person. It has also taught me to plan together, share
-                        the workload and keep a common goal in sight when deadlines get tight.
+                        Working in groups has taught me many valuable skills, like
+                        <strong>communication</strong>, <strong>managing project tasks</strong> and
+                        <strong>shaping ideas together as a team</strong>.
                     </p>
                 </div>
 
@@ -483,22 +508,23 @@
                     <span class="ab-chapter-num">04</span>
                     <h2>Real partners, real audiences</h2>
                     <p>
-                        Many of my projects are made together with partners outside the university,
-                        like <strong>Den Blå Planet</strong> and <strong>Arbejdermuseet</strong>.
-                        Designing for real people with real goals keeps the work grounded.
+                        I find it rewarding to work with <strong>external collaborators</strong>, like
+                        <strong>Arbejdermuseet</strong>, <strong>Den Blå Planet</strong> and
+                        <strong>Copenhagen Zoo</strong>. It turns the project into something real that can
+                        actually be used in the world, and it lets us test with the actual target group,
+                        which makes the research more grounded.
                     </p>
 
                     <p>
                         Partners shape the work in ways a classroom can't. At
                         <strong>Den Blå Planet</strong>, we tested our sea turtle game with 41 fourth-graders
-                        visiting the aquarium, and most said they had learned more about the turtles' challenges.
-                        At <strong>Arbejdermuseet</strong>, the museum's historical expertise helped us tell
-                        the story accurately, in a way 7th–9th graders could understand.
+                        visiting the aquarium. At <strong>Arbejdermuseet</strong>, the museum's historical
+                        expertise helped us tell the story accurately, in a way 7th–9th graders could understand.
                     </p>
 
                     <p class="ab-quote">
-                        Seeing people play something I helped make, and actually take something
-                        away from it, is what makes this work meaningful to me.
+                        My favourite part is watching people use something I helped make and seeing
+                        that they actually learned something from it.
                     </p>
 
                 </div>
@@ -558,6 +584,11 @@
                     <p>
                         I'm curious by nature. I like trying tools I've never used,
                         picking up new skills and seeing where an idea can go.
+                    </p>
+                    <p>
+                        My studies also let me develop skills in many different areas. Some projects are
+                        very <strong>sound</strong>-based, others involve <strong>physical prototyping</strong>,
+                        some require implementing <strong>haptics</strong> and others use <strong>machine learning</strong>.
                     </p>
                     <p class="ab-quote">
                         Building things is how I grow, as a designer, a developer and a person.
@@ -697,7 +728,6 @@
         </div>
       </div>
       <div class="skills-list">
-
         <article class="skill-row reveal">
           <div class="skill-index">01</div>
           <div class="skill-title"><span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></span>
@@ -705,8 +735,7 @@
           </div>
           <div class="skill-content">
             <p>
-              Building interactive applications, websites, and systems through
-              programming and hands-on development.
+              Most of my projects are built in Unity with C#, and I've also made websites and apps with JavaScript, React and Node.js.
             </p>
             <div class="skill-tags">
               <span class="is-key">Unity</span>
@@ -714,24 +743,20 @@
               <span class="is-key">JavaScript</span>
               <span class="is-key">React</span>
               <span>Node.js</span>
-              <span>Full-Stack Development</span>
               <span>Python</span>
-              <span>Computer Vision (OpenCV)</span>
               <span>HTML / CSS</span>
               <span>Git / GitHub</span>
             </div>
           </div>
         </article>
-
         <article class="skill-row reveal">
           <div class="skill-index">02</div>
           <div class="skill-title"><span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3"/><circle cx="15.5" cy="11.5" r=".6" fill="currentColor"/><circle cx="17.5" cy="13.8" r=".6" fill="currentColor"/></svg></span>
-            <h3>Game &amp; Interactive Development</h3>
+            <h3>Game &amp; Interactive Design</h3>
           </div>
           <div class="skill-content">
             <p>
-              Designing and developing interactive experiences, from gameplay
-              mechanics and systems to VR and adaptive experiences.
+              From gameplay mechanics and systems to VR, I design experiences that people enjoy and learn from.
             </p>
             <div class="skill-tags">
               <span class="is-key">Game Design</span>
@@ -739,15 +764,11 @@
               <span class="is-key">VR (OpenXR, XRI)</span>
               <span>Gameplay Systems</span>
               <span>Game AI</span>
-              <span>Meta Quest</span>
               <span>Adaptive Systems</span>
-              <span>Physical Computing</span>
-              <span>Arduino</span>
-              <span>Pure Data</span>
+              <span>Meta Quest</span>
             </div>
           </div>
         </article>
-
         <article class="skill-row reveal">
           <div class="skill-index">03</div>
           <div class="skill-title"><span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 13h8M8 16h5"/></svg></span>
@@ -755,9 +776,7 @@
           </div>
           <div class="skill-content">
             <p>
-              Creating user-centred interfaces and interactions with a focus on
-              usability, accessibility, and clear communication, and turning early
-              ideas into prototypes.
+              I turn early ideas into prototypes and design interfaces that are clear and easy to use.
             </p>
             <div class="skill-tags">
               <span class="is-key">UX / UI Design</span>
@@ -765,12 +784,10 @@
               <span class="is-key">Prototyping</span>
               <span>Interaction Design</span>
               <span>Wireframing</span>
-              <span>Multimodal / Haptic Interaction</span>
               <span>Accessibility</span>
             </div>
           </div>
         </article>
-
         <article class="skill-row reveal">
           <div class="skill-index">04</div>
           <div class="skill-title"><span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M21 20H3"/></svg></span>
@@ -778,45 +795,62 @@
           </div>
           <div class="skill-content">
             <p>
-              Using research and evaluation methods to understand users, test
-              ideas, and improve interactive experiences.
+              I test with real users and use what I learn to decide what to change.
             </p>
             <div class="skill-tags">
               <span class="is-key">User Testing</span>
-              <span class="is-key">Quantitative Analysis</span>
+              <span class="is-key">Playtesting</span>
               <span class="is-key">Statistical Analysis</span>
-              <span>Playtesting</span>
-              <span>A/B Testing</span>
+              <span>Usability Testing</span>
               <span>Qualitative Research</span>
+              <span>A/B Testing</span>
               <span>SUS</span>
-              <span>Overleaf / LaTeX</span>
+              <span>LaTeX / Overleaf</span>
             </div>
           </div>
         </article>
-
         <article class="skill-row reveal">
           <div class="skill-index">05</div>
           <div class="skill-title"><span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></span>
-            <h3>Creative &amp; Media</h3>
+            <h3>Visuals &amp; Media</h3>
           </div>
           <div class="skill-content">
             <p>
-              Creating visual and audiovisual content to support interactive
-              experiences, communicate ideas, and develop polished project assets.
+              I make the assets, effects and films that give a project its look and tell its story.
             </p>
             <div class="skill-tags">
               <span class="is-key">After Effects</span>
               <span class="is-key">Blender</span>
               <span class="is-key">Photoshop</span>
               <span>DaVinci Resolve</span>
-              <span>Graphic Design</span>
               <span>Illustrator</span>
+              <span>Graphic Design</span>
+              <span>Shaders</span>
+              <span>Lighting &amp; Particle Effects</span>
+              <span>RealityScan</span>
             </div>
           </div>
         </article>
-
+        <article class="skill-row reveal">
+          <div class="skill-index">06</div>
+          <div class="skill-title"><span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></span>
+            <h3>Beyond the Screen</h3>
+          </div>
+          <div class="skill-content">
+            <p>
+              Projects that go further than a screen and a keyboard: sound, physical prototypes, haptics and machine learning.
+            </p>
+            <div class="skill-tags">
+              <span class="is-key">Arduino</span>
+              <span class="is-key">Haptics</span>
+              <span class="is-key">Machine Learning</span>
+              <span>Physical Computing</span>
+              <span>Pure Data</span>
+              <span>Computer Vision (OpenCV)</span>
+            </div>
+          </div>
+        </article>
       </div>
-
     </section>
 
 
@@ -830,18 +864,16 @@
                         <span class="ab-chapter-num">✦</span>
                         <h2 class="ab-outside-title">A little more about me</h2>
                         <p>
-                            When I'm not studying, you'll probably find me lifting weights, travelling
-                            or hanging out with friends. I also love working on personal projects
-                            (like this portfolio 😉), playing video games and watching movies.
+                            When I'm not studying, I enjoy working on personal projects (like this portfolio 😉).
+                            I also like making time to work out, whether that's lifting weights or going for a
+                            run or a walk with a friend or family member. I'm focused on self-development and
+                            always trying to be the best version of myself.
                         </p>
-                        <div class="ab-me-chips">
-                            <span>🏋️ Weightlifting</span>
-                            <span>✈️ Travelling</span>
-                            <span>🫶 Friends</span>
-                            <span>🛠️ Personal projects</span>
-                            <span>🎮 Video games</span>
-                            <span>🎬 Movies</span>
-                        </div>
+                        <p>
+                            To wind down after a long day, I usually play video games or watch a movie or a show.
+                            I also love travelling and making new memories. I'm up for anything and always want
+                            to explore and try new things.
+                        </p>
                     </div>
 
                     <div class="ab-qualities reveal">
@@ -849,7 +881,7 @@
                         <div class="ab-quality">
                             <span>01</span>
                             <h3>Ambition</h3>
-                            <p>I set high goals for my work and enjoy pushing a project further than it has to go.</p>
+                            <p>I set high goals for my work and enjoy pushing a project as far as I can.</p>
                         </div>
                         <div class="ab-quality">
                             <span>02</span>
@@ -902,9 +934,9 @@
                         <span class="ab-funfact-label">✦ Fun fact</span>
                         <h3>One of my edits went viral</h3>
                         <p>
-                            In 2023 I made a <em>Succession</em> edit of Tom and Greg set to Taylor Swift's
-                            "You Belong With Me". It spread far beyond TikTok and ended up in some
-                            pretty big papers around the series finale.
+                            A silly thing I'm a little too proud of: in 2023 I made a <em>Succession</em> edit
+                            of Tom and Greg set to Taylor Swift's "You Belong With Me". It spread far beyond
+                            TikTok and ended up in some pretty big papers around the series finale.
                         </p>
 
                         <!-- zoomed screenshot: the actors mention the edit (Vulture) -->
@@ -974,7 +1006,7 @@
     </footer>
 
 
-    <script src="script.js?v=102"></script>
+    <script src="script.js?v=104"></script>
 
 </body>
 
