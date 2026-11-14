@@ -2122,7 +2122,9 @@ document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
         var video = btn.querySelector('video');
         if (!video) return;
 
+        var previewSrc = video.getAttribute('src'), fullSrc = video.getAttribute('data-full');
         function backToPreview() {
+            if (fullSrc && video.getAttribute('src') !== previewSrc) { video.src = previewSrc; video.loop = true; }
             video.muted = true;
             video.controls = false;
             video.play().catch(function () {});
@@ -2135,6 +2137,7 @@ document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
             document.querySelectorAll('.ab-video-play video').forEach(function (v) {
                 if (v !== video) { v.muted = true; }
             });
+            if (fullSrc) { video.src = fullSrc; video.loop = false; }   // play the whole film, not just the preview clip
             video.currentTime = 0;
             video.muted = false;
             video.controls = true;
@@ -2328,17 +2331,17 @@ document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
 (function () {
     if (!/\/projects\/[^/]+\.html/.test(location.pathname)) return;
     var projects = [
-        ['womens-suffrage', '🎓', "Women's Suffrage"],
-        ['hearing-loss', '🥽', 'Hearing Loss'],
+        ['womens-suffrage', '🗳️', "Women's Suffrage"],
+        ['hearing-loss', '👂', 'Hearing Loss'],
         ['dance-pads', '💃', 'Dance Pads'],
         ['nico-nitro', '✋', 'Nico Nitro'],
-        ['liv', '🎓', 'LIV'],
+        ['liv', '📖', 'LIV'],
         ['blue-planet', '🐢', 'Blue Planet'],
         ['plan-bee', '🐝', 'Plan Bee'],
-        ['trivia-quiz', '🌐', 'Trivia Quiz'],
-        ['harry-potter-escape-room', '🥽', 'Harry Potter'],
-        ['zombie-game', '🥽', 'Zombie Game'],
-        ['but-worse-resident-evil', '🕹️', 'Resident Evil']
+        ['trivia-quiz', '❓', 'Trivia Quiz'],
+        ['harry-potter-escape-room', '🪄', 'Harry Potter'],
+        ['zombie-game', '🧟', 'Zombie Game'],
+        ['but-worse-resident-evil', '🔦', 'Resident Evil']
     ];
     var here = location.pathname.split('/').pop().replace('.html', '');
     var nav = document.createElement('nav');
@@ -2423,4 +2426,823 @@ document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
         if (!ticking) { requestAnimationFrame(update); ticking = true; }
     }, { passive: true });
     header.addEventListener('focusin', function () { header.classList.remove('is-tucked'); });
+})();
+
+/* =========================================================
+   Plan Bee page: a swarm of bees flies across when it opens
+   ========================================================= */
+(function () {
+    if (!/plan-bee\.html/.test(location.pathname)) return;
+    function swarm() {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var W = window.innerWidth, H = window.innerHeight;
+        var count = reduce ? 6 : (W < 700 ? 14 : 26);
+        var layer = document.createElement('div');
+        layer.className = 'bee-swarm';
+        layer.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(layer);
+        var longest = 0;
+        for (var i = 0; i < count; i++) {
+            var bee = document.createElement('span');
+            bee.textContent = '\uD83D\uDC1D';
+            bee.style.fontSize = (18 + Math.random() * 22) + 'px';
+            layer.appendChild(bee);
+            var fromLeft = Math.random() < 0.5;
+            var y0 = Math.random() * H, y1 = Math.random() * H;
+            var x0 = fromLeft ? -60 : W + 60, x1 = fromLeft ? W + 60 : -60;
+            var flip = fromLeft ? -1 : 1;
+            var frames = [];
+            for (var k = 0; k <= 8; k++) {
+                var t = k / 8;
+                var x = x0 + (x1 - x0) * t;
+                var y = y0 + (y1 - y0) * t + (reduce ? 0 : Math.sin(t * Math.PI * (2 + Math.random() * 2)) * (40 + Math.random() * 60));
+                frames.push({ transform: 'translate(' + x + 'px,' + y + 'px) scaleX(' + flip + ') rotate(' + (reduce ? 0 : (Math.random() * 30 - 15)) + 'deg)' });
+            }
+            var dur = 2600 + Math.random() * 2600, delay = Math.random() * 1400;
+            longest = Math.max(longest, dur + delay);
+            bee.animate(frames, { duration: dur, delay: delay, easing: 'ease-in-out', fill: 'both' });
+        }
+        setTimeout(function () { layer.remove(); }, longest + 400);
+    }
+
+    // button next to the title to send the bees out again
+    var meta = document.querySelector('.pj-hero .pj-meta');
+    if (meta) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'fx-dark-btn fx-bee-btn';
+        btn.innerHTML = '<span aria-hidden="true">🐝</span> Release the bees';
+        var busy = false;
+        btn.addEventListener('click', function () {
+            if (busy) return;
+            busy = true; swarm();
+            setTimeout(function () { busy = false; }, 1500);
+        });
+        meta.appendChild(btn);
+    }
+})();
+
+/* =========================================================
+   Harry Potter page: floating candles + wand-light cursor
+   ========================================================= */
+(function () {
+    if (!/harry-potter-escape-room\.html/.test(location.pathname)) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // "Lumos" button by the title: the page dims, then a golden wand light blooms and fades
+    var meta = document.querySelector('.pj-hero .pj-meta');
+    if (meta) {
+        var lb = document.createElement('button');
+        lb.type = 'button';
+        lb.className = 'fx-dark-btn hp-lumos-btn';
+        lb.innerHTML = '<span aria-hidden="true">🪄</span> Lumos';
+        meta.appendChild(lb);
+        var casting = false, actx = null;
+        function chime() {
+            try {
+                if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+                if (actx.state === 'suspended') actx.resume();
+                [784, 988, 1175, 1568].forEach(function (f, i) {
+                    var o = actx.createOscillator(), g = actx.createGain(), t = actx.currentTime + 0.35 + i * 0.09;
+                    o.type = 'sine'; o.frequency.value = f;
+                    g.gain.setValueAtTime(0.0001, t);
+                    g.gain.exponentialRampToValueAtTime(0.07, t + 0.02);
+                    g.gain.exponentialRampToValueAtTime(0.0001, t + 1.2);
+                    o.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + 1.25);
+                });
+            } catch (e) {}
+        }
+        lb.addEventListener('click', function () {
+            if (casting) return;
+            casting = true;
+            chime();
+            var r = lb.getBoundingClientRect(), x = r.left + 18, y = r.top + r.height / 2;
+            var fx = document.createElement('div');
+            fx.className = 'hp-lumos';
+            fx.setAttribute('aria-hidden', 'true');
+            fx.innerHTML = '<div class="hp-lumos-dim"></div><div class="hp-lumos-glow"></div>';
+            var glow = fx.querySelector('.hp-lumos-glow');
+            glow.style.left = x + 'px'; glow.style.top = y + 'px';
+            document.body.appendChild(fx);
+            if (!reduce) {
+                for (var i = 0; i < 34; i++) {
+                    var sp = document.createElement('span');
+                    sp.className = 'hp-lumos-spark';
+                    sp.style.left = x + 'px'; sp.style.top = y + 'px';
+                    fx.appendChild(sp);
+                    var ang = Math.random() * Math.PI * 2, dist = 60 + Math.random() * 260;
+                    sp.animate([
+                        { transform: 'translate(-50%,-50%) scale(0.4)', opacity: 0 },
+                        { transform: 'translate(-50%,-50%) scale(1)', opacity: 1, offset: 0.15 },
+                        { transform: 'translate(calc(-50% + ' + Math.cos(ang) * dist + 'px), calc(-50% + ' + (Math.sin(ang) * dist + 40) + 'px)) scale(0.3)', opacity: 0 }
+                    ], { duration: 1300 + Math.random() * 900, delay: 380 + Math.random() * 200, easing: 'cubic-bezier(.2,.7,.3,1)', fill: 'both' });
+                }
+            }
+            setTimeout(function () { fx.remove(); casting = false; }, 2700);
+        });
+    }
+
+    // Wand-light cursor trail
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var cv = document.createElement('canvas');
+    cv.className = 'hp-wand-trail';
+    cv.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(cv);
+    var ctx = cv.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    function size() { cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    size(); window.addEventListener('resize', size);
+    var parts = [], lx = null, ly = null, running = false;
+    window.addEventListener('mousemove', function (e) {
+        var x = e.clientX, y = e.clientY;
+        var dist = lx === null ? 0 : Math.hypot(x - lx, y - ly);
+        var count = reduce ? 0 : Math.min(2, Math.floor(dist / 14));
+        if (Math.random() < 0.35) count += 1;
+        for (var i = 0; i < count; i++) {
+            var t = count > 1 ? i / count : 0;
+            parts.push({
+                x: lx === null ? x : lx + (x - lx) * t, y: ly === null ? y : ly + (y - ly) * t,
+                vx: (Math.random() - 0.5) * 0.6, vy: (Math.random() - 0.5) * 0.6 + 0.25,
+                r: 0.5 + Math.random() * 1.1, life: 0.75, decay: 0.022 + Math.random() * 0.025,
+                hue: 38 + Math.random() * 18
+            });
+        }
+        if (parts.length > 90) parts.splice(0, parts.length - 90);
+        lx = x; ly = y;
+        if (!running) { running = true; requestAnimationFrame(tick); }
+    }, { passive: true });
+    function tick() {
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+        ctx.globalCompositeOperation = 'lighter';
+        for (var i = parts.length - 1; i >= 0; i--) {
+            var p = parts[i];
+            p.x += p.vx; p.y += p.vy; p.vy += 0.012; p.life -= p.decay;
+            if (p.life <= 0) { parts.splice(i, 1); continue; }
+            var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
+            g.addColorStop(0, 'hsla(' + p.hue + ',100%,85%,' + p.life + ')');
+            g.addColorStop(0.35, 'hsla(' + p.hue + ',100%,62%,' + (p.life * 0.4) + ')');
+            g.addColorStop(1, 'hsla(' + p.hue + ',100%,50%,0)');
+            ctx.fillStyle = g;
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2); ctx.fill();
+        }
+        if (parts.length) requestAnimationFrame(tick); else running = false;
+    }
+})();
+
+/* =========================================================
+   Page effects: flashlight (horror games), bubbles (Blue Planet),
+   rhythm arrows (Dance Pads)
+   ========================================================= */
+(function () {
+    var path = location.pathname;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    function layer(cls) {
+        var d = document.createElement('div');
+        d.className = 'fx-layer ' + cls;
+        d.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(d);
+        document.body.classList.add('fx-page');
+        return d;
+    }
+
+    /* ---- Dark mode with a flashlight: Resident Evil ---- */
+    if (/but-worse-resident-evil\.html/.test(path)) {
+        var dark = layer('fx-flashlight');
+        var meta = document.querySelector('.pj-hero .pj-meta');
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'fx-dark-btn';
+        (meta || document.querySelector('.pj-hero') || document.body).appendChild(btn);
+        var isDark = false, timers = [];
+        function label() {
+            btn.innerHTML = isDark ? '<span aria-hidden="true">☀️</span> Light mode' : '<span aria-hidden="true">🔦</span> Dark mode';
+            btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+            if (typeof exitBtn !== 'undefined') exitBtn.classList.toggle('is-on', isDark);
+        }
+        // small exit button in the corner while dark mode is on (the one by the title gets dark too)
+        var exitBtn = document.createElement('button');
+        exitBtn.type = 'button';
+        exitBtn.className = 'fx-dark-exit';
+        exitBtn.innerHTML = '<span aria-hidden="true">☀️</span> Light mode';
+        document.body.appendChild(exitBtn);
+        exitBtn.addEventListener('click', function () { btn.click(); });
+        label();
+        function beam(v) { dark.style.setProperty('--beam', v); }
+        beam(0);
+
+        // flashlight position follows the mouse (or sits in the middle on touch screens)
+        var tx = innerWidth / 2, ty = innerHeight * 0.45, cx = tx, cy = ty, raf = null;
+        function draw() {
+            cx += (tx - cx) * 0.18; cy += (ty - cy) * 0.18;
+            dark.style.setProperty('--x', cx + 'px');
+            dark.style.setProperty('--y', cy + 'px');
+            raf = (Math.abs(tx - cx) > 0.5 || Math.abs(ty - cy) > 0.5) ? requestAnimationFrame(draw) : null;
+        }
+        draw();
+        window.addEventListener('mousemove', function (e) {
+            tx = e.clientX; ty = e.clientY;
+            if (!raf) raf = requestAnimationFrame(draw);
+        }, { passive: true });
+
+        // Small sounds made in code: a switch click and a few crackles as the torch flickers
+        var actx = null;
+        function audio() {
+            try {
+                if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+                if (actx.state === 'suspended') actx.resume();
+            } catch (e) { actx = null; }
+            return actx;
+        }
+        function noiseBurst(when, dur, vol, freq) {
+            var a = audio(); if (!a) return;
+            var len = Math.max(1, Math.floor(a.sampleRate * dur));
+            var buf = a.createBuffer(1, len, a.sampleRate), d = buf.getChannelData(0);
+            for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3);
+            var src = a.createBufferSource(); src.buffer = buf;
+            var f = a.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = freq; f.Q.value = 1.2;
+            var g = a.createGain(); g.gain.value = vol;
+            src.connect(f); f.connect(g); g.connect(a.destination);
+            src.start(a.currentTime + when);
+        }
+        function thump(when, vol, pitch) {
+            var a = audio(); if (!a) return;
+            var o = a.createOscillator(), g = a.createGain(), t = a.currentTime + when;
+            o.type = 'sine'; o.frequency.setValueAtTime(pitch, t); o.frequency.exponentialRampToValueAtTime(pitch * 0.5, t + 0.08);
+            g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.09);
+            o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + 0.1);
+        }
+        function switchClick(on) {
+            noiseBurst(0, 0.03, on ? 0.5 : 0.4, on ? 2600 : 3200);
+            thump(0, 0.18, on ? 160 : 220);
+        }
+
+        btn.addEventListener('click', function () {
+            timers.forEach(clearTimeout); timers = [];
+            switchClick(!isDark);
+            isDark = !isDark;
+            label();
+            if (isDark) {
+                beam(0);
+                dark.classList.add('is-dark');                 // room goes dark
+                if (reduce) { beam(1); return; }
+                // torch flickers on: a few weak, uneven sputters before it holds
+                var seq = [[650, 0.25], [700, 0], [790, 0.45], [830, 0.12], [900, 0.6],
+                           [960, 0.3], [1010, 0.85], [1080, 0.7], [1180, 1], [1420, 0.88], [1480, 1]];
+                seq.forEach(function (s) { timers.push(setTimeout(function () { beam(s[1]); }, s[0])); });
+                // torch click, then soft crackles while it sputters
+                noiseBurst(0.6, 0.025, 0.35, 1800); thump(0.6, 0.12, 120);
+                seq.forEach(function (s, i) {
+                    if (i < seq.length - 2) noiseBurst(s[0] / 1000, 0.018 + Math.random() * 0.02, 0.06 + s[1] * 0.08, 3500 + Math.random() * 2500);
+                });
+            } else {
+                dark.classList.remove('is-dark');
+            }
+        });
+    }
+
+    /* ---- Bubbles + the odd jellyfish: Blue Planet ---- */
+    if (/blue-planet\.html/.test(path)) {
+        var sea = layer('fx-sea');
+        var nB = reduce ? 0 : (innerWidth < 700 ? 12 : 24);
+        for (var i = 0; i < nB; i++) {
+            var b = document.createElement('span');
+            b.className = 'fx-bubble';
+            var s = 6 + Math.random() * 22;
+            b.style.width = b.style.height = s + 'px';
+            b.style.left = (Math.random() * 100) + '%';
+            b.style.setProperty('--sway', (10 + Math.random() * 30) + 'px');
+            b.style.animationDuration = (9 + Math.random() * 12) + 's, ' + (2.5 + Math.random() * 3) + 's';
+            b.style.animationDelay = (-Math.random() * 20) + 's, ' + (-Math.random() * 4) + 's';
+            b.style.opacity = (0.25 + Math.random() * 0.45).toFixed(2);
+            sea.appendChild(b);
+        }
+        function jelly() {
+            var j = document.createElement('span');
+            j.className = 'fx-jelly';
+            j.innerHTML = '<i></i><b></b><b></b><b></b><b></b>';
+            j.style.left = (Math.random() < 0.5 ? 3 + Math.random() * 15 : 80 + Math.random() * 15) + '%';
+            j.style.setProperty('--js', (0.7 + Math.random() * 0.6).toFixed(2));
+            sea.appendChild(j);
+            setTimeout(function () { j.remove(); }, 26000);
+        }
+        if (!reduce) { setTimeout(jelly, 2500); setInterval(jelly, 14000); }
+    }
+
+    /* ---- Rhythm-game arrows: Dance Pads ---- */
+    if (/dance-pads\.html/.test(path)) {
+        var stage = layer('fx-arrows');
+        var lanes = [
+            { key: 'arrowleft', r: -90, x: 9, c: '#ff5fb2' },
+            { key: 'arrowdown', r: 180, x: 18, c: '#5fd3ff' },
+            { key: 'arrowup', r: 0, x: 82, c: '#7dff8a' },
+            { key: 'arrowright', r: 90, x: 91, c: '#ffd25f' }
+        ];
+        function arrow(lane, bright) {
+            var a = document.createElement('span');
+            a.className = 'fx-arrow' + (bright ? ' is-hit' : '');
+            a.innerHTML = '<svg viewBox="0 0 40 40" style="transform:rotate(' + lane.r + 'deg)"><path d="M20 3 L37 20 L28 20 L28 37 L12 37 L12 20 L3 20 Z" fill="currentColor" fill-opacity=".35" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>';
+            a.style.left = lane.x + '%';
+            a.style.color = lane.c;
+            a.style.setProperty('--glow', lane.c);
+            a.style.animationDuration = (bright ? 2.6 : 7 + Math.random() * 3) + 's';
+            stage.appendChild(a);
+            setTimeout(function () { a.remove(); }, bright ? 2700 : 10500);
+        }
+        if (!reduce) setInterval(function () { arrow(lanes[Math.floor(Math.random() * 4)], false); }, 900);
+        document.addEventListener('keydown', function (e) {
+            var k = (e.key || '').toLowerCase();
+            for (var i = 0; i < lanes.length; i++) if (lanes[i].key === k) arrow(lanes[i], true);
+        });
+    }
+})();
+
+/* =========================================================
+   Fun buttons by the title on more project pages
+   ========================================================= */
+(function () {
+    var path = location.pathname;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var meta = document.querySelector('.pj-hero .pj-meta');
+    if (!meta) return;
+    function addBtn(html, onClick) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'fx-dark-btn fx-fun-btn';
+        b.innerHTML = html;
+        var busy = false;
+        b.addEventListener('click', function () {
+            if (busy) return; busy = true;
+            var t = onClick(b) || 2500;
+            setTimeout(function () { busy = false; }, t);
+        });
+        meta.appendChild(b);
+        return b;
+    }
+    var actx = null;
+    function ac() {
+        try {
+            if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+            if (actx.state === 'suspended') actx.resume();
+        } catch (e) { actx = null; }
+        return actx;
+    }
+    function tone(freq, start, dur, vol, type) {
+        var a = ac(); if (!a) return;
+        var o = a.createOscillator(), g = a.createGain(), t = a.currentTime + start;
+        o.type = type || 'sine'; o.frequency.value = freq;
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(vol, t + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + dur + 0.05);
+    }
+    function noise(start, dur, vol, filterType, f0, f1) {
+        var a = ac(); if (!a) return;
+        var len = Math.floor(a.sampleRate * dur), buf = a.createBuffer(1, len, a.sampleRate), d = buf.getChannelData(0);
+        for (var i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+        var s = a.createBufferSource(); s.buffer = buf;
+        var f = a.createBiquadFilter(); f.type = filterType; f.Q.value = 0.8;
+        var g = a.createGain(), t = a.currentTime + start;
+        f.frequency.setValueAtTime(f0, t); f.frequency.exponentialRampToValueAtTime(f1, t + dur);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + dur * 0.25); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        s.connect(f); f.connect(g); g.connect(a.destination); s.start(t);
+    }
+    function overlay(cls) {
+        var o = document.createElement('div');
+        o.className = 'fun-fx ' + cls;
+        o.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(o);
+        return o;
+    }
+
+    /* ---- Women's Suffrage: cast your vote ---- */
+    if (/womens-suffrage\.html/.test(path)) {
+        addBtn('<span aria-hidden="true">🗳️</span> Cast your vote', function () {
+            var o = overlay('fun-vote');
+            o.innerHTML = '<div class="fv-box"><div class="fv-slot"></div><span>STEMMESEDLER</span></div>' +
+                          '<div class="fv-paper"><b>✕</b></div>' +
+                          '<div class="fv-stamp">1915<small>Danish women win the vote</small></div>';
+            tone(220, 0.55, 0.12, 0.12, 'triangle');            // paper drops in
+            noise(0.5, 0.15, 0.08, 'bandpass', 1200, 600);
+            tone(110, 0.95, 0.18, 0.2, 'sine');                 // stamp thud
+            noise(0.93, 0.08, 0.12, 'lowpass', 900, 300);
+            setTimeout(function () { o.remove(); }, 3600);
+            return 3700;
+        });
+    }
+
+    /* ---- Hearing Loss: hear it ---- */
+    if (/hearing-loss\.html/.test(path)) {
+        addBtn('<span aria-hidden="true">👂</span> Hear it', function () {
+            document.body.classList.add('fun-muffled');
+            var o = overlay('fun-muffle');
+            o.innerHTML = '<p>This is roughly how a conversation can start to feel…</p>';
+            noise(0, 3.4, 0.09, 'lowpass', 380, 260);           // muffled room
+            tone(3800, 0.2, 3.0, 0.012, 'sine');                 // faint ringing
+            setTimeout(function () { document.body.classList.remove('fun-muffled'); }, 3200);
+            setTimeout(function () { o.remove(); }, 3900);
+            return 4000;
+        });
+    }
+
+    /* ---- Nico Nitro: nitro boost ---- */
+    if (/nico-nitro\.html/.test(path)) {
+        addBtn('<span aria-hidden="true">🚀</span> Nitro boost', function () {
+            var o = overlay('fun-nitro');
+            var title = document.querySelector('.pj-title');
+            if (title && !reduce) {
+                title.animate([
+                    { transform: 'none', filter: 'none' },
+                    { transform: 'translateX(-14px) scale(0.98)', offset: 0.15 },
+                    { transform: 'translateX(40px) scale(1.08)', filter: 'blur(2px)', offset: 0.45 },
+                    { transform: 'none', filter: 'none' }
+                ], { duration: 1100, easing: 'cubic-bezier(.2,.8,.2,1)' });
+            }
+            noise(0, 1.0, 0.2, 'bandpass', 300, 3200);           // whoosh
+            tone(90, 0, 0.6, 0.12, 'sawtooth');
+            setTimeout(function () { o.remove(); }, 1300);
+            return 1400;
+        });
+    }
+
+    /* ---- Trivia Quiz: a random question from the Open Trivia Database ---- */
+    if (/trivia-quiz\.html/.test(path)) {
+        var backup = [   // used only if the database can't be reached
+            { c: 'General Knowledge', q: 'What is the capital of Denmark?', a: 'Copenhagen', w: ['Aarhus', 'Odense', 'Aalborg'] },
+            { c: 'Science', q: 'What is the chemical symbol for gold?', a: 'Au', w: ['Ag', 'Gd', 'Go'] },
+            { c: 'Video Games', q: 'Which company makes the Meta Quest headsets?', a: 'Meta', w: ['Sony', 'Valve', 'HTC'] }
+        ];
+        function shuffle(arr) { for (var i = arr.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = arr[i]; arr[i] = arr[j]; arr[j] = t; } return arr; }
+        function getQuestion() {
+            return fetch('https://opentdb.com/api.php?amount=1&type=multiple&encode=url3986')
+                .then(function (r) { return r.json(); })
+                .then(function (d) {
+                    var q = d && d.results && d.results[0];
+                    if (!q) throw new Error('no question');
+                    var dec = decodeURIComponent;
+                    return { c: dec(q.category), d: dec(q.difficulty), q: dec(q.question), a: dec(q.correct_answer), w: q.incorrect_answers.map(dec) };
+                })
+                .catch(function () { return backup[Math.floor(Math.random() * backup.length)]; });
+        }
+        function esc(t) { var e = document.createElement('span'); e.textContent = t; return e.innerHTML; }
+        addBtn('<span aria-hidden="true">❓</span> Quick question', function () {
+            var o = overlay('fun-quiz');
+            o.setAttribute('aria-hidden', 'false');
+            o.innerHTML = '<div class="fq-card" role="dialog" aria-label="Quick question">' +
+                '<span class="fq-label">Quick question</span><h3>Loading a question…</h3>' +
+                '<div class="fq-opts"></div><p class="fq-msg" aria-live="polite"></p>' +
+                '<button class="fq-close" aria-label="Close">✕</button></div>';
+            function close() { o.classList.add('is-out'); setTimeout(function () { o.remove(); }, 300); }
+            o.addEventListener('click', function (e) { if (e.target === o) close(); });
+            o.querySelector('.fq-close').addEventListener('click', close);
+            function load() {
+                var card = o.querySelector('.fq-card');
+                card.querySelector('h3').textContent = 'Loading a question…';
+                card.querySelector('.fq-opts').innerHTML = '';
+                card.querySelector('.fq-msg').textContent = '';
+                getQuestion().then(function (q) {
+                    card.querySelector('.fq-label').textContent = q.c + (q.d ? ' · ' + q.d : '');
+                    card.querySelector('h3').textContent = q.q;
+                    var opts = card.querySelector('.fq-opts'), done = false;
+                    shuffle([q.a].concat(q.w)).forEach(function (ans) {
+                        var b = document.createElement('button');
+                        b.innerHTML = esc(ans);
+                        b.addEventListener('click', function () {
+                            if (done) return;
+                            var msg = card.querySelector('.fq-msg');
+                            if (ans === q.a) {
+                                done = true;
+                                b.classList.add('is-ok'); msg.innerHTML = 'Correct! 🎉 <button class="fq-next">Another one →</button>';
+                                tone(784, 0, 0.18, 0.08); tone(1047, 0.1, 0.3, 0.08);
+                                confetti(b);
+                                msg.querySelector('.fq-next').addEventListener('click', load);
+                            } else {
+                                b.classList.add('is-no'); b.disabled = true; msg.textContent = 'Not quite, try again!';
+                                tone(180, 0, 0.2, 0.08, 'triangle');
+                            }
+                        });
+                        opts.appendChild(b);
+                    });
+                    var f = opts.querySelector('button'); if (f) f.focus();
+                });
+            }
+            load();
+            return 600;
+        });
+        function confetti(from) {
+            var r = from.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+            var o = overlay('fun-confetti'), cols = ['#FFB454', '#63E6D8', '#ff5fb2', '#7dff8a', '#fff'];
+            for (var i = 0; i < 60; i++) {
+                var c = document.createElement('i');
+                c.style.left = x + 'px'; c.style.top = y + 'px'; c.style.background = cols[i % cols.length];
+                o.appendChild(c);
+                var an = Math.random() * Math.PI * 2, d = 80 + Math.random() * 220;
+                c.animate([
+                    { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+                    { transform: 'translate(' + Math.cos(an) * d + 'px,' + (Math.sin(an) * d + 220) + 'px) rotate(' + (Math.random() * 720) + 'deg)', opacity: 0 }
+                ], { duration: 1200 + Math.random() * 600, easing: 'cubic-bezier(.2,.7,.4,1)', fill: 'forwards' });
+            }
+            setTimeout(function () { o.remove(); }, 2000);
+        }
+    }
+
+    /* ---- LIV: a calm breathing moment ---- */
+    if (/\/liv\.html/.test(path)) {
+        addBtn('<span aria-hidden="true">💙</span> Breathe', function () {
+            var o = overlay('fun-breathe');
+            o.innerHTML = '<div class="fb-circle"></div><p class="fb-text">Breathe in…</p>';
+            var txt = o.querySelector('.fb-text');
+            var a = ac(), nodes = [];
+            if (a) {                                              // soft, slowly swelling pad
+                var t = a.currentTime;
+                [220, 277.2, 329.6].forEach(function (f) {
+                    var os = a.createOscillator(), g = a.createGain();
+                    os.type = 'sine'; os.frequency.value = f;
+                    g.gain.setValueAtTime(0.0001, t);
+                    g.gain.exponentialRampToValueAtTime(0.025, t + 4);
+                    g.gain.exponentialRampToValueAtTime(0.012, t + 8);
+                    g.gain.exponentialRampToValueAtTime(0.0001, t + 9.5);
+                    os.connect(g); g.connect(a.destination); os.start(t); os.stop(t + 9.6);
+                });
+            }
+            setTimeout(function () { txt.textContent = 'Breathe out…'; }, 4000);
+            setTimeout(function () { o.classList.add('is-out'); }, 8600);
+            setTimeout(function () { o.remove(); }, 9600);
+            return 9700;
+        });
+    }
+
+    /* ---- Zombie Game: brains… ---- */
+    if (/zombie-game\.html/.test(path)) {
+        addBtn('<span aria-hidden="true">🧟</span> Zombie attack', function (btn) {
+            var o = overlay('fun-zombie');
+            var r = btn.getBoundingClientRect();
+            o.innerHTML = '<svg class="fz-hand" viewBox="0 0 160 300" style="left:' + Math.max(20, r.left + 40) + 'px">' +
+                '<path d="M45 300 L50 175 Q48 160 52 150 L115 150 Q120 165 118 180 L122 300 Z" fill="#3d4a3a"/>' +
+                '<path d="M50 300 L56 190 L66 205 L72 188 L84 204 L92 186 L100 202 L112 190 L118 300 Z" fill="#2f3a2d"/>' +
+                '<path d="M52 158 Q40 120 44 92 L40 52 Q38 40 47 39 Q55 39 57 52 L62 88 L63 34 Q63 22 72 22 Q81 22 81 34 L82 86 L88 30 Q90 18 99 20 Q107 22 106 34 L102 90 L111 50 Q114 39 122 42 Q129 45 126 57 L116 112 Q132 100 140 92 Q148 86 152 94 Q155 101 147 109 L120 142 Q114 156 112 158 Z" fill="#8fb27a" stroke="#4e6a42" stroke-width="3" stroke-linejoin="round"/>' +
+                '<path d="M60 70 L66 72 M79 64 L85 65 M98 68 L103 70" stroke="#5f7f51" stroke-width="2.5" fill="none" stroke-linecap="round"/>' +
+                '<path d="M74 132 l10 -6 l4 9 z" fill="#6d8f5d"/></svg>';
+            var a = ac();
+            if (a) {                                              // low groan
+                var os = a.createOscillator(), lf = a.createOscillator(), lg = a.createGain(), f = a.createBiquadFilter(), g = a.createGain(), t = a.currentTime + 0.3;
+                os.type = 'sawtooth'; os.frequency.setValueAtTime(95, t); os.frequency.linearRampToValueAtTime(70, t + 1.6);
+                lf.frequency.value = 5; lg.gain.value = 6; lf.connect(lg); lg.connect(os.frequency);
+                f.type = 'lowpass'; f.frequency.value = 520;
+                g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.08, t + 0.3); g.gain.exponentialRampToValueAtTime(0.0001, t + 1.7);
+                os.connect(f); f.connect(g); g.connect(a.destination);
+                os.start(t); lf.start(t); os.stop(t + 1.8); lf.stop(t + 1.8);
+            }
+            // the hit: visual flash, screen shake, sound and (on phones) vibration
+            var hit = document.createElement('div');
+            hit.className = 'fz-hit';
+            hit.innerHTML = '<span>👁 Visual</span><span>🔊 Sound</span><span>📳 Haptic</span>';
+            o.appendChild(hit);
+            setTimeout(function () {
+                if (!reduce) document.body.classList.add('fz-shake');
+                try { if (navigator.vibrate) navigator.vibrate([90, 40, 140]); } catch (e) {}
+                noise(0, 0.25, 0.22, 'lowpass', 1400, 200);
+                tone(60, 0, 0.3, 0.25, 'sine');
+                setTimeout(function () { document.body.classList.remove('fz-shake'); }, 500);
+            }, 950);
+            setTimeout(function () { o.remove(); }, 3600);
+            return 3700;
+        });
+    }
+})();
+
+/* =========================================================
+   Mini games: Dance Pads (hit the arrows) + Blue Planet (clean the ocean)
+   ========================================================= */
+(function () {
+    var path = location.pathname;
+    var meta = document.querySelector('.pj-hero .pj-meta');
+    if (!meta) return;
+    var actx = null;
+    function ac() {
+        try {
+            if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+            if (actx.state === 'suspended') actx.resume();
+        } catch (e) { actx = null; }
+        return actx;
+    }
+    function blip(freq, dur, vol, type, when) {
+        var a = ac(); if (!a) return;
+        var o = a.createOscillator(), g = a.createGain(), t = a.currentTime + (when || 0);
+        o.type = type || 'sine'; o.frequency.setValueAtTime(freq, t);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + dur + 0.02);
+    }
+    function kick(when) {
+        var a = ac(); if (!a) return;
+        var o = a.createOscillator(), g = a.createGain(), t = a.currentTime + when;
+        o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(45, t + 0.12);
+        g.gain.setValueAtTime(0.35, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.18);
+        o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + 0.2);
+    }
+    function hat(when) {
+        var a = ac(); if (!a) return;
+        var len = Math.floor(a.sampleRate * 0.04), b = a.createBuffer(1, len, a.sampleRate), d = b.getChannelData(0);
+        for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
+        var s = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain();
+        s.buffer = b; f.type = 'highpass'; f.frequency.value = 7000; g.gain.value = 0.08;
+        s.connect(f); f.connect(g); g.connect(a.destination); s.start(a.currentTime + when);
+    }
+    function addBtn(html, fn) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'fx-dark-btn fx-fun-btn'; b.innerHTML = html;
+        b.addEventListener('click', fn);
+        meta.appendChild(b);
+    }
+    function modal(cls, inner) {
+        var o = document.createElement('div');
+        o.className = 'fun-fx fun-game ' + cls;
+        o.innerHTML = '<div class="fg-card" role="dialog">' + inner + '<button class="fq-close fg-close" aria-label="Close">✕</button></div>';
+        document.body.appendChild(o);
+        document.body.classList.add('fg-open');
+        return o;
+    }
+    function closeModal(o, cleanup) {
+        if (cleanup) cleanup();
+        o.classList.add('is-out');
+        document.body.classList.remove('fg-open');
+        setTimeout(function () { o.remove(); }, 300);
+    }
+
+    /* ---------------- Dance Pads: rhythm mini game ---------------- */
+    if (/dance-pads\.html/.test(path)) {
+        var LANES = [
+            { key: 'arrowleft', r: -90, c: '#ff5fb2' },
+            { key: 'arrowdown', r: 180, c: '#5fd3ff' },
+            { key: 'arrowup', r: 0, c: '#7dff8a' },
+            { key: 'arrowright', r: 90, c: '#ffd25f' }
+        ];
+        var SVG = function (r) { return '<svg viewBox="0 0 40 40" style="transform:rotate(' + r + 'deg)"><path d="M20 3 L37 20 L28 20 L28 37 L12 37 L12 20 L3 20 Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>'; };
+        addBtn('<span aria-hidden="true">🕹️</span> Play a mini version', function () {
+            var lanesHtml = LANES.map(function (l, i) {
+                return '<div class="dg-lane" data-i="' + i + '"><div class="dg-target" style="color:' + l.c + '">' + SVG(l.r) + '</div></div>';
+            }).join('');
+            var o = modal('fun-dance',
+                '<p class="fg-note">Just for fun: a small web version <b>inspired by</b> Dance Pads, not the real prototype (which uses physical pads and sound).</p>' +
+                '<div class="dg-head"><span class="fq-label">Mini game · inspired by Dance Pads</span><span class="dg-score">Score <b>0</b></span><span class="dg-combo"></span></div>' +
+                '<div class="dg-field">' + lanesHtml + '<div class="dg-judge"></div>' +
+                '<div class="dg-start"><p>Hit the arrow keys when the arrows reach the top.<br><small>On a phone, tap the lanes.</small></p><button class="dg-go">Start ▶</button></div></div>');
+            var field = o.querySelector('.dg-field'), lanes = o.querySelectorAll('.dg-lane');
+            var scoreEl = o.querySelector('.dg-score b'), comboEl = o.querySelector('.dg-combo'), judge = o.querySelector('.dg-judge');
+            var notes = [], running = false, start = 0, raf = null, score = 0, combo = 0, best = 0, hits = 0, total = 0;
+            var BPM = 112, beat = 60 / BPM, TRAVEL = 1.6, LEN = 24; // seconds
+            function chart() {
+                var list = [], t = 2, last = -1;
+                while (t < LEN) {
+                    var lane = Math.floor(Math.random() * 4); if (lane === last && Math.random() < 0.6) lane = (lane + 1) % 4;
+                    list.push({ t: t, lane: lane }); last = lane;
+                    if (Math.random() < 0.15 && t > 6) list.push({ t: t, lane: (lane + 2) % 4 });   // occasional jump
+                    t += beat * (Math.random() < 0.3 ? 0.5 : 1);
+                }
+                return list;
+            }
+            function music() {
+                for (var b = 0; b * beat < LEN + 1; b++) {
+                    kick(b * beat); hat(b * beat + beat / 2);
+                    if (b % 4 === 0) blip([262, 330, 392, 349][(b / 4) % 4], 0.25, 0.05, 'triangle', b * beat);
+                }
+            }
+            function show(txt, col) {
+                judge.textContent = txt; judge.style.color = col;
+                judge.classList.remove('is-pop'); void judge.offsetWidth; judge.classList.add('is-pop');
+            }
+            function begin() {
+                o.querySelector('.dg-start').remove();
+                notes = chart().map(function (n) {
+                    var el = document.createElement('div');
+                    el.className = 'dg-note'; el.style.color = LANES[n.lane].c; el.innerHTML = SVG(LANES[n.lane].r);
+                    lanes[n.lane].appendChild(el);
+                    return { t: n.t, lane: n.lane, el: el, done: false };
+                });
+                total = notes.length;
+                ac(); music();
+                start = (actx ? actx.currentTime : performance.now() / 1000);
+                running = true; tick();
+            }
+            function now() { return (actx ? actx.currentTime : performance.now() / 1000) - start; }
+            function tick() {
+                if (!running) return;
+                var t = now(), h = field.clientHeight, targetY = 18;
+                notes.forEach(function (n) {
+                    if (n.done) return;
+                    var dt = n.t - t, y = targetY + (dt / TRAVEL) * (h - 60);
+                    n.el.style.transform = 'translateY(' + y + 'px)';
+                    if (dt < -0.18) { n.done = true; n.el.classList.add('is-miss'); combo = 0; comboEl.textContent = ''; show('Miss', '#ff8a8a'); }
+                });
+                if (t > LEN + 1) return finish();
+                raf = requestAnimationFrame(tick);
+            }
+            function press(i) {
+                var tgt = lanes[i].querySelector('.dg-target');
+                tgt.classList.remove('is-hit'); void tgt.offsetWidth; tgt.classList.add('is-hit');
+                if (!running) return;
+                var t = now(), bestN = null, bestD = 1;
+                notes.forEach(function (n) { if (!n.done && n.lane === i) { var d = Math.abs(n.t - t); if (d < bestD) { bestD = d; bestN = n; } } });
+                if (!bestN || bestD > 0.18) { blip(140, 0.08, 0.05, 'square'); return; }
+                bestN.done = true; bestN.el.classList.add('is-hit');
+                combo++; best = Math.max(best, combo); hits++;
+                var pts = bestD < 0.06 ? 300 : 100;
+                score += pts * (1 + Math.floor(combo / 10));
+                scoreEl.textContent = score;
+                comboEl.textContent = combo > 2 ? combo + ' combo' : '';
+                if (bestD < 0.06) show(combo >= 5 && Math.random() < 0.6 ? 'Keep slaying!' : 'Slay!', '#ff7ad1');
+                else show(Math.random() < 0.5 ? 'Hit' : 'Good', '#5fd3ff');
+                blip([523, 587, 659, 784][i], 0.12, 0.07, 'triangle');
+            }
+            function finish() {
+                running = false;
+                var pct = total ? Math.round(hits / total * 100) : 0;
+                var res = document.createElement('div');
+                res.className = 'dg-start';
+                res.innerHTML = '<p><b class="dg-big">' + score + '</b><br>' + pct + '% hit · best combo ' + best + '</p><button class="dg-go">Play again ↻</button>';
+                field.appendChild(res);
+                res.querySelector('.dg-go').addEventListener('click', function () {
+                    notes.forEach(function (n) { n.el.remove(); }); score = combo = best = hits = 0; scoreEl.textContent = '0'; comboEl.textContent = ''; res.remove(); begin2();
+                });
+                blip(523, 0.15, 0.07, 'triangle'); blip(659, 0.15, 0.07, 'triangle', 0.12); blip(784, 0.3, 0.07, 'triangle', 0.24);
+            }
+            function begin2() {
+                var s = document.createElement('div'); s.className = 'dg-start'; field.appendChild(s); begin();
+            }
+            function onKey(e) {
+                var k = (e.key || '').toLowerCase();
+                for (var i = 0; i < 4; i++) if (LANES[i].key === k) { e.preventDefault(); press(i); }
+                if (k === 'escape') done();
+            }
+            document.addEventListener('keydown', onKey);
+            lanes.forEach(function (l, i) { l.addEventListener('pointerdown', function () { press(i); }); });
+            o.querySelector('.dg-go').addEventListener('click', begin);
+            function done() { closeModal(o, function () { running = false; cancelAnimationFrame(raf); document.removeEventListener('keydown', onKey); if (actx) { try { actx.close(); } catch (e) {} actx = null; } }); }
+            o.querySelector('.fg-close').addEventListener('click', done);
+        });
+    }
+
+    /* ---------------- Blue Planet: clean the ocean ---------------- */
+    if (/blue-planet\.html/.test(path)) {
+        addBtn('<span aria-hidden="true">🐢</span> Help Tessa (mini game)', function () {
+            var o = modal('fun-ocean',
+                '<p class="fg-note">Just for fun: a small web version <b>inspired by</b> the Blue Planet game, not the real game made for the aquarium.</p>' +
+                '<div class="dg-head"><span class="fq-label">Mini game · inspired by Blue Planet</span><span class="dg-score">Plastic removed <b>0</b></span><span class="oc-time">20s</span></div>' +
+                '<div class="oc-sea"><div class="oc-rays"></div><div class="oc-turtle">🐢</div><div class="oc-msg"></div>' +
+                '<div class="dg-start"><p>Click the <b>plastic bags</b> to clean the ocean for Tessa.<br><small>Careful, the jellyfish are her food!</small></p><button class="dg-go">Start ▶</button></div></div>');
+            var sea = o.querySelector('.oc-sea'), scoreEl = o.querySelector('.dg-score b'), timeEl = o.querySelector('.oc-time'), msg = o.querySelector('.oc-msg');
+            var running = false, spawnT = null, clockT = null, score = 0, oops = 0, left = 20;
+            var BAG = '<svg viewBox="0 0 60 80"><path d="M14 18 Q12 6 20 4 Q24 4 24 14 M46 18 Q48 6 40 4 Q36 4 36 14" fill="none" stroke="rgba(235,245,250,.85)" stroke-width="3"/><path d="M8 18 L52 18 Q56 50 48 70 Q40 78 30 74 Q22 78 14 72 Q4 52 8 18 Z" fill="rgba(235,245,250,.55)" stroke="rgba(255,255,255,.9)" stroke-width="2"/><path d="M18 30 Q22 50 18 64 M38 28 Q42 46 40 62" stroke="rgba(255,255,255,.5)" stroke-width="2" fill="none"/></svg>';
+            var JELLY = '<span class="fx-jelly oc-j"><i></i><b></b><b></b><b></b><b></b></span>';
+            function say(t, col) { msg.textContent = t; msg.style.color = col || '#e9fbff'; msg.classList.remove('is-pop'); void msg.offsetWidth; msg.classList.add('is-pop'); }
+            function spawn() {
+                if (!running) return;
+                var isBag = Math.random() < 0.62;
+                var el = document.createElement('button');
+                el.type = 'button';
+                el.className = 'oc-item ' + (isBag ? 'is-bag' : 'is-jelly');
+                el.setAttribute('aria-label', isBag ? 'Plastic bag' : 'Jellyfish');
+                el.innerHTML = isBag ? BAG : JELLY;
+                el.style.left = (6 + Math.random() * 82) + '%';
+                var dur = 5200 + Math.random() * 3000;
+                el.style.animationDuration = dur + 'ms, ' + (1.8 + Math.random() * 1.5) + 's';
+                sea.appendChild(el);
+                el.addEventListener('pointerdown', function () {
+                    if (el.classList.contains('is-gone')) return;
+                    el.classList.add('is-gone');
+                    if (isBag) {
+                        score++; scoreEl.textContent = score;
+                        blip(660, 0.08, 0.06, 'sine'); blip(990, 0.12, 0.05, 'sine', 0.05);
+                        if (score % 5 === 0) say(['Nice!', 'Tessa is happy 🐢', 'Keep going!', 'Ocean hero!'][Math.floor(Math.random() * 4)]);
+                    } else {
+                        oops++; blip(200, 0.2, 0.06, 'triangle'); say('That was Tessa’s food! 🪼', '#ffc4ef');
+                    }
+                    setTimeout(function () { el.remove(); }, 400);
+                });
+                setTimeout(function () { el.remove(); }, dur + 100);
+                spawnT = setTimeout(spawn, Math.max(380, 900 - score * 18));
+            }
+            function begin() {
+                var s = sea.querySelector('.dg-start'); if (s) s.remove();
+                score = 0; oops = 0; left = 20; scoreEl.textContent = '0'; timeEl.textContent = '20s';
+                running = true; ac(); spawn();
+                clockT = setInterval(function () {
+                    left--; timeEl.textContent = left + 's';
+                    if (left <= 0) finish();
+                }, 1000);
+            }
+            function finish() {
+                running = false; clearTimeout(spawnT); clearInterval(clockT);
+                sea.querySelectorAll('.oc-item').forEach(function (e) { e.remove(); });
+                var res = document.createElement('div'); res.className = 'dg-start';
+                res.innerHTML = '<p><b class="dg-big">' + score + '</b> plastic bags removed' + (oops ? '<br><small>' + oops + ' jellyfish clicked by mistake</small>' : '') + '<br>Tessa says thank you! 🐢</p><button class="dg-go">Play again ↻</button>';
+                sea.appendChild(res);
+                res.querySelector('.dg-go').addEventListener('click', begin);
+                blip(523, 0.15, 0.06, 'sine'); blip(659, 0.15, 0.06, 'sine', 0.12); blip(784, 0.3, 0.06, 'sine', 0.24);
+            }
+            o.querySelector('.dg-go').addEventListener('click', begin);
+            function done() { closeModal(o, function () { running = false; clearTimeout(spawnT); clearInterval(clockT); }); }
+            o.querySelector('.fg-close').addEventListener('click', done);
+            document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { done(); document.removeEventListener('keydown', esc); } });
+        });
+    }
 })();

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found — Kristine Fogh Andersen</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#17202A">
+  <link rel="icon" href="/Portfolio/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px;
+      font-family: "DM Sans", system-ui, sans-serif; color: #ECE9E1;
+      background: radial-gradient(120% 120% at 0% 0%, #2f6a5a 0%, #1d3d37 45%, #17202A 100%);
+      overflow: hidden;
+    }
+    main { position: relative; z-index: 1; max-width: 560px; text-align: center; }
+    p.code { color: #ECE9E1; }
+    .code { font-family: "Space Grotesk", sans-serif; font-size: clamp(6rem, 22vw, 11rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.9; margin: 0; }
+    .code span { color: #FFB454; }
+    h1 { font-family: "Space Grotesk", sans-serif; font-size: clamp(1.5rem, 4vw, 2.1rem); letter-spacing: -0.03em; margin: 18px 0 10px; }
+    p { color: rgba(236, 233, 225, 0.72); line-height: 1.6; margin: 0 0 30px; }
+    .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    a { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 700; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+    a.main { background: #FFB454; color: #17202A; }
+    a.alt { border: 1px solid rgba(236, 233, 225, 0.3); color: #ECE9E1; }
+    a:hover { transform: translateY(-2px); }
+    .lost-bee { position: fixed; font-size: 42px; top: 20%; left: -60px; animation: wander 14s ease-in-out infinite; filter: drop-shadow(0 6px 10px rgba(0,0,0,.3)); }
+    @keyframes wander {
+      0% { transform: translate(0, 0) scaleX(-1); }
+      25% { transform: translate(35vw, 30vh) scaleX(-1) rotate(10deg); }
+      50% { transform: translate(70vw, 5vh) scaleX(-1) rotate(-8deg); }
+      75% { transform: translate(110vw, 45vh) scaleX(-1); }
+      100% { transform: translate(110vw, 45vh) scaleX(-1); }
+    }
+    @media (prefers-reduced-motion: reduce) { .lost-bee { animation: none; left: 8%; } }
+  </style>
+</head>
+<body>
+  <span class="lost-bee" aria-hidden="true">🐝</span>
+  <main>
+    <p class="code">4<span>0</span>4</p>
+    <h1>This page flew away.</h1>
+    <p>The page you're looking for doesn't exist or has moved. Let's get you back on track.</p>
+    <div class="btns">
+      <a class="main" href="/Portfolio/">← Back to the portfolio</a>
+      <a class="alt" href="/Portfolio/index.html#projects">See my projects</a>
+    </div>
+  </main>
+</body>
+</html>
