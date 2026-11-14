@@ -249,8 +249,8 @@
           </p>
 
           <ul class="about-facts">
-            <li><strong>11</strong><span>projects</span></li>
-            <li><strong>2</strong><span>conference papers</span></li>
+            <li><strong data-count="projects">11</strong><span>projects</span></li>
+            <li><strong data-count="papers">2</strong><span>conference papers</span></li>
             <li><strong>MSc</strong><span>Medialogy, AAU</span></li>
           </ul>
 
@@ -1107,6 +1107,19 @@
 
   <script src="script.js?v=101"></script>
 
+  <script>
+    /* Counts update themselves: projects = different project pages linked on this page,
+       conference papers = research cards that are not "in progress" */
+    (function () {
+      var pages = {};
+      document.querySelectorAll('a[href^="projects/"]').forEach(function (a) { pages[a.getAttribute('href').split('#')[0]] = 1; });
+      var np = Object.keys(pages).length;
+      var papers = document.querySelectorAll('.rs-card:not(.rs-card-progress)').length;
+      var ep = document.querySelector('[data-count="projects"]'), ea = document.querySelector('[data-count="papers"]');
+      if (ep && np) ep.textContent = np;
+      if (ea && papers) ea.textContent = papers;
+    })();
+  </script>
 </body>
 
 </html>

@@ -48,7 +48,7 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=112"
+        href="style.css?v=122"
     >
 
 </head>
@@ -149,7 +149,6 @@
                         MSc Medialogy student at Aalborg University Copenhagen,
                         working in the space between technology, design and creativity.
                     </p>
-
                     <div class="about-links">
                         <a href="assets/CV_KristineFoghAndersen.pdf" class="about-button about-button-primary" download>Download CV ↓</a>
                         <a href="assets/Diploma.pdf" class="about-button" target="_blank" rel="noopener">View diploma ↗</a>
@@ -874,6 +873,22 @@
                             I also love travelling and making new memories. I'm up for anything and always want
                             to explore and try new things.
                         </p>
+                        <!-- quick facts (the age updates itself from the birthday in data-birth) -->
+                        <dl class="ab-facts">
+                            <div><dt>Age</dt><dd><span class="ab-age" data-birth="2002-04-05">24</span></dd></div>
+                            <div><dt>Based in</dt><dd>Copenhagen, Denmark</dd></div>
+                            <div><dt>Languages</dt><dd>Danish and English, learning Spanish and German</dd></div>
+                        </dl>
+                        <script>
+                            (function () {
+                                document.querySelectorAll('.ab-age[data-birth]').forEach(function (el) {
+                                    var b = new Date(el.getAttribute('data-birth') + 'T00:00:00'), n = new Date();
+                                    var age = n.getFullYear() - b.getFullYear();
+                                    if (n.getMonth() < b.getMonth() || (n.getMonth() === b.getMonth() && n.getDate() < b.getDate())) age--;
+                                    if (age > 0 && age < 120) el.textContent = age;
+                                });
+                            })();
+                        </script>
                     </div>
 
                     <div class="ab-qualities reveal">
@@ -934,9 +949,9 @@
                         <span class="ab-funfact-label">✦ Fun fact</span>
                         <h3>One of my edits went viral</h3>
                         <p>
-                            A silly thing I'm a little too proud of: in 2023 I made a <em>Succession</em> edit
-                            of Tom and Greg set to Taylor Swift's "You Belong With Me". It spread far beyond
-                            TikTok and ended up in some pretty big papers around the series finale.
+                            In 2023 I made a <em>Succession</em> edit of Tom and Greg set to Taylor Swift's
+                            "You Belong With Me". It spread far beyond TikTok and ended up in some
+                            pretty big papers around the series finale.
                         </p>
 
                         <!-- zoomed screenshot: the actors mention the edit (Vulture) -->

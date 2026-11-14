@@ -11672,3 +11672,17 @@ body.fg-open { overflow: hidden; }
 .ab-chapter-text > .pj-overview-label {
     background: rgba(255, 180, 84, 0.14); border-color: rgba(255, 180, 84, 0.45); color: var(--accent-amber);
 }
+
+/* v122 · quick facts in "A little more about me" */
+.ab-facts { margin: 22px 0 0; padding: 0; border-top: 1px solid rgba(236, 233, 225, 0.12); }
+.ab-facts > div {
+    display: grid; grid-template-columns: 110px 1fr; gap: 14px; align-items: baseline;
+    padding: 11px 0; border-bottom: 1px solid rgba(236, 233, 225, 0.12);
+}
+.ab-facts dt {
+    margin: 0; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-amber);
+}
+.ab-facts dd { margin: 0; font-size: 0.98rem; color: var(--text); }
+/* v123 · right column (cards + CTA) centred next to the personal text */
+@media (min-width: 901px) { .ab-me2 { align-items: center; } }
