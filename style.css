@@ -11411,3 +11411,59 @@ body.fg-open { overflow: hidden; }
 /* v99 · mini game disclaimer */
 .fg-note { margin: 0 44px 12px 0; padding: 8px 12px; border-radius: 10px; background: rgba(255,180,84,.1); border: 1px dashed rgba(255,180,84,.4); color: var(--text-muted); font-size: .8rem; line-height: 1.45; }
 .fg-note b { color: var(--text); }
+
+/* =========================================================
+   v101 · "play the game" call to action
+   ========================================================= */
+.pj-play-cta {
+    display: inline-flex; align-items: center; gap: 16px;
+    margin-top: 26px; padding: 14px 20px 14px 14px;
+    border: 1.5px solid var(--accent-amber); border-radius: 20px;
+    background: linear-gradient(120deg, rgba(255, 180, 84, 0.2), rgba(255, 180, 84, 0.05));
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25), 0 0 0 6px rgba(255, 180, 84, 0.07);
+    color: var(--text); text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.pj-play-cta:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(120deg, rgba(255, 180, 84, 0.3), rgba(255, 180, 84, 0.08));
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3), 0 0 0 9px rgba(255, 180, 84, 0.1);
+}
+.pj-play-cta-icon {
+    display: grid; place-items: center; flex: none;
+    width: 52px; height: 52px; border-radius: 16px;
+    background: var(--accent-amber); color: #17202a;
+    font-size: 1.3rem; padding-left: 4px;
+    animation: pjPlayPulse 2.4s ease-in-out infinite;
+}
+@keyframes pjPlayPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 180, 84, 0.5); } 50% { box-shadow: 0 0 0 10px rgba(255, 180, 84, 0); } }
+.pj-play-cta-text { display: grid; gap: 2px; }
+.pj-play-cta-text strong { font-family: var(--display-font); font-size: 1.2rem; letter-spacing: -0.02em; }
+.pj-play-cta-text small { color: var(--text-muted); font-size: 0.85rem; }
+.pj-play-cta-arrow { margin-left: 8px; color: var(--accent-amber); font-size: 1.3rem; transition: transform 0.25s ease; }
+.pj-play-cta:hover .pj-play-cta-arrow { transform: translate(3px, -3px); }
+@media (prefers-reduced-motion: reduce) { .pj-play-cta-icon { animation: none; } }
+
+/* "Playable" badge on project cards */
+.project-playable {
+    position: absolute; top: 16px; right: 16px; z-index: 3;
+    padding: 7px 12px; border-radius: 999px;
+    background: var(--accent-amber); color: #17202a;
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 0.02em;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+.project-playable { top: auto; right: auto; left: 18px; bottom: 16px; }
+
+/* v102 · "Currently working on" card on the About portrait (shows on hover) */
+.ab-portrait { position: relative; }
+.ab-portrait .ab-portrait-status { left: -28px; bottom: 36px; }
+@media (hover: hover) and (pointer: fine) {
+    .ab-portrait:hover .ab-portrait-status { opacity: 1; visibility: visible; transform: none; }
+}
+@media (max-width: 900px) { .ab-portrait .ab-portrait-status { left: -10px; bottom: 18px; } }
+
+/* v103 · About portrait: same straighten-on-hover animation as the home page photo */
+.ab-portrait img,
+.ab-portrait::before { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.ab-portrait:hover img { transform: rotate(0deg); }
+.ab-portrait:hover::before { transform: translate(-18px, 18px) rotate(1deg); }
