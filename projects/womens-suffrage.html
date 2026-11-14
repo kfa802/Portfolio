@@ -47,7 +47,7 @@
 
     <link
         rel="stylesheet"
-        href="../style.css?v=93"
+        href="../style.css?v=118"
     >
 
 </head>
@@ -200,6 +200,7 @@
 
                 <div class="ab-chapter-text reveal">
                     <span class="ab-chapter-num">01</span>
+                    <span class="pj-section-label pj-overview-label">Overview</span>
                     <h2>Learning history through interaction</h2>
                     <p>
                         The project is a narrative-driven learning game about the fight for women's
@@ -253,11 +254,66 @@
             </article>
 
 
-            <!-- ===== 02 · FINDINGS ===== -->
-            <article id="findings" class="ab-chapter ab-chapter-flip">
+            <!-- ===== 02 · MY ROLE ===== -->
+            <article id="role" class="ab-chapter ab-chapter-flip pj-role-chapter">
 
                 <div class="ab-chapter-text reveal">
                     <span class="ab-chapter-num">02</span>
+                    <span class="pj-role-label">My role</span>
+                    <h2>Designing interaction and gameplay</h2>
+                    <p>
+                        Everyone in our bachelor group took part in <strong>research</strong>, <strong>testing</strong>,
+                        <strong>design</strong> and <strong>implementation</strong>, but my main focus
+                        was developing the game in <strong>Unity</strong>.
+                    </p>
+                    <p>
+                        I built several of the <strong>core systems</strong> the game relies on,
+                        including the game events that control the order of the narrative, so certain
+                        events only unlock after earlier ones are completed. I also designed and
+                        implemented the <strong>player interactions</strong>, animations, movement and
+                        behaviour.
+                    </p>
+                    <p>
+                        I also helped shape the <strong>visual style</strong>: adjusting the environment
+                        settings and adding rain and other particle effects so the world felt more
+                        realistic and alive.
+                    </p>
+
+                    <div class="pj-chips">
+                        <span>Unity development</span>
+                        <span>Gameplay systems</span>
+                        <span>Interaction</span>
+                        <span>Visual style</span>
+                        <span>Research &amp; testing</span>
+                    </div>
+                </div>
+
+                <div class="ab-media reveal">
+                    <!-- swap: gameplay loop (silent) -->
+                    <figure class="ab-figure pj-loop">
+                        <video src="../assets/womens-suffrage-loop.mp4" muted loop playsinline autoplay preload="metadata"></video>
+                        <figcaption>Gameplay</figcaption>
+                    </figure>
+                    <div class="pj-media-sub">
+                    <figure class="ab-figure">
+                        <img src="../assets/triggerzone1-w.jpg" alt="Trigger zones in the Unity scene" loading="lazy">
+                        <figcaption>Trigger zones driving the story events</figcaption>
+                    </figure>
+                    <figure class="ab-figure">
+                        <img src="../assets/RainPS-w.jpg" alt="Rain particle system in Unity" loading="lazy">
+                        <figcaption>The rain particle system</figcaption>
+                    </figure>
+                    </div>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 03 · FINDINGS ===== -->
+            <article id="findings" class="ab-chapter">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">03</span>
                     <h2>Evaluation and findings</h2>
                     <p>
                         To evaluate the learning experience, we ran an <strong>A/B test</strong>
@@ -292,8 +348,8 @@
                         <span>game vs. text-based learning</span>
                     </div>
                     <div class="pj-stat">
-                        <strong>Medium</strong>
-                        <span>effect size on learning outcome</span>
+                        <strong>Medium effect</strong>
+                        <span>on learning outcome, though not statistically significant</span>
                     </div>
                     <div class="pj-stat">
                         <strong>↑ Engagement</strong>
@@ -301,64 +357,10 @@
                     </div>
                 </div>
 
-                <figure class="ab-figure ab-figure-contain pj-wide-figure reveal">
+                <figure class="ab-figure ab-figure-contain pj-wide-figure pj-figure-compact reveal">
                     <img src="../assets/UESsubscales-dark.png" alt="UES-SF subscale distributions for group A and group B" loading="lazy">
                     <figcaption>Engagement (UES-SF) subscales · text (A) vs. game (B)</figcaption>
                 </figure>
-
-            </article>
-
-
-            <!-- ===== 03 · MY ROLE ===== -->
-            <article id="role" class="ab-chapter">
-
-                <div class="ab-chapter-text reveal">
-                    <span class="ab-chapter-num">03</span>
-                    <h2>Designing interaction and gameplay</h2>
-                    <p>
-                        Everyone in our bachelor group took part in <strong>testing</strong>,
-                        <strong>design</strong> and <strong>implementation</strong>, but my main focus
-                        was developing the game in <strong>Unity</strong>.
-                    </p>
-                    <p>
-                        I built several of the <strong>core systems</strong> the game relies on,
-                        including the game events that control the order of the narrative, so certain
-                        events only unlock after earlier ones are completed. I also designed and
-                        implemented the <strong>player interactions</strong>, animations, movement and
-                        behaviour.
-                    </p>
-                    <p>
-                        I also helped shape the <strong>visual style</strong>: adjusting the environment
-                        settings and adding rain and other particle effects so the world felt more
-                        realistic and alive.
-                    </p>
-
-                    <div class="pj-chips">
-                        <span>Unity development</span>
-                        <span>Gameplay systems</span>
-                        <span>Interaction</span>
-                        <span>Visual style</span>
-                    </div>
-                </div>
-
-                <div class="ab-media reveal">
-                    <!-- swap: gameplay loop (silent) -->
-                    <figure class="ab-figure pj-loop">
-                        <video src="../assets/womens-suffrage-loop.mp4" muted loop playsinline autoplay preload="metadata"></video>
-                        <figcaption>Collecting signatures in the game</figcaption>
-                    </figure>
-                </div>
-
-                <div class="pj-media-row pj-media-row-2 reveal">
-                    <figure class="ab-figure">
-                        <img src="../assets/triggerzone1-w.jpg" alt="Trigger zones in the Unity scene" loading="lazy">
-                        <figcaption>Trigger zones driving the story events</figcaption>
-                    </figure>
-                    <figure class="ab-figure">
-                        <img src="../assets/RainPS-w.jpg" alt="Rain particle system in Unity" loading="lazy">
-                        <figcaption>The rain particle system</figcaption>
-                    </figure>
-                </div>
 
             </article>
 
@@ -370,7 +372,7 @@
                     <span class="ab-chapter-num">04</span>
                     <h2>Collaborations and historical content</h2>
                     <p>
-                        We worked with <strong>Lasse Madsen</strong> at <strong>Højdevangskolen</strong>,
+                        It was rewarding to work with <strong>Lasse Madsen</strong> at <strong>Højdevangskolen</strong>,
                         who gave us access to 7th–9th grade students. That let us test the game with the
                         students it was made for and use their feedback to improve it.
                     </p>

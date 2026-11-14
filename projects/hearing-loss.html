@@ -13,7 +13,7 @@
     <title>
         Hearing Loss Simulation — Kristine Fogh Andersen
     </title>
-    <meta name="description" content="An immersive VR simulation of progressive hearing loss, exploring whether experiencing it first-hand can build understanding of how to communicate with people who have it.">
+    <meta name="description" content="An immersive VR simulation of progressive hearing loss, exploring whether experiencing it first-hand helps people understand how to communicate with someone who is hard of hearing.">
     <meta name="theme-color" content="#17202A">
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
     <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png">
@@ -21,7 +21,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Kristine Fogh Andersen">
     <meta property="og:title" content="Hearing Loss Simulation — Kristine Fogh Andersen">
-    <meta property="og:description" content="An immersive VR simulation of progressive hearing loss, exploring whether experiencing it first-hand can build understanding of how to communicate with people who have it.">
+    <meta property="og:description" content="An immersive VR simulation of progressive hearing loss, exploring whether experiencing it first-hand helps people understand how to communicate with someone who is hard of hearing.">
     <meta property="og:url" content="https://kfa802.github.io/Portfolio/projects/hearing-loss.html">
     <meta property="og:image" content="https://kfa802.github.io/Portfolio/assets/og-image.jpg">
     <meta property="og:image:width" content="1200">
@@ -48,7 +48,7 @@
 
     <link
         rel="stylesheet"
-        href="../style.css?v=93"
+        href="../style.css?v=118"
     >
 
 </head>
@@ -142,7 +142,7 @@
                     </h1>
 
                     <p class="pj-lead">
-                        An <strong>immersive VR simulation</strong> of progressive hearing loss, exploring whether experiencing it first-hand can build understanding of how to communicate with people who have it.
+                        An <strong>immersive VR simulation</strong> of progressive hearing loss, exploring whether experiencing it first-hand helps people understand how to communicate with someone who is hard of hearing.
                     </p>
                 </div>
 
@@ -182,6 +182,7 @@
 
                 <div class="ab-chapter-text reveal">
                     <span class="ab-chapter-num">01</span>
+                    <span class="pj-section-label pj-overview-label">Overview</span>
                     <h2>Experiencing communication from another perspective</h2>
                     <p>
                         This project explores how VR can be used to communicate the everyday challenges of hearing loss.
@@ -203,11 +204,44 @@
             </article>
 
 
-            <!-- ===== 02 · RESEARCH ===== -->
-            <article id="research" class="ab-chapter ab-chapter-flip">
+            <!-- ===== 02 · MY ROLE ===== -->
+            <article id="my-role" class="ab-chapter ab-chapter-flip pj-role-chapter">
 
                 <div class="ab-chapter-text reveal">
                     <span class="ab-chapter-num">02</span>
+                    <span class="pj-role-label">My role</span>
+                    <h2>Building the VR experience in Unity</h2>
+                    <p>
+                        This was a <strong>group project</strong>, so everyone took part in every part of the process, from research and design to implementation and testing. My primary role was developing core systems in <strong>Unity</strong>. I built an event system that runs the café conversation step by step, handles the user's choices and moves the player through four stages of hearing loss.
+                    </p>
+                    <p>
+                        I also built the VR interactions using the XR Interaction Toolkit, including grabbable objects and button selection, and added animations for the characters, synced with the dialogue audio.
+                    </p>
+
+                    <div class="pj-chips">
+                        <span>Event system</span>
+                        <span>VR interaction</span>
+                        <span>Character animation</span>
+                        <span>Unity &amp; OpenXR</span>
+                    </div>
+                </div>
+
+                <div class="ab-media reveal">
+                    <!-- swap: looping clip (silent) -->
+                    <figure class="ab-figure">
+                        <video src="../assets/hearing-vr-loop.mp4" muted loop playsinline autoplay preload="metadata"></video>
+                        <figcaption>Grabbing objects and choosing replies in VR</figcaption>
+                    </figure>
+                </div>
+
+            </article>
+
+
+            <!-- ===== 03 · RESEARCH ===== -->
+            <article id="research" class="ab-chapter">
+
+                <div class="ab-chapter-text reveal">
+                    <span class="ab-chapter-num">03</span>
                     <h2>Testing whether experience can support understanding</h2>
                     <p>
                         We tested whether a VR simulation of progressive hearing loss could increase
@@ -294,38 +328,6 @@
                             <a href="https://ud26.ie/" target="_blank" rel="noopener noreferrer" class="rs-btn rs-btn-primary">UD26 Conference <span>↗</span></a>
                         </div>
                     </div>
-                </div>
-
-            </article>
-
-
-            <!-- ===== 03 · MY ROLE ===== -->
-            <article id="my-role" class="ab-chapter">
-
-                <div class="ab-chapter-text reveal">
-                    <span class="ab-chapter-num">03</span>
-                    <h2>Building the VR experience in Unity</h2>
-                    <p>
-                        My primary role was developing core systems in Unity. I built an event system that runs the café conversation step by step, handles the user's choices and moves the player through four stages of hearing loss.
-                    </p>
-                    <p>
-                        I also built the VR interactions using the XR Interaction Toolkit, including grabbable objects and button selection, and added animations for the characters, synced with the dialogue audio.
-                    </p>
-
-                    <div class="pj-chips">
-                        <span>Event system</span>
-                        <span>VR interaction</span>
-                        <span>Character animation</span>
-                        <span>Unity &amp; OpenXR</span>
-                    </div>
-                </div>
-
-                <div class="ab-media reveal">
-                    <!-- swap: looping clip (silent) -->
-                    <figure class="ab-figure">
-                        <video src="../assets/hearing-vr-loop.mp4" muted loop playsinline autoplay preload="metadata"></video>
-                        <figcaption>Grabbing objects and choosing replies in VR</figcaption>
-                    </figure>
                 </div>
 
             </article>

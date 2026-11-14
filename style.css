@@ -11579,3 +11579,96 @@ body.fg-open { overflow: hidden; }
 @media (max-width: 900px) { .ab-text-cols { grid-template-columns: 1fr; } }
 /* v112 · spacing between the about-me paragraphs */
 .ab-me2-intro p + p { margin-top: 14px; }
+
+/* v113 · fold-out figure on project pages */
+.pj-more {
+    margin: 28px 0 0; border: 1px solid rgba(236, 233, 225, 0.14); border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03); overflow: hidden;
+}
+.pj-more summary {
+    list-style: none; cursor: pointer; display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+    padding: 18px 22px; font-weight: 700; color: var(--text);
+    transition: background 0.2s ease;
+}
+.pj-more summary::-webkit-details-marker { display: none; }
+.pj-more summary::after {
+    content: "+"; margin-left: auto; width: 30px; height: 30px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 1.2rem; line-height: 1;
+    background: var(--accent-amber); color: #1b1b1f; transition: transform 0.3s ease;
+}
+.pj-more[open] summary::after { transform: rotate(45deg); }
+.pj-more summary:hover { background: rgba(255, 180, 84, 0.06); }
+.pj-more-sub { font-weight: 500; font-size: 0.85rem; color: var(--text-muted); }
+.pj-more .ab-figure { margin: 0; padding: 0 22px 22px; }
+.pj-more { grid-column: 1 / -1; }
+.pj-more summary { flex-wrap: nowrap; }
+@media (max-width: 640px) { .pj-more-sub { display: none; } }
+/* v114 · smaller wide figure */
+.pj-wide-figure.pj-figure-compact { max-width: 760px; margin-left: auto; margin-right: auto; }
+
+/* v115 · "My role" callout on project pages */
+.pj-role {
+    position: relative; margin: 28px 0 0; padding: 26px 30px 24px 34px;
+    border-radius: 20px; border: 1px solid rgba(255, 180, 84, 0.35);
+    background: linear-gradient(135deg, rgba(255, 180, 84, 0.12), rgba(255, 180, 84, 0.03));
+    display: grid; grid-template-columns: 1fr auto; column-gap: 32px; align-items: start;
+}
+.pj-role::before {
+    content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 4px;
+    border-radius: 0 4px 4px 0; background: var(--accent-amber);
+}
+.pj-role-label {
+    display: inline-block; margin-bottom: 10px;
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent-amber);
+}
+.pj-role > .pj-role-label, .pj-role-lead, .pj-role-list { grid-column: 1; }
+.pj-role-lead { margin: 0 0 12px; font-size: 1.15rem; line-height: 1.55; color: var(--text); }
+.pj-role-list { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px 10px; }
+.pj-role-list li {
+    padding: 6px 12px; border-radius: 999px; font-size: 0.85rem; color: var(--text);
+    background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(236, 233, 225, 0.14);
+}
+.pj-role-link {
+    grid-column: 2; grid-row: 1 / span 3; align-self: center;
+    padding: 11px 18px; border-radius: 999px; white-space: nowrap;
+    background: var(--accent-amber); color: #1b1b1f; font-weight: 700; font-size: 0.9rem;
+    text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pj-role-link:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(255, 180, 84, 0.3); }
+.ab-chapter-text > .pj-role-label { display: block; margin: 6px 0 4px; }
+@media (max-width: 760px) {
+    .pj-role { grid-template-columns: 1fr; padding: 22px 22px 22px 26px; }
+    .pj-role-link { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 16px; }
+}
+/* v116 · smaller pictures tucked under the main clip */
+.pj-media-sub { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+.pj-media-sub .ab-figure { margin: 0; }
+.pj-media-sub img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+
+/* v117 · clearer "My role" chapter (no box at the top) */
+.pj-role-chapter .ab-chapter-text > .pj-role-label {
+    display: inline-flex; align-items: center; gap: 8px; margin: 10px 0 8px;
+    padding: 6px 14px; border-radius: 999px;
+    background: rgba(255, 180, 84, 0.14); border: 1px solid rgba(255, 180, 84, 0.45);
+    color: var(--accent-amber); font-size: 0.78rem;
+}
+.pj-role-chapter .ab-chapter-text > .pj-role-label::before { content: "★"; font-size: 0.8rem; }
+.pj-role-chapter .pj-chips span {
+    border-color: rgba(255, 180, 84, 0.55); color: var(--accent-amber);
+    background: rgba(255, 180, 84, 0.08);
+}
+
+/* v118 · "Overview" label on the first section of each project page */
+.ab-chapter-text > .pj-overview-label {
+    display: inline-flex; align-items: center; gap: 8px; margin: 10px 0 8px;
+    padding: 6px 14px; border-radius: 999px;
+    background: rgba(99, 230, 216, 0.10); border: 1px solid rgba(99, 230, 216, 0.4);
+    color: var(--accent-mint);
+    font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.ab-chapter-text > .pj-overview-label::before { content: "◎"; font-size: 0.85rem; }
+/* v119 · overview label in amber */
+.ab-chapter-text > .pj-overview-label {
+    background: rgba(255, 180, 84, 0.14); border-color: rgba(255, 180, 84, 0.45); color: var(--accent-amber);
+}

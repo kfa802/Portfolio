@@ -48,7 +48,7 @@
 
     <link
         rel="stylesheet"
-        href="../style.css?v=101"
+        href="../style.css?v=118"
     >
 
 </head>
@@ -191,6 +191,7 @@
 
                 <div class="ab-chapter-text reveal">
                     <span class="ab-chapter-num">01</span>
+                    <span class="pj-section-label pj-overview-label">Overview</span>
                     <h2>Managing a bee colony through changing seasons</h2>
                     <p>
                         Plan Bee is a 2D top-down strategy game where the player manages a growing bee colony and its resources.
@@ -225,22 +226,29 @@
 
 
             <!-- ===== 02 · MY ROLE ===== -->
-            <article id="my-role" class="ab-chapter ab-chapter-flip">
+            <article id="my-role" class="ab-chapter ab-chapter-flip pj-role-chapter">
 
                 <div class="ab-chapter-text reveal">
                     <span class="ab-chapter-num">02</span>
-                    <h2>Gameplay systems & programming</h2>
+                    <span class="pj-role-label">My role</span>
+                    <h2>Gameplay systems &amp; programming</h2>
                     <p>
-                        My main role in the project was working with the bee systems, gameplay logic and environmental systems.
+                        Plan Bee was a <strong>two-person mini game</strong>, and my primary focus was
+                        developing the <strong>core systems</strong>.
                     </p>
                     <p>
-                        In a two-person development team, I designed the game's system architecture early on by mapping how every system connects in a flowchart, and then implemented those systems in Unity.
+                        Early on, I designed the game's <strong>system architecture</strong> by mapping how
+                        every system connects in a flowchart, and then implemented those systems in Unity.
                     </p>
                     <p>
-                        I worked on the base classes and inheritance structure for the different types of bees and enemies. I also developed systems for managing hive zones and expanding the hive through a purchase system.
+                        I built the <strong>base classes and inheritance structure</strong> for the different
+                        bees and enemies, and the systems for managing hive zones and expanding the hive
+                        through purchases of bees and zones.
                     </p>
                     <p>
-                        I also worked on the seasonal and weather systems and how they affect the bees and their ability to collect resources. For example, during winter, forager bees cannot collect pollen, which means the player has to plan ahead and manage their resources carefully. This is important since pollen is turned into honey by the worker bees, which is then used as currency to expand the hive and buy new bees.
+                        I also built the <strong>seasonal and weather systems</strong>. In winter, forager bees
+                        can't collect pollen, so the player has to plan ahead: pollen is turned into honey,
+                        which is the currency used to expand the hive and buy new bees.
                     </p>
 
                     <div class="pj-chips">
@@ -264,16 +272,20 @@
 
 
             <!-- ===== 03 · SYSTEMS ===== -->
-            <article id="systems" class="ab-chapter">
+            <article id="systems" class="ab-chapter pj-role-chapter">
 
                 <div class="ab-chapter-text reveal">
                     <span class="ab-chapter-num">03</span>
+                    <span class="pj-role-label">My role</span>
                     <h2>Building systems that work together</h2>
                     <p>
-                        A large part of the project was making the different gameplay systems work together while keeping the code manageable. The bee, hive, resource, season and weather systems all affect each other, so changes in one system can also affect the others.
+                        A big part of my work was making the different systems work together while keeping
+                        the code manageable. The bees, hive, resources, seasons and weather all affect each
+                        other, so changing one system can affect the others.
                     </p>
                     <p>
-                        The system flowchart I made before implementation.
+                        Before writing any code, I mapped it all out in a <strong>flowchart</strong> showing
+                        how every system connects, which made the implementation much easier to plan.
                     </p>
                 </div>
 
@@ -322,7 +334,7 @@
                         We started with sketches and a paper prototype, tested one-to-one with think-aloud sessions, before greyboxing the core systems in Unity. Later playtests of the digital game shaped the final version.
                     </p>
                     <p>
-                        Playtesting led to concrete changes: a queen health bar and warning alerts after players missed that her death ends the game, bee naming and upgrades to add player agency, click-and-drag navigation for touchpad users, and a difficulty adjustment before the final version.
+                        Playtesting led to concrete changes: a queen health bar and warning alerts after players missed that her death ends the game, bee naming and upgrades to add player agency, click-and-drag navigation for touchpad users, and a difficulty adjustment before the final version (although it is still a bit <em>buggy</em> 🐝).
                     </p>
                 </div>
 
