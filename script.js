@@ -2365,3 +2365,62 @@ document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
         if (!nav.contains(e.target)) { nav.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); }
     });
 })();
+
+/* =========================================================
+   Project cards: gameplay clip after hovering ~1.2 s
+   ========================================================= */
+(function () {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    document.querySelectorAll('.project-card[data-loop]').forEach(function (card) {
+        var box = card.querySelector('.project-image');
+        if (!box) return;
+        var timer = null, video = null;
+        card.addEventListener('mouseenter', function () {
+            timer = setTimeout(function () {
+                if (!video) {
+                    video = document.createElement('video');
+                    video.className = 'project-hover-video';
+                    video.src = card.getAttribute('data-loop');
+                    video.muted = true;
+                    video.loop = true;
+                    video.playsInline = true;
+                    video.setAttribute('aria-hidden', 'true');
+                    video.addEventListener('playing', function () { video.classList.add('is-on'); });
+                    box.appendChild(video);
+                }
+                video.currentTime = 0;
+                var p = video.play();
+                if (p && p.catch) p.catch(function () {});
+                if (!video.paused) video.classList.add('is-on');
+            }, 500);
+        });
+        card.addEventListener('mouseleave', function () {
+            clearTimeout(timer);
+            if (video) { video.classList.remove('is-on'); video.pause(); }
+        });
+    });
+})();
+
+/* =========================================================
+   Menu bar: hide while scrolling down, show when scrolling up
+   ========================================================= */
+(function () {
+    var header = document.querySelector('.site-header');
+    if (!header) return;
+    var lastY = window.scrollY, ticking = false;
+    function menuOpen() {
+        return !!header.querySelector('[aria-expanded="true"]') || document.body.classList.contains('nav-open') || header.classList.contains('is-open');
+    }
+    function update() {
+        var y = window.scrollY, dy = y - lastY;
+        if (y < 20 || menuOpen()) header.classList.remove('is-tucked');
+        else if (dy > 0) header.classList.add('is-tucked');
+        else if (dy < -6) header.classList.remove('is-tucked');
+        if (dy > 0 || dy < -6 || y < 20) lastY = y;
+        ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    header.addEventListener('focusin', function () { header.classList.remove('is-tucked'); });
+})();
