@@ -2340,7 +2340,7 @@ document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
         ['plan-bee', '🐝', 'Plan Bee'],
         ['trivia-quiz', '❓', 'Trivia Quiz'],
         ['harry-potter-escape-room', '🪄', 'Harry Potter'],
-        ['zombie-game', '🧟', 'Zombie Game'],
+        ['zombie-game', '🧟', 'Haptic Horde'],
         ['but-worse-resident-evil', '🔦', 'Resident Evil']
     ];
     var here = location.pathname.split('/').pop().replace('.html', '');
@@ -2971,7 +2971,7 @@ document.querySelectorAll(".ab-figure video[data-start]").forEach(v => {
         });
     }
 
-    /* ---- Zombie Game: brains… ---- */
+    /* ---- Haptic Horde (zombie game): zombie attack ---- */
     if (/zombie-game\.html/.test(path)) {
         addBtn('<span aria-hidden="true">🧟</span> Zombie attack', function (btn) {
             var o = overlay('fun-zombie');
