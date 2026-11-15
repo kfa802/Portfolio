@@ -11704,3 +11704,20 @@ a.pj-code-btn span { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
 .fb-text { animation: fbTextBreath 8s ease-in-out forwards; will-change: transform; }
 @keyframes fbTextBreath { 0% { transform: scale(0.75); } 50% { transform: scale(1.5); } 100% { transform: scale(0.8); } }
 @media (prefers-reduced-motion: reduce) { .fb-text { animation: none; } }
+/* v127 · Duolingo link in the facts list */
+.ab-duo {
+    display: inline-flex; align-items: center; gap: 5px; margin-left: 8px; padding: 2px 10px;
+    border-radius: 999px; font-size: 0.8rem; font-weight: 700; text-decoration: none; white-space: nowrap;
+    color: #58cc02; border: 1px solid rgba(88, 204, 2, 0.5); background: rgba(88, 204, 2, 0.08);
+    transition: background 0.2s ease;
+}
+.ab-duo:hover { background: rgba(88, 204, 2, 0.18); }
+/* v128 · tidier languages row */
+.ab-lang { display: flex; flex-direction: column; gap: 6px; }
+.ab-lang-learn { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; color: var(--text-muted); }
+.ab-lang .ab-duo { margin-left: 0; padding: 3px 11px 3px 9px; font-size: 0.78rem; line-height: 1.4; }
+.ab-duo-logo {
+    width: 15px; height: 15px; flex: none; background: #58cc02;
+    -webkit-mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/duolingo.svg") center / contain no-repeat;
+            mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/duolingo.svg") center / contain no-repeat;
+}
