@@ -11721,3 +11721,12 @@ a.pj-code-btn span { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
     -webkit-mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/duolingo.svg") center / contain no-repeat;
             mask: url("https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/duolingo.svg") center / contain no-repeat;
 }
+
+/* v129 · mobile fixes
+   1) the project menu opens above the header and the fun buttons
+   2) the background reaches all the way down behind the phone's browser bar */
+@media (max-width: 1260px) {
+    .pj-switch.is-open { z-index: 1200; }
+    .pj-switch-panel { max-height: calc(100dvh - 120px); overflow-y: auto; overscroll-behavior: contain; }
+}
+.bg-gradient { top: -10vh; bottom: -25vh; height: auto; }
